@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbc4trnrr1rb1"]
+
+[ext_resource type="Material" uid="uid://d273oyer0o3f8" path="res://Materials/LightButtonMaterial.tres" id="1_m8go4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8fooi"]
+size = Vector3(0.05, 0.2, 0.2)
+
+[node name="LeftLight" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+mesh = SubResource("BoxMesh_8fooi")
+surface_material_override/0 = ExtResource("1_m8go4")
