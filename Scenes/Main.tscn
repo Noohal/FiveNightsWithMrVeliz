@@ -1,12 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=24 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
-[ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Environment.tres" id="1_qxtiq"]
+[ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
 [ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Door.tscn" id="2_6y7mn"]
 [ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/DoorButton.tscn" id="3_dfoe6"]
-[ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="3_qdkd5"]
 [ext_resource type="BoxMesh" uid="uid://b6l5rbf1uvti0" path="res://Materials/WallMesh.tres" id="4_kaq8v"]
 [ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/LightButton.tscn" id="4_nox5i"]
+[ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Staircase.tscn" id="8_2f72x"]
+[ext_resource type="PackedScene" uid="uid://dmverauqe7cvo" path="res://Scenes/BackStairs.tscn" id="8_ww6yr"]
+[ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/MediumRoom.tscn" id="9_51xe1"]
+[ext_resource type="PackedScene" uid="uid://bi44o4avaitvk" path="res://Scenes/LongRoom.tscn" id="10_cjksu"]
+[ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/SmallRoom.tscn" id="10_f8m8l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
 size = Vector2(4, 6)
@@ -41,17 +45,16 @@ size = Vector3(0.05, 0.2, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ef4l2"]
 size = Vector3(0.05, 0.2, 0.2)
 
+[sub_resource type="SphereMesh" id="SphereMesh_oqpwy"]
+
 [node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("1_r5yxd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 0)
+camera_parent = NodePath("../Cameras")
 
 [node name="Office" type="Node3D" parent="."]
 script = ExtResource("1_g8cfh")
-
-[node name="Camera3D" type="Camera3D" parent="Office"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 0)
-environment = ExtResource("1_qxtiq")
-fov = 50.0
-far = 20.0
-script = ExtResource("3_qdkd5")
 
 [node name="Floor" type="MeshInstance3D" parent="Office"]
 mesh = SubResource("PlaneMesh_osmvm")
@@ -143,16 +146,16 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ef4l2")
 
 [node name="Room Light" type="OmniLight3D" parent="Office"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 1.78024, 2.18557e-08)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1.78024, 2.18557e-08)
 light_color = Color(0.560784, 0.560784, 0.560784, 1)
 
 [node name="LightLeft" type="SpotLight3D" parent="Office"]
-transform = Transform3D(0.776222, 0, -0.630459, 0, 1, 0, 0.630459, 0, 0.776222, -0.924638, 0.867576, -1.36796)
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -1, 1, -1.25)
 spot_range = 3.2
 spot_angle = 39.55
 
 [node name="LightRight" type="SpotLight3D" parent="Office"]
-transform = Transform3D(-0.892586, 0, -0.450878, 0, 1, 0, 0.450878, 0, -0.892586, -0.924638, 1.02565, 1.42214)
+transform = Transform3D(-0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, -1, 1, 1.25)
 spot_range = 3.2
 spot_angle = 39.55
 
@@ -165,6 +168,60 @@ omni_range = 1.201
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 2)
 visible = false
 omni_range = 1.201
+
+[node name="Map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
+
+[node name="Front Stairs" parent="Map" instance=ExtResource("8_2f72x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Back Stairs" parent="Map" instance=ExtResource("8_ww6yr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.947, 0, -25.5792)
+
+[node name="Room3" parent="Map" instance=ExtResource("9_51xe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -6)
+
+[node name="Room4" parent="Map" instance=ExtResource("10_cjksu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
+
+[node name="Room5" parent="Map" instance=ExtResource("10_f8m8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
+
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="Cam1" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.741133, 0.449227, -0.498917, 1.07413e-08, 0.743145, 0.66913, 0.671359, -0.495914, 0.550769, 6.57532, 7.46494, -7.59923)
+fov = 70.0
+far = 20.0
+
+[node name="Cam2" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.733635, 0.41255, -0.539984, -3.72529e-09, 0.794627, 0.607099, 0.679544, 0.445389, -0.582966, 27.4516, 7.61619, -40.0742)
+fov = 70.0
+far = 20.0
+
+[node name="Cam3" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.532152, -0.425345, 0.732049, 0, 0.864643, 0.502386, -0.846649, 0.267346, -0.460122, 24.7211, 1.90486, -14.6898)
+fov = 70.0
+far = 20.0
+
+[node name="Cam4" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.554147, -0.489119, 0.67356, 2.98023e-08, 0.809161, 0.587588, -0.832419, 0.32561, -0.448394, 7.39411, 1.78686, 0.544596)
+fov = 70.0
+far = 100.0
+
+[node name="Cam5" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.665791, 0.338229, -0.665074, -4.53416e-09, 0.891355, 0.453306, 0.746139, 0.301807, -0.593456, 8.63974, 1.89516, 0.134578)
+fov = 70.0
+far = 100.0
+
+[node name="Cam6" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.855129, 0.289819, -0.429836, 2.98023e-08, 0.829135, 0.559048, 0.518415, 0.478058, -0.709018, 27.791, 1.88362, -12.8659)
+fov = 70.0
+far = 20.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 2)
+mesh = SubResource("SphereMesh_oqpwy")
 
 [connection signal="input_event" from="Office/DoorButtonLeft" to="Office" method="_on_door_button_left_input_event"]
 [connection signal="input_event" from="Office/DoorButtonRight" to="Office" method="_on_door_button_right_input_event"]

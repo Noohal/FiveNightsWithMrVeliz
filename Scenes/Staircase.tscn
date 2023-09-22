@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpv5gxnkp2ufn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0sxd7"]
+size = Vector2(12, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2d5ia"]
+size = Vector3(8, 2, 4)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rx1vc"]
+size = Vector2(10, 4)
+center_offset = Vector3(5, 0, 0)
+
+[sub_resource type="PrismMesh" id="PrismMesh_v5dqb"]
+left_to_right = 1.0
+size = Vector3(4, 2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f2h1k"]
+size = Vector3(4, 2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gct1i"]
+size = Vector3(0.01, 8, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kmala"]
+size = Vector3(0.01, 8, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ua078"]
+size = Vector3(0.01, 8, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p8p2e"]
+size = Vector3(8, 8, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1oxin"]
+size = Vector3(16, 10, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q13j0"]
+size = Vector3(4, 4, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r5srm"]
+size = Vector3(0.01, 4.5, 0.5)
+
+[node name="Stairs" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+mesh = SubResource("PlaneMesh_0sxd7")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 7.91019, -4)
+mesh = SubResource("PlaneMesh_0sxd7")
+
+[node name="FloorM" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -6)
+mesh = SubResource("BoxMesh_2d5ia")
+
+[node name="UpperFloor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 2)
+mesh = SubResource("PlaneMesh_rx1vc")
+
+[node name="Lower" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1, -2)
+mesh = SubResource("PrismMesh_v5dqb")
+
+[node name="Upper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3, 3, -2)
+mesh = SubResource("PrismMesh_v5dqb")
+
+[node name="Gap" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -2)
+mesh = SubResource("BoxMesh_f2h1k")
+
+[node name="LeftW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -4)
+mesh = SubResource("BoxMesh_gct1i")
+
+[node name="LeftW2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, 0)
+mesh = SubResource("BoxMesh_kmala")
+
+[node name="RightW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -4)
+mesh = SubResource("BoxMesh_gct1i")
+
+[node name="RightW2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 0)
+visible = false
+mesh = SubResource("BoxMesh_ua078")
+
+[node name="BackW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -8)
+mesh = SubResource("BoxMesh_p8p2e")
+
+[node name="BackW2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 4)
+mesh = SubResource("BoxMesh_1oxin")
+
+[node name="FrontW" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 0)
+mesh = SubResource("BoxMesh_q13j0")
+
+[node name="Railing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.453991, -0.891007, 0, 0.891007, 0.453991, 1, 3, -2)
+mesh = SubResource("BoxMesh_r5srm")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735781, 7.57858, -3.49981)
+omni_range = 8.705
+omni_attenuation = 1.8025

@@ -35,7 +35,3 @@ func toggle_right_door() -> void:
 	else:
 		#print("CLOSING DOOR %s" % current_door)
 		anim.play("door_close_right")
-
-func _on_animation_player_animation_finished(anim_name):
-	#print("FINISHED " + anim_name)
-	pass # Replace with function body.

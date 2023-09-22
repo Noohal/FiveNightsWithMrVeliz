@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://chpg542bvxo26"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_okmvk"]
+size = Vector3(10, 0.1, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wheay"]
+size = Vector3(0.1, 2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m1jb6"]
+size = Vector3(0.1, 2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1bnb4"]
+size = Vector3(4, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2lwvm"]
+size = Vector3(10, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oqlkd"]
+size = Vector3(1, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l0snt"]
+size = Vector3(3, 2, 0.1)
+
+[node name="Room" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("BoxMesh_okmvk")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+mesh = SubResource("BoxMesh_okmvk")
+
+[node name="Wall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+mesh = SubResource("BoxMesh_wheay")
+skeleton = NodePath("../Ceiling")
+
+[node name="Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+mesh = SubResource("BoxMesh_wheay")
+skeleton = NodePath("../Ceiling")
+
+[node name="Wall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 4)
+mesh = SubResource("BoxMesh_m1jb6")
+skeleton = NodePath("../Ceiling")
+
+[node name="BackWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+mesh = SubResource("BoxMesh_1bnb4")
+
+[node name="BackWall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+mesh = SubResource("BoxMesh_2lwvm")
+
+[node name="FrontWall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 2)
+mesh = SubResource("BoxMesh_oqlkd")
+
+[node name="FrontWall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
+mesh = SubResource("BoxMesh_l0snt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0155368, 1.94346, 0.0126481)
+light_energy = 0.909
+omni_range = 5.73
+omni_attenuation = 3.13834
+omni_shadow_mode = 0

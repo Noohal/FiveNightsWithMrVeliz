@@ -107,5 +107,3 @@ surface_material_override/0 = ExtResource("1_p5xks")
 libraries = {
 "": SubResource("AnimationLibrary_0clbn")
 }
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

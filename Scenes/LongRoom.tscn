@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bi44o4avaitvk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtjtt"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j4xjm"]
+size = Vector3(0.1, 2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v1f7j"]
+size = Vector3(0.1, 2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcko8"]
+size = Vector3(10, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f68jg"]
+size = Vector3(1, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4dx2"]
+size = Vector3(7, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbnkw"]
+size = Vector3(10, 2, 0.1)
+
+[node name="Room" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("BoxMesh_rtjtt")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 2, 2)
+mesh = SubResource("BoxMesh_rtjtt")
+
+[node name="LeftWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 2)
+mesh = SubResource("BoxMesh_j4xjm")
+
+[node name="RightWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 2)
+mesh = SubResource("BoxMesh_v1f7j")
+
+[node name="BackWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+mesh = SubResource("BoxMesh_vcko8")
+
+[node name="FWall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 2)
+mesh = SubResource("BoxMesh_f68jg")
+
+[node name="FWall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+mesh = SubResource("BoxMesh_c4dx2")
+
+[node name="FWall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 2)
+mesh = SubResource("BoxMesh_f68jg")
+
+[node name="FarWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+mesh = SubResource("BoxMesh_cbnkw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81851, 0)
+light_energy = 0.276
+omni_range = 47.702
+omni_attenuation = 1.62451

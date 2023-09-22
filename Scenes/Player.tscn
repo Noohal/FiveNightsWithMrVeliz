@@ -1,0 +1,247 @@
+[gd_scene load_steps=13 format=3 uid="uid://cef84qm7nly4w"]
+
+[ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Environment.tres" id="1_qfsnb"]
+[ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_4msad"]
+[ext_resource type="Script" path="res://Scripts/PlayerHUD.gd" id="3_vubtp"]
+[ext_resource type="Script" path="res://Scripts/CameraButton.gd" id="4_on1px"]
+[ext_resource type="Texture2D" uid="uid://b287mpchiunuh" path="res://Textures/camera_button_texture.png" id="5_j20mj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la3gu"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5e0fd"]
+material = SubResource("StandardMaterial3D_la3gu")
+size = Vector3(0.8, 0.5, 0.05)
+
+[sub_resource type="Animation" id="Animation_q2o2r"]
+resource_name = "screen_up"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.26893, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.25, 0.25), Vector3(0, -0.23, -0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_r25mu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.23, 0.25)]
+}
+
+[sub_resource type="Animation" id="Animation_mif4a"]
+resource_name = "screen_down"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2.26893, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.24, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.25, -0.5), Vector3(0, -0.25, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5ia7"]
+_data = {
+"RESET": SubResource("Animation_r25mu"),
+"screen_down": SubResource("Animation_mif4a"),
+"screen_up": SubResource("Animation_q2o2r")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66n3m"]
+size = Vector2(100, 50)
+
+[node name="Player" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
+script = ExtResource("2_4msad")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+environment = ExtResource("1_qfsnb")
+fov = 50.0
+far = 20.0
+
+[node name="Screen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.23, 0.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_5e0fd")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f5ia7")
+}
+
+[node name="PlayerHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("3_vubtp")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerHUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHUD/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(768, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+color = Color(0, 0.705882, 0.329412, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 15
+
+[node name="ButtonMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer"]
+
+[node name="Cam1" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+position = Vector2(-417, -213)
+script = ExtResource("4_on1px")
+camera_id = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam1"]
+texture = ExtResource("5_j20mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam1"]
+shape = SubResource("RectangleShape2D_66n3m")
+
+[node name="Cam2" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+position = Vector2(-155, -441)
+script = ExtResource("4_on1px")
+camera_id = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam2"]
+texture = ExtResource("5_j20mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam2"]
+shape = SubResource("RectangleShape2D_66n3m")
+
+[node name="Cam3" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+position = Vector2(-416, -319)
+script = ExtResource("4_on1px")
+camera_id = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam3"]
+texture = ExtResource("5_j20mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam3"]
+shape = SubResource("RectangleShape2D_66n3m")
+
+[node name="Cam4" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+position = Vector2(-159, -245)
+script = ExtResource("4_on1px")
+camera_id = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam4"]
+texture = ExtResource("5_j20mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam4"]
+shape = SubResource("RectangleShape2D_66n3m")
+
+[node name="Cam5" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+position = Vector2(-159, -318)
+script = ExtResource("4_on1px")
+camera_id = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam5"]
+texture = ExtResource("5_j20mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam5"]
+shape = SubResource("RectangleShape2D_66n3m")
+
+[node name="Cam6" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+position = Vector2(-416, -435)
+script = ExtResource("4_on1px")
+camera_id = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam6"]
+texture = ExtResource("5_j20mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam6"]
+shape = SubResource("RectangleShape2D_66n3m")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_started"]
+[connection signal="mouse_entered" from="PlayerHUD/MarginContainer/VBoxContainer/ColorRect" to="PlayerHUD" method="_on_color_rect_mouse_entered"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam1" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam1" method="_on_input_event"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam2" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam2" method="_on_input_event"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam3" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam3" method="_on_input_event"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam4" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam4" method="_on_input_event"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam5" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam5" method="_on_input_event"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam6" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Cam6" method="_on_input_event"]
