@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=26 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/MediumRoom.tscn" id="9_51xe1"]
 [ext_resource type="PackedScene" uid="uid://bi44o4avaitvk" path="res://Scenes/LongRoom.tscn" id="10_cjksu"]
 [ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/SmallRoom.tscn" id="10_f8m8l"]
+[ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/MediumRoomVariant.tscn" id="12_pbfa4"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Hallway.tscn" id="12_vw15l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
@@ -193,6 +194,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 
 [node name="Room7" parent="Map" instance=ExtResource("9_51xe1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -4)
+visible = false
+
+[node name="Room" parent="Map" instance=ExtResource("12_pbfa4")]
+transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -18, 2, -4)
 
 [node name="Room8" parent="Map" instance=ExtResource("9_51xe1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0, 14)

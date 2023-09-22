@@ -8,6 +8,11 @@ extends Control
 var playing_animation : bool = false
 var looking_upstairs : bool = false
 
+func _ready():
+	looking_upstairs = false
+	hide_upstairs()
+	toggle_ui(false)
+
 func toggle_ui(enable : bool) -> void:
 	if enable:
 		map.show()
