@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=25 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/MediumRoom.tscn" id="9_51xe1"]
 [ext_resource type="PackedScene" uid="uid://bi44o4avaitvk" path="res://Scenes/LongRoom.tscn" id="10_cjksu"]
 [ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/SmallRoom.tscn" id="10_f8m8l"]
+[ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Hallway.tscn" id="12_vw15l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
 size = Vector2(4, 6)
@@ -176,7 +177,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
 [node name="Back Stairs" parent="Map" instance=ExtResource("8_ww6yr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.947, 0, -25.5792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.053, 0, 13.4208)
 
 [node name="Room3" parent="Map" instance=ExtResource("9_51xe1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -6)
@@ -187,6 +188,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
 [node name="Room5" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
 
+[node name="Room6" parent="Map" instance=ExtResource("10_f8m8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
+
+[node name="Room7" parent="Map" instance=ExtResource("9_51xe1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -4)
+
+[node name="Room8" parent="Map" instance=ExtResource("9_51xe1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0, 14)
+
+[node name="Room9" parent="Map" instance=ExtResource("10_f8m8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 10)
+
+[node name="Hallway" parent="Map" instance=ExtResource("12_vw15l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -2)
+
 [node name="Cameras" type="Node3D" parent="."]
 
 [node name="Cam1" type="Camera3D" parent="Cameras"]
@@ -195,7 +211,7 @@ fov = 70.0
 far = 20.0
 
 [node name="Cam2" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.733635, 0.41255, -0.539984, -3.72529e-09, 0.794627, 0.607099, 0.679544, 0.445389, -0.582966, 27.4516, 7.61619, -40.0742)
+transform = Transform3D(-0.733635, 0.41255, -0.539984, -3.72529e-09, 0.794627, 0.607099, 0.679544, 0.445389, -0.582966, -15.3084, 7.73072, -1.46647)
 fov = 70.0
 far = 20.0
 
@@ -218,6 +234,23 @@ far = 100.0
 transform = Transform3D(-0.855129, 0.289819, -0.429836, 2.98023e-08, 0.829135, 0.559048, 0.518415, 0.478058, -0.709018, 27.791, 1.88362, -12.8659)
 fov = 70.0
 far = 20.0
+
+[node name="Cam7" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.742946, -0.363103, 0.562305, 0, 0.840075, 0.542471, -0.669351, -0.403027, 0.62413, -6.41541, 1.83451, -9.41927)
+
+[node name="Cam8" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.175367, 0.534064, -0.827056, -3.84284e-08, 0.840075, 0.542471, 0.984503, -0.0951314, 0.147321, -19.8935, 1.83451, -10.7654)
+
+[node name="Cam9" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.609135, 0.430216, -0.666235, -3.84284e-08, 0.840075, 0.542471, 0.793066, 0.330438, -0.511719, -25.6723, 1.85312, 5.52504)
+
+[node name="Cam10" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.999655, 0.0246718, -0.00900621, 0.0127864, 0.756689, 0.65365, 0.0229416, 0.653309, -0.756743, -32.1425, 1.85312, 1.51475)
+
+[node name="Cam11" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.0595329, 0, 0.998226, 0, 1, 0, -0.998226, 0, 0.0595329, -21.0241, 1.64393, -8.11537)
+fov = 70.0
+far = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 2)

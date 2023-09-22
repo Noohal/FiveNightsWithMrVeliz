@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcda2y6dwakt2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6rixb"]
+size = Vector3(20, 0.1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7gl4d"]
+size = Vector3(0.1, 2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eqgc2"]
+size = Vector3(2, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mjao4"]
+size = Vector3(16, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xrsb4"]
+size = Vector3(20, 2, 0.1)
+
+[node name="Hallway" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+light_energy = 0.548
+omni_range = 14.884
+omni_attenuation = 1.41421
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("BoxMesh_6rixb")
+skeleton = NodePath("../..")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+mesh = SubResource("BoxMesh_6rixb")
+skeleton = NodePath("../..")
+
+[node name="Wall" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 1)
+mesh = SubResource("BoxMesh_7gl4d")
+skeleton = NodePath("../..")
+
+[node name="Wall2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 1)
+mesh = SubResource("BoxMesh_7gl4d")
+skeleton = NodePath("../..")
+
+[node name="SideWall1" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -2)
+mesh = SubResource("BoxMesh_eqgc2")
+skeleton = NodePath("../..")
+
+[node name="SideWall2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
+mesh = SubResource("BoxMesh_mjao4")
+skeleton = NodePath("../Wall2")
+
+[node name="SideWall3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+mesh = SubResource("BoxMesh_xrsb4")
+skeleton = NodePath("../Wall2")
+
+[node name="SideWall4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 4)
+mesh = SubResource("BoxMesh_eqgc2")
+skeleton = NodePath("../..")
+
+[node name="SideWall5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4)
+mesh = SubResource("BoxMesh_mjao4")
+skeleton = NodePath("../Wall2")
+
+[node name="SideWall6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+mesh = SubResource("BoxMesh_xrsb4")
+skeleton = NodePath("../Wall2")

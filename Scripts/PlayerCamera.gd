@@ -35,6 +35,8 @@ func _ready():
 	
 	watching_camera = false
 	set_up_cameras()
+	player_hud.looking_upstairs = false
+	player_hud.hide_upstairs()
 	player_hud.toggle_ui(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
