@@ -8,6 +8,9 @@ extends Node3D
 var left_light_on = false
 var right_light_on = false
 
+signal left_light_change(active : bool)
+signal right_light_change(active : bool)
+
 func _process(_delta):
 	if left_light_on:
 		left_light.light_energy = 1
@@ -35,9 +38,11 @@ func _on_light_button_left_input_event(_camera, event, _position, _normal, _shap
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed == true:
 			left_light_on = !left_light_on
+			emit_signal("left_light_change", left_light_on)
 
 
 func _on_light_button_right_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed == true:
 			right_light_on = !right_light_on
+			emit_signal("right_light_change", right_light_on)

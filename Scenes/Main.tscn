@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=30 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_ogyp8"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
 [ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Door.tscn" id="2_6y7mn"]
+[ext_resource type="Script" path="res://Scenes/Power.gd" id="2_x087o"]
 [ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/DoorButton.tscn" id="3_dfoe6"]
 [ext_resource type="BoxMesh" uid="uid://b6l5rbf1uvti0" path="res://Materials/WallMesh.tres" id="4_kaq8v"]
 [ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/LightButton.tscn" id="4_nox5i"]
@@ -13,6 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/SmallRoom.tscn" id="10_f8m8l"]
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/MediumRoomVariant.tscn" id="12_pbfa4"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Hallway.tscn" id="12_vw15l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5fbg8"]
+font_size = 52
+
+[sub_resource type="LabelSettings" id="LabelSettings_ohr0c"]
+font_size = 52
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
 size = Vector2(4, 6)
@@ -50,6 +58,45 @@ size = Vector3(0.05, 0.2, 0.2)
 [sub_resource type="SphereMesh" id="SphereMesh_oqpwy"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_ogyp8")
+
+[node name="Power" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_x087o")
+
+[node name="MarginContainer" type="MarginContainer" parent="Power"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Power/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="UsageLabel" type="Label" parent="Power/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Usage:"
+label_settings = SubResource("LabelSettings_5fbg8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Power/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PowerLevel" type="Label" parent="Power/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Power:"
+label_settings = SubResource("LabelSettings_ohr0c")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("1_r5yxd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 0)
@@ -261,6 +308,11 @@ far = 100.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 2)
 mesh = SubResource("SphereMesh_oqpwy")
 
+[connection signal="camera_state_change" from="Player" to="Power" method="_on_player_camera_state_change"]
+[connection signal="left_light_change" from="Office" to="Power" method="_on_office_left_light_change"]
+[connection signal="right_light_change" from="Office" to="Power" method="_on_office_right_light_change"]
+[connection signal="left_door_change" from="Office/LeftDoor" to="Power" method="_on_left_door_left_door_change"]
+[connection signal="right_door_change" from="Office/RightDoor" to="Power" method="_on_right_door_right_door_change"]
 [connection signal="input_event" from="Office/DoorButtonLeft" to="Office" method="_on_door_button_left_input_event"]
 [connection signal="input_event" from="Office/DoorButtonRight" to="Office" method="_on_door_button_right_input_event"]
 [connection signal="input_event" from="Office/LightButtonLeft" to="Office" method="_on_light_button_left_input_event"]

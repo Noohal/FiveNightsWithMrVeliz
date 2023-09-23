@@ -21,6 +21,8 @@ var current_camera : int
 var last_camera : int
 var watching_camera : bool
 
+signal camera_state_change(watching : bool)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_camera = 0
@@ -72,6 +74,7 @@ func toggle_camera() -> void:
 		last_camera = current_camera
 		set_camera(0)
 		player_hud.toggle_ui(false)
+		emit_signal("camera_state_change", false)
 
 func set_camera(camera_id : int):
 	for cam in cameras:
@@ -79,6 +82,7 @@ func set_camera(camera_id : int):
 		if cam.name == target_cam:
 			current_camera = camera_id
 			cam.make_current()
+			emit_signal("camera_state_change", true)
 		elif cam.current:
 			cam.clear_current()
 		else:
