@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var game : Node3D = $"../"
+@export var scare_cam : Camera3D
 @export var movement_points : Array[Vector3]
 @export var night_AI_levels : Array[int]
 
@@ -10,16 +11,14 @@ var AI_level : int
 var current_pos : int
 const MOVEMENT_INTERVAL : float = 5.0
 
+signal jumpscare_bonnie
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rand.randomize()
-	AI_level = night_AI_levels[game.current_night]
+	AI_level = night_AI_levels[game.current_night - 1]
 	current_pos = 0
 	set_global_position(movement_points[current_pos])
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
 
 # Check Movement Opportunity
 func _on_timer_timeout():
@@ -35,12 +34,21 @@ func _on_timer_timeout():
 		print("%s VS %s: STAY BONNIE" % [AI_level, check])
 
 # Based on current position, calculate the new position
+# 0 - Spawn
+# 1 - Point 8 (Room 7)
+# 2 - Point 10 (Room 9)
+# 3 - Point 11 (Hallway Front)
+# 4 - Point 1D (Front Stairs Down)
+# 5 - Point 3 (Room 3)
+# 6 - Point LeftOffice (Left Office Door)
+# 7 - Point J (Jumpscare/Hidden Position)
 func find_new_destination(pos : int) -> int:
 	rand.randomize()
-	var dest : int = 0
+	var dest : int = pos
 	match pos:
 		0:
-			dest = rand.randi_range(1,2)
+			#dest = rand.randi_range(1,2)
+			dest = 6
 		1:
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:
@@ -68,22 +76,27 @@ func find_new_destination(pos : int) -> int:
 				dest = 5
 			else:
 				dest = 6
+				print("AT DOOR")
 		5:
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:
 				dest = 6
+				print("AT DOOR")
 			else:
 				dest = 4
 		6:
 			dest = attack()
+			if dest == 7:
+				emit_signal("jumpscare_bonnie")
+		_:
+			dest = dest
 	return dest
 
 func attack() -> int:
 	if game.left_door_close:
 		print("LEAVING")
 		return 3
-	print("AT DOOR")
-	return 6
+	return 7
 
 # Increase AI Level
 func _on_clock_hour_change(hour):

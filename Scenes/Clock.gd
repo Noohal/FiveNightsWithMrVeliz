@@ -19,7 +19,6 @@ func _on_timer_timeout():
 	if current_time == 6:
 		return
 	current_time = (current_time + 1) % 12
-	print("NEXT HOUR")
 	hour_label.text = str(current_time) + "AM"
 	emit_signal("hour_change", current_time)
 	

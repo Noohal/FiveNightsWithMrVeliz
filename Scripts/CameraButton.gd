@@ -9,7 +9,7 @@ enum CamerasEnum {TOGGLE, CAM1, CAM2, CAM3, CAM4, CAM5, CAM6, CAM7, CAM8, CAM9, 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
 		if camera_id != CamerasEnum.TOGGLE:
-			print("Selecting Camera %s" % camera_id)
+			#print("Selecting Camera %s" % camera_id)
 			player.set_camera(camera_id)
 		else:
 			if player_hud.has_method("toggle_upstairs"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=38 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_ogyp8"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/MediumRoomVariant.tscn" id="12_pbfa4"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Hallway.tscn" id="12_vw15l"]
 [ext_resource type="PackedScene" uid="uid://cfnw8k6pdi7uk" path="res://Scenes/Enemy/Shashumga.tscn" id="18_rx5kh"]
+[ext_resource type="AudioStream" uid="uid://bvja051f6cfuq" path="res://Sounds/Danger Alarm Meme Sound Effect.mp3" id="19_27ugv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
 size = Vector2(4, 6)
@@ -52,12 +53,80 @@ size = Vector3(0.05, 0.2, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ef4l2"]
 size = Vector3(0.05, 0.2, 0.2)
 
+[sub_resource type="BoxMesh" id="BoxMesh_xgusk"]
+size = Vector3(4, 0.1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6f6b8"]
+size = Vector3(0.1, 2, 4)
+
 [sub_resource type="Environment" id="Environment_ktvgq"]
 background_mode = 1
 
 [sub_resource type="Environment" id="Environment_j31tm"]
 background_mode = 1
 tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_a21xi"]
+resource_name = "bonnie_boo"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 20), Vector3(0.865101, 0, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.14159, 0), Vector3(0, -6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0m4we"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pt0wm"]
+_data = {
+"RESET": SubResource("Animation_0m4we"),
+"bonnie_boo": SubResource("Animation_a21xi")
+}
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ogyp8")
@@ -290,6 +359,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 10)
 [node name="Hallway" parent="Map" instance=ExtResource("12_vw15l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -2)
 
+[node name="Scareroom" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 27)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Scareroom"]
+mesh = SubResource("BoxMesh_xgusk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Map/Scareroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_xgusk")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Map/Scareroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Map/Scareroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Map/Scareroom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 2)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Map/Scareroom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, -2)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Scareroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70717, 0.46255, 0)
+light_energy = 0.403
+omni_range = 34.196
+omni_attenuation = 2.82843
+
+[node name="ScareCam" type="Camera3D" parent="Map/Scareroom"]
+transform = Transform3D(-4.36999e-08, 0.0229491, 0.999737, 1.00314e-09, 0.999737, -0.0229491, -1, 0, -4.37114e-08, 1.84485, 0.472535, 0)
+fov = 42.8
+
 [node name="Cameras" type="Node3D" parent="."]
 
 [node name="Cam1" type="Camera3D" parent="Cameras"]
@@ -343,10 +448,20 @@ far = 100.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j31tm")
 
-[node name="Shashumga" parent="." instance=ExtResource("18_rx5kh")]
-transform = Transform3D(-0.0819385, 0, 0.996637, 0, 1, 0, -0.996637, 0, -0.0819385, 0.678359, 5.96046e-08, -2.51406)
-movement_points = Array[Vector3]([Vector3(-25, 0, 8), Vector3(-18, 0, -11), Vector3(-33, 0, 4), Vector3(-23.5, 0, -9), Vector3(8, 2, -12), Vector3(21, 0, -14), Vector3(0.678359, 5.96046e-08, -2.51406)])
+[node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam") instance=ExtResource("18_rx5kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+scare_cam = NodePath("../Map/Scareroom/ScareCam")
+movement_points = Array[Vector3]([Vector3(-25, 0, 8), Vector3(-18, 0, -11), Vector3(-33, 0, 4), Vector3(-23.5, 0, -9), Vector3(8, 2, -12), Vector3(21, 0, -14), Vector3(0.678359, 5.96046e-08, -2.51406), Vector3(0, 0, 20)])
 night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
+
+[node name="jumpscare" type="AnimationPlayer" parent="Shashumga"]
+libraries = {
+"": SubResource("AnimationLibrary_pt0wm")
+}
+
+[node name="scare sfx" type="AudioStreamPlayer3D" parent="Shashumga"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
+stream = ExtResource("19_27ugv")
 
 [node name="MapPoints" type="Node3D" parent="."]
 
@@ -408,3 +523,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
 [connection signal="input_event" from="Office/DoorButtonRight" to="Office" method="_on_door_button_right_input_event"]
 [connection signal="input_event" from="Office/LightButtonLeft" to="Office" method="_on_light_button_left_input_event"]
 [connection signal="input_event" from="Office/LightButtonRight" to="Office" method="_on_light_button_right_input_event"]
+[connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
