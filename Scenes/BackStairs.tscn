@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Staircase.tscn" id="1_ikgdt"]
 
 [node name="Stairs" instance=ExtResource("1_ikgdt")]
+
+[node name="OmniLight3D" parent="." index="15"]
+light_bake_mode = 1

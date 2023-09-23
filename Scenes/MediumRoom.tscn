@@ -55,6 +55,7 @@ mesh = SubResource("BoxMesh_jx467")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79556, 0)
 light_energy = 0.337
+light_bake_mode = 1
 omni_range = 4.214
 omni_attenuation = 1.23115
 

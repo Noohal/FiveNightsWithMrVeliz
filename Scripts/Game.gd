@@ -1,11 +1,13 @@
 extends Node3D
 
+var left_door_close : bool = false
+var right_door_close : bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var current_night : int = 0
+
+func _on_left_door_left_door_change(active):
+	left_door_close = active
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_right_door_right_door_change(active):
+	right_door_close = active

@@ -82,7 +82,6 @@ func set_camera(camera_id : int):
 		if cam.name == target_cam:
 			current_camera = camera_id
 			cam.make_current()
-			emit_signal("camera_state_change", true)
 		elif cam.current:
 			cam.clear_current()
 		else:
@@ -93,4 +92,5 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "screen_up":
 		current_camera = last_camera
 		set_camera(current_camera)
+		emit_signal("camera_state_change", true)
 		player_hud.toggle_ui(true)

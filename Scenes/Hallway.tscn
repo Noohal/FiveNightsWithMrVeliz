@@ -20,6 +20,7 @@ size = Vector3(20, 2, 0.1)
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
 light_energy = 0.548
+light_bake_mode = 1
 omni_range = 14.884
 omni_attenuation = 1.41421
 

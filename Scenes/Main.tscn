@@ -1,10 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=32 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_ogyp8"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
+[ext_resource type="Script" path="res://Scenes/Clock.gd" id="2_1a6f2"]
 [ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Door.tscn" id="2_6y7mn"]
 [ext_resource type="Script" path="res://Scenes/Power.gd" id="2_x087o"]
+[ext_resource type="LabelSettings" uid="uid://b5nfth8dtmleb" path="res://UIText.tres" id="3_a7h8y"]
 [ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/DoorButton.tscn" id="3_dfoe6"]
 [ext_resource type="BoxMesh" uid="uid://b6l5rbf1uvti0" path="res://Materials/WallMesh.tres" id="4_kaq8v"]
 [ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/LightButton.tscn" id="4_nox5i"]
@@ -15,12 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/SmallRoom.tscn" id="10_f8m8l"]
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/MediumRoomVariant.tscn" id="12_pbfa4"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Hallway.tscn" id="12_vw15l"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_5fbg8"]
-font_size = 52
-
-[sub_resource type="LabelSettings" id="LabelSettings_ohr0c"]
-font_size = 52
+[ext_resource type="PackedScene" uid="uid://cfnw8k6pdi7uk" path="res://Scenes/Enemy/Shashumga.tscn" id="18_rx5kh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
 size = Vector2(4, 6)
@@ -55,10 +52,52 @@ size = Vector3(0.05, 0.2, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ef4l2"]
 size = Vector3(0.05, 0.2, 0.2)
 
-[sub_resource type="SphereMesh" id="SphereMesh_oqpwy"]
+[sub_resource type="Environment" id="Environment_ktvgq"]
+background_mode = 1
+
+[sub_resource type="Environment" id="Environment_j31tm"]
+background_mode = 1
+tonemap_mode = 2
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ogyp8")
+
+[node name="Clock" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1a6f2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Clock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Clock/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Clock/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="HourLabel" type="Label" parent="Clock/MarginContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "CURRENTHOUR"
+label_settings = ExtResource("3_a7h8y")
+
+[node name="Timer" type="Timer" parent="Clock"]
+wait_time = 10.0
+autostart = true
 
 [node name="Power" type="Control" parent="."]
 layout_mode = 3
@@ -88,7 +127,7 @@ alignment = 2
 [node name="UsageLabel" type="Label" parent="Power/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Usage:"
-label_settings = SubResource("LabelSettings_5fbg8")
+label_settings = ExtResource("3_a7h8y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Power/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -96,7 +135,7 @@ layout_mode = 2
 [node name="PowerLevel" type="Label" parent="Power/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Power:"
-label_settings = SubResource("LabelSettings_ohr0c")
+label_settings = ExtResource("3_a7h8y")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("1_r5yxd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 0)
@@ -239,11 +278,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
 [node name="Room6" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 
-[node name="Room7" parent="Map" instance=ExtResource("9_51xe1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -4)
-visible = false
-
-[node name="Room" parent="Map" instance=ExtResource("12_pbfa4")]
+[node name="Room7" parent="Map" instance=ExtResource("12_pbfa4")]
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -18, 2, -4)
 
 [node name="Room8" parent="Map" instance=ExtResource("9_51xe1")]
@@ -273,12 +308,13 @@ fov = 70.0
 far = 20.0
 
 [node name="Cam4" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.554147, -0.489119, 0.67356, 2.98023e-08, 0.809161, 0.587588, -0.832419, 0.32561, -0.448394, 7.39411, 1.78686, 0.544596)
+transform = Transform3D(-0.779283, -0.370081, 0.505725, 6.28643e-08, 0.807002, 0.590549, -0.626672, 0.460205, -0.628883, 7.39411, 1.78686, 0.130886)
+environment = SubResource("Environment_ktvgq")
 fov = 70.0
 far = 100.0
 
 [node name="Cam5" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.665791, 0.338229, -0.665074, -4.53416e-09, 0.891355, 0.453306, 0.746139, 0.301807, -0.593456, 8.63974, 1.89516, 0.134578)
+transform = Transform3D(-0.665791, 0.338229, -0.665074, -4.53416e-09, 0.891355, 0.453306, 0.746139, 0.301807, -0.593456, 9.60421, 1.89516, 0.134578)
 fov = 70.0
 far = 100.0
 
@@ -304,14 +340,69 @@ transform = Transform3D(0.0595329, 0, 0.998226, 0, 1, 0, -0.998226, 0, 0.0595329
 fov = 70.0
 far = 100.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 2)
-mesh = SubResource("SphereMesh_oqpwy")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j31tm")
 
+[node name="Shashumga" parent="." instance=ExtResource("18_rx5kh")]
+transform = Transform3D(-0.0819385, 0, 0.996637, 0, 1, 0, -0.996637, 0, -0.0819385, 0.678359, 5.96046e-08, -2.51406)
+movement_points = Array[Vector3]([Vector3(-25, 0, 8), Vector3(-18, 0, -11), Vector3(-33, 0, 4), Vector3(-23.5, 0, -9), Vector3(8, 2, -12), Vector3(21, 0, -14), Vector3(0.678359, 5.96046e-08, -2.51406)])
+night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
+
+[node name="MapPoints" type="Node3D" parent="."]
+
+[node name="1U" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.35, -8.5)
+
+[node name="1D" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -12)
+
+[node name="2U" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, 7)
+
+[node name="2D" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 4)
+
+[node name="3" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -14)
+
+[node name="4" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="5" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 2.5)
+
+[node name="6" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -11.5)
+
+[node name="7" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
+
+[node name="8" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -11)
+
+[node name="9" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 7.5)
+
+[node name="10" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 4)
+
+[node name="11" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -9)
+
+[node name="12" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -9)
+
+[node name="LeftOffice" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
+
+[connection signal="hour_change" from="Clock" to="Shashumga" method="_on_clock_hour_change"]
+[connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]
 [connection signal="camera_state_change" from="Player" to="Power" method="_on_player_camera_state_change"]
 [connection signal="left_light_change" from="Office" to="Power" method="_on_office_left_light_change"]
 [connection signal="right_light_change" from="Office" to="Power" method="_on_office_right_light_change"]
+[connection signal="left_door_change" from="Office/LeftDoor" to="." method="_on_left_door_left_door_change"]
 [connection signal="left_door_change" from="Office/LeftDoor" to="Power" method="_on_left_door_left_door_change"]
+[connection signal="right_door_change" from="Office/RightDoor" to="." method="_on_right_door_right_door_change"]
 [connection signal="right_door_change" from="Office/RightDoor" to="Power" method="_on_right_door_right_door_change"]
 [connection signal="input_event" from="Office/DoorButtonLeft" to="Office" method="_on_door_button_left_input_event"]
 [connection signal="input_event" from="Office/DoorButtonRight" to="Office" method="_on_door_button_right_input_event"]
