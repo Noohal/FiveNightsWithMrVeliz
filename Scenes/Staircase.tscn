@@ -100,8 +100,3 @@ mesh = SubResource("BoxMesh_q13j0")
 [node name="Railing" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.453991, -0.891007, 0, 0.891007, 0.453991, 1, 3, -2)
 mesh = SubResource("BoxMesh_r5srm")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735781, 7.57858, -3.49981)
-omni_range = 8.705
-omni_attenuation = 1.8025

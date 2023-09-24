@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://g11h3wy4sjko"]
+
+[ext_resource type="ArrayMesh" uid="uid://djhnld6cq7vxt" path="res://Models/12329_Statue_v1_l3.obj" id="1_cdxdo"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Stonedome.gd" id="1_jxpll"]
+
+[sub_resource type="Gradient" id="Gradient_jnsna"]
+interpolation_mode = 2
+interpolation_color_space = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_530hf"]
+noise_type = 5
+frequency = 0.2552
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_26fu2"]
+width = 256
+height = 256
+color_ramp = SubResource("Gradient_jnsna")
+noise = SubResource("FastNoiseLite_530hf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ji6vt"]
+albedo_color = Color(0.588235, 0.588235, 0.588235, 1)
+roughness_texture = SubResource("NoiseTexture2D_26fu2")
+
+[node name="Stonedome" type="Node3D"]
+script = ExtResource("1_jxpll")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, -0.16, 0)
+material_override = SubResource("StandardMaterial3D_ji6vt")
+mesh = ExtResource("1_cdxdo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.85
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

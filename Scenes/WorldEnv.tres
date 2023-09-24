@@ -1,0 +1,6 @@
+[gd_resource type="Environment" format=3 uid="uid://dcj6aus4qmvlb"]
+
+[resource]
+background_mode = 1
+tonemap_mode = 2
+sdfgi_enabled = true

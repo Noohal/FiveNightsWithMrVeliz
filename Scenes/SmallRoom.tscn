@@ -61,11 +61,3 @@ mesh = SubResource("BoxMesh_oqlkd")
 [node name="FrontWall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
 mesh = SubResource("BoxMesh_l0snt")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0155368, 1.94346, 0.0126481)
-light_energy = 0.909
-light_bake_mode = 1
-omni_range = 5.73
-omni_attenuation = 3.13834
-omni_shadow_mode = 0

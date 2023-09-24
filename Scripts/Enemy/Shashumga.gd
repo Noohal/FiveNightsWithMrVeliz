@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var game : Node3D = $"../"
 @export var scare_cam : Camera3D
-@export var movement_points : Array[Vector3]
+@export var enemy_locations : Array[Node3D]
 @export var night_AI_levels : Array[int]
 
 var rand = RandomNumberGenerator.new()
@@ -18,7 +18,7 @@ func _ready():
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night - 1]
 	current_pos = 0
-	set_global_position(movement_points[current_pos])
+	set_global_position(enemy_locations[current_pos].global_position)
 
 # Check Movement Opportunity
 func _on_timer_timeout():
@@ -26,12 +26,11 @@ func _on_timer_timeout():
 	var check = rand.randi_range(1,20)
 	if AI_level >= check:
 		current_pos = find_new_destination(current_pos)
-		set_global_position(movement_points[current_pos])
-		print("%s VS %s: BONNIE MOVE TO %s" % [AI_level, check, current_pos])
+		set_global_position(enemy_locations[current_pos].global_position)
+		print("BONNIE -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
 		await get_tree().create_timer(4).timeout
-		print("READY TO CHECK")
 	else:
-		print("%s VS %s: STAY BONNIE" % [AI_level, check])
+		print("BONNIE -- %s VS %s: STAY" % [AI_level, check])
 
 # Based on current position, calculate the new position
 # 0 - Spawn
@@ -47,8 +46,8 @@ func find_new_destination(pos : int) -> int:
 	var dest : int = pos
 	match pos:
 		0:
-			#dest = rand.randi_range(1,2)
-			dest = 6
+			dest = rand.randi_range(1,2)
+			#dest = 6
 		1:
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:

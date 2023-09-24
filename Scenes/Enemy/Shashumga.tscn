@@ -25,7 +25,6 @@ height = 0.4
 
 [node name="Shashumga" type="Node3D"]
 script = ExtResource("1_w1f28")
-movement_points = Array[Vector3]([Vector3(-25, 0, 8)])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

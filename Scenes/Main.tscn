@@ -1,13 +1,13 @@
-[gd_scene load_steps=38 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=39 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_ogyp8"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
-[ext_resource type="Script" path="res://Scenes/Clock.gd" id="2_1a6f2"]
 [ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Door.tscn" id="2_6y7mn"]
-[ext_resource type="Script" path="res://Scenes/Power.gd" id="2_x087o"]
+[ext_resource type="Script" path="res://Scripts/Clock.gd" id="2_gjcnd"]
 [ext_resource type="LabelSettings" uid="uid://b5nfth8dtmleb" path="res://UIText.tres" id="3_a7h8y"]
 [ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/DoorButton.tscn" id="3_dfoe6"]
+[ext_resource type="Script" path="res://Scripts/Power.gd" id="4_c0trm"]
 [ext_resource type="BoxMesh" uid="uid://b6l5rbf1uvti0" path="res://Materials/WallMesh.tres" id="4_kaq8v"]
 [ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/LightButton.tscn" id="4_nox5i"]
 [ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Staircase.tscn" id="8_2f72x"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/MediumRoomVariant.tscn" id="12_pbfa4"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Hallway.tscn" id="12_vw15l"]
 [ext_resource type="PackedScene" uid="uid://cfnw8k6pdi7uk" path="res://Scenes/Enemy/Shashumga.tscn" id="18_rx5kh"]
+[ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="18_s0xe6"]
 [ext_resource type="AudioStream" uid="uid://bvja051f6cfuq" path="res://Sounds/Danger Alarm Meme Sound Effect.mp3" id="19_27ugv"]
+[ext_resource type="PackedScene" uid="uid://g11h3wy4sjko" path="res://Scenes/Enemy/Stonedome.tscn" id="20_h1ctj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
 size = Vector2(4, 6)
@@ -62,9 +64,32 @@ size = Vector3(0.1, 2, 4)
 [sub_resource type="Environment" id="Environment_ktvgq"]
 background_mode = 1
 
-[sub_resource type="Environment" id="Environment_j31tm"]
-background_mode = 1
-tonemap_mode = 2
+[sub_resource type="Animation" id="Animation_0m4we"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_a21xi"]
 resource_name = "bonnie_boo"
@@ -95,33 +120,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, -3.14159, 0), Vector3(0, -6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_0m4we"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 20)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pt0wm"]
 _data = {
 "RESET": SubResource("Animation_0m4we"),
@@ -138,7 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_1a6f2")
+script = ExtResource("2_gjcnd")
 
 [node name="MarginContainer" type="MarginContainer" parent="Clock"]
 layout_mode = 1
@@ -175,7 +173,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_x087o")
+script = ExtResource("4_c0trm")
 
 [node name="MarginContainer" type="MarginContainer" parent="Power"]
 layout_mode = 1
@@ -209,6 +207,12 @@ label_settings = ExtResource("3_a7h8y")
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("1_r5yxd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 0)
 camera_parent = NodePath("../Cameras")
+
+[node name="Camera3D" parent="Player" index="0"]
+cull_mask = 524287
+
+[node name="Screen" parent="Player" index="1"]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
 [node name="Office" type="Node3D" parent="."]
 script = ExtResource("1_g8cfh")
@@ -303,28 +307,27 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ef4l2")
 
 [node name="Room Light" type="OmniLight3D" parent="Office"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1.78024, 2.18557e-08)
-light_color = Color(0.560784, 0.560784, 0.560784, 1)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.26181, 1.10973, 2.18557e-08)
+light_color = Color(0.772549, 0.772549, 0.772549, 1)
+light_energy = 1.272
+omni_range = 3.772
+omni_attenuation = 1.86607
 
 [node name="LightLeft" type="SpotLight3D" parent="Office"]
 transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -1, 1, -1.25)
+light_energy = 0.638
+shadow_enabled = true
 spot_range = 3.2
-spot_angle = 39.55
+spot_attenuation = 1.46409
+spot_angle = 46.67
 
 [node name="LightRight" type="SpotLight3D" parent="Office"]
 transform = Transform3D(-0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, -1, 1, 1.25)
+light_energy = 0.638
+shadow_enabled = true
 spot_range = 3.2
-spot_angle = 39.55
-
-[node name="LeftLight" type="OmniLight3D" parent="Office"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0368371, 0.867576, -2.1232)
-visible = false
-omni_range = 1.201
-
-[node name="RightLight" type="OmniLight3D" parent="Office"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 2)
-visible = false
-omni_range = 1.201
+spot_attenuation = 1.46409
+spot_angle = 46.67
 
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
@@ -332,32 +335,105 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 [node name="Front Stairs" parent="Map" instance=ExtResource("8_2f72x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Front Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60189, 7.22563, -0.126139)
+shadow_enabled = true
+omni_range = 15.0
+omni_attenuation = 1.62451
+
 [node name="Back Stairs" parent="Map" instance=ExtResource("8_ww6yr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.053, 0, 13.4208)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Back Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11635, 7.89286, -6.38132)
+light_energy = 0.458
+shadow_enabled = true
+omni_range = 12.211
+omni_attenuation = 1.10957
 
 [node name="Room3" parent="Map" instance=ExtResource("9_51xe1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -6)
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="Map/Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68156, 1.71391, -1.43293)
+light_energy = 0.096
+shadow_enabled = true
+omni_range = 7.282
+omni_attenuation = 0.466517
+
 [node name="Room4" parent="Map" instance=ExtResource("10_cjksu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489735, 1.53919, -1.8895)
+light_energy = 0.548
+shadow_enabled = true
+omni_range = 7.999
+omni_attenuation = 1.36604
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Room4"]
+transform = Transform3D(-0.870571, 0, 0.492044, 0, 1, 0, -0.492044, 0, -0.870571, -1.81871, 1.46062, -3.00708)
+visible = false
 
 [node name="Room5" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50977, 1.76681, -1.82417)
+light_energy = 0.186
+shadow_enabled = true
+omni_range = 5.713
+omni_attenuation = 1.18921
+
 [node name="Room6" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40667, 1.53233, 1.37641)
+light_energy = 0.186
+shadow_enabled = true
+omni_range = 4.77
+omni_attenuation = 1.23114
 
 [node name="Room7" parent="Map" instance=ExtResource("12_pbfa4")]
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -18, 2, -4)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room7"]
+transform = Transform3D(1, 5.0822e-21, 0, 0, 1, 0, 0, 0, 1, 2.72455, 0.446797, 0.260198)
+light_energy = 0.096
+shadow_enabled = true
+omni_range = 6.948
+omni_attenuation = 0.482968
+
 [node name="Room8" parent="Map" instance=ExtResource("9_51xe1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0, 14)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84607, 1.57527, 1.64999)
+light_energy = 0.186
+shadow_enabled = true
+shadow_blur = 1.678
+omni_range = 7.527
+omni_attenuation = 0.420448
+omni_shadow_mode = 0
 
 [node name="Room9" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 10)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211227, 1.63933, -1.60976)
+light_energy = 0.186
+shadow_enabled = true
+omni_range = 4.342
+omni_attenuation = 0.68302
+
 [node name="Hallway" parent="Map" instance=ExtResource("12_vw15l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.76556, 1.42361, 3.41537)
+light_energy = 0.368
+omni_range = 25.76
 
 [node name="Scareroom" type="Node3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 27)
@@ -388,6 +464,8 @@ mesh = SubResource("BoxMesh_6f6b8")
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Scareroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70717, 0.46255, 0)
 light_energy = 0.403
+shadow_enabled = true
+shadow_blur = 3.486
 omni_range = 34.196
 omni_attenuation = 2.82843
 
@@ -436,22 +514,20 @@ transform = Transform3D(0.175367, 0.534064, -0.827056, -3.84284e-08, 0.840075, 0
 
 [node name="Cam9" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.609135, 0.430216, -0.666235, -3.84284e-08, 0.840075, 0.542471, 0.793066, 0.330438, -0.511719, -25.6723, 1.85312, 5.52504)
+fov = 70.0
 
 [node name="Cam10" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.999655, 0.0246718, -0.00900621, 0.0127864, 0.756689, 0.65365, 0.0229416, 0.653309, -0.756743, -32.1425, 1.85312, 1.51475)
 
 [node name="Cam11" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.0595329, 0, 0.998226, 0, 1, 0, -0.998226, 0, 0.0595329, -21.0241, 1.64393, -8.11537)
+transform = Transform3D(0.603528, 0, 0.797342, 0, 1, 0, -0.797342, 0, 0.603528, -21.0241, 1.64393, -5.49276)
 fov = 70.0
 far = 100.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_j31tm")
-
-[node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam") instance=ExtResource("18_rx5kh")]
+[node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
-movement_points = Array[Vector3]([Vector3(-25, 0, 8), Vector3(-18, 0, -11), Vector3(-33, 0, 4), Vector3(-23.5, 0, -9), Vector3(8, 2, -12), Vector3(21, 0, -14), Vector3(0.678359, 5.96046e-08, -2.51406), Vector3(0, 0, 20)])
+enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
 night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
 
 [node name="jumpscare" type="AnimationPlayer" parent="Shashumga"]
@@ -462,6 +538,9 @@ libraries = {
 [node name="scare sfx" type="AudioStreamPlayer3D" parent="Shashumga"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
 stream = ExtResource("19_27ugv")
+
+[node name="Stonedome" parent="." instance=ExtResource("20_h1ctj")]
+night_AI_levels = Array[int]([0, 1, 5, 4, 7, 12])
 
 [node name="MapPoints" type="Node3D" parent="."]
 
@@ -492,6 +571,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -11.5)
 [node name="7" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
 
+[node name="BonnieSpawn" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 8)
+
 [node name="8" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -11)
 
@@ -508,7 +590,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -9)
 
 [node name="LeftOffice" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627981, 0, -2.46423)
+
+[node name="Jumpscare" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("18_s0xe6")
 
 [connection signal="hour_change" from="Clock" to="Shashumga" method="_on_clock_hour_change"]
 [connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]
@@ -524,3 +612,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
 [connection signal="input_event" from="Office/LightButtonLeft" to="Office" method="_on_light_button_left_input_event"]
 [connection signal="input_event" from="Office/LightButtonRight" to="Office" method="_on_light_button_right_input_event"]
 [connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
+
+[editable path="Player"]
