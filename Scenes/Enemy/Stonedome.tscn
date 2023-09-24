@@ -25,11 +25,12 @@ roughness_texture = SubResource("NoiseTexture2D_26fu2")
 script = ExtResource("1_jxpll")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, -0.16, 0)
+transform = Transform3D(-1.74846e-10, 0.004, 1.74846e-10, 0, -1.74846e-10, 0.004, 0.004, 1.74846e-10, 7.64274e-18, 0, -0.16, 0)
 material_override = SubResource("StandardMaterial3D_ji6vt")
 mesh = ExtResource("1_cdxdo")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.85
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

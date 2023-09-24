@@ -175,7 +175,6 @@ theme_override_constants/separation = 15
 [node name="ButtonMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer"]
 
 [node name="DownstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
-visible = false
 position = Vector2(-20, -125)
 
 [node name="DownstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
@@ -252,6 +251,7 @@ texture = ExtResource("5_j20mj")
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="UpstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+visible = false
 position = Vector2(-20, -125)
 
 [node name="UpstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]

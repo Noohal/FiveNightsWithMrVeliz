@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=42 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_ogyp8"]
@@ -21,48 +21,6 @@
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="18_s0xe6"]
 [ext_resource type="AudioStream" uid="uid://bvja051f6cfuq" path="res://Sounds/Danger Alarm Meme Sound Effect.mp3" id="19_27ugv"]
 [ext_resource type="PackedScene" uid="uid://g11h3wy4sjko" path="res://Scenes/Enemy/Stonedome.tscn" id="20_h1ctj"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
-size = Vector2(4, 6)
-
-[sub_resource type="BoxMesh" id="BoxMesh_a4sfj"]
-size = Vector3(4, 0.01, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8mtia"]
-size = Vector3(0.5, 0.1, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1oc3i"]
-size = Vector3(0.5, 0.1, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_28mkb"]
-size = Vector3(3, 0.1, 2)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_t0r1s"]
-size = Vector2(6, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nkysw"]
-size = Vector3(6, 0.01, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wv7b5"]
-size = Vector3(0.05, 0.2, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7f37h"]
-size = Vector3(0.05, 0.2, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5wy5q"]
-size = Vector3(0.05, 0.2, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ef4l2"]
-size = Vector3(0.05, 0.2, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xgusk"]
-size = Vector3(4, 0.1, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6f6b8"]
-size = Vector3(0.1, 2, 4)
-
-[sub_resource type="Environment" id="Environment_ktvgq"]
-background_mode = 1
 
 [sub_resource type="Animation" id="Animation_0m4we"]
 length = 0.001
@@ -125,6 +83,134 @@ _data = {
 "RESET": SubResource("Animation_0m4we"),
 "bonnie_boo": SubResource("Animation_a21xi")
 }
+
+[sub_resource type="Animation" id="Animation_f724a"]
+resource_name = "stonedome_boo"
+length = 1.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 20), Vector3(0.963195, -0.149933, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.19, 0.26, 0.35, 0.46, 0.59, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1.3, 1.3, 1.3), Vector3(1, 1, 1), Vector3(0.85, 0.85, 0.85), Vector3(1.3, 1.3, 1.3), Vector3(1.5, 1.5, 1.5), Vector3(2, 2, 2), Vector3(1.5, 1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_rgrb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.963195, -0.149933, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_euh5a"]
+_data = {
+"RESET": SubResource("Animation_rgrb1"),
+"stonedome_boo": SubResource("Animation_f724a")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
+size = Vector2(4, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a4sfj"]
+size = Vector3(4, 0.01, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8mtia"]
+size = Vector3(0.5, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1oc3i"]
+size = Vector3(0.5, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_28mkb"]
+size = Vector3(3, 0.1, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t0r1s"]
+size = Vector2(6, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nkysw"]
+size = Vector3(6, 0.01, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wv7b5"]
+size = Vector3(0.05, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7f37h"]
+size = Vector3(0.05, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wy5q"]
+size = Vector3(0.05, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ef4l2"]
+size = Vector3(0.05, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xgusk"]
+size = Vector3(4, 0.1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6f6b8"]
+size = Vector3(0.1, 2, 4)
+
+[sub_resource type="Environment" id="Environment_ktvgq"]
+background_mode = 1
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ogyp8")
@@ -209,10 +295,34 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 
 camera_parent = NodePath("../Cameras")
 
 [node name="Camera3D" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 cull_mask = 524287
 
-[node name="Screen" parent="Player" index="1"]
-transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
+[node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+visible = false
+scare_cam = NodePath("../Map/Scareroom/ScareCam")
+enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
+night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
+
+[node name="jumpscare" type="AnimationPlayer" parent="Shashumga"]
+libraries = {
+"": SubResource("AnimationLibrary_pt0wm")
+}
+
+[node name="scare sfx" type="AudioStreamPlayer3D" parent="Shashumga"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
+stream = ExtResource("19_27ugv")
+
+[node name="Stonedome" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("20_h1ctj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.963195, -0.149933, 20)
+enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/12"), NodePath("../MapPoints/13"), NodePath("../MapPoints/8"), NodePath("../MapPoints/2U"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice"), NodePath("../MapPoints/Jumpscare")]
+night_AI_levels = Array[int]([0, 1, 5, 4, 7, 12])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stonedome"]
+libraries = {
+"": SubResource("AnimationLibrary_euh5a")
+}
 
 [node name="Office" type="Node3D" parent="."]
 script = ExtResource("1_g8cfh")
@@ -346,7 +456,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.053, 0, 13.4208)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Back Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11635, 7.89286, -6.38132)
-light_energy = 0.458
+light_energy = 0.558
 shadow_enabled = true
 omni_range = 12.211
 omni_attenuation = 1.10957
@@ -361,54 +471,54 @@ shadow_enabled = true
 omni_range = 7.282
 omni_attenuation = 0.466517
 
-[node name="Room4" parent="Map" instance=ExtResource("10_cjksu")]
+[node name="Room45" parent="Map" instance=ExtResource("10_cjksu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room4"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room45"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489735, 1.53919, -1.8895)
 light_energy = 0.548
 shadow_enabled = true
 omni_range = 7.999
 omni_attenuation = 1.36604
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Map/Room4"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Room45"]
 transform = Transform3D(-0.870571, 0, 0.492044, 0, 1, 0, -0.492044, 0, -0.870571, -1.81871, 1.46062, -3.00708)
 visible = false
 
-[node name="Room5" parent="Map" instance=ExtResource("10_f8m8l")]
+[node name="Room6" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room5"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50977, 1.76681, -1.82417)
 light_energy = 0.186
 shadow_enabled = true
 omni_range = 5.713
 omni_attenuation = 1.18921
 
-[node name="Room6" parent="Map" instance=ExtResource("10_f8m8l")]
+[node name="Room7" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room6"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40667, 1.53233, 1.37641)
 light_energy = 0.186
 shadow_enabled = true
 omni_range = 4.77
 omni_attenuation = 1.23114
 
-[node name="Room7" parent="Map" instance=ExtResource("12_pbfa4")]
+[node name="Room8" parent="Map" instance=ExtResource("12_pbfa4")]
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -18, 2, -4)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room7"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room8"]
 transform = Transform3D(1, 5.0822e-21, 0, 0, 1, 0, 0, 0, 1, 2.72455, 0.446797, 0.260198)
 light_energy = 0.096
 shadow_enabled = true
 omni_range = 6.948
 omni_attenuation = 0.482968
 
-[node name="Room8" parent="Map" instance=ExtResource("9_51xe1")]
+[node name="Room9" parent="Map" instance=ExtResource("9_51xe1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0, 14)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room8"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84607, 1.57527, 1.64999)
 light_energy = 0.186
 shadow_enabled = true
@@ -417,10 +527,10 @@ omni_range = 7.527
 omni_attenuation = 0.420448
 omni_shadow_mode = 0
 
-[node name="Room9" parent="Map" instance=ExtResource("10_f8m8l")]
+[node name="Room10" parent="Map" instance=ExtResource("10_f8m8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 10)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room9"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Room10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211227, 1.63933, -1.60976)
 light_energy = 0.186
 shadow_enabled = true
@@ -473,6 +583,68 @@ omni_attenuation = 2.82843
 transform = Transform3D(-4.36999e-08, 0.0229491, 0.999737, 1.00314e-09, 0.999737, -0.0229491, -1, 0, -4.37114e-08, 1.84485, 0.472535, 0)
 fov = 42.8
 
+[node name="MapPoints" type="Node3D" parent="."]
+
+[node name="1U" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.35, -8.5)
+
+[node name="1D" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -12)
+
+[node name="2U" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, 7)
+
+[node name="2D" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 4)
+
+[node name="3" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -14)
+
+[node name="4" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="5" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 2.5)
+
+[node name="6" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -11.5)
+
+[node name="7" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
+
+[node name="8" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -11)
+
+[node name="9" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 7.5)
+
+[node name="BonnieSpawn" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 8)
+
+[node name="ChicaSpawn" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 5.5)
+
+[node name="10" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 4)
+
+[node name="11" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -9)
+
+[node name="12" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 0, -7)
+
+[node name="13" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, -10)
+
+[node name="LeftOffice" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627981, 0, -2.46423)
+
+[node name="RightOffice" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54506, 5.96046e-08, 2.18674)
+
+[node name="Jumpscare" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
 [node name="Cameras" type="Node3D" parent="."]
 
 [node name="Cam1" type="Camera3D" parent="Cameras"]
@@ -483,7 +655,7 @@ far = 20.0
 [node name="Cam2" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.733635, 0.41255, -0.539984, -3.72529e-09, 0.794627, 0.607099, 0.679544, 0.445389, -0.582966, -15.3084, 7.73072, -1.46647)
 fov = 70.0
-far = 20.0
+far = 37.24
 
 [node name="Cam3" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.532152, -0.425345, 0.732049, 0, 0.864643, 0.502386, -0.846649, 0.267346, -0.460122, 24.7211, 1.90486, -14.6898)
@@ -524,83 +696,15 @@ transform = Transform3D(0.603528, 0, 0.797342, 0, 1, 0, -0.797342, 0, 0.603528, 
 fov = 70.0
 far = 100.0
 
-[node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-scare_cam = NodePath("../Map/Scareroom/ScareCam")
-enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
-night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
-
-[node name="jumpscare" type="AnimationPlayer" parent="Shashumga"]
-libraries = {
-"": SubResource("AnimationLibrary_pt0wm")
-}
-
-[node name="scare sfx" type="AudioStreamPlayer3D" parent="Shashumga"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
-stream = ExtResource("19_27ugv")
-
-[node name="Stonedome" parent="." instance=ExtResource("20_h1ctj")]
-night_AI_levels = Array[int]([0, 1, 5, 4, 7, 12])
-
-[node name="MapPoints" type="Node3D" parent="."]
-
-[node name="1U" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.35, -8.5)
-
-[node name="1D" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -12)
-
-[node name="2U" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, 7)
-
-[node name="2D" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 4)
-
-[node name="3" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -14)
-
-[node name="4" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
-
-[node name="5" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 2.5)
-
-[node name="6" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -11.5)
-
-[node name="7" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
-
-[node name="BonnieSpawn" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 8)
-
-[node name="8" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -11)
-
-[node name="9" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 7.5)
-
-[node name="10" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 4)
-
-[node name="11" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -9)
-
-[node name="12" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -9)
-
-[node name="LeftOffice" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627981, 0, -2.46423)
-
-[node name="Jumpscare" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("18_s0xe6")
 
 [connection signal="hour_change" from="Clock" to="Shashumga" method="_on_clock_hour_change"]
+[connection signal="hour_change" from="Clock" to="Stonedome" method="_on_clock_hour_change"]
 [connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]
 [connection signal="camera_state_change" from="Player" to="Power" method="_on_player_camera_state_change"]
+[connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
+[connection signal="jumpscare_chica" from="Stonedome" to="." method="_on_stonedome_jumpscare_chica"]
 [connection signal="left_light_change" from="Office" to="Power" method="_on_office_left_light_change"]
 [connection signal="right_light_change" from="Office" to="Power" method="_on_office_right_light_change"]
 [connection signal="left_door_change" from="Office/LeftDoor" to="." method="_on_left_door_left_door_change"]
@@ -611,6 +715,5 @@ environment = ExtResource("18_s0xe6")
 [connection signal="input_event" from="Office/DoorButtonRight" to="Office" method="_on_door_button_right_input_event"]
 [connection signal="input_event" from="Office/LightButtonLeft" to="Office" method="_on_light_button_left_input_event"]
 [connection signal="input_event" from="Office/LightButtonRight" to="Office" method="_on_light_button_right_input_event"]
-[connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
 
 [editable path="Player"]

@@ -3,4 +3,5 @@
 [resource]
 background_mode = 1
 tonemap_mode = 2
-sdfgi_enabled = true
+ssao_enabled = true
+sdfgi_bounce_feedback = 0.95
