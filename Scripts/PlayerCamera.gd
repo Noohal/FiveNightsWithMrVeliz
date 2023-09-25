@@ -87,7 +87,6 @@ func set_camera(camera_id : int):
 		else:
 			pass # Do nothing
 
-
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "screen_up":
 		current_camera = last_camera

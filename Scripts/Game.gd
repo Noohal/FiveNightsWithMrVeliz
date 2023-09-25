@@ -16,13 +16,12 @@ func _on_shashumga_jumpscare_bonnie():
 	$"Map/Scareroom/ScareCam".make_current()
 	$"Shashumga/jumpscare".play("bonnie_boo")
 	$"Shashumga/scare sfx".play()
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
 	get_tree().quit()
 
-func _on_stonedome_jumpscare_chica():
+func _on_cabron_jumpscare_chica():
 	await get_tree().create_timer(5).timeout
 	$"Map/Scareroom/ScareCam".make_current()
-	$"Stonedome/AnimationPlayer".play("stonedome_boo")
-	#$"Shashumga/scare sfx".play()
-	await get_tree().create_timer(3).timeout
+	$"Cabron/AnimationPlayer".play("chica_boo")
+	await get_tree().create_timer(2).timeout
 	get_tree().quit()
