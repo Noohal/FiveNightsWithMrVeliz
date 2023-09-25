@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hpe5wft2vs2n"
-path="res://.godot/imported/upstairs_map.png-0ce26ec704946332d7e08091d4839d0f.ctex"
+uid="uid://kbx15xswwqm6"
+path="res://.godot/imported/downstairs_map.png-8171f07143c7431c9e76c4427336917c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/upstairs_map.png"
-dest_files=["res://.godot/imported/upstairs_map.png-0ce26ec704946332d7e08091d4839d0f.ctex"]
+source_file="res://Textures/Objects/downstairs_map.png"
+dest_files=["res://.godot/imported/downstairs_map.png-8171f07143c7431c9e76c4427336917c.ctex"]
 
 [params]
 

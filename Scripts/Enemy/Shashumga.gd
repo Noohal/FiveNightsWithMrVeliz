@@ -11,10 +11,14 @@ var AI_level : int
 var current_pos : int
 const MOVEMENT_INTERVAL : float = 5.0
 
+var enabled : bool
+
 signal jumpscare_bonnie
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	enabled = false
+	
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night - 1]
 	current_pos = 0
@@ -22,6 +26,8 @@ func _ready():
 
 # Check Movement Opportunity
 func _on_timer_timeout():
+	if !enabled:
+		return
 	rand.randomize()
 	var check = rand.randi_range(1,20)
 	if AI_level >= check:
@@ -99,6 +105,6 @@ func attack() -> int:
 
 # Increase AI Level
 func _on_clock_hour_change(hour):
-	if hour == 2 || hour == 3 || hour == 4:
+	if (hour == 2 || hour == 3 || hour == 4) && enabled:
 		AI_level += 1
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvja051f6cfuq"
+path="res://.godot/imported/Danger Alarm Meme Sound Effect.mp3-9b5cc11664a84255f2aaabbe868b516d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Enemy/Shashumga/Danger Alarm Meme Sound Effect.mp3"
+dest_files=["res://.godot/imported/Danger Alarm Meme Sound Effect.mp3-9b5cc11664a84255f2aaabbe868b516d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

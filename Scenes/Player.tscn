@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://cef84qm7nly4w"]
 
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="1_8a0ml"]
 [ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Environment.tres" id="1_qfsnb"]
-[ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_4msad"]
-[ext_resource type="Script" path="res://Scripts/PlayerHUD.gd" id="3_vubtp"]
-[ext_resource type="Script" path="res://Scripts/CameraButton.gd" id="4_on1px"]
-[ext_resource type="Texture2D" uid="uid://kbx15xswwqm6" path="res://Textures/downstairs_map.png" id="4_qjyjw"]
-[ext_resource type="Texture2D" uid="uid://b287mpchiunuh" path="res://Textures/camera_button_texture.png" id="5_j20mj"]
-[ext_resource type="Texture2D" uid="uid://wc7f3ojq625c" path="res://Textures/camera_button_texture2.png" id="6_wp3an"]
-[ext_resource type="Texture2D" uid="uid://hpe5wft2vs2n" path="res://Textures/upstairs_map.png" id="7_06fnd"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerHUD.gd" id="3_wis3i"]
+[ext_resource type="Texture2D" uid="uid://kbx15xswwqm6" path="res://Textures/Objects/downstairs_map.png" id="4_otl2x"]
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/CameraButton.gd" id="5_cloq7"]
+[ext_resource type="Texture2D" uid="uid://b287mpchiunuh" path="res://Textures/Objects/camera_button_texture.png" id="6_fy37y"]
+[ext_resource type="Texture2D" uid="uid://hpe5wft2vs2n" path="res://Textures/Objects/upstairs_map.png" id="7_7ntu3"]
+[ext_resource type="Texture2D" uid="uid://wc7f3ojq625c" path="res://Textures/Objects/camera_button_texture2.png" id="8_gmwvv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la3gu"]
 albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
@@ -113,7 +113,7 @@ size = Vector2(100, 50)
 
 [node name="Player" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
-script = ExtResource("2_4msad")
+script = ExtResource("1_8a0ml")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 environment = ExtResource("1_qfsnb")
@@ -141,7 +141,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("3_vubtp")
+script = ExtResource("3_wis3i")
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayerHUD"]
 layout_mode = 1
@@ -193,59 +193,59 @@ grow_vertical = 0
 scale = Vector2(1.25, 1.25)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("4_qjyjw")
+texture = ExtResource("4_otl2x")
 
 [node name="Cam1" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
 position = Vector2(-393, -190)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam1"]
-texture = ExtResource("5_j20mj")
+texture = ExtResource("6_fy37y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam1"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam3" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
 position = Vector2(-364, -395)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3"]
-texture = ExtResource("5_j20mj")
+texture = ExtResource("6_fy37y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam4" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
 position = Vector2(-64, -354)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4"]
-texture = ExtResource("5_j20mj")
+texture = ExtResource("6_fy37y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam5" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
 position = Vector2(-64, -299)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5"]
-texture = ExtResource("5_j20mj")
+texture = ExtResource("6_fy37y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam6" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
 position = Vector2(-374, -463)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6"]
-texture = ExtResource("5_j20mj")
+texture = ExtResource("6_fy37y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6"]
 shape = SubResource("RectangleShape2D_66n3m")
@@ -270,70 +270,70 @@ grow_vertical = 0
 scale = Vector2(1.25, 1.25)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("7_06fnd")
+texture = ExtResource("7_7ntu3")
 
 [node name="Cam2" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
 position = Vector2(-56, -498)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam2"]
-texture = ExtResource("6_wp3an")
+texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam2"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam7" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
 position = Vector2(-424, -476)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7"]
-texture = ExtResource("6_wp3an")
+texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam8" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
 position = Vector2(-394, -264)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8"]
-texture = ExtResource("6_wp3an")
+texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam9" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
 position = Vector2(-77, -286)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9"]
-texture = ExtResource("6_wp3an")
+texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam10" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
 position = Vector2(-88, -175)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10"]
-texture = ExtResource("6_wp3an")
+texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10"]
 shape = SubResource("RectangleShape2D_66n3m")
 
 [node name="Cam11" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
 position = Vector2(-248, -141)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 camera_id = 11
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11"]
-texture = ExtResource("6_wp3an")
+texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11"]
 shape = SubResource("RectangleShape2D_66n3m")
@@ -341,10 +341,10 @@ shape = SubResource("RectangleShape2D_66n3m")
 [node name="Toggle" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
 position = Vector2(-593, -197)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("4_on1px")
+script = ExtResource("5_cloq7")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
-texture = ExtResource("6_wp3an")
+texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
 shape = SubResource("RectangleShape2D_66n3m")

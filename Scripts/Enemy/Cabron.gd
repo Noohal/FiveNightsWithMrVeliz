@@ -5,19 +5,21 @@ extends Node3D
 @export var enemy_locations : Array[Node3D]
 @export var night_AI_levels : Array[int]
 
-const MOVEMENT_INTERVAL : float = 5.0
+var rand = RandomNumberGenerator.new()
 
 var AI_level : int
 var current_pos : int
+const MOVEMENT_INTERVAL : float = 5.0
 
-var rand = RandomNumberGenerator.new()
+var enabled : bool
 
 signal jumpscare_chica
 
 func _ready():
+	enabled = false
 	rand.randomize()
-	AI_level = 19
-	#AI_level = night_AI_levels[game.current_night - 1]
+	#AI_level = 19
+	AI_level = night_AI_levels[game.current_night - 1]
 	
 	current_pos = 0
 	set_global_position(enemy_locations[current_pos].global_position)
@@ -25,6 +27,8 @@ func _ready():
 
 # Check Movement Opportunity
 func _on_timer_timeout():
+	if !enabled:
+		return
 	rand.randomize()
 	var check = rand.randi_range(1,20)
 	if AI_level >= check:
@@ -94,5 +98,5 @@ func attack() -> int:
 	return 8
 
 func _on_clock_hour_change(hour):
-	if hour == 3 || hour == 4:
+	if (hour == 3 || hour == 4) && enabled:
 		AI_level += 1

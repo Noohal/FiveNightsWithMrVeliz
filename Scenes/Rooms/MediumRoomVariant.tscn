@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://busjyo8vpx4a1"]
 
-[ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/MediumRoom.tscn" id="1_v13ix"]
+[ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/Rooms/MediumRoom.tscn" id="1_v13ix"]
 
 [node name="Room" instance=ExtResource("1_v13ix")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2, 1.74846e-07)

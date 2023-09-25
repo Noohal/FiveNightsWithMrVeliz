@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmverauqe7cvo"]
 
-[ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Staircase.tscn" id="1_ikgdt"]
+[ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Rooms/Staircase.tscn" id="1_ikgdt"]
 
 [node name="Stairs" instance=ExtResource("1_ikgdt")]

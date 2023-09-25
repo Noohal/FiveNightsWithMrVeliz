@@ -1,26 +1,27 @@
-[gd_scene load_steps=42 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=43 format=3 uid="uid://ry74gl4m76pq"]
 
-[ext_resource type="Script" path="res://Scripts/ButtonController.gd" id="1_g8cfh"]
-[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_ogyp8"]
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_nnrg2"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
-[ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Door.tscn" id="2_6y7mn"]
-[ext_resource type="Script" path="res://Scripts/Clock.gd" id="2_gjcnd"]
+[ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Objects/Door.tscn" id="2_6y7mn"]
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/Clock.gd" id="2_vn604"]
 [ext_resource type="LabelSettings" uid="uid://b5nfth8dtmleb" path="res://UIText.tres" id="3_a7h8y"]
-[ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/DoorButton.tscn" id="3_dfoe6"]
-[ext_resource type="Script" path="res://Scripts/Power.gd" id="4_c0trm"]
+[ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/Objects/DoorButton.tscn" id="3_dfoe6"]
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/Power.gd" id="4_can2g"]
 [ext_resource type="BoxMesh" uid="uid://b6l5rbf1uvti0" path="res://Materials/WallMesh.tres" id="4_kaq8v"]
-[ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/LightButton.tscn" id="4_nox5i"]
-[ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Staircase.tscn" id="8_2f72x"]
-[ext_resource type="PackedScene" uid="uid://dmverauqe7cvo" path="res://Scenes/BackStairs.tscn" id="8_ww6yr"]
-[ext_resource type="PackedScene" uid="uid://cn8qjmwa60irp" path="res://Scenes/Enemy/Cabron.tscn" id="9_8ehyr"]
-[ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/MediumRoom.tscn" id="9_51xe1"]
-[ext_resource type="PackedScene" uid="uid://bi44o4avaitvk" path="res://Scenes/LongRoom.tscn" id="10_cjksu"]
-[ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/SmallRoom.tscn" id="10_f8m8l"]
-[ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/MediumRoomVariant.tscn" id="12_pbfa4"]
-[ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Hallway.tscn" id="12_vw15l"]
+[ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/Objects/LightButton.tscn" id="4_nox5i"]
+[ext_resource type="AudioStream" uid="uid://bvja051f6cfuq" path="res://Sounds/Enemy/Shashumga/Danger Alarm Meme Sound Effect.mp3" id="7_js1te"]
+[ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Rooms/Staircase.tscn" id="8_2f72x"]
+[ext_resource type="PackedScene" uid="uid://dmverauqe7cvo" path="res://Scenes/Rooms/BackStairs.tscn" id="8_ww6yr"]
+[ext_resource type="PackedScene" uid="uid://dkdeu8ao8b384" path="res://Scenes/Enemy/Cabron.tscn" id="9_8ehyr"]
+[ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/Rooms/MediumRoom.tscn" id="9_51xe1"]
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/ButtonController.gd" id="9_jwy8g"]
+[ext_resource type="PackedScene" uid="uid://bi44o4avaitvk" path="res://Scenes/Rooms/LongRoom.tscn" id="10_cjksu"]
+[ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/Rooms/SmallRoom.tscn" id="10_f8m8l"]
+[ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/Rooms/MediumRoomVariant.tscn" id="12_pbfa4"]
+[ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Rooms/Hallway.tscn" id="12_vw15l"]
 [ext_resource type="PackedScene" uid="uid://cfnw8k6pdi7uk" path="res://Scenes/Enemy/Shashumga.tscn" id="18_rx5kh"]
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="18_s0xe6"]
-[ext_resource type="AudioStream" uid="uid://bvja051f6cfuq" path="res://Sounds/Danger Alarm Meme Sound Effect.mp3" id="19_27ugv"]
+[ext_resource type="PackedScene" uid="uid://g11h3wy4sjko" path="res://Scenes/Enemy/Stonedome.tscn" id="20_h1ctj"]
 
 [sub_resource type="Animation" id="Animation_0m4we"]
 length = 0.001
@@ -213,7 +214,7 @@ size = Vector3(0.1, 2, 4)
 background_mode = 1
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_ogyp8")
+script = ExtResource("1_nnrg2")
 
 [node name="Clock" type="Control" parent="."]
 layout_mode = 3
@@ -222,7 +223,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_gjcnd")
+script = ExtResource("2_vn604")
 
 [node name="MarginContainer" type="MarginContainer" parent="Clock"]
 layout_mode = 1
@@ -259,7 +260,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_c0trm")
+script = ExtResource("4_can2g")
 
 [node name="MarginContainer" type="MarginContainer" parent="Power"]
 layout_mode = 1
@@ -299,7 +300,6 @@ cull_mask = 524287
 
 [node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-visible = false
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
 enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
 night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
@@ -311,7 +311,7 @@ libraries = {
 
 [node name="scare sfx" type="AudioStreamPlayer3D" parent="Shashumga"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
-stream = ExtResource("19_27ugv")
+stream = ExtResource("7_js1te")
 
 [node name="Cabron" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("9_8ehyr")]
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0.963195, -0.149933, 20)
@@ -323,8 +323,14 @@ libraries = {
 "": SubResource("AnimationLibrary_euh5a")
 }
 
+[node name="Stonedome" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("20_h1ctj")]
+transform = Transform3D(-0.71325, 0, 0.700909, 0, 1, 0, -0.700909, 0, -0.71325, -7.43057, 0, -10.7768)
+enemy_locations = [NodePath("../MapPoints/FoxyPoints/Stage1"), NodePath("../MapPoints/FoxyPoints/Stage2")]
+enemy_location_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 2.36492, 0)])
+night_AI_levels = Array[int]([0, 1, 2, 6, 5, 16])
+
 [node name="Office" type="Node3D" parent="."]
-script = ExtResource("1_g8cfh")
+script = ExtResource("9_jwy8g")
 
 [node name="Floor" type="MeshInstance3D" parent="Office"]
 mesh = SubResource("PlaneMesh_osmvm")
@@ -643,6 +649,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54506, 5.96046e-08, 2.18674
 
 [node name="Jumpscare" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="FoxyPoints" type="Node3D" parent="MapPoints"]
+
+[node name="Stage1" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
+
+[node name="Stage2" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43057, 0, -10.7768)
 
 [node name="Cameras" type="Node3D" parent="."]
 

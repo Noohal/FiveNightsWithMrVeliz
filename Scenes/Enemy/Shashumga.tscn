@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfnw8k6pdi7uk"]
 
-[ext_resource type="Texture2D" uid="uid://ldtacvixsjcy" path="res://Textures/melvin_front.png" id="1_i4fg5"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Shashumga.gd" id="1_w1f28"]
-[ext_resource type="Texture2D" uid="uid://cw1au4gyqd08r" path="res://Textures/rice.jpg" id="2_08nxh"]
+[ext_resource type="Texture2D" uid="uid://ldtacvixsjcy" path="res://Textures/Enemy/Shashumga/melvin_front.png" id="2_iu4qg"]
+[ext_resource type="Texture2D" uid="uid://cw1au4gyqd08r" path="res://Textures/Enemy/Shashumga/rice.jpg" id="3_usgnh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg65b"]
-albedo_texture = ExtResource("1_i4fg5")
+albedo_texture = ExtResource("2_iu4qg")
 uv1_scale = Vector3(2.125, 2.125, 2.125)
 uv1_offset = Vector3(-0.035, 0.335, 0)
 uv1_triplanar_sharpness = 1.93187
@@ -14,7 +14,7 @@ uv1_triplanar_sharpness = 1.93187
 material = SubResource("StandardMaterial3D_hg65b")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6nny"]
-albedo_texture = ExtResource("2_08nxh")
+albedo_texture = ExtResource("3_usgnh")
 backlight_enabled = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8qjb0"]
