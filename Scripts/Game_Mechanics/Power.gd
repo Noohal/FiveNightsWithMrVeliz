@@ -23,7 +23,6 @@ func _on_player_camera_state_change(watching):
 	else:
 		power_usage -= 1
 
-
 func _on_left_door_left_door_change(active):
 	if active:
 		power_usage += 1
@@ -50,3 +49,8 @@ func _on_office_right_light_change(active):
 		power_usage += 1
 	else:
 		power_usage -= 1
+
+
+func _on_stonedome_drain_power(amount):
+	power_level -= amount
+	print("FOXY -- POWER DRAINED BY %d%%" % amount)

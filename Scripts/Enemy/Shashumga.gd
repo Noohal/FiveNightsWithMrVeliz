@@ -1,6 +1,8 @@
 extends Node3D
 
 @onready var game : Node3D = $"../"
+
+@export var enabled : bool
 @export var scare_cam : Camera3D
 @export var enemy_locations : Array[Node3D]
 @export var night_AI_levels : Array[int]
@@ -9,16 +11,13 @@ var rand = RandomNumberGenerator.new()
 
 var AI_level : int
 var current_pos : int
-const MOVEMENT_INTERVAL : float = 5.0
 
-var enabled : bool
+const MOVEMENT_INTERVAL : float = 4.6
 
 signal jumpscare_bonnie
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	enabled = false
-	
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night - 1]
 	current_pos = 0

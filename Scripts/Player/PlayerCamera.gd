@@ -24,6 +24,8 @@ var watching_camera : bool
 signal camera_state_change(watching : bool)
 signal watching_camera_num(id : int)
 
+signal looking_left
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_camera = 0
@@ -49,6 +51,7 @@ func handle_camera_movement(delta) -> void:
 	if mouse_pos.x <= left_zone_end:
 		mouse_pos.x = clamp(mouse_pos.x, (left_zone_end / 1.2), left_zone_end)
 		rotate_y(deg_to_rad((left_zone_end - mouse_pos.x) * delta * sens + turn_speed))
+		emit_signal("looking_left")
 	elif mouse_pos.x >= right_zone_start:
 		var res = right_zone_start + (screen_size.x - right_zone_start) * 0.3 - 10
 		mouse_pos.x = clamp(mouse_pos.x, right_zone_start, res)

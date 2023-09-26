@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=48 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_nnrg2"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
@@ -125,7 +125,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_f724a"]
-resource_name = "chica_boo"
+resource_name = "chica_scare"
 length = 1.5
 step = 0.01
 tracks/0/type = "value"
@@ -168,7 +168,46 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_euh5a"]
 _data = {
 "RESET": SubResource("Animation_rgrb1"),
-"chica_boo": SubResource("Animation_f724a")
+"chica_scare": SubResource("Animation_f724a")
+}
+
+[sub_resource type="Animation" id="Animation_b8tlo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 0.999999)]
 }
 
 [sub_resource type="Animation" id="Animation_rhn6c"]
@@ -199,37 +238,80 @@ tracks/1/keys = {
 "values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_b8tlo"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_l8jir"]
+resource_name = "stage_5_running"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 1.5708, 0)]
+"values": [Vector3(0, 0, 20), Vector3(0.969, 0.191, 20.007)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(28.1392, 0, -12.2577)]
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 0.999999), Vector3(1, 1.385, 2.23), Vector3(1, 0.915, 0.66), Vector3(0.435, 0.32, 1), Vector3(1.42, 0.635, 1.62), Vector3(1.93, 0.88, 0.55), Vector3(1, 0.87, 1.66), Vector3(0.79, 1.375, 2.585), Vector3(0.86, 0.645, 2.025)]
+}
+
+[sub_resource type="Animation" id="Animation_rn8mo"]
+resource_name = "attacking_player"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.627981, 0, -2.46423), Vector3(-0.729544, 0.440948, -0.634221)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.698132, 0), Vector3(0, 0.698132, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avvxc"]
 _data = {
 "RESET": SubResource("Animation_b8tlo"),
-"stage_4_running": SubResource("Animation_rhn6c")
+"attacking_player": SubResource("Animation_rn8mo"),
+"stage_4_running": SubResource("Animation_rhn6c"),
+"stage_5_running": SubResource("Animation_l8jir")
 }
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
@@ -310,6 +392,16 @@ layout_mode = 2
 text = "CURRENTHOUR"
 label_settings = ExtResource("3_a7h8y")
 
+[node name="FoxyDuration" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Gaming"
+label_settings = ExtResource("3_a7h8y")
+
+[node name="LockStatus" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "FOXY:"
+label_settings = ExtResource("3_a7h8y")
+
 [node name="Timer" type="Timer" parent="Clock"]
 wait_time = 10.0
 autostart = true
@@ -358,6 +450,7 @@ camera_parent = NodePath("../Cameras")
 
 [node name="Camera3D" parent="Player" index="0"]
 cull_mask = 524287
+environment = ExtResource("18_s0xe6")
 
 [node name="Screen" parent="Player" index="1"]
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
@@ -387,10 +480,13 @@ libraries = {
 "": SubResource("AnimationLibrary_euh5a")
 }
 
-[node name="Stonedome" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("20_h1ctj")]
-transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -1, 0, -4.37114e-08, 28.1392, 0, -12.2577)
-enemy_locations = [NodePath("../MapPoints/FoxyPoints/Stage1"), NodePath("../MapPoints/FoxyPoints/Stage2"), NodePath("../MapPoints/FoxyPoints/Stage3"), NodePath("../MapPoints/FoxyPoints/Stage4")]
-enemy_location_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.22173, 0), Vector3(0, 2.32478, -0.34383), Vector3(0, 1.5708, 0)])
+[node name="Stonedome" parent="." node_paths=PackedStringArray("duration_label", "lock_status", "enemy_locations") instance=ExtResource("20_h1ctj")]
+transform = Transform3D(-1, 0, 8.74227e-08, 0, 1, 0, -8.74228e-08, 0, -0.999999, 0, 0, 20)
+enabled = true
+duration_label = NodePath("../Clock/MarginContainer/VBoxContainer2/FoxyDuration")
+lock_status = NodePath("../Clock/MarginContainer/VBoxContainer2/LockStatus")
+enemy_locations = [NodePath("../MapPoints/FoxyPoints/Stage0"), NodePath("../MapPoints/FoxyPoints/Stage1"), NodePath("../MapPoints/FoxyPoints/Stage2"), NodePath("../MapPoints/FoxyPoints/Stage3"), NodePath("../MapPoints/FoxyPoints/Stage4"), NodePath("../MapPoints/Jumpscare")]
+enemy_location_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.22173, 0), Vector3(0, 2.32478, -0.34383), Vector3(0, 1.5708, 0), Vector3(0, 0, 0), Vector3(0, 3.14159, 0)])
 night_AI_levels = Array[int]([0, 1, 2, 6, 5, 16])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stonedome"]
@@ -491,11 +587,10 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ef4l2")
 
 [node name="Room Light" type="OmniLight3D" parent="Office"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.26181, 1.10973, 2.18557e-08)
-light_color = Color(0.772549, 0.772549, 0.772549, 1)
-light_energy = 1.272
-omni_range = 3.772
-omni_attenuation = 1.86607
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.99168, 1.10973, 3.36633e-08)
+light_energy = 0.704
+omni_range = 3.639
+omni_attenuation = 1.56917
 
 [node name="LightLeft" type="SpotLight3D" parent="Office"]
 transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -1, 1, -1.25)
@@ -721,17 +816,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
 [node name="FoxyPoints" type="Node3D" parent="MapPoints"]
 
-[node name="Stage1" type="Node3D" parent="MapPoints/FoxyPoints"]
+[node name="Stage0" type="Node3D" parent="MapPoints/FoxyPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
 
-[node name="Stage2" type="Node3D" parent="MapPoints/FoxyPoints"]
+[node name="Stage1" type="Node3D" parent="MapPoints/FoxyPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69962, -1.19209e-07, -10.7131)
 
-[node name="Stage3" type="Node3D" parent="MapPoints/FoxyPoints"]
+[node name="Stage2" type="Node3D" parent="MapPoints/FoxyPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.68249, 0.991314, -9.72092)
 
-[node name="Stage4" type="Node3D" parent="MapPoints/FoxyPoints"]
+[node name="Stage3" type="Node3D" parent="MapPoints/FoxyPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.97, 0, -12.258)
+
+[node name="Stage4" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627981, 0, -2.46423)
 
 [node name="Cameras" type="Node3D" parent="."]
 
@@ -789,11 +887,16 @@ environment = ExtResource("18_s0xe6")
 
 [connection signal="hour_change" from="Clock" to="Shashumga" method="_on_clock_hour_change"]
 [connection signal="hour_change" from="Clock" to="Cabron" method="_on_clock_hour_change"]
+[connection signal="hour_change" from="Clock" to="Stonedome" method="_on_clock_hour_change"]
 [connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]
+[connection signal="camera_state_change" from="Player" to="." method="_on_player_camera_state_change"]
 [connection signal="camera_state_change" from="Player" to="Power" method="_on_player_camera_state_change"]
+[connection signal="camera_state_change" from="Player" to="Stonedome" method="_on_player_camera_state_change"]
 [connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
 [connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
 [connection signal="jumpscare_chica" from="Cabron" to="." method="_on_cabron_jumpscare_chica"]
+[connection signal="drain_power" from="Stonedome" to="Power" method="_on_stonedome_drain_power"]
+[connection signal="jumpscare_foxy" from="Stonedome" to="." method="_on_stonedome_jumpscare_foxy"]
 [connection signal="left_light_change" from="Office" to="Power" method="_on_office_left_light_change"]
 [connection signal="right_light_change" from="Office" to="Power" method="_on_office_right_light_change"]
 [connection signal="left_door_change" from="Office/LeftDoor" to="." method="_on_left_door_left_door_change"]

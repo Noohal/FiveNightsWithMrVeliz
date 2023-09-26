@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var game : Node3D = $"../"
 
+@export var enabled : bool
 @export var enemy_locations : Array[Node3D]
 @export var night_AI_levels : Array[int]
 
@@ -9,14 +10,11 @@ var rand = RandomNumberGenerator.new()
 
 var AI_level : int
 var current_pos : int
-const MOVEMENT_INTERVAL : float = 5.0
-
-var enabled : bool
+const MOVEMENT_INTERVAL : float = 4.8
 
 signal jumpscare_chica
 
 func _ready():
-	enabled = false
 	rand.randomize()
 	#AI_level = 19
 	AI_level = night_AI_levels[game.current_night - 1]
