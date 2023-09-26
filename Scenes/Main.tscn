@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=46 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_nnrg2"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
@@ -171,6 +171,67 @@ _data = {
 "chica_boo": SubResource("Animation_f724a")
 }
 
+[sub_resource type="Animation" id="Animation_rhn6c"]
+resource_name = "stage_4_running"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(27.97, 0, -12.258), Vector3(27.97, 0, -7.346)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b8tlo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(28.1392, 0, -12.2577)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_avvxc"]
+_data = {
+"RESET": SubResource("Animation_b8tlo"),
+"stage_4_running": SubResource("Animation_rhn6c")
+}
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_osmvm"]
 size = Vector2(4, 6)
 
@@ -298,6 +359,9 @@ camera_parent = NodePath("../Cameras")
 [node name="Camera3D" parent="Player" index="0"]
 cull_mask = 524287
 
+[node name="Screen" parent="Player" index="1"]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
+
 [node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
@@ -324,10 +388,15 @@ libraries = {
 }
 
 [node name="Stonedome" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("20_h1ctj")]
-transform = Transform3D(-0.71325, 0, 0.700909, 0, 1, 0, -0.700909, 0, -0.71325, -7.43057, 0, -10.7768)
-enemy_locations = [NodePath("../MapPoints/FoxyPoints/Stage1"), NodePath("../MapPoints/FoxyPoints/Stage2")]
-enemy_location_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 2.36492, 0)])
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -1, 0, -4.37114e-08, 28.1392, 0, -12.2577)
+enemy_locations = [NodePath("../MapPoints/FoxyPoints/Stage1"), NodePath("../MapPoints/FoxyPoints/Stage2"), NodePath("../MapPoints/FoxyPoints/Stage3"), NodePath("../MapPoints/FoxyPoints/Stage4")]
+enemy_location_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.22173, 0), Vector3(0, 2.32478, -0.34383), Vector3(0, 1.5708, 0)])
 night_AI_levels = Array[int]([0, 1, 2, 6, 5, 16])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stonedome"]
+libraries = {
+"": SubResource("AnimationLibrary_avvxc")
+}
 
 [node name="Office" type="Node3D" parent="."]
 script = ExtResource("9_jwy8g")
@@ -504,7 +573,7 @@ omni_attenuation = 1.18921
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40667, 1.53233, 1.37641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50809, 1.85016, 1.49477)
 light_energy = 0.186
 shadow_enabled = true
 omni_range = 4.77
@@ -656,7 +725,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
 
 [node name="Stage2" type="Node3D" parent="MapPoints/FoxyPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43057, 0, -10.7768)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69962, -1.19209e-07, -10.7131)
+
+[node name="Stage3" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.68249, 0.991314, -9.72092)
+
+[node name="Stage4" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.97, 0, -12.258)
 
 [node name="Cameras" type="Node3D" parent="."]
 
@@ -716,6 +791,7 @@ environment = ExtResource("18_s0xe6")
 [connection signal="hour_change" from="Clock" to="Cabron" method="_on_clock_hour_change"]
 [connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]
 [connection signal="camera_state_change" from="Player" to="Power" method="_on_player_camera_state_change"]
+[connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
 [connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
 [connection signal="jumpscare_chica" from="Cabron" to="." method="_on_cabron_jumpscare_chica"]
 [connection signal="left_light_change" from="Office" to="Power" method="_on_office_left_light_change"]

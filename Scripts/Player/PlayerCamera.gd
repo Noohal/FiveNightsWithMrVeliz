@@ -22,6 +22,7 @@ var last_camera : int
 var watching_camera : bool
 
 signal camera_state_change(watching : bool)
+signal watching_camera_num(id : int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -86,6 +87,8 @@ func set_camera(camera_id : int):
 			cam.clear_current()
 		else:
 			pass # Do nothing
+	if camera_id == 6:
+		emit_signal("watching_camera_num", camera_id)
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "screen_up":
