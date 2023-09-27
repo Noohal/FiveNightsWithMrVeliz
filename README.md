@@ -11,5 +11,3 @@ You are a security guard working at Saks High. Mr. Veliz is staying the night to
 [Godot 4 Game Engine](https://godotengine.org/)  
 
 [Easter Island Head 3D Model](https://free3d.com/3d-model/statue-v1--445854.html)
-[Top Hat 3D Model](https://free3d.com/3d-model/steampunk-top-hat-and-flair-anvil-v1--72457.html)
-[Microphone 3D Model](https://free3d.com/3d-model/microphone--52251.html)
