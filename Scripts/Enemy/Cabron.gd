@@ -54,35 +54,25 @@ func find_new_destination(pos : int) -> int:
 			if chance <= 5:
 				dest = 3
 			else:
-				dest = 4
+				dest = 1
 		3:
-			var chance = rand.randi_range(1,10)
-			if chance <= 5:
-				dest = 2
-			else:
-				dest = 4
-		4:
 			var chance = rand.randi_range(1,10)
 			if chance <= 2:
 				dest = 1
 			else:
-				dest = 5
-		5:
+				dest = 4
+		4:
 			var chance = rand.randi_range(1,10)
 			if chance <= 3:
-				dest = 4
+				dest = 5
 			else:
 				dest = 6
+		5:
+			dest = 6
+			print("AT DOOR")
 		6:
-			var chance = rand.randi_range(1,10)
-			if chance <= 7:
-				dest = 7
-				print("AT DOOR")
-			else:
-				dest = 4
-		7:
 			dest = attack()
-			if dest == 8:
+			if dest == 7:
 				emit_signal("jumpscare_chica")
 				set_global_rotation(Vector3(0,deg_to_rad(-180.0),0))
 		_:
@@ -92,8 +82,8 @@ func find_new_destination(pos : int) -> int:
 func attack() -> int:
 	if game.right_door_close:
 		print("LEAVING")
-		return 4
-	return 8
+		return 3
+	return 7
 
 func _on_clock_hour_change(hour):
 	if (hour == 3 || hour == 4) && enabled:

@@ -21,6 +21,7 @@ var current_camera : int
 var last_camera : int
 var watching_camera : bool
 
+signal watching_office
 signal camera_state_change(watching : bool)
 signal watching_camera_num(id : int)
 
@@ -78,6 +79,7 @@ func toggle_camera() -> void:
 		last_camera = current_camera
 		set_camera(0)
 		player_hud.toggle_ui(false)
+		emit_signal("watching_office")
 		emit_signal("camera_state_change", false)
 
 func set_camera(camera_id : int):

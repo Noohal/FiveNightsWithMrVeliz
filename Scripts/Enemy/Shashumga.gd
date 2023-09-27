@@ -14,6 +14,7 @@ var current_pos : int
 
 const MOVEMENT_INTERVAL : float = 4.6
 
+signal bonnie_left_spawn
 signal jumpscare_bonnie
 
 # Called when the node enters the scene tree for the first time.
@@ -51,7 +52,8 @@ func find_new_destination(pos : int) -> int:
 	var dest : int = pos
 	match pos:
 		0:
-			dest = rand.randi_range(1,2)
+			dest = rand.randi_range(1,3)
+			emit_signal("bonnie_left_spawn")
 			#dest = 6
 		1:
 			var chance = rand.randi_range(1,10)
@@ -62,18 +64,17 @@ func find_new_destination(pos : int) -> int:
 		2: 
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:
-				dest = 3
-			else:
 				dest = 1
+			else:
+				dest = 3
 		3:
 			var chance = rand.randi_range(1,12)
-			if chance <= 5:
-				dest = 4
-			elif chance <= 11:
-				dest = 5
+			if chance <= 4:
+				dest = 1
+			elif chance <= 8:
+				dest = 2
 			else:
-				rand.randomize()
-				dest = rand.randi_range(1,2)
+				dest = 4
 		4:
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:
