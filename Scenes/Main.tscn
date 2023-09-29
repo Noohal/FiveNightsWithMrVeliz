@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=52 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_nnrg2"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
@@ -23,6 +23,139 @@
 [ext_resource type="PackedScene" uid="uid://cfnw8k6pdi7uk" path="res://Scenes/Enemy/Shashumga.tscn" id="18_rx5kh"]
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="18_s0xe6"]
 [ext_resource type="PackedScene" uid="uid://g11h3wy4sjko" path="res://Scenes/Enemy/Stonedome.tscn" id="20_h1ctj"]
+
+[sub_resource type="Animation" id="Animation_mj68p"]
+resource_name = "change_into_super_toilet"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.4, 0.4, 0.4), Vector3(0.015, 0.015, 0.015)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Toilet:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.065, 0.065, 0.065), Vector3(0.75, 0.75, 0.75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Toilet:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleMode:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.4, 0.4, 0.4), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Toilet:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.53073, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4gn8d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.4, 0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Toilet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Toilet:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.75, 0.75, 0.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleMode/body:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BattleMode:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.4, 0.4, 0.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3odnq"]
+_data = {
+"RESET": SubResource("Animation_4gn8d"),
+"change_into_super_toilet": SubResource("Animation_mj68p")
+}
 
 [sub_resource type="Animation" id="Animation_0m4we"]
 length = 0.001
@@ -394,11 +527,13 @@ text = "CURRENTHOUR"
 label_settings = ExtResource("3_a7h8y")
 
 [node name="LockStatus" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "FOXY:"
 label_settings = ExtResource("3_a7h8y")
 
 [node name="FoxyDuration" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "Time Left:"
 label_settings = ExtResource("3_a7h8y")
@@ -466,16 +601,29 @@ environment = ExtResource("18_s0xe6")
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
 [node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("7_dkyee")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 0, 6.7)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 20)
 enabled = true
 freddy_status = NodePath("../Clock/MarginContainer/VBoxContainer2/FreddyStatus")
 freddy_countdown = NodePath("../Clock/MarginContainer/VBoxContainer2/FreddyDuration")
-enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice")]
+enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/Jumpscare")]
 enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
 
+[node name="body" parent="Melvinzord/BattleMode" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0)
+
+[node name="Toilet" parent="Melvinzord" index="2"]
+transform = Transform3D(-0.614364, 0, -0.430182, 0, 0.75, 0, 0.430182, 0, -0.614364, 0, 0, 0)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Melvinzord"]
+libraries = {
+"": SubResource("AnimationLibrary_3odnq")
+}
+
 [node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+visible = false
 enabled = true
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
 enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
@@ -492,6 +640,8 @@ stream = ExtResource("7_js1te")
 
 [node name="Cabron" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("9_8ehyr")]
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0.963195, -0.149933, 20)
+visible = false
+enabled = true
 enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/12"), NodePath("../MapPoints/8"), NodePath("../MapPoints/2D"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice"), NodePath("../MapPoints/Jumpscare")]
 night_AI_levels = Array[int]([0, 1, 5, 4, 7, 12])
 
@@ -502,6 +652,8 @@ libraries = {
 
 [node name="Stonedome" parent="." node_paths=PackedStringArray("duration_label", "lock_status", "enemy_locations") instance=ExtResource("20_h1ctj")]
 transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -0.999999, 0, 0, 20)
+visible = false
+enabled = true
 duration_label = NodePath("../Clock/MarginContainer/VBoxContainer2/FoxyDuration")
 lock_status = NodePath("../Clock/MarginContainer/VBoxContainer2/LockStatus")
 enemy_locations = [NodePath("../MapPoints/FoxyPoints/Stage0"), NodePath("../MapPoints/FoxyPoints/Stage1"), NodePath("../MapPoints/FoxyPoints/Stage2"), NodePath("../MapPoints/FoxyPoints/Stage3"), NodePath("../MapPoints/FoxyPoints/Stage4"), NodePath("../MapPoints/Jumpscare")]
@@ -768,7 +920,7 @@ omni_range = 34.196
 omni_attenuation = 2.82843
 
 [node name="ScareCam" type="Camera3D" parent="Map/Scareroom"]
-transform = Transform3D(-4.36999e-08, 0.0229491, 0.999737, 1.00314e-09, 0.999737, -0.0229491, -1, 0, -4.37114e-08, 1.84485, 0.472535, 0)
+transform = Transform3D(-4.37114e-08, 0.173648, 0.984808, 0, 0.984808, -0.173648, -1, -7.59041e-09, -4.30473e-08, 1.84485, 0.472535, 0)
 fov = 42.8
 
 [node name="MapPoints" type="Node3D" parent="."]
@@ -914,9 +1066,12 @@ environment = ExtResource("18_s0xe6")
 [connection signal="camera_state_change" from="Player" to="." method="_on_player_camera_state_change"]
 [connection signal="camera_state_change" from="Player" to="Power" method="_on_player_camera_state_change"]
 [connection signal="camera_state_change" from="Player" to="Stonedome" method="_on_player_camera_state_change"]
+[connection signal="watching_camera_num" from="Player" to="Melvinzord" method="_on_player_watching_camera_num"]
 [connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
+[connection signal="jumpscare_freddy" from="Melvinzord" to="." method="_on_melvinzord_jumpscare_freddy"]
 [connection signal="bonnie_left_spawn" from="Shashumga" to="Melvinzord" method="_on_shashumga_bonnie_left_spawn"]
 [connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
+[connection signal="chica_left_spawn" from="Cabron" to="Melvinzord" method="_on_cabron_chica_left_spawn"]
 [connection signal="jumpscare_chica" from="Cabron" to="." method="_on_cabron_jumpscare_chica"]
 [connection signal="drain_power" from="Stonedome" to="Power" method="_on_stonedome_drain_power"]
 [connection signal="jumpscare_foxy" from="Stonedome" to="." method="_on_stonedome_jumpscare_foxy"]
@@ -932,3 +1087,4 @@ environment = ExtResource("18_s0xe6")
 [connection signal="input_event" from="Office/LightButtonRight" to="Office" method="_on_light_button_right_input_event"]
 
 [editable path="Player"]
+[editable path="Melvinzord"]

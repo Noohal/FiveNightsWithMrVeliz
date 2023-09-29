@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsg2oslvfq0l0"
 path.s3tc="res://.godot/imported/melvin_babayaga.png-e3ba233a14e5027f696023b92a75f6d0.s3tc.ctex"
+path.etc2="res://.godot/imported/melvin_babayaga.png-e3ba233a14e5027f696023b92a75f6d0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Enemy/Cabron/melvin_babayaga.png"
-dest_files=["res://.godot/imported/melvin_babayaga.png-e3ba233a14e5027f696023b92a75f6d0.s3tc.ctex"]
+dest_files=["res://.godot/imported/melvin_babayaga.png-e3ba233a14e5027f696023b92a75f6d0.s3tc.ctex", "res://.godot/imported/melvin_babayaga.png-e3ba233a14e5027f696023b92a75f6d0.etc2.ctex"]
 
 [params]
 

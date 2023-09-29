@@ -52,7 +52,7 @@ func _process(delta):
 		lock_status.text = "Foxy: LOCKED"
 	
 	if game.watching_cam && current_stage != 3:
-		print("FOXY -- LOCKING")
+		#print("FOXY -- LOCKING")
 		attempting_lock = true
 
 # Check Movement Opportunity

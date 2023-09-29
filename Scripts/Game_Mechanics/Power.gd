@@ -14,6 +14,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	power_level -= delta * power_usage * 0.2
+	
+	if power_level <= 0.0:
+		await get_tree().create_timer(4).timeout
+		get_tree().quit()
+	
 	power_label.text = "Power: %d%%" % power_level
 	usage_label.text = "Usage: %s" % (power_usage)
 

@@ -12,6 +12,7 @@ var AI_level : int
 var current_pos : int
 const MOVEMENT_INTERVAL : float = 4.8
 
+signal chica_left_spawn
 signal jumpscare_chica
 
 func _ready():
@@ -43,6 +44,7 @@ func find_new_destination(pos : int) -> int:
 	match pos:
 		0:
 			dest = 1
+			emit_signal("chica_left_spawn")
 		1:
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:
@@ -73,7 +75,7 @@ func find_new_destination(pos : int) -> int:
 		6:
 			dest = attack()
 			if dest == 7:
-				emit_signal("jumpscare_chica")
+				#emit_signal("jumpscare_chica")
 				set_global_rotation(Vector3(0,deg_to_rad(-180.0),0))
 		_:
 			dest = dest

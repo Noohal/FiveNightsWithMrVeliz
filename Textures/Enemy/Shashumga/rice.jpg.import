@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw1au4gyqd08r"
 path.s3tc="res://.godot/imported/rice.jpg-6a59735d07ca4c4a0acafac8c9970ff5.s3tc.ctex"
+path.etc2="res://.godot/imported/rice.jpg-6a59735d07ca4c4a0acafac8c9970ff5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/Enemy/Shashumga/rice.jpg"
-dest_files=["res://.godot/imported/rice.jpg-6a59735d07ca4c4a0acafac8c9970ff5.s3tc.ctex"]
+dest_files=["res://.godot/imported/rice.jpg-6a59735d07ca4c4a0acafac8c9970ff5.s3tc.ctex", "res://.godot/imported/rice.jpg-6a59735d07ca4c4a0acafac8c9970ff5.etc2.ctex"]
 
 [params]
 

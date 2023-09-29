@@ -50,7 +50,7 @@ func _process(delta):
 func handle_camera_movement(delta) -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	if mouse_pos.x <= left_zone_end:
-		mouse_pos.x = clamp(mouse_pos.x, (left_zone_end / 1.2), left_zone_end)
+		mouse_pos.x = clamp(mouse_pos.x, (left_zone_end / 1.25), left_zone_end)
 		rotate_y(deg_to_rad((left_zone_end - mouse_pos.x) * delta * sens + turn_speed))
 		emit_signal("looking_left")
 	elif mouse_pos.x >= right_zone_start:
@@ -92,12 +92,12 @@ func set_camera(camera_id : int):
 			cam.clear_current()
 		else:
 			pass # Do nothing
-	if camera_id == 6:
-		emit_signal("watching_camera_num", camera_id)
+	emit_signal("watching_camera_num", camera_id)
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "screen_up":
 		current_camera = last_camera
 		set_camera(current_camera)
+		#emit_signal("watching_camera_num", current_camera)
 		emit_signal("camera_state_change", true)
 		player_hud.toggle_ui(true)
