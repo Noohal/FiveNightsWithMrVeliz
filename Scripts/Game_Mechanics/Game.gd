@@ -19,7 +19,13 @@ func _on_right_door_right_door_change(active):
 func _on_melvinzord_jumpscare_freddy():
 	await get_tree().create_timer(3).timeout
 	$"Map/Scareroom/ScareCam".make_current()
-	$"Melvinzord/AnimationPlayer".play("change_into_super_toilet")
+	rand.randomize()
+	var check = randi_range(1,2)
+	print("FREDDY -- JUMPSCARE %s" % check)
+	if check == 1:
+		$"Melvinzord/AnimationPlayer".play("change_into_super_toilet")
+	else:
+		$"Melvinzord/AnimationPlayer".play("fatality")
 	exit_game()
 
 func _on_shashumga_jumpscare_bonnie():

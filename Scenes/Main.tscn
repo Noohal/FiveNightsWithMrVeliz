@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=53 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_nnrg2"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
@@ -24,20 +24,19 @@
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="18_s0xe6"]
 [ext_resource type="PackedScene" uid="uid://g11h3wy4sjko" path="res://Scenes/Enemy/Stonedome.tscn" id="20_h1ctj"]
 
-[sub_resource type="Animation" id="Animation_mj68p"]
-resource_name = "change_into_super_toilet"
-length = 1.2
+[sub_resource type="Animation" id="Animation_4gn8d"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Robot:scale")
+tracks/0/path = NodePath("Toilet:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.4, 0.4, 0.4), Vector3(0.015, 0.015, 0.015)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -46,61 +45,62 @@ tracks/1/path = NodePath("Toilet:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.065, 0.065, 0.065), Vector3(0.75, 0.75, 0.75)]
+"values": [Vector3(0.75, 0.75, 0.75)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Toilet:visible")
+tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, -0.297261, 20)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BattleMode:scale")
+tracks/3/path = NodePath("BattleMode/arm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.4, 0.4, 0.4), Vector3(0.01, 0.01, 0.01)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Toilet:rotation")
+tracks/4/path = NodePath("BattleMode/arm:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -2.53073, 0)]
+"values": [Vector3(0.825, 0.336229, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4gn8d"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_mj68p"]
+resource_name = "change_into_super_toilet"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Robot:scale")
+tracks/0/path = NodePath("Toilet:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.4, 0.4, 0.4)]
+"values": [Vector3(0.065, 0.065, 0.065), Vector3(0.75, 0.75, 0.75)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -112,49 +112,77 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Toilet:scale")
+tracks/2/path = NodePath("BattleMode:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.75, 0.75, 0.75)]
+"values": [Vector3(0.4, 0.4, 0.4), Vector3(0.01, 0.01, 0.01)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BattleMode/body:rotation")
+tracks/3/path = NodePath("Toilet:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.5708, 0, 0)]
+"values": [Vector3(0, -2.53073, 0)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BattleMode:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+
+[sub_resource type="Animation" id="Animation_5mrap"]
+resource_name = "fatality"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.4, 0.4, 0.4)]
+"values": [Vector3(0, -0.297261, 20), Vector3(0.874809, -0.582733, 19.8724)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleMode/arm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BattleMode/arm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.825, 0.336229, 0), Vector3(0.824993, 0.663647, -0.733608)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3odnq"]
 _data = {
 "RESET": SubResource("Animation_4gn8d"),
-"change_into_super_toilet": SubResource("Animation_mj68p")
+"change_into_super_toilet": SubResource("Animation_mj68p"),
+"fatality": SubResource("Animation_5mrap")
 }
 
 [sub_resource type="Animation" id="Animation_0m4we"]
@@ -485,7 +513,7 @@ size = Vector3(0.05, 0.2, 0.2)
 size = Vector3(4, 0.1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6f6b8"]
-size = Vector3(0.1, 2, 4)
+size = Vector3(0.1, 6, 4)
 
 [sub_resource type="Environment" id="Environment_ktvgq"]
 background_mode = 1
@@ -601,20 +629,13 @@ environment = ExtResource("18_s0xe6")
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
 [node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("7_dkyee")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 20)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.297261, 20)
 enabled = true
 freddy_status = NodePath("../Clock/MarginContainer/VBoxContainer2/FreddyStatus")
 freddy_countdown = NodePath("../Clock/MarginContainer/VBoxContainer2/FreddyDuration")
 enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/Jumpscare")]
 enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
-
-[node name="body" parent="Melvinzord/BattleMode" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0)
-
-[node name="Toilet" parent="Melvinzord" index="2"]
-transform = Transform3D(-0.614364, 0, -0.430182, 0, 0.75, 0, 0.430182, 0, -0.614364, 0, 0, 0)
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Melvinzord"]
 libraries = {
@@ -623,7 +644,6 @@ libraries = {
 
 [node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-visible = false
 enabled = true
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
 enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
@@ -640,7 +660,6 @@ stream = ExtResource("7_js1te")
 
 [node name="Cabron" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("9_8ehyr")]
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0.963195, -0.149933, 20)
-visible = false
 enabled = true
 enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/12"), NodePath("../MapPoints/8"), NodePath("../MapPoints/2D"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice"), NodePath("../MapPoints/Jumpscare")]
 night_AI_levels = Array[int]([0, 1, 5, 4, 7, 12])
@@ -652,7 +671,6 @@ libraries = {
 
 [node name="Stonedome" parent="." node_paths=PackedStringArray("duration_label", "lock_status", "enemy_locations") instance=ExtResource("20_h1ctj")]
 transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -0.999999, 0, 0, 20)
-visible = false
 enabled = true
 duration_label = NodePath("../Clock/MarginContainer/VBoxContainer2/FoxyDuration")
 lock_status = NodePath("../Clock/MarginContainer/VBoxContainer2/LockStatus")
@@ -912,7 +930,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 
 mesh = SubResource("BoxMesh_6f6b8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Scareroom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70717, 0.46255, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47333, 0.763435, -0.0210361)
 light_energy = 0.403
 shadow_enabled = true
 shadow_blur = 3.486
@@ -921,6 +939,57 @@ omni_attenuation = 2.82843
 
 [node name="ScareCam" type="Camera3D" parent="Map/Scareroom"]
 transform = Transform3D(-4.37114e-08, 0.173648, 0.984808, 0, 0.984808, -0.173648, -1, -7.59041e-09, -4.30473e-08, 1.84485, 0.472535, 0)
+fov = 42.8
+
+[node name="TransformRoom" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 27)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/TransformRoom"]
+mesh = SubResource("BoxMesh_xgusk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Map/TransformRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+visible = false
+mesh = SubResource("BoxMesh_xgusk")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Map/TransformRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Map/TransformRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 0)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Map/TransformRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 2)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Map/TransformRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, -2)
+mesh = SubResource("BoxMesh_6f6b8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/TransformRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15577, 4.88704, 0)
+light_energy = 1.416
+shadow_blur = 3.486
+omni_range = 8.13
+omni_attenuation = 0.143587
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Map/TransformRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83077, 3.69062, 0)
+light_energy = 1.416
+shadow_blur = 3.486
+omni_range = 6.956
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Map/TransformRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206987, 1.56854, 0)
+light_energy = 1.416
+shadow_blur = 3.486
+omni_range = 6.956
+
+[node name="TransformCam" type="Camera3D" parent="Map/TransformRoom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.84485, 3.77787, 0)
 fov = 42.8
 
 [node name="MapPoints" type="Node3D" parent="."]
@@ -1087,4 +1156,3 @@ environment = ExtResource("18_s0xe6")
 [connection signal="input_event" from="Office/LightButtonRight" to="Office" method="_on_light_button_right_input_event"]
 
 [editable path="Player"]
-[editable path="Melvinzord"]

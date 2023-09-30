@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://1c8kycgyem3"]
+[gd_scene load_steps=45 format=3 uid="uid://1c8kycgyem3"]
 
 [ext_resource type="Texture2D" uid="uid://obphusgkqkvb" path="res://Textures/Enemy/Melvinzord/moai-emoji-dictionary.svg.png" id="1_8pyvt"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Melvinzord.gd" id="1_hohb2"]
@@ -6,18 +6,54 @@
 [ext_resource type="Texture2D" uid="uid://bsg2oslvfq0l0" path="res://Textures/Enemy/Cabron/melvin_babayaga.png" id="3_6pvuk"]
 [ext_resource type="Texture2D" uid="uid://d2gxmdggosgnj" path="res://Textures/Enemy/Melvinzord/melvin_selfie.jpg" id="4_4cjw0"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_rwinb"]
-size = Vector3(1.5, 0.75, 1.25)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8uml"]
+albedo_texture = ExtResource("1_8pyvt")
+uv1_scale = Vector3(2.98, 2.98, 2.98)
 
 [sub_resource type="PrismMesh" id="PrismMesh_1hcwd"]
 size = Vector3(1.5, 0.75, 0.75)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_leo7j"]
+albedo_texture = ExtResource("1_8pyvt")
+uv1_scale = Vector3(1.085, 1.085, 1.085)
+uv1_offset = Vector3(-1.4, -0.325, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwinb"]
+size = Vector3(1.5, 0.75, 1.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvqpb"]
+albedo_texture = ExtResource("2_1mljs")
+
 [sub_resource type="BoxMesh" id="BoxMesh_bju0j"]
 size = Vector3(0.5, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7tkh"]
+albedo_texture = ExtResource("2_1mljs")
 
 [sub_resource type="PrismMesh" id="PrismMesh_51hyy"]
 left_to_right = 1.0
 size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fb0k"]
+albedo_texture = ExtResource("2_1mljs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6ne2"]
+albedo_texture = ExtResource("2_1mljs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ur4c"]
+albedo_texture = ExtResource("3_6pvuk")
+
+[sub_resource type="BoxMesh" id="BoxMesh_c47lr"]
+size = Vector3(0.5, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc8mi"]
+albedo_texture = ExtResource("3_6pvuk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ba66"]
+albedo_texture = ExtResource("4_4cjw0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_x0lym"]
+size = Vector3(1, 0.7, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me2ed"]
 albedo_texture = ExtResource("1_8pyvt")
@@ -91,41 +127,109 @@ albedo_color = Color(0, 0, 1, 1)
 material = SubResource("StandardMaterial3D_mr51x")
 size = Vector3(0.75, 0.05, 0.6)
 
+[sub_resource type="Animation" id="Animation_522jq"]
+resource_name = "ChangeIntoBattleMode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MelvinJet/Nose:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 3.14159), Vector3(-3.14159, 0, 3.14159)]
+}
+
+[sub_resource type="Animation" id="Animation_iw0mv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MelvinJet/Nose:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_85nm8"]
+_data = {
+"ChangeIntoBattleMode": SubResource("Animation_522jq"),
+"RESET": SubResource("Animation_iw0mv")
+}
+
 [node name="Melvinzord" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00553942, 0, 0.000892043)
 script = ExtResource("1_hohb2")
 
 [node name="MelvinJet" type="Node3D" parent="."]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+visible = false
+
+[node name="Nose" type="Node3D" parent="MelvinJet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271761, 0.371194, -0.682871)
+
+[node name="Nose" type="MeshInstance3D" parent="MelvinJet/Nose"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.84288e-08, -0.393992, -0.321434)
+material_override = SubResource("StandardMaterial3D_l8uml")
+mesh = SubResource("PrismMesh_1hcwd")
+skeleton = NodePath("../..")
 
 [node name="Body" type="MeshInstance3D" parent="MelvinJet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+material_override = SubResource("StandardMaterial3D_leo7j")
 mesh = SubResource("BoxMesh_rwinb")
 
-[node name="Nose" type="MeshInstance3D" parent="MelvinJet"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.375, -1)
-mesh = SubResource("PrismMesh_1hcwd")
-
-[node name="Side" type="MeshInstance3D" parent="MelvinJet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.375, 0)
+[node name="R_Leg" type="MeshInstance3D" parent="MelvinJet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.375, 0.118581)
+material_override = SubResource("StandardMaterial3D_cvqpb")
 mesh = SubResource("BoxMesh_bju0j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MelvinJet/Side"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -2.75, -0.175, 0)
-mesh = SubResource("PrismMesh_51hyy")
-skeleton = NodePath("../..")
+[node name="R_Leg_Wing" type="Node3D" parent="MelvinJet/R_Leg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270137, -0.255377, 2.23517e-08)
 
-[node name="Side2" type="MeshInstance3D" parent="MelvinJet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.375, 0)
+[node name="R_Leg_Wing" type="MeshInstance3D" parent="MelvinJet/R_Leg/R_Leg_Wing"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.48135, 0.0627821, -5.21541e-08)
+material_override = SubResource("StandardMaterial3D_o7tkh")
+mesh = SubResource("PrismMesh_51hyy")
+skeleton = NodePath("../../..")
+
+[node name="L_Leg" type="MeshInstance3D" parent="MelvinJet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.375, 0.118581)
+material_override = SubResource("StandardMaterial3D_4fb0k")
 mesh = SubResource("BoxMesh_bju0j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MelvinJet/Side2"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 2.744, -0.2, 0)
+[node name="L_Leg_Wing" type="Node3D" parent="MelvinJet/L_Leg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.263445, -0.242694, -2.23517e-08)
+
+[node name="L_Leg_Wing" type="MeshInstance3D" parent="MelvinJet/L_Leg/L_Leg_Wing"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.482295, 0.0542659, 5.96046e-08)
+material_override = SubResource("StandardMaterial3D_d6ne2")
 mesh = SubResource("PrismMesh_51hyy")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+
+[node name="Arm" type="MeshInstance3D" parent="MelvinJet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.996036, 0.372979, 0)
+material_override = SubResource("StandardMaterial3D_7ur4c")
+mesh = SubResource("BoxMesh_c47lr")
+
+[node name="Arm2" type="MeshInstance3D" parent="MelvinJet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.992277, 0.372583, 0)
+material_override = SubResource("StandardMaterial3D_hc8mi")
+mesh = SubResource("BoxMesh_c47lr")
+
+[node name="Head" type="MeshInstance3D" parent="MelvinJet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, -0.119426)
+material_override = SubResource("StandardMaterial3D_4ba66")
+mesh = SubResource("BoxMesh_x0lym")
 
 [node name="BattleMode" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.85, 0)
-visible = false
 
 [node name="body" type="MeshInstance3D" parent="BattleMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -201,6 +305,11 @@ mesh = SubResource("BoxMesh_mw2m5")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="JumpscareTimer" type="Timer" parent="."]
+
+[node name="MelvinPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_85nm8")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="JumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]

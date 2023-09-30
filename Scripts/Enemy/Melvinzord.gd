@@ -32,6 +32,9 @@ signal jumpscare_freddy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Toilet.visible = false
+	$MelvinJet.visible = false
+	
 	current_pos = 0
 	AI_level = 8
 	#AI_level = night_AI_levels[game.current_night - 1]
@@ -97,7 +100,7 @@ func regular_freddy_pattern(check : int) -> void:
 	
 	print("FREDDY -- MOVE TO %s" % current_pos)
 	set_freddy_location(current_pos)
-		
+	
 	if current_pos == 5:
 		is_attacking = true
 		freddy_status.text = "FREDDY: ATTACKING"
