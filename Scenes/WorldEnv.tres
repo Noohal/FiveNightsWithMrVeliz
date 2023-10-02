@@ -1,7 +1,5 @@
 [gd_resource type="Environment" format=3 uid="uid://dcj6aus4qmvlb"]
 
 [resource]
-background_mode = 1
-tonemap_mode = 2
-ssao_enabled = true
+ambient_light_source = 1
 sdfgi_bounce_feedback = 0.95

@@ -21,6 +21,8 @@ var current_camera : int
 var last_camera : int
 var watching_camera : bool
 
+var can_look_at_camera : bool = true
+
 signal watching_office
 signal camera_state_change(watching : bool)
 signal watching_camera_num(id : int)
@@ -34,7 +36,7 @@ func _ready():
 	rotation.y = deg_to_rad(start_angle)
 	screen_size = get_viewport().size
 	left_zone_end = screen_size.x / 3
-	right_zone_start = (screen_size.x / 3) + left_zone_end
+	right_zone_start = (screen_size.x / 3) + left_zone_end + 512
 	
 	sens = screen_size.y / screen_size.x
 	turn_speed = left_zone_end / screen_size.x
@@ -54,8 +56,7 @@ func handle_camera_movement(delta) -> void:
 		rotate_y(deg_to_rad((left_zone_end - mouse_pos.x) * delta * sens + turn_speed))
 		emit_signal("looking_left")
 	elif mouse_pos.x >= right_zone_start:
-		var res = right_zone_start + (screen_size.x - right_zone_start) * 0.3 - 10
-		mouse_pos.x = clamp(mouse_pos.x, right_zone_start, res)
+		mouse_pos.x = clamp(mouse_pos.x, right_zone_start, (right_zone_start * 1.1))
 		rotate_y(deg_to_rad(-(mouse_pos.x - right_zone_start) * delta * sens - turn_speed))
 	else:
 		pass
@@ -71,6 +72,9 @@ func set_up_cameras() -> void:
 		cameras.append(i)
 
 func toggle_camera() -> void:
+	if !can_look_at_camera:
+		print("NO CAMERAS!")
+		return
 	watching_camera = !watching_camera
 	if watching_camera:
 		anim.play("screen_up")
@@ -101,3 +105,6 @@ func _on_animation_player_animation_finished(anim_name):
 		#emit_signal("watching_camera_num", current_camera)
 		emit_signal("camera_state_change", true)
 		player_hud.toggle_ui(true)
+
+func _on_node_3d_getting_killed():
+	can_look_at_camera = false

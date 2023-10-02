@@ -12,6 +12,8 @@ uv1_triplanar_sharpness = 1.93187
 
 [sub_resource type="SphereMesh" id="SphereMesh_40o6d"]
 material = SubResource("StandardMaterial3D_hg65b")
+radius = 0.45
+height = 0.9
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6nny"]
 albedo_texture = ExtResource("3_usgnh")
@@ -20,18 +22,18 @@ backlight_enabled = true
 [sub_resource type="CylinderMesh" id="CylinderMesh_8qjb0"]
 material = SubResource("StandardMaterial3D_i6nny")
 top_radius = 0.0
-bottom_radius = 0.6
-height = 0.4
+bottom_radius = 0.53
+height = 0.3
 
 [node name="Shashumga" type="Node3D"]
 script = ExtResource("1_w1f28")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431413, 0)
 mesh = SubResource("SphereMesh_40o6d")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902391, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801885, 0)
 mesh = SubResource("CylinderMesh_8qjb0")
 
 [node name="Timer" type="Timer" parent="."]

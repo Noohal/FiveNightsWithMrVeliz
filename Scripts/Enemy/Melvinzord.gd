@@ -179,7 +179,7 @@ func calculate_countdown_duration(level : int) -> float:
 
 func set_freddy_location(pos : int) -> void:
 	set_global_position(enemy_locations[pos].global_position)
-	#set_global_rotation(enemy_rotations[pos])
+	set_global_rotation(enemy_rotations[pos])
 	
 func _on_shashumga_bonnie_left_spawn():
 	if bonnie_left_spawn:
@@ -204,4 +204,5 @@ func _on_jumpscare_timer_timeout():
 	var check : int = rand.randi_range(1,100)
 	if check <= 25:
 		print("FREDDY -- TIME TO SCARE")
-		emit_signal("jumpscare_freddy")
+		if !game.getting_scared:
+			emit_signal("jumpscare_freddy")

@@ -95,7 +95,8 @@ func initiate_jumpscare():
 	# Send him to in front of the left door
 	current_stage = 4
 	set_foxy_position(current_stage)
-	emit_signal("jumpscare_foxy")
+	if !game.getting_scared:
+		emit_signal("jumpscare_foxy")
 
 func foxy_attack():
 	emit_signal("drain_power", (attack_attempts * 5.0) + 1.0)

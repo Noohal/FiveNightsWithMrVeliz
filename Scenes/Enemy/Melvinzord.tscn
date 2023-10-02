@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://1c8kycgyem3"]
+[gd_scene load_steps=47 format=3 uid="uid://1c8kycgyem3"]
 
 [ext_resource type="Texture2D" uid="uid://obphusgkqkvb" path="res://Textures/Enemy/Melvinzord/moai-emoji-dictionary.svg.png" id="1_8pyvt"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Melvinzord.gd" id="1_hohb2"]
@@ -103,6 +103,17 @@ uv1_scale = Vector3(0.705, 0.54, 0.56)
 uv1_offset = Vector3(-0.14, 0.125, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pysyw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8w4u6"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("4_4cjw0")
+uv1_scale = Vector3(0.27, 0.12, 0.246)
+uv1_offset = Vector3(0.16, 0.22, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0umtu"]
+material = SubResource("StandardMaterial3D_8w4u6")
+size = Vector3(0.4, 0.25, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dowqp"]
 size = Vector3(1, 0.5, 1)
@@ -277,6 +288,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43197, 0)
 material_override = SubResource("StandardMaterial3D_ooaw8")
 mesh = SubResource("BoxMesh_pysyw")
 skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleMode/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24065, 0.0326722, -0.452245)
+visible = false
+mesh = SubResource("BoxMesh_0umtu")
 
 [node name="Toilet" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

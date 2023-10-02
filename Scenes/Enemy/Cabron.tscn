@@ -56,11 +56,11 @@ skeleton = NodePath("../MeshInstance3D")
 mesh = ExtResource("3_wdtf0")
 
 [node name="axe handle" type="MeshInstance3D" parent="body"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.442749, 0.902498, 0.25252)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.442749, 0.902498, 0.0854885)
 mesh = SubResource("CylinderMesh_mnrd2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444027, 0.897536, 0.547247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444027, 0.897536, 0.380216)
 mesh = SubResource("BoxMesh_733gb")
 
 [node name="Timer" type="Timer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=54 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_nnrg2"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="1_r5yxd"]
@@ -85,6 +85,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.825, 0.336229, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mj68p"]
@@ -271,7 +283,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1, 1, 1)]
+"values": [Vector3(0.75, 0.75, 0.75)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -518,11 +530,21 @@ size = Vector3(0.1, 6, 4)
 [sub_resource type="Environment" id="Environment_ktvgq"]
 background_mode = 1
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7pf37"]
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_nnrg2")
 
-[node name="Clock" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clock" type="Control" parent="UI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -530,7 +552,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_vn604")
 
-[node name="MarginContainer" type="MarginContainer" parent="Clock"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Clock"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -542,45 +564,46 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Clock/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Clock/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Clock/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="HourLabel" type="Label" parent="Clock/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="HourLabel" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 text = "CURRENTHOUR"
 label_settings = ExtResource("3_a7h8y")
 
-[node name="LockStatus" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+[node name="LockStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
 visible = false
 layout_mode = 2
 text = "FOXY:"
 label_settings = ExtResource("3_a7h8y")
 
-[node name="FoxyDuration" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+[node name="FoxyDuration" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
 visible = false
 layout_mode = 2
 text = "Time Left:"
 label_settings = ExtResource("3_a7h8y")
 
-[node name="FreddyStatus" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+[node name="FreddyStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "FREDDY:"
 label_settings = ExtResource("3_a7h8y")
 
-[node name="FreddyDuration" type="Label" parent="Clock/MarginContainer/VBoxContainer2"]
+[node name="FreddyDuration" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 label_settings = ExtResource("3_a7h8y")
 
-[node name="Timer" type="Timer" parent="Clock"]
+[node name="Timer" type="Timer" parent="UI/Clock"]
 wait_time = 10.0
 autostart = true
 
-[node name="Power" type="Control" parent="."]
-layout_mode = 3
+[node name="Power" type="Control" parent="UI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -588,7 +611,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_can2g")
 
-[node name="MarginContainer" type="MarginContainer" parent="Power"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Power"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -600,19 +623,19 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Power/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Power/MarginContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="UsageLabel" type="Label" parent="Power/MarginContainer/VBoxContainer"]
+[node name="UsageLabel" type="Label" parent="UI/Power/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Usage:"
 label_settings = ExtResource("3_a7h8y")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Power/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Power/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PowerLevel" type="Label" parent="Power/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PowerLevel" type="Label" parent="UI/Power/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Power:"
 label_settings = ExtResource("3_a7h8y")
@@ -622,19 +645,21 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 
 camera_parent = NodePath("../Cameras")
 
 [node name="Camera3D" parent="Player" index="0"]
-cull_mask = 524287
-environment = ExtResource("18_s0xe6")
+transform = Transform3D(0.790155, 0, -0.612907, 0, 1, 0, 0.612907, 0, 0.790155, 0, 0, 0)
+environment = null
+far = 4000.0
 
 [node name="Screen" parent="Player" index="1"]
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
 [node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("7_dkyee")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.297261, 20)
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, -0.297261, 20)
+visible = false
 enabled = true
-freddy_status = NodePath("../Clock/MarginContainer/VBoxContainer2/FreddyStatus")
-freddy_countdown = NodePath("../Clock/MarginContainer/VBoxContainer2/FreddyDuration")
-enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/Jumpscare")]
-enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0)])
+freddy_status = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyStatus")
+freddy_countdown = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyDuration")
+enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8_F"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U_F"), NodePath("../MapPoints/4_F"), NodePath("../MapPoints/5_F"), NodePath("../MapPoints/Jumpscare"), NodePath("../MapPoints/LeftOffice")]
+enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.0088, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, -0.963666, 0), Vector3(0.38858, 0.807023, 0), Vector3(0, -1.5708, 0), Vector3(0, 2.06865, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Melvinzord"]
@@ -644,10 +669,18 @@ libraries = {
 
 [node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("18_rx5kh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+visible = false
 enabled = true
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
-enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
+enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8_B"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
+enemy_rotations = Array[Vector3]([Vector3(0, 0, 0), Vector3(0.20967, 0.288629, -0.611387), Vector3(0, 1.23349, 0), Vector3(0, 2.46542, 0), Vector3(0, -1.67178, 0), Vector3(0, 0, 0), Vector3(0, 1.00309, 0), Vector3(0, 0, 0)])
 night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
+
+[node name="MeshInstance3D" parent="Shashumga" index="0"]
+layers = 2
+
+[node name="MeshInstance3D2" parent="Shashumga" index="1"]
+layers = 2
 
 [node name="jumpscare" type="AnimationPlayer" parent="Shashumga"]
 libraries = {
@@ -659,9 +692,10 @@ transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
 stream = ExtResource("7_js1te")
 
 [node name="Cabron" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("9_8ehyr")]
-transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0.963195, -0.149933, 20)
+transform = Transform3D(-0.75, 0, 1.90139e-06, 0, 0.75, 0, -1.90139e-06, 0, -0.75, 0.963195, -0.149933, 20)
 enabled = true
 enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/12"), NodePath("../MapPoints/8"), NodePath("../MapPoints/2D"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice"), NodePath("../MapPoints/Jumpscare")]
+enemy_rotations = Array[Vector3]([Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 0, 0), Vector3(0, -2.44346, 0), Vector3(0, 0, 0)])
 night_AI_levels = Array[int]([0, 1, 5, 4, 7, 12])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cabron"]
@@ -671,9 +705,10 @@ libraries = {
 
 [node name="Stonedome" parent="." node_paths=PackedStringArray("duration_label", "lock_status", "enemy_locations") instance=ExtResource("20_h1ctj")]
 transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -0.999999, 0, 0, 20)
+visible = false
 enabled = true
-duration_label = NodePath("../Clock/MarginContainer/VBoxContainer2/FoxyDuration")
-lock_status = NodePath("../Clock/MarginContainer/VBoxContainer2/LockStatus")
+duration_label = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FoxyDuration")
+lock_status = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/LockStatus")
 enemy_locations = [NodePath("../MapPoints/FoxyPoints/Stage0"), NodePath("../MapPoints/FoxyPoints/Stage1"), NodePath("../MapPoints/FoxyPoints/Stage2"), NodePath("../MapPoints/FoxyPoints/Stage3"), NodePath("../MapPoints/FoxyPoints/Stage4"), NodePath("../MapPoints/Jumpscare")]
 enemy_location_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.22173, 0), Vector3(0, 2.32478, -0.34383), Vector3(0, 1.5708, 0), Vector3(0, 0, 0), Vector3(0, 3.14159, 0)])
 night_AI_levels = Array[int]([0, 1, 2, 6, 5, 16])
@@ -775,11 +810,27 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Office/LightButtonRight"]
 shape = SubResource("BoxShape3D_ef4l2")
 
-[node name="Room Light" type="OmniLight3D" parent="Office"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.99168, 1.10973, 3.36633e-08)
-light_energy = 0.704
-omni_range = 3.639
-omni_attenuation = 1.56917
+[node name="Room Light Left" type="OmniLight3D" parent="Office"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.71124, 0.968882, -1.77401)
+light_energy = 0.481
+light_bake_mode = 1
+light_cull_mask = 4294967293
+omni_range = 2.111
+omni_shadow_mode = 0
+
+[node name="Room Light Middle" type="OmniLight3D" parent="Office"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.52297, 1.20172, 0.124416)
+light_energy = 0.377
+light_bake_mode = 1
+omni_range = 2.1
+
+[node name="Room Light Left2" type="OmniLight3D" parent="Office"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.52297, 1.20172, 1.99388)
+light_energy = 0.481
+light_bake_mode = 1
+light_cull_mask = 4294967293
+omni_range = 2.111
+omni_shadow_mode = 0
 
 [node name="LightLeft" type="SpotLight3D" parent="Office"]
 transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -1, 1, -1.25)
@@ -796,6 +847,103 @@ shadow_enabled = true
 spot_range = 3.2
 spot_attenuation = 1.46409
 spot_angle = 46.67
+
+[node name="MapPoints" type="Node3D" parent="."]
+
+[node name="1U" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.35, -8.5)
+
+[node name="1D" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -12)
+
+[node name="2U" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1207, 3.25272, 4.83653)
+
+[node name="2U_F" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, 7.6667)
+
+[node name="2D" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 4)
+
+[node name="3" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -14)
+
+[node name="4" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 1)
+
+[node name="4_F" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89084, 0, 4.12028)
+
+[node name="5" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 2.5)
+
+[node name="5_F" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48841, 0.391931, 0.0313924)
+
+[node name="6" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -11.5)
+
+[node name="7" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
+
+[node name="8" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -11)
+
+[node name="8_B" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8234, 0, -11.5244)
+
+[node name="8_F" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5831, 0, -8.88978)
+
+[node name="9" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 7.5)
+
+[node name="BonnieSpawn" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 8.2)
+
+[node name="FreddySpawn" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 6.7)
+
+[node name="ChicaSpawn" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 5.5)
+
+[node name="10" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 4)
+
+[node name="11" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -9)
+
+[node name="12" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 0, -7)
+
+[node name="13" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, -7)
+
+[node name="LeftOffice" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625398, 0, -2.24101)
+
+[node name="RightOffice" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54506, 5.96046e-08, 2.18674)
+
+[node name="Jumpscare" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="FoxyPoints" type="Node3D" parent="MapPoints"]
+
+[node name="Stage0" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
+
+[node name="Stage1" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69962, -1.19209e-07, -10.7131)
+
+[node name="Stage2" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.68249, 0.991314, -9.72092)
+
+[node name="Stage3" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.97, 0, -12.258)
+
+[node name="Stage4" type="Node3D" parent="MapPoints/FoxyPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627981, 0, -2.46423)
 
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
@@ -837,7 +985,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489735, 1.53919, -1.8895)
 light_energy = 0.548
 shadow_enabled = true
 omni_range = 7.999
-omni_attenuation = 1.36604
+omni_attenuation = 1.7411
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Map/Room45"]
 transform = Transform3D(-0.870571, 0, 0.492044, 0, 1, 0, -0.492044, 0, -0.870571, -1.81871, 1.46062, -3.00708)
@@ -879,7 +1027,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84607, 1.57527, 1.64999)
 light_energy = 0.186
-shadow_enabled = true
 shadow_blur = 1.678
 omni_range = 7.527
 omni_attenuation = 0.420448
@@ -930,15 +1077,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 
 mesh = SubResource("BoxMesh_6f6b8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Scareroom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47333, 0.763435, -0.0210361)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97457, 0.763435, -0.0210361)
 light_energy = 0.403
-shadow_enabled = true
 shadow_blur = 3.486
-omni_range = 34.196
-omni_attenuation = 2.82843
+omni_range = 70.484
+omni_attenuation = 2.2974
 
 [node name="ScareCam" type="Camera3D" parent="Map/Scareroom"]
-transform = Transform3D(-4.37114e-08, 0.173648, 0.984808, 0, 0.984808, -0.173648, -1, -7.59041e-09, -4.30473e-08, 1.84485, 0.472535, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.84485, 0.472535, 0)
 fov = 42.8
 
 [node name="TransformRoom" type="Node3D" parent="Map"]
@@ -991,88 +1137,6 @@ omni_range = 6.956
 [node name="TransformCam" type="Camera3D" parent="Map/TransformRoom"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.84485, 3.77787, 0)
 fov = 42.8
-
-[node name="MapPoints" type="Node3D" parent="."]
-
-[node name="1U" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.35, -8.5)
-
-[node name="1D" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -12)
-
-[node name="2U" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, 7)
-
-[node name="2D" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 4)
-
-[node name="3" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -14)
-
-[node name="4" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
-
-[node name="5" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 2.5)
-
-[node name="6" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -11.5)
-
-[node name="7" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
-
-[node name="8" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -11)
-
-[node name="9" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 7.5)
-
-[node name="BonnieSpawn" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 8.2)
-
-[node name="FreddySpawn" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 6.7)
-
-[node name="ChicaSpawn" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 5.5)
-
-[node name="10" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 4)
-
-[node name="11" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 0, -9)
-
-[node name="12" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 0, -7)
-
-[node name="13" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, -7)
-
-[node name="LeftOffice" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627981, 0, -2.46423)
-
-[node name="RightOffice" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54506, 5.96046e-08, 2.18674)
-
-[node name="Jumpscare" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-
-[node name="FoxyPoints" type="Node3D" parent="MapPoints"]
-
-[node name="Stage0" type="Node3D" parent="MapPoints/FoxyPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
-
-[node name="Stage1" type="Node3D" parent="MapPoints/FoxyPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69962, -1.19209e-07, -10.7131)
-
-[node name="Stage2" type="Node3D" parent="MapPoints/FoxyPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.68249, 0.991314, -9.72092)
-
-[node name="Stage3" type="Node3D" parent="MapPoints/FoxyPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.97, 0, -12.258)
-
-[node name="Stage4" type="Node3D" parent="MapPoints/FoxyPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627981, 0, -2.46423)
 
 [node name="Cameras" type="Node3D" parent="."]
 
@@ -1127,13 +1191,15 @@ far = 100.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("18_s0xe6")
+camera_attributes = SubResource("CameraAttributesPractical_7pf37")
 
-[connection signal="hour_change" from="Clock" to="Shashumga" method="_on_clock_hour_change"]
-[connection signal="hour_change" from="Clock" to="Cabron" method="_on_clock_hour_change"]
-[connection signal="hour_change" from="Clock" to="Stonedome" method="_on_clock_hour_change"]
-[connection signal="timeout" from="Clock/Timer" to="Clock" method="_on_timer_timeout"]
+[connection signal="getting_killed" from="." to="Player" method="_on_node_3d_getting_killed"]
+[connection signal="hour_change" from="UI/Clock" to="Shashumga" method="_on_clock_hour_change"]
+[connection signal="hour_change" from="UI/Clock" to="Cabron" method="_on_clock_hour_change"]
+[connection signal="hour_change" from="UI/Clock" to="Stonedome" method="_on_clock_hour_change"]
+[connection signal="timeout" from="UI/Clock/Timer" to="UI/Clock" method="_on_timer_timeout"]
 [connection signal="camera_state_change" from="Player" to="." method="_on_player_camera_state_change"]
-[connection signal="camera_state_change" from="Player" to="Power" method="_on_player_camera_state_change"]
+[connection signal="camera_state_change" from="Player" to="UI/Power" method="_on_player_camera_state_change"]
 [connection signal="camera_state_change" from="Player" to="Stonedome" method="_on_player_camera_state_change"]
 [connection signal="watching_camera_num" from="Player" to="Melvinzord" method="_on_player_watching_camera_num"]
 [connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
@@ -1142,17 +1208,18 @@ environment = ExtResource("18_s0xe6")
 [connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
 [connection signal="chica_left_spawn" from="Cabron" to="Melvinzord" method="_on_cabron_chica_left_spawn"]
 [connection signal="jumpscare_chica" from="Cabron" to="." method="_on_cabron_jumpscare_chica"]
-[connection signal="drain_power" from="Stonedome" to="Power" method="_on_stonedome_drain_power"]
+[connection signal="drain_power" from="Stonedome" to="UI/Power" method="_on_stonedome_drain_power"]
 [connection signal="jumpscare_foxy" from="Stonedome" to="." method="_on_stonedome_jumpscare_foxy"]
-[connection signal="left_light_change" from="Office" to="Power" method="_on_office_left_light_change"]
-[connection signal="right_light_change" from="Office" to="Power" method="_on_office_right_light_change"]
+[connection signal="left_light_change" from="Office" to="UI/Power" method="_on_office_left_light_change"]
+[connection signal="right_light_change" from="Office" to="UI/Power" method="_on_office_right_light_change"]
 [connection signal="left_door_change" from="Office/LeftDoor" to="." method="_on_left_door_left_door_change"]
-[connection signal="left_door_change" from="Office/LeftDoor" to="Power" method="_on_left_door_left_door_change"]
+[connection signal="left_door_change" from="Office/LeftDoor" to="UI/Power" method="_on_left_door_left_door_change"]
 [connection signal="right_door_change" from="Office/RightDoor" to="." method="_on_right_door_right_door_change"]
-[connection signal="right_door_change" from="Office/RightDoor" to="Power" method="_on_right_door_right_door_change"]
+[connection signal="right_door_change" from="Office/RightDoor" to="UI/Power" method="_on_right_door_right_door_change"]
 [connection signal="input_event" from="Office/DoorButtonLeft" to="Office" method="_on_door_button_left_input_event"]
 [connection signal="input_event" from="Office/DoorButtonRight" to="Office" method="_on_door_button_right_input_event"]
 [connection signal="input_event" from="Office/LightButtonLeft" to="Office" method="_on_light_button_left_input_event"]
 [connection signal="input_event" from="Office/LightButtonRight" to="Office" method="_on_light_button_right_input_event"]
 
 [editable path="Player"]
+[editable path="Shashumga"]

@@ -4,6 +4,7 @@ extends Node3D
 
 @export var enabled : bool
 @export var enemy_locations : Array[Node3D]
+@export var enemy_rotations: Array[Vector3]
 @export var night_AI_levels : Array[int]
 
 var rand = RandomNumberGenerator.new()
@@ -21,8 +22,7 @@ func _ready():
 	AI_level = night_AI_levels[game.current_night - 1]
 	
 	current_pos = 0
-	set_global_position(enemy_locations[current_pos].global_position)
-	set_global_rotation(Vector3(0,deg_to_rad(0),0))
+	set_chica_position(current_pos)
 
 # Check Movement Opportunity
 func _on_timer_timeout():
@@ -32,7 +32,7 @@ func _on_timer_timeout():
 	var check = rand.randi_range(1,20)
 	if AI_level >= check:
 		current_pos = find_new_destination(current_pos)
-		set_global_position(enemy_locations[current_pos].global_position)
+		set_chica_position(current_pos)
 		print("CHICA -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
 		await get_tree().create_timer(4).timeout
 	else:
@@ -74,8 +74,8 @@ func find_new_destination(pos : int) -> int:
 			print("AT DOOR")
 		6:
 			dest = attack()
-			if dest == 7:
-				#emit_signal("jumpscare_chica")
+			if dest == 7 && !game.getting_scared:
+				emit_signal("jumpscare_chica")
 				set_global_rotation(Vector3(0,deg_to_rad(-180.0),0))
 		_:
 			dest = dest
@@ -86,6 +86,10 @@ func attack() -> int:
 		print("LEAVING")
 		return 3
 	return 7
+
+func set_chica_position(pos : int) -> void:
+	set_global_position(enemy_locations[pos].global_position)
+	set_global_rotation(enemy_rotations[pos])
 
 func _on_clock_hour_change(hour):
 	if (hour == 3 || hour == 4) && enabled:
