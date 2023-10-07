@@ -71,7 +71,8 @@ func turn_off_hud():
 
 func exit_game():
 	await get_tree().create_timer(2).timeout
-	get_tree().quit()
+	# get_tree().quit()
+	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
 
 func _on_player_camera_state_change(watching):
 	watching_cam = watching
