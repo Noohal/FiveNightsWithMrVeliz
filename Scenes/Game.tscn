@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=58 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Clock.gd" id="2_wbynu"]
@@ -16,8 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/Objects/DoorButton.tscn" id="14_c38yj"]
 [ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/Objects/LightButton.tscn" id="15_modhx"]
 [ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Rooms/Staircase.tscn" id="16_khb5w"]
+[ext_resource type="AudioStream" uid="uid://cfon7f8rjujqd" path="res://Sounds/Player/buzzing_light.wav" id="16_tv8hw"]
 [ext_resource type="PackedScene" uid="uid://dmverauqe7cvo" path="res://Scenes/Rooms/BackStairs.tscn" id="17_5iu80"]
+[ext_resource type="AudioStream" uid="uid://tdwquwoq3yj1" path="res://Sounds/Player/open_door.mp3" id="17_adapa"]
+[ext_resource type="AudioStream" uid="uid://bsfy6qo12p5l2" path="res://Sounds/Player/close_door.mp3" id="18_tib0b"]
 [ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/Rooms/MediumRoom.tscn" id="18_yns2d"]
+[ext_resource type="AudioStream" uid="uid://osixeflc1ufl" path="res://Sounds/Player/light_on.wav" id="19_7k6br"]
 [ext_resource type="PackedScene" uid="uid://bi44o4avaitvk" path="res://Scenes/Rooms/LongRoom.tscn" id="19_fxfco"]
 [ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/Rooms/SmallRoom.tscn" id="20_slt5h"]
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/Rooms/MediumRoomVariant.tscn" id="21_1u0cj"]
@@ -666,6 +670,8 @@ far = 4000.0
 [node name="Screen" parent="Player" index="1"]
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+
 [node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("6_6bp1m")]
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, -0.297261, 20)
 enabled = true
@@ -858,6 +864,19 @@ shadow_enabled = true
 spot_range = 3.2
 spot_attenuation = 1.46409
 spot_angle = 46.67
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="Office"]
+stream = ExtResource("16_tv8hw")
+volume_db = -16.0
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="Office"]
+stream = ExtResource("17_adapa")
+
+[node name="DoorClose" type="AudioStreamPlayer" parent="Office"]
+stream = ExtResource("18_tib0b")
+
+[node name="LightToggle" type="AudioStreamPlayer" parent="Office"]
+stream = ExtResource("19_7k6br")
 
 [node name="MapPoints" type="Node3D" parent="."]
 
@@ -1231,6 +1250,7 @@ camera_attributes = SubResource("CameraAttributesPractical_7pf37")
 [connection signal="input_event" from="Office/DoorButtonRight" to="Office" method="_on_door_button_right_input_event"]
 [connection signal="input_event" from="Office/LightButtonLeft" to="Office" method="_on_light_button_left_input_event"]
 [connection signal="input_event" from="Office/LightButtonRight" to="Office" method="_on_light_button_right_input_event"]
+[connection signal="finished" from="Office/AmbientSound" to="Office" method="_on_ambient_sound_finished"]
 
 [editable path="Player"]
 [editable path="Shashumga"]
