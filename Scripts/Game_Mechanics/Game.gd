@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var UI : Control = $UI
+@onready var NightLabel : Label = $UI/Clock/MarginContainer/NightLabel
 @onready var player_camera_bar : ColorRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/ColorRect"
 
 var rand = RandomNumberGenerator.new()
@@ -9,12 +10,16 @@ var left_door_close : bool = false
 var right_door_close : bool = false
 var watching_cam : bool = false
 
-var current_night : int = 6
+var current_night : int = 1
 
 var getting_scared : bool = false
 var freddy_can_attack : bool = false
 
 signal getting_killed
+
+func _ready():
+	current_night = Global.current_night
+	NightLabel.text = "Night " + str(current_night+1)
 
 func _on_left_door_left_door_change(active):
 	left_door_close = active
@@ -71,7 +76,6 @@ func turn_off_hud():
 
 func exit_game():
 	await get_tree().create_timer(2).timeout
-	# get_tree().quit()
 	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
 
 func _on_player_camera_state_change(watching):

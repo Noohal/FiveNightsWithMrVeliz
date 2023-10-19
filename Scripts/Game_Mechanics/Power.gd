@@ -13,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	power_level -= delta * power_usage * 0.2
+	power_level -= delta * power_usage * 0.1
 	
 	if power_level <= 0.0:
 		await get_tree().create_timer(4).timeout

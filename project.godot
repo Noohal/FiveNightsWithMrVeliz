@@ -12,8 +12,14 @@ config_version=5
 
 config/name="FiveNightsWithMrVelizConverted"
 run/main_scene="res://Scenes/Menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="FiveNightsWithMrVeliz"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
 
 [display]
 

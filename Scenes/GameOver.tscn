@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmx1pyt8nrfu1"]
 
-[ext_resource type="Script" path="res://Scenes/GameOver.gd" id="1_40ray"]
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_40ray"]
 [ext_resource type="Texture2D" uid="uid://dp1lvkxbt5sl7" path="res://Textures/menu_bg.png" id="1_cw5k1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xulug"]
@@ -16,9 +16,12 @@ grow_vertical = 2
 script = ExtResource("1_40ray")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_cw5k1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

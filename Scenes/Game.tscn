@@ -564,17 +564,33 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
+[node name="NightLabel" type="Label" parent="UI/Clock/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Night 1"
+label_settings = ExtResource("3_ddate")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 0
 
-[node name="HourLabel" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="HourLabel" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 text = "CURRENTHOUR"
 label_settings = ExtResource("3_ddate")
+
+[node name="Label" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+label_settings = ExtResource("3_ddate")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
+visible = false
+layout_mode = 2
 
 [node name="LockStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
 visible = false
@@ -595,12 +611,11 @@ text = "FREDDY:"
 label_settings = ExtResource("3_ddate")
 
 [node name="FreddyDuration" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 label_settings = ExtResource("3_ddate")
 
 [node name="Timer" type="Timer" parent="UI/Clock"]
-wait_time = 10.0
-autostart = true
 
 [node name="Power" type="Control" parent="UI"]
 layout_mode = 1
@@ -919,7 +934,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625398, 0, -2.24101)
 
 [node name="RightOffice" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54506, 5.96046e-08, 2.18674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, 2.187)
 
 [node name="Jumpscare" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)

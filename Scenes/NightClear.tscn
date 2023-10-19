@@ -1,0 +1,200 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl6r5ksaja7aq"]
+
+[ext_resource type="Script" path="res://Scripts/NightClear.gd" id="1_bfjd0"]
+[ext_resource type="Texture2D" uid="uid://dp1lvkxbt5sl7" path="res://Textures/menu_bg.png" id="1_doyje"]
+[ext_resource type="LabelSettings" uid="uid://bhkonlvm1x6cs" path="res://GameWinText.tres" id="2_87a2j"]
+
+[sub_resource type="Animation" id="Animation_28c5a"]
+resource_name = "Hour_Change"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/HBoxContainer/5AM/TimeText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, -120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/HBoxContainer2/6AM/TimeText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, -120)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Control/TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -130), Vector2(0, -130)]
+}
+
+[sub_resource type="Animation" id="Animation_j4csv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/HBoxContainer/5AM/TimeText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/HBoxContainer2/6AM/TimeText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Control/TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -130)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d4rru"]
+_data = {
+"Hour_Change": SubResource("Animation_28c5a"),
+"RESET": SubResource("Animation_j4csv")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bfjd0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_doyje")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(200, 230)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -58.0
+offset_right = 101.0
+offset_bottom = 178.002
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="5AM" type="Control" parent="VBoxContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(47, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TimeText" type="Label" parent="VBoxContainer/HBoxContainer/5AM"]
+custom_minimum_size = Vector2(47, 116)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 47.0
+offset_bottom = 56.0013
+grow_vertical = 2
+text = "5"
+label_settings = ExtResource("2_87a2j")
+
+[node name="TimeOfDayText" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "AM"
+label_settings = ExtResource("2_87a2j")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="6AM" type="Control" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(47, 116)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TimeText" type="Label" parent="VBoxContainer/HBoxContainer2/6AM"]
+custom_minimum_size = Vector2(47, 116)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 47.0
+offset_bottom = 56.0014
+grow_vertical = 2
+text = "6"
+label_settings = ExtResource("2_87a2j")
+
+[node name="TimeOfDayText" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "AM"
+label_settings = ExtResource("2_87a2j")
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_top = -130.0
+offset_right = 1920.0
+offset_bottom = 950.0
+texture = ExtResource("1_doyje")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d4rru")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

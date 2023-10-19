@@ -32,12 +32,12 @@ signal jumpscare_freddy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	await game.ready
 	$Toilet.visible = false
 	$MelvinJet.visible = false
 	
 	current_pos = 0
-	AI_level = 8
-	#AI_level = night_AI_levels[game.current_night - 1]
+	AI_level = night_AI_levels[game.current_night]
 	
 	$Timer.wait_time = MOVEMENT_INTERVAL
 	$Timer.autostart = true
