@@ -20,10 +20,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var current_time = Time.get_unix_time_from_system()	
-	var power_decrease : float = (drain_rate * 0.01) * (1.0 / (float)(2**(power_usage - 1)))
+	var power_decrease : float = (drain_rate * 10) * (1.0 / (float)(2**(power_usage - 1)))
 	
 	if current_time - last_time >= drain_time:
-		print("%.02f - %.02f = %.02f" % [power_level, power_decrease, power_level - power_decrease])
+		#print("%.02f - %.02f = %.02f" % [power_level, power_decrease, power_level - power_decrease])
 		power_level -= power_decrease
 		last_time = current_time
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=60 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Clock.gd" id="2_wbynu"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Rooms/Hallway.tscn" id="22_rdxcp"]
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="23_6kqpv"]
 [ext_resource type="AudioStream" uid="uid://d2bj8np533oxl" path="res://Sounds/Enemy/Jumpscare1.mp3" id="28_ymlwh"]
+[ext_resource type="AudioStream" uid="uid://cobchr0m3gy4" path="res://Sounds/Enemy/Melvinzord/harharharhar_orchestral.wav" id="29_tls7e"]
 
 [sub_resource type="Animation" id="Animation_4gn8d"]
 length = 0.001
@@ -661,15 +662,12 @@ text = "Power:"
 label_settings = ExtResource("3_ddate")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("5_s456a")]
-transform = Transform3D(-0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642788, -1.5, 1, 0)
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -1.5, 1, 0)
 camera_parent = NodePath("../Cameras")
 
 [node name="Camera3D" parent="Player" index="0"]
 environment = null
 far = 4000.0
-
-[node name="Screen" parent="Player" index="1"]
-transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
 
@@ -678,8 +676,8 @@ transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, -0.
 enabled = true
 freddy_status = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyStatus")
 freddy_countdown = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyDuration")
-enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8_F"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U_F"), NodePath("../MapPoints/4_F"), NodePath("../MapPoints/5_F"), NodePath("../MapPoints/Jumpscare"), NodePath("../MapPoints/LeftOffice")]
-enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.0088, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, -0.963666, 0), Vector3(0.38858, 0.807023, 0), Vector3(0, -1.5708, 0), Vector3(0, 2.06865, 0)])
+enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8_F"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U_F"), NodePath("../MapPoints/4_F"), NodePath("../MapPoints/5_F"), NodePath("../MapPoints/Jumpscare"), NodePath("../MapPoints/LeftOfficeFreddy")]
+enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.0088, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, -0.963666, 0), Vector3(0.38858, 0.807023, 0), Vector3(0, -1.5708, 0), Vector3(0, 2.37576, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Melvinzord"]
@@ -971,6 +969,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, -7)
 [node name="LeftOffice" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625398, 0, -2.24101)
 
+[node name="LeftOfficeFreddy" type="Node3D" parent="MapPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.530155, 0, -2.41624)
+
 [node name="RightOffice" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, 2.187)
 
@@ -1244,6 +1245,11 @@ camera_attributes = SubResource("CameraAttributesPractical_7pf37")
 
 [node name="Jumpscare1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_ymlwh")
+
+[node name="ftimer" type="Timer" parent="."]
+
+[node name="HarHarHarHar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_tls7e")
 
 [connection signal="getting_killed" from="." to="Player" method="_on_node_3d_getting_killed"]
 [connection signal="hour_change" from="UI/Clock" to="Shashumga" method="_on_clock_hour_change"]

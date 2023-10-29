@@ -1,10 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://1c8kycgyem3"]
+[gd_scene load_steps=51 format=3 uid="uid://1c8kycgyem3"]
 
 [ext_resource type="Texture2D" uid="uid://obphusgkqkvb" path="res://Textures/Enemy/Melvinzord/moai-emoji-dictionary.svg.png" id="1_8pyvt"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Melvinzord.gd" id="1_hohb2"]
 [ext_resource type="Texture2D" uid="uid://ldtacvixsjcy" path="res://Textures/Enemy/Shashumga/melvin_front.png" id="2_1mljs"]
 [ext_resource type="Texture2D" uid="uid://bsg2oslvfq0l0" path="res://Textures/Enemy/Cabron/melvin_babayaga.png" id="3_6pvuk"]
 [ext_resource type="Texture2D" uid="uid://d2gxmdggosgnj" path="res://Textures/Enemy/Melvinzord/melvin_selfie.jpg" id="4_4cjw0"]
+[ext_resource type="Texture2D" uid="uid://ci5rmvms0htd2" path="res://Textures/eyetexture.png" id="6_o3gno"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8uml"]
 albedo_texture = ExtResource("1_8pyvt")
@@ -115,6 +116,20 @@ uv1_offset = Vector3(0.16, 0.22, 0)
 material = SubResource("StandardMaterial3D_8w4u6")
 size = Vector3(0.4, 0.25, 0.1)
 
+[sub_resource type="SphereMesh" id="SphereMesh_x7cs0"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_e37xg"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+emission_operator = 1
+emission_texture = ExtResource("6_o3gno")
+normal_scale = -1.61
+uv1_scale = Vector3(-2.735, -1.915, -1.915)
+uv1_offset = Vector3(-0.145, 0.45, 0)
+
 [sub_resource type="BoxMesh" id="BoxMesh_dowqp"]
 size = Vector3(1, 0.5, 1)
 
@@ -167,11 +182,51 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleMode/head/eyeball:surface_material_override/0:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="Animation" id="Animation_iy3i4"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleMode/head/eyeball:surface_material_override/0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleMode/head/eyeball:surface_material_override/0:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85nm8"]
 _data = {
 "ChangeIntoBattleMode": SubResource("Animation_522jq"),
-"RESET": SubResource("Animation_iw0mv")
+"RESET": SubResource("Animation_iw0mv"),
+"new_animation": SubResource("Animation_iy3i4")
 }
 
 [node name="Melvinzord" type="Node3D"]
@@ -293,6 +348,16 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24065, 0.0326722, -0.452245)
 visible = false
 mesh = SubResource("BoxMesh_0umtu")
+
+[node name="eyeball" type="MeshInstance3D" parent="BattleMode/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140737, 0.0846734, -0.433006)
+mesh = SubResource("SphereMesh_x7cs0")
+surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
+
+[node name="eyeball2" type="MeshInstance3D" parent="BattleMode/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.209833, 0.0845389, -0.433006)
+mesh = SubResource("SphereMesh_x7cs0")
+surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
 
 [node name="Toilet" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
