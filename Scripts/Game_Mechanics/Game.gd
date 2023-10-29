@@ -10,7 +10,7 @@ var left_door_close : bool = false
 var right_door_close : bool = false
 var watching_cam : bool = false
 
-var current_night : int = 1
+var current_night : int
 
 var getting_scared : bool = false
 var freddy_can_attack : bool = false
@@ -18,6 +18,7 @@ var freddy_can_attack : bool = false
 signal getting_killed
 
 func _ready():
+	await Global.ready
 	current_night = Global.current_night
 	NightLabel.text = "Night " + str(current_night+1)
 
@@ -38,8 +39,10 @@ func _on_melvinzord_jumpscare_freddy():
 	print("FREDDY -- JUMPSCARE %s" % check)
 	if check == 1:
 		$"Melvinzord/AnimationPlayer".play("change_into_super_toilet")
+		#$"Jumpscare1".play()
 	else:
 		$"Melvinzord/AnimationPlayer".play("fatality")
+		#$"Jumpscare1".play()
 	exit_game()
 
 func _on_shashumga_jumpscare_bonnie():
@@ -49,7 +52,7 @@ func _on_shashumga_jumpscare_bonnie():
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
 	$"Shashumga/jumpscare".play("bonnie_boo")
-	$"Shashumga/scare sfx".play()
+	#$"Jumpscare1".play()
 	exit_game()
 
 func _on_cabron_jumpscare_chica():
@@ -59,6 +62,7 @@ func _on_cabron_jumpscare_chica():
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
 	$"Cabron/AnimationPlayer".play("chica_scare")
+	#$"Jumpscare1".play()
 	exit_game()
 
 func _on_stonedome_jumpscare_foxy():
@@ -67,6 +71,7 @@ func _on_stonedome_jumpscare_foxy():
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
 	$"Stonedome/AnimationPlayer".play("stage_5_running")
+	#$"Jumpscare1".play()
 	exit_game()
 
 func turn_off_hud():
@@ -80,3 +85,13 @@ func exit_game():
 
 func _on_player_camera_state_change(watching):
 	watching_cam = watching
+
+func _on_power_power_loss():
+	getting_scared = true
+	
+	await get_tree().create_timer(3).timeout
+	$"Map/Scareroom/ScareCam".make_current()
+	turn_off_hud()
+	$"Melvinzord/AnimationPlayer".play("change_into_super_toilet")
+	#$"Jumpscare1".play()
+	exit_game()

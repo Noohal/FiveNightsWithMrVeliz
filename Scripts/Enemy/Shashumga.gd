@@ -21,6 +21,7 @@ signal jumpscare_bonnie
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await game.ready
+	
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night]
 	current_pos = 0
@@ -38,7 +39,8 @@ func _on_timer_timeout():
 		print("BONNIE -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
 		await get_tree().create_timer(4).timeout
 	else:
-		print("BONNIE -- %s VS %s: STAY" % [AI_level, check])
+		pass
+		# print("BONNIE -- %s VS %s: STAY" % [AI_level, check])
 
 # Based on current position, calculate the new position
 # 0 - Spawn
@@ -115,3 +117,5 @@ func _on_clock_hour_change(hour):
 	if (hour == 2 || hour == 3 || hour == 4) && enabled:
 		AI_level += 1
 
+func _on_enable_timer_timeout():
+	enabled = true

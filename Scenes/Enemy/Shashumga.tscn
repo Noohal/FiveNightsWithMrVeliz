@@ -40,4 +40,8 @@ mesh = SubResource("CylinderMesh_8qjb0")
 wait_time = 4.7
 autostart = true
 
+[node name="EnableTimer" type="Timer" parent="."]
+wait_time = 200.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnableTimer" to="." method="_on_enable_timer_timeout"]

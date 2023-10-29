@@ -3,6 +3,9 @@ extends Node3D
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var player_cam : Camera3D = $Camera3D
 @onready var player_hud : Control = $PlayerHUD
+@onready var camera_location : Label = $"PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Room"
+
+@export var camera_rooms : Array[String]
 
 var screen_size : Vector2
 
@@ -91,6 +94,7 @@ func set_camera(camera_id : int):
 		var target_cam = "Cam%s" % camera_id
 		if cam.name == target_cam:
 			current_camera = camera_id
+			camera_location.text = camera_rooms[camera_id - 1]
 			cam.make_current()
 		elif cam.current:
 			cam.clear_current()

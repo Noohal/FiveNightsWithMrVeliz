@@ -35,6 +35,8 @@ signal drain_power(amount : float)
 
 func _ready():
 	await game.ready
+	enabled = !(Global.current_night == 0 || Global.current_night == 1)
+	
 	watching_cam_6 = false
 	current_stage = 0
 	AI_level = night_AI_levels[game.current_night]
@@ -46,7 +48,7 @@ func _process(delta):
 	
 	if !is_locked:
 		time_left = -55.5
-		lock_status.text = "Foxy: unlocked"
+		# lock_status.text = "Foxy: unlocked"
 	else:
 		time_left -= delta
 		duration_label.text = "Time left: %.02f" % time_left
@@ -62,7 +64,7 @@ func _on_timer_timeout():
 		return
 		
 	if is_locked || attempting_lock:
-		print("FOXY -- AUTOFAIL")
+		# print("FOXY -- AUTOFAIL")
 		return
 
 	rand.randomize()
@@ -84,7 +86,7 @@ func _on_player_watching_camera_num(id):
 		print("FOXY -- SUCCESS")
 		initiate_jumpscare()
 	else:
-		print("FOXY -- FAIL")
+		# print("FOXY -- FAIL")
 		foxy_attack()
 		reset_foxy()
 

@@ -18,6 +18,9 @@ signal jumpscare_chica
 
 func _ready():
 	await game.ready
+	#enabled = false
+	#$EnableTimer.start()
+	
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night]
 	
@@ -36,7 +39,8 @@ func _on_timer_timeout():
 		print("CHICA -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
 		await get_tree().create_timer(4).timeout
 	else:
-		print("CHICA -- %s VS %s: STAY" % [AI_level, check])
+		pass
+		#print("CHICA -- %s VS %s: STAY" % [AI_level, check])
 
 func find_new_destination(pos : int) -> int:
 	rand.randomize()
@@ -94,3 +98,6 @@ func set_chica_position(pos : int) -> void:
 func _on_clock_hour_change(hour):
 	if (hour == 3 || hour == 4) && enabled:
 		AI_level += 1
+
+func _on_enable_timer_timeout():
+	enabled = true

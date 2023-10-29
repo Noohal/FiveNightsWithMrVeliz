@@ -2,8 +2,11 @@ extends Node3D
 
 @onready var left_door = $"LeftDoor"
 @onready var right_door = $"RightDoor"
+
 @onready var left_light = $"LightLeft"
+@onready var left_outside_light = $"LightLeftOut"
 @onready var right_light = $"LightRight"
+@onready var right_outside_light = $"LightRightOut"
 
 var left_light_on = false
 var right_light_on = false
@@ -13,19 +16,28 @@ signal right_light_change(active : bool)
 
 func _ready():
 	await get_parent().ready
-	$AmbientSound.volume_db = -16.0
+	$AmbientSound.volume_db = -20.0
 	$AmbientSound.play()
 
 func _process(_delta):
 	if left_light_on:
-		left_light.light_energy = 1
+		if left_door.open_door:
+			left_light.light_energy = 1
+		else:
+			left_outside_light.light_energy = 1
+		
 	else:
 		left_light.light_energy = 0
+		left_outside_light.light_energy = 0
 	
 	if right_light_on:
-		right_light.light_energy = 1
+		if right_door.open_door:
+			right_light.light_energy = 1
+		else:
+			right_outside_light.light_energy = 1
 	else:
 		right_light.light_energy = 0
+		right_outside_light.light_energy = 0
 
 func _on_door_button_left_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

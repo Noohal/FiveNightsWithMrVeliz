@@ -67,4 +67,8 @@ mesh = SubResource("BoxMesh_733gb")
 wait_time = 4.85
 autostart = true
 
+[node name="EnableTimer" type="Timer" parent="."]
+wait_time = 200.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnableTimer" to="." method="_on_enable_timer_timeout"]

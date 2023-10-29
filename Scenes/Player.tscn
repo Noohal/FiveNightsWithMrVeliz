@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://cef84qm7nly4w"]
+[gd_scene load_steps=30 format=3 uid="uid://cef84qm7nly4w"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="1_8a0ml"]
 [ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Environment.tres" id="1_qfsnb"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHUD.gd" id="3_wis3i"]
-[ext_resource type="Texture2D" uid="uid://kbx15xswwqm6" path="res://Textures/Objects/downstairs_map.png" id="4_otl2x"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/CameraButton.gd" id="5_cloq7"]
-[ext_resource type="Texture2D" uid="uid://b287mpchiunuh" path="res://Textures/Objects/camera_button_texture.png" id="6_fy37y"]
-[ext_resource type="Texture2D" uid="uid://hpe5wft2vs2n" path="res://Textures/Objects/upstairs_map.png" id="7_7ntu3"]
+[ext_resource type="Texture2D" uid="uid://ducgs35v7ohym" path="res://Textures/Cam_White.png" id="6_filoo"]
+[ext_resource type="LabelSettings" uid="uid://dpxw6l5h02ggk" path="res://Camera_Text.tres" id="7_mad33"]
+[ext_resource type="Texture2D" uid="uid://bfemg2s14vyom" path="res://Textures/Downstairs2.png" id="8_7lk2i"]
 [ext_resource type="Texture2D" uid="uid://wc7f3ojq625c" path="res://Textures/Objects/camera_button_texture2.png" id="8_gmwvv"]
+[ext_resource type="Texture2D" uid="uid://b3ocvcbwfv25x" path="res://Textures/Upstairs2.png" id="9_vbod4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la3gu"]
 albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
@@ -108,12 +109,53 @@ _data = {
 "screen_up": SubResource("Animation_q2o2r")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_66n3m"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwej3"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxboa"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbnio"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpel1"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txqj1"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ym6lf"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgpaf"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7kgo"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88wjo"]
+radius = 120.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55xhy"]
 size = Vector2(100, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sbss"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vprs"]
+radius = 120.0
+
+[sub_resource type="SystemFont" id="SystemFont_g4to0"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_omgku"]
+font = SubResource("SystemFont_g4to0")
+font_size = 32
 
 [node name="Player" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
 script = ExtResource("1_8a0ml")
+camera_rooms = Array[String](["Front Stairs", "Back Stairs", "Room 3", "Room 4 Right", "Room 4 Left", "Maintenance Room", "Supply Closet", "Room 15", "Mr. Veliz's Room", "Room 19", "Upstairs Hallway"])
 
 [node name="Camera3D" type="Camera3D" parent="."]
 environment = ExtResource("1_qfsnb")
@@ -170,13 +212,12 @@ color = Color(0, 0.705882, 0.329412, 1)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_constants/separation = 15
 
 [node name="ButtonMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer"]
+position = Vector2(-354, -504)
 
 [node name="DownstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
-visible = false
-position = Vector2(-20, -125)
+scale = Vector2(0.65, 0.65)
 
 [node name="DownstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
 custom_minimum_size = Vector2(375, 370)
@@ -185,74 +226,152 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -475.0
-offset_top = -550.0
-offset_right = -100.0
-offset_bottom = -100.0
+offset_right = 430.0
+offset_bottom = 543.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(1.25, 1.25)
+scale = Vector2(1.438, 1.25)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("4_otl2x")
-
-[node name="Cam1" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
-position = Vector2(-393, -190)
-script = ExtResource("5_cloq7")
-camera_id = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam1"]
-texture = ExtResource("6_fy37y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam1"]
-shape = SubResource("RectangleShape2D_66n3m")
+texture = ExtResource("8_7lk2i")
 
 [node name="Cam3" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
-position = Vector2(-364, -395)
+position = Vector2(10, 205.385)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3"]
-texture = ExtResource("6_fy37y")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3"]
+rotation = 0.39619
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3/Node2D"]
+texture = ExtResource("6_filoo")
+offset = Vector2(102.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_lwej3")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -96.0
+offset_right = 39.5
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "3"
+label_settings = ExtResource("7_mad33")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cam4" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
-position = Vector2(-64, -354)
+position = Vector2(598.824, 249.412)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4"]
-texture = ExtResource("6_fy37y")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4"]
+rotation = -2.44346
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_yxboa")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -96.0
+offset_right = 85.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "4A"
+label_settings = ExtResource("7_mad33")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cam5" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
-position = Vector2(-64, -299)
+position = Vector2(598.823, 356.471)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5"]
-texture = ExtResource("6_fy37y")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5"]
+rotation = -3.49066
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_rbnio")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -96.0
+offset_right = 85.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4B"
+label_settings = ExtResource("7_mad33")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cam6" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
-position = Vector2(-374, -463)
+position = Vector2(34.1177, 87.0588)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6"]
-texture = ExtResource("6_fy37y")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6"]
+rotation = -0.0785398
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_gpel1")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -96.0
+offset_right = 39.5
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "5"
+label_settings = ExtResource("7_mad33")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UpstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
-position = Vector2(-20, -125)
+scale = Vector2(0.65, 0.65)
 
 [node name="UpstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
 custom_minimum_size = Vector2(375, 370)
@@ -261,85 +380,172 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -475.0
-offset_top = -550.0
-offset_right = -100.0
-offset_bottom = -100.0
+offset_right = 430.0
+offset_bottom = 543.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(1.25, 1.25)
+scale = Vector2(1.438, 1.25)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("7_7ntu3")
-
-[node name="Cam2" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
-position = Vector2(-56, -498)
-script = ExtResource("5_cloq7")
-camera_id = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam2"]
-texture = ExtResource("8_gmwvv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam2"]
-shape = SubResource("RectangleShape2D_66n3m")
+texture = ExtResource("9_vbod4")
 
 [node name="Cam7" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
-position = Vector2(-424, -476)
+position = Vector2(143.53, 15.2941)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 7
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7"]
-texture = ExtResource("8_gmwvv")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7"]
+rotation = 2.53945
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_txqj1")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -94.5
+offset_right = 39.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "6"
+label_settings = ExtResource("7_mad33")
 
 [node name="Cam8" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
-position = Vector2(-394, -264)
+position = Vector2(71.5383, 356.154)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 8
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8"]
-texture = ExtResource("8_gmwvv")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8"]
+rotation = -1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_ym6lf")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -94.5
+offset_right = 39.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "7"
+label_settings = ExtResource("7_mad33")
 
 [node name="Cam9" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
-position = Vector2(-77, -286)
+position = Vector2(488.235, 342.353)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 9
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9"]
-texture = ExtResource("8_gmwvv")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9"]
+rotation = -0.888373
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_mgpaf")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -94.5
+offset_right = 39.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "8"
+label_settings = ExtResource("7_mad33")
 
 [node name="Cam10" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
-position = Vector2(-88, -175)
+position = Vector2(610, 460.769)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10"]
-texture = ExtResource("8_gmwvv")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10"]
+rotation = -2.79253
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_u7kgo")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -94.5
+offset_right = 39.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "9"
+label_settings = ExtResource("7_mad33")
 
 [node name="Cam11" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
-position = Vector2(-248, -141)
+position = Vector2(214.615, 511.538)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("5_cloq7")
 camera_id = 11
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11"]
-texture = ExtResource("8_gmwvv")
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11"]
+rotation = -1.01578
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("CircleShape2D_88wjo")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+label_settings = ExtResource("7_mad33")
 
 [node name="Toggle" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
-position = Vector2(-593, -197)
+position = Vector2(-139, 285)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("5_cloq7")
 
@@ -347,21 +553,105 @@ script = ExtResource("5_cloq7")
 texture = ExtResource("8_gmwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
-shape = SubResource("RectangleShape2D_66n3m")
+shape = SubResource("RectangleShape2D_55xhy")
+
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+position = Vector2(-106, -144)
+
+[node name="Cam1" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D" node_paths=PackedStringArray("player_sta")]
+position = Vector2(99.2059, 494.441)
+scale = Vector2(0.26, 0.26)
+script = ExtResource("5_cloq7")
+camera_id = 1
+player_sta = NodePath("../../../../../..")
+
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam1"]
+rotation = -0.698132
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam1/Node2D"]
+position = Vector2(220, 0)
+texture = ExtResource("6_filoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam1"]
+position = Vector2(90.1963, -74.5098)
+shape = SubResource("CircleShape2D_4sbss")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam1"]
+offset_left = -11.7642
+offset_top = -188.235
+offset_right = 182.236
+offset_bottom = 30.7646
+size_flags_horizontal = 4
+text = "1"
+label_settings = ExtResource("7_mad33")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cam2" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D" node_paths=PackedStringArray("player_sta")]
+position = Vector2(491.5, 161.5)
+scale = Vector2(0.26, 0.26)
+script = ExtResource("5_cloq7")
+camera_id = 2
+player_sta = NodePath("../../../../../..")
+
+[node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam2"]
+rotation = -3.66519
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam2/Node2D"]
+position = Vector2(102.5, 0)
+texture = ExtResource("6_filoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam2"]
+shape = SubResource("CircleShape2D_2vprs")
+
+[node name="Label" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -96.0
+offset_right = 103.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "2"
+label_settings = ExtResource("7_mad33")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Room" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 261.0
+offset_top = -71.0
+offset_right = 406.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Front Stairs"
+label_settings = SubResource("LabelSettings_omgku")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_started"]
 [connection signal="mouse_entered" from="PlayerHUD/MarginContainer/VBoxContainer/ColorRect" to="PlayerHUD" method="_on_color_rect_mouse_entered"]
-[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam1" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam1" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam6" method="_on_input_event"]
-[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam2" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam2" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam7" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam8" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam9" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam10" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap/Cam11" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle" method="_on_input_event"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam1" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam1" method="_on_input_event"]
+[connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam2" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Node2D/Cam2" method="_on_input_event"]

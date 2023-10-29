@@ -6,6 +6,12 @@ extends Control
 var power_usage : int = 1
 var power_level : float = 100
 
+var last_time : float = 0.0
+var drain_time : float = 1
+var drain_rate : float = 9.6
+
+signal power_loss
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	power_usage = 1
@@ -13,11 +19,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	power_level -= delta * power_usage * 0.1
+	var current_time = Time.get_unix_time_from_system()	
+	var power_decrease : float = (drain_rate * 0.01) * (1.0 / (float)(2**(power_usage - 1)))
+	
+	if current_time - last_time >= drain_time:
+		print("%.02f - %.02f = %.02f" % [power_level, power_decrease, power_level - power_decrease])
+		power_level -= power_decrease
+		last_time = current_time
 	
 	if power_level <= 0.0:
-		await get_tree().create_timer(4).timeout
-		get_tree().quit()
+		emit_signal("power_loss")
+		return
 	
 	power_label.text = "Power: %d%%" % power_level
 	usage_label.text = "Usage: %s" % (power_usage)

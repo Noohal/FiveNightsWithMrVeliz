@@ -33,6 +33,8 @@ signal jumpscare_freddy
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await game.ready
+	enabled = !(Global.current_night == 0 || Global.current_night == 1)
+	
 	$Toilet.visible = false
 	$MelvinJet.visible = false
 	
@@ -57,19 +59,19 @@ func _process(delta):
 
 func _on_timer_timeout():
 	if !enabled:
-		print("FREDDY NOT ENABLED")
+		#print("FREDDY NOT ENABLED")
 		return
 	
 	if !bonnie_left_spawn && !chica_left_spawn:
-		print("FREDDY -- SOMEONE IN SPAWN")
+		#print("FREDDY -- SOMEONE IN SPAWN")
 		return
 	
 	if game.watching_cam && !is_attacking:
-		print("FREDDY -- NOT ATTACKING LOCKED")
+		# print("FREDDY -- NOT ATTACKING LOCKED")
 		return
 	
 	if watching_final_cam && is_attacking:
-		print("FREDDY -- ATTACKING LOCKED")
+		# print("FREDDY -- ATTACKING LOCKED")
 		return
 	
 	if waiting_to_move:
@@ -85,10 +87,11 @@ func _on_timer_timeout():
 		else:
 			regular_freddy_pattern(check)
 	else:
-		print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
+		pass
+		# print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
 
 func regular_freddy_pattern(check : int) -> void:
-	print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
+	# print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
 	# Figure out where to move to
 	current_pos += 1
 	

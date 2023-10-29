@@ -4,7 +4,8 @@ extends Control
 @onready var countdown_label : Label = $"MarginContainer/VBoxContainer/Label"
 
 var current_time : int
-var hour_interval : float = 85.0
+var night_one_length : float = 70.0
+var hour_interval : float = 80.0
 var time_left : float
 
 signal hour_change(hour : int)
@@ -12,7 +13,7 @@ signal hour_change(hour : int)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_time = 0
-	$Timer.wait_time = hour_interval
+	$Timer.wait_time = night_one_length if Global.current_night == 0 else hour_interval
 	$Timer.start()
 	time_left = hour_interval
 	hour_label.text = "12AM"
@@ -32,5 +33,4 @@ func _on_timer_timeout():
 	
 	hour_label.text = str(current_time) + "AM"
 	emit_signal("hour_change", current_time)
-	print("AI_INCREASE")
 	time_left = hour_interval

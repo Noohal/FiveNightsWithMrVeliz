@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=59 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Clock.gd" id="2_wbynu"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/Rooms/MediumRoomVariant.tscn" id="21_1u0cj"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Rooms/Hallway.tscn" id="22_rdxcp"]
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="23_6kqpv"]
+[ext_resource type="AudioStream" uid="uid://d2bj8np533oxl" path="res://Sounds/Enemy/Jumpscare1.mp3" id="28_ymlwh"]
 
 [sub_resource type="Animation" id="Animation_4gn8d"]
 length = 0.001
@@ -660,7 +661,7 @@ text = "Power:"
 label_settings = ExtResource("3_ddate")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("5_s456a")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 0)
+transform = Transform3D(-0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642788, -1.5, 1, 0)
 camera_parent = NodePath("../Cameras")
 
 [node name="Camera3D" parent="Player" index="0"]
@@ -714,7 +715,7 @@ transform = Transform3D(-0.75, 0, 1.90139e-06, 0, 0.75, 0, -1.90139e-06, 0, -0.7
 enabled = true
 enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/12"), NodePath("../MapPoints/8"), NodePath("../MapPoints/2D"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice"), NodePath("../MapPoints/Jumpscare")]
 enemy_rotations = Array[Vector3]([Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 0, 0), Vector3(0, -2.44346, 0), Vector3(0, 0, 0)])
-night_AI_levels = Array[int]([0, 1, 5, 4, 7, 12])
+night_AI_levels = Array[int]([0, 2, 5, 4, 7, 12])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cabron"]
 libraries = {
@@ -857,6 +858,15 @@ spot_range = 3.2
 spot_attenuation = 1.46409
 spot_angle = 46.67
 
+[node name="LightLeftOut" type="SpotLight3D" parent="Office"]
+transform = Transform3D(0.996363, -0.0405099, -0.0749622, -1.10299e-08, 0.879756, -0.475425, 0.0852078, 0.473696, 0.876557, 0.452626, 0.477475, -1.3399)
+light_energy = 0.638
+shadow_enabled = true
+spot_range = 2.582
+spot_attenuation = 1.07178
+spot_angle = 34.27
+spot_angle_attenuation = 2.21914
+
 [node name="LightRight" type="SpotLight3D" parent="Office"]
 transform = Transform3D(-0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, -1, 1, 1.25)
 light_energy = 0.638
@@ -865,9 +875,18 @@ spot_range = 3.2
 spot_attenuation = 1.46409
 spot_angle = 46.67
 
+[node name="LightRightOut" type="SpotLight3D" parent="Office"]
+transform = Transform3D(-0.997218, 0, 0.074544, 0, 1, 0, -0.074544, 0, -0.997218, 0.680794, 0.987634, 1.25)
+light_energy = 0.638
+shadow_enabled = true
+spot_range = 2.558
+spot_attenuation = 1.10957
+spot_angle = 30.3
+spot_angle_attenuation = 2.0
+
 [node name="AmbientSound" type="AudioStreamPlayer" parent="Office"]
 stream = ExtResource("16_tv8hw")
-volume_db = -16.0
+volume_db = -20.0
 
 [node name="DoorOpen" type="AudioStreamPlayer" parent="Office"]
 stream = ExtResource("17_adapa")
@@ -1223,11 +1242,15 @@ far = 100.0
 environment = ExtResource("23_6kqpv")
 camera_attributes = SubResource("CameraAttributesPractical_7pf37")
 
+[node name="Jumpscare1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_ymlwh")
+
 [connection signal="getting_killed" from="." to="Player" method="_on_node_3d_getting_killed"]
 [connection signal="hour_change" from="UI/Clock" to="Shashumga" method="_on_clock_hour_change"]
 [connection signal="hour_change" from="UI/Clock" to="Cabron" method="_on_clock_hour_change"]
 [connection signal="hour_change" from="UI/Clock" to="Stonedome" method="_on_clock_hour_change"]
 [connection signal="timeout" from="UI/Clock/Timer" to="UI/Clock" method="_on_timer_timeout"]
+[connection signal="power_loss" from="UI/Power" to="." method="_on_power_power_loss"]
 [connection signal="camera_state_change" from="Player" to="." method="_on_player_camera_state_change"]
 [connection signal="camera_state_change" from="Player" to="UI/Power" method="_on_player_camera_state_change"]
 [connection signal="camera_state_change" from="Player" to="Stonedome" method="_on_player_camera_state_change"]
