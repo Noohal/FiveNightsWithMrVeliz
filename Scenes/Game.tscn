@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=64 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Clock.gd" id="2_wbynu"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Power.gd" id="4_o8gq6"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="5_s456a"]
 [ext_resource type="PackedScene" uid="uid://1c8kycgyem3" path="res://Scenes/Enemy/Melvinzord.tscn" id="6_6bp1m"]
+[ext_resource type="AudioStream" uid="uid://cpyywk4y28loc" path="res://Sounds/Player/toggle_monitors.wav" id="6_yl24e"]
+[ext_resource type="AudioStream" uid="uid://d1rexwe14i2vn" path="res://Sounds/Player/Switch_Cam.wav" id="7_adpj8"]
 [ext_resource type="PackedScene" uid="uid://cfnw8k6pdi7uk" path="res://Scenes/Enemy/Shashumga.tscn" id="7_qg7jb"]
 [ext_resource type="AudioStream" uid="uid://bvja051f6cfuq" path="res://Sounds/Enemy/Shashumga/Danger Alarm Meme Sound Effect.mp3" id="8_anank"]
 [ext_resource type="PackedScene" uid="uid://dkdeu8ao8b384" path="res://Scenes/Enemy/Cabron.tscn" id="9_wey61"]
@@ -29,6 +31,13 @@
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="23_6kqpv"]
 [ext_resource type="AudioStream" uid="uid://d2bj8np533oxl" path="res://Sounds/Enemy/Jumpscare1.mp3" id="28_ymlwh"]
 [ext_resource type="AudioStream" uid="uid://cobchr0m3gy4" path="res://Sounds/Enemy/Melvinzord/harharharhar_orchestral.wav" id="29_tls7e"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ijxsb"]
+noise_type = 3
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h5te0"]
+noise = SubResource("FastNoiseLite_ijxsb")
 
 [sub_resource type="Animation" id="Animation_4gn8d"]
 length = 0.001
@@ -540,6 +549,7 @@ background_mode = 1
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ht038")
+noise = SubResource("NoiseTexture2D_h5te0")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -669,7 +679,11 @@ camera_parent = NodePath("../Cameras")
 environment = null
 far = 4000.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+[node name="ToggleCameras" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("6_yl24e")
+
+[node name="SwitchCams" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("7_adpj8")
 
 [node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("6_6bp1m")]
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, -0.297261, 20)
@@ -1257,11 +1271,6 @@ stream = ExtResource("29_tls7e")
 [connection signal="hour_change" from="UI/Clock" to="Stonedome" method="_on_clock_hour_change"]
 [connection signal="timeout" from="UI/Clock/Timer" to="UI/Clock" method="_on_timer_timeout"]
 [connection signal="power_loss" from="UI/Power" to="." method="_on_power_power_loss"]
-[connection signal="camera_state_change" from="Player" to="." method="_on_player_camera_state_change"]
-[connection signal="camera_state_change" from="Player" to="UI/Power" method="_on_player_camera_state_change"]
-[connection signal="camera_state_change" from="Player" to="Stonedome" method="_on_player_camera_state_change"]
-[connection signal="watching_camera_num" from="Player" to="Melvinzord" method="_on_player_watching_camera_num"]
-[connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
 [connection signal="jumpscare_freddy" from="Melvinzord" to="." method="_on_melvinzord_jumpscare_freddy"]
 [connection signal="bonnie_left_spawn" from="Shashumga" to="Melvinzord" method="_on_shashumga_bonnie_left_spawn"]
 [connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]

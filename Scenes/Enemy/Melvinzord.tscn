@@ -238,7 +238,7 @@ transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 
 visible = false
 
 [node name="Nose" type="Node3D" parent="MelvinJet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271761, 0.371194, -0.682871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271761, 0.762688, -0.682871)
 
 [node name="Nose" type="MeshInstance3D" parent="MelvinJet/Nose"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.84288e-08, -0.393992, -0.321434)

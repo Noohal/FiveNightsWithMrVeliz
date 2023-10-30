@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var noise : NoiseTexture2D
+
 @onready var UI : Control = $UI
 @onready var NightLabel : Label = $UI/Clock/MarginContainer/NightLabel
 @onready var player_camera_bar : ColorRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/ColorRect"
@@ -28,6 +30,9 @@ var elapsed_time : float = 0.0
 var accumulated_time : float = 0.0
 
 var freddy_playing_music_box : bool = false
+var eyes_on : bool = false
+
+@onready var left_eye : ORMMaterial3D = $"Melvinzord/BattleMode/head/eyeball".get_surface_override_material(0)
 
 func _process(delta):
 	if !power_loss_jumpscare:
@@ -35,6 +40,14 @@ func _process(delta):
 	elapsed_time += delta
 	accumulated_time += delta
 	
+	if freddy_playing_music_box:
+		rand.randomize()
+		var time = rand.randf_range(0.2, 0.6)
+		await get_tree().create_timer(time).timeout
+		var sampled_noise : float = 10.0* abs(noise.noise.get_noise_1d(accumulated_time))
+		print("%.02f FLICKER: %.02f" % [time, sampled_noise])
+		left_eye.emission_energy_multiplier = sampled_noise
+		
 	if accumulated_time >= 20.0:
 		if freddy_playing_music_box:
 			await get_tree().create_timer(1.2).timeout
@@ -75,7 +88,7 @@ func freddy_power_jumpscare() -> void:
 	await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
-	$"Melvinzord/AnimationPlayer".play("change_into_super_toilet")
+	$"Melvinzord/AnimationPlayer".play("fatality")
 	exit_game()
 	
 func turn_off_hud():

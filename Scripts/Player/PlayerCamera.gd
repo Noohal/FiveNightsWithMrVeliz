@@ -80,9 +80,11 @@ func toggle_camera() -> void:
 		return
 	watching_camera = !watching_camera
 	if watching_camera:
+		$"ToggleCameras".play()
 		anim.play("screen_up")
 	else:
 		anim.play("screen_down")
+		$"ToggleCameras".play()
 		last_camera = current_camera
 		set_camera(0)
 		player_hud.toggle_ui(false)
@@ -90,6 +92,9 @@ func toggle_camera() -> void:
 		emit_signal("camera_state_change", false)
 
 func set_camera(camera_id : int):
+	print("%s to %s." % [current_camera, camera_id])
+	if current_camera != camera_id:
+		$"SwitchCams".play()
 	for cam in cameras:
 		var target_cam = "Cam%s" % camera_id
 		if cam.name == target_cam:
