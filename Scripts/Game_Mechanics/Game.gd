@@ -5,8 +5,14 @@ extends Node3D
 @onready var UI : Control = $UI
 @onready var NightLabel : Label = $UI/Clock/MarginContainer/NightLabel
 @onready var player_camera_bar : ColorRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/ColorRect"
+@onready var left_eye : ORMMaterial3D = $"Melvinzord/BattleMode/body/head/eyeball".get_surface_override_material(0)
 
 var rand = RandomNumberGenerator.new()
+var elapsed_time : float = 0.0
+var accumulated_time : float = 0.0
+
+var freddy_playing_music_box : bool = false
+var eyes_on : bool = false
 
 var left_door_close : bool = false
 var right_door_close : bool = false
@@ -21,18 +27,9 @@ var power_loss_jumpscare : bool = false
 signal getting_killed
 
 func _ready():
-	await Global.ready
-	#current_night = Global.current_night
-	current_night = 2
+	
+	current_night = Global.current_night
 	NightLabel.text = "Night " + str(current_night+1)
-
-var elapsed_time : float = 0.0
-var accumulated_time : float = 0.0
-
-var freddy_playing_music_box : bool = false
-var eyes_on : bool = false
-
-@onready var left_eye : ORMMaterial3D = $"Melvinzord/BattleMode/head/eyeball".get_surface_override_material(0)
 
 func _process(delta):
 	if !power_loss_jumpscare:
@@ -89,14 +86,14 @@ func freddy_power_jumpscare() -> void:
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
 	$"Melvinzord/AnimationPlayer".play("fatality")
-	exit_game()
+	game_over()
 	
 func turn_off_hud():
 	UI.visible = false
 	player_camera_bar.visible = false
 	emit_signal("getting_killed")
 
-func exit_game():
+func game_over():
 	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
 
@@ -121,7 +118,7 @@ func _on_melvinzord_jumpscare_freddy():
 	else:
 		$"Melvinzord/AnimationPlayer".play("fatality")
 		#$"Jumpscare1".play()
-	exit_game()
+	game_over()
 
 func _on_shashumga_jumpscare_bonnie():
 	getting_scared = true
@@ -131,7 +128,7 @@ func _on_shashumga_jumpscare_bonnie():
 	turn_off_hud()
 	$"Shashumga/jumpscare".play("bonnie_boo")
 	#$"Jumpscare1".play()
-	exit_game()
+	game_over()
 
 func _on_cabron_jumpscare_chica():
 	getting_scared = true
@@ -141,7 +138,7 @@ func _on_cabron_jumpscare_chica():
 	turn_off_hud()
 	$"Cabron/AnimationPlayer".play("chica_scare")
 	#$"Jumpscare1".play()
-	exit_game()
+	game_over()
 
 func _on_stonedome_jumpscare_foxy():
 	getting_scared = true
@@ -150,7 +147,7 @@ func _on_stonedome_jumpscare_foxy():
 	turn_off_hud()
 	$"Stonedome/AnimationPlayer".play("stage_5_running")
 	#$"Jumpscare1".play()
-	exit_game()
+	game_over()
 	
 func _on_player_camera_state_change(watching):
 	watching_cam = watching

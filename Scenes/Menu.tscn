@@ -1,23 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://q0psfhqxessn"]
+[gd_scene load_steps=7 format=3 uid="uid://q0psfhqxessn"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_s0l6e"]
-[ext_resource type="Texture2D" uid="uid://dp1lvkxbt5sl7" path="res://Textures/menu_bg.png" id="2_pskor"]
+[ext_resource type="FontFile" uid="uid://bsxtrieyd4pm" path="res://Font/Arvo-Regular.ttf" id="2_rtt1k"]
+[ext_resource type="FontFile" uid="uid://e5dh7lckob2m" path="res://Font/Arvo-Bold.ttf" id="3_c7v7t"]
+[ext_resource type="FontFile" uid="uid://egsd3p0tswmb" path="res://Font/Arvo-Italic.ttf" id="4_b3bib"]
+[ext_resource type="FontFile" uid="uid://bvy47fom06qx0" path="res://Font/Arvo-BoldItalic.ttf" id="5_g11qx"]
+[ext_resource type="Theme" uid="uid://d3yhias40i0q2" path="res://Font/Main_Menu_UI.tres" id="6_b7ysu"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_0q207"]
-font_size = 128
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmomp"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrwkj"]
-bg_color = Color(0.301961, 0.301961, 0.301961, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0pnh"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq8ni"]
-
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("continue_btn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,58 +15,75 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s0l6e")
+continue_btn = NodePath("CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer/Continue")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_pskor")
+theme_override_constants/margin_left = 110
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_bottom = 110
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+[node name="TitleMargin" type="MarginContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/TitleMargin"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/TitleMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_rtt1k")
+theme_override_fonts/bold_font = ExtResource("3_c7v7t")
+theme_override_fonts/italics_font = ExtResource("4_b3bib")
+theme_override_fonts/bold_italics_font = ExtResource("5_g11qx")
+theme_override_font_sizes/normal_font_size = 90
+theme_override_font_sizes/bold_font_size = 90
+theme_override_font_sizes/italics_font_size = 90
+theme_override_font_sizes/bold_italics_font_size = 90
+bbcode_enabled = true
+text = "[i]Five Nights with
+Mr. Veliz[/i]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="ButtonMargin" type="MarginContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ButtonMargin"]
 layout_mode = 2
-text = "Five Nights with
-Mr. Veliz"
-label_settings = SubResource("LabelSettings_0q207")
-
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(450, 125)
-layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmomp")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yrwkj")
-text = "Play"
+theme_override_constants/separation = 32
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(450, 125)
+[node name="Continue" type="Button" parent="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer"]
+visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-theme_override_styles/normal = SubResource("StyleBoxFlat_k0pnh")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nq8ni")
-text = "Quit"
+theme = ExtResource("6_b7ysu")
+text = "Continue"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/Quit" to="." method="_on_quit_pressed"]
+[node name="NewGame" type="Button" parent="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_b7ysu")
+text = "New Game"
+
+[node name="More" type="Button" parent="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_b7ysu")
+text = "More"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_b7ysu")
+text = "Quit "
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer/More" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonMargin/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

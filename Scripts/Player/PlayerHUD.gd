@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player : Node3D = get_parent()
+@onready var player : Node3D = $"../"
 @onready var map : Node2D = $"MarginContainer/HBoxContainer/ButtonMap"
 @onready var downstairs : Node2D = $"MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"
 @onready var upstairs : Node2D= $"MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"

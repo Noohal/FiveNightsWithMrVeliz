@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var player_cam : Camera3D = $Camera3D
-@onready var player_hud : Control = $PlayerHUD
+@onready var player_hud : Control = $"PlayerHUD"
 @onready var camera_location : Label = $"PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Room"
 
 @export var camera_rooms : Array[String]
@@ -92,7 +92,6 @@ func toggle_camera() -> void:
 		emit_signal("camera_state_change", false)
 
 func set_camera(camera_id : int):
-	print("%s to %s." % [current_camera, camera_id])
 	if current_camera != camera_id:
 		$"SwitchCams".play()
 	for cam in cameras:

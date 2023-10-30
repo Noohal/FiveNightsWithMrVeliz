@@ -63,41 +63,6 @@ uv1_scale = Vector3(1.795, 1.795, 1.795)
 [sub_resource type="BoxMesh" id="BoxMesh_xe5me"]
 size = Vector3(1.15, 1.5, 0.75)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1u4t"]
-albedo_texture = ExtResource("2_1mljs")
-uv1_scale = Vector3(2.915, 2.11, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6we4i"]
-size = Vector3(0.5, 1.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er5cd"]
-albedo_texture = ExtResource("2_1mljs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mih77"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xr8ye"]
-material = SubResource("StandardMaterial3D_mih77")
-size = Vector3(0.5, 0.1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw6u7"]
-albedo_texture = ExtResource("2_1mljs")
-uv1_scale = Vector3(2.915, 2.11, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1v8d"]
-albedo_texture = ExtResource("2_1mljs")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ax4h6"]
-albedo_texture = ExtResource("3_6pvuk")
-uv1_scale = Vector3(1.845, 1.845, 1.845)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lykjg"]
-size = Vector3(0.5, 1.25, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utmpv"]
-albedo_texture = ExtResource("3_6pvuk")
-uv1_scale = Vector3(1.845, 1.845, 1.845)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooaw8"]
 albedo_texture = ExtResource("4_4cjw0")
 uv1_scale = Vector3(0.705, 0.54, 0.56)
@@ -129,6 +94,41 @@ emission_texture = ExtResource("6_o3gno")
 normal_scale = -1.61
 uv1_scale = Vector3(-2.735, -1.915, -1.915)
 uv1_offset = Vector3(-0.145, 0.45, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ax4h6"]
+albedo_texture = ExtResource("3_6pvuk")
+uv1_scale = Vector3(1.845, 1.845, 1.845)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lykjg"]
+size = Vector3(0.5, 1.25, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utmpv"]
+albedo_texture = ExtResource("3_6pvuk")
+uv1_scale = Vector3(1.845, 1.845, 1.845)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1u4t"]
+albedo_texture = ExtResource("2_1mljs")
+uv1_scale = Vector3(2.915, 2.11, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6we4i"]
+size = Vector3(0.5, 1.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er5cd"]
+albedo_texture = ExtResource("2_1mljs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mih77"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xr8ye"]
+material = SubResource("StandardMaterial3D_mih77")
+size = Vector3(0.5, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw6u7"]
+albedo_texture = ExtResource("2_1mljs")
+uv1_scale = Vector3(2.915, 2.11, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1v8d"]
+albedo_texture = ExtResource("2_1mljs")
 
 [sub_resource type="BoxMesh" id="BoxMesh_dowqp"]
 size = Vector3(1, 0.5, 1)
@@ -185,7 +185,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BattleMode/head/eyeball:surface_material_override/0:emission_energy_multiplier")
+tracks/1/path = NodePath("BattleMode/body/head/eyeball:surface_material_override/0:emission_energy_multiplier")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -200,7 +200,7 @@ resource_name = "new_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BattleMode/head/eyeball:surface_material_override/0")
+tracks/0/path = NodePath("BattleMode/body/head/eyeball:surface_material_override/0")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -212,7 +212,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BattleMode/head/eyeball:surface_material_override/0:emission_energy_multiplier")
+tracks/1/path = NodePath("BattleMode/body/head/eyeball:surface_material_override/0:emission_energy_multiplier")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -303,6 +303,40 @@ material_override = SubResource("StandardMaterial3D_me2ed")
 mesh = SubResource("BoxMesh_xe5me")
 skeleton = NodePath("../..")
 
+[node name="head" type="MeshInstance3D" parent="BattleMode/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18197, 0)
+material_override = SubResource("StandardMaterial3D_ooaw8")
+mesh = SubResource("BoxMesh_pysyw")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleMode/body/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24065, 0.0326722, -0.452245)
+visible = false
+mesh = SubResource("BoxMesh_0umtu")
+
+[node name="eyeball" type="MeshInstance3D" parent="BattleMode/body/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140737, 0.0846734, -0.433006)
+mesh = SubResource("SphereMesh_x7cs0")
+surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
+
+[node name="eyeball2" type="MeshInstance3D" parent="BattleMode/body/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.209833, 0.0845389, -0.433006)
+mesh = SubResource("SphereMesh_x7cs0")
+surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
+
+[node name="arm" type="MeshInstance3D" parent="BattleMode/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825, 0.0862291, 0)
+material_override = SubResource("StandardMaterial3D_ax4h6")
+mesh = SubResource("BoxMesh_lykjg")
+skeleton = NodePath("../../..")
+
+[node name="arm2" type="MeshInstance3D" parent="BattleMode/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825, 0.0862291, 0)
+material_override = SubResource("StandardMaterial3D_utmpv")
+lod_bias = 0.001
+mesh = SubResource("BoxMesh_lykjg")
+skeleton = NodePath("../../..")
+
 [node name="leg" type="MeshInstance3D" parent="BattleMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325, -1.2, 0)
 material_override = SubResource("StandardMaterial3D_p1u4t")
@@ -324,40 +358,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -0.25)
 material_override = SubResource("StandardMaterial3D_f1v8d")
 mesh = SubResource("BoxMesh_xr8ye")
-
-[node name="arm" type="MeshInstance3D" parent="BattleMode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825, 0.336229, 0)
-material_override = SubResource("StandardMaterial3D_ax4h6")
-mesh = SubResource("BoxMesh_lykjg")
-skeleton = NodePath("../..")
-
-[node name="arm2" type="MeshInstance3D" parent="BattleMode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825, 0.336229, 0)
-material_override = SubResource("StandardMaterial3D_utmpv")
-lod_bias = 0.001
-mesh = SubResource("BoxMesh_lykjg")
-skeleton = NodePath("../..")
-
-[node name="head" type="MeshInstance3D" parent="BattleMode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43197, 0)
-material_override = SubResource("StandardMaterial3D_ooaw8")
-mesh = SubResource("BoxMesh_pysyw")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleMode/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24065, 0.0326722, -0.452245)
-visible = false
-mesh = SubResource("BoxMesh_0umtu")
-
-[node name="eyeball" type="MeshInstance3D" parent="BattleMode/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140737, 0.0846734, -0.433006)
-mesh = SubResource("SphereMesh_x7cs0")
-surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
-
-[node name="eyeball2" type="MeshInstance3D" parent="BattleMode/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.209833, 0.0845389, -0.433006)
-mesh = SubResource("SphereMesh_x7cs0")
-surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
 
 [node name="Toilet" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

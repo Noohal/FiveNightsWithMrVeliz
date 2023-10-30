@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dpxw6l5h02ggk"]
+
+[sub_resource type="SystemFont" id="SystemFont_npi7h"]
+
+[resource]
+font = SubResource("SystemFont_npi7h")
+font_size = 136

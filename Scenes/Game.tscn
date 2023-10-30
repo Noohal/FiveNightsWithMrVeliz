@@ -1,8 +1,10 @@
-[gd_scene load_steps=64 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=66 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
+[ext_resource type="Script" path="res://Scripts/PhoneGuyController.gd" id="2_k26nj"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Clock.gd" id="2_wbynu"]
-[ext_resource type="LabelSettings" uid="uid://b5nfth8dtmleb" path="res://UIText.tres" id="3_ddate"]
+[ext_resource type="LabelSettings" uid="uid://b5nfth8dtmleb" path="res://Font/UIText.tres" id="3_ddate"]
+[ext_resource type="AudioStream" uid="uid://3vju802uj2gx" path="res://Sounds/PhoneGuy/Night1_v2.wav" id="3_nev80"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Power.gd" id="4_o8gq6"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="5_s456a"]
 [ext_resource type="PackedScene" uid="uid://1c8kycgyem3" path="res://Scenes/Enemy/Melvinzord.tscn" id="6_6bp1m"]
@@ -80,38 +82,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BattleMode/arm:rotation")
+tracks/3/path = NodePath(".:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -1.5708, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BattleMode/arm:position")
+tracks/4/path = NodePath("BattleMode/body:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.825, 0.336229, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.5708, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mj68p"]
@@ -168,6 +158,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_5mrap"]
 resource_name = "fatality"
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -175,34 +166,22 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.95),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -0.297261, 20), Vector3(0.874809, -0.582733, 19.8724)]
+"values": [Vector3(0.479328, -0.263792, 20), Vector3(1.50776, -0.263792, 19.9001)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BattleMode/arm:rotation")
+tracks/1/path = NodePath("BattleMode/body:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.35, 0.4, 0.45, 0.55, 0.6, 0.7, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5708, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BattleMode/arm:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.825, 0.336229, 0), Vector3(0.824993, 0.663647, -0.733608)]
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0), Vector3(0, 0.143117, -0.282743), Vector3(0, -0.284489, 0.141372), Vector3(0, -0.141372, -0.424115), Vector3(0, 0, -6.10516), Vector3(0, 0, -0.305433), Vector3(0, 0, 0.39968), Vector3(-0.143117, -0.270526, 0.258309), Vector3(0.284489, 0.15708, -0.588176), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3odnq"]
@@ -551,6 +530,14 @@ background_mode = 1
 script = ExtResource("1_ht038")
 noise = SubResource("NoiseTexture2D_h5te0")
 
+[node name="PhoneGuyController" type="Node" parent="." node_paths=PackedStringArray("audio")]
+script = ExtResource("2_k26nj")
+audio = [NodePath("Night1")]
+
+[node name="Night1" type="AudioStreamPlayer" parent="PhoneGuyController"]
+stream = ExtResource("3_nev80")
+volume_db = -3.0
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -660,11 +647,13 @@ alignment = 2
 
 [node name="UsageLabel" type="Label" parent="UI/Power/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 text = "Usage:"
 label_settings = ExtResource("3_ddate")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Power/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="PowerLevel" type="Label" parent="UI/Power/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -675,15 +664,13 @@ label_settings = ExtResource("3_ddate")
 transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -1.5, 1, 0)
 camera_parent = NodePath("../Cameras")
 
-[node name="Camera3D" parent="Player" index="0"]
-environment = null
-far = 4000.0
-
 [node name="ToggleCameras" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("6_yl24e")
+volume_db = -5.0
 
 [node name="SwitchCams" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("7_adpj8")
+volume_db = -15.0
 
 [node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("6_6bp1m")]
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, -0.297261, 20)
@@ -693,6 +680,12 @@ freddy_countdown = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyDu
 enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8_F"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U_F"), NodePath("../MapPoints/4_F"), NodePath("../MapPoints/5_F"), NodePath("../MapPoints/Jumpscare"), NodePath("../MapPoints/LeftOfficeFreddy")]
 enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.0088, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, -0.963666, 0), Vector3(0.38858, 0.807023, 0), Vector3(0, -1.5708, 0), Vector3(0, 2.37576, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
+
+[node name="body" parent="Melvinzord/BattleMode" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="Toilet" parent="Melvinzord" index="2"]
+transform = Transform3D(-0.75, 0, -1.13247e-07, 0, 0.75, 0, 1.13247e-07, 0, -0.75, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Melvinzord"]
 libraries = {
@@ -896,9 +889,9 @@ spot_attenuation = 1.10957
 spot_angle = 30.3
 spot_angle_attenuation = 2.0
 
-[node name="AmbientSound" type="AudioStreamPlayer" parent="Office"]
+[node name="AmbientSound" type="AudioStreamPlayer" parent="Office" groups=["Persist"]]
 stream = ExtResource("16_tv8hw")
-volume_db = -20.0
+volume_db = -23.0
 
 [node name="DoorOpen" type="AudioStreamPlayer" parent="Office"]
 stream = ExtResource("17_adapa")
@@ -1118,26 +1111,32 @@ omni_range = 25.76
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 27)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Scareroom"]
+layers = 524288
 mesh = SubResource("BoxMesh_xgusk")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Map/Scareroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+layers = 524288
 mesh = SubResource("BoxMesh_xgusk")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Map/Scareroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+layers = 524288
 mesh = SubResource("BoxMesh_6f6b8")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Map/Scareroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+layers = 524288
 mesh = SubResource("BoxMesh_6f6b8")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Map/Scareroom"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 2)
+layers = 524288
 mesh = SubResource("BoxMesh_6f6b8")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Map/Scareroom"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, -2)
+layers = 524288
 mesh = SubResource("BoxMesh_6f6b8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Scareroom"]
@@ -1148,8 +1147,9 @@ omni_range = 70.484
 omni_attenuation = 2.2974
 
 [node name="ScareCam" type="Camera3D" parent="Map/Scareroom"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.84485, 0.472535, 0)
-fov = 42.8
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.84485, 1.1736, 0)
+cull_mask = 524287
+fov = 50.0
 
 [node name="TransformRoom" type="Node3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 27)
@@ -1291,4 +1291,5 @@ stream = ExtResource("29_tls7e")
 [connection signal="finished" from="Office/AmbientSound" to="Office" method="_on_ambient_sound_finished"]
 
 [editable path="Player"]
+[editable path="Melvinzord"]
 [editable path="Shashumga"]

@@ -90,7 +90,7 @@ func _on_timer_timeout():
 		pass
 		# print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
 
-func regular_freddy_pattern(check : int) -> void:
+func regular_freddy_pattern(_check : int) -> void:
 	# print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
 	# Figure out where to move to
 	current_pos += 1

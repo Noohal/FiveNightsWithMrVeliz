@@ -21,6 +21,8 @@ signal jumpscare_bonnie
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await game.ready
+	enabled = false
+	$EnableTimer.start()
 	
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night]
