@@ -80,11 +80,13 @@ func turn_off_music() -> bool:
 	return false
 
 func freddy_power_jumpscare() -> void:
+	power_loss_jumpscare = false
 	$HarHarHarHar.stop()
+	eyes_on = true
 	$Melvinzord.set_freddy_location(6)
 	await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
-	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
+	$"Map/Scareroom/ScareCam".make_current()
 	$"Melvinzord/AnimationPlayer".play("fatality")
 	game_over()
 	
@@ -160,7 +162,12 @@ func _on_power_power_loss():
 	$"Stonedome".enabled = false
 	$"Cabron".enabled = false
 	
-	var dim_value = 0.1
+	var dim_value = 0.05
 	$"Office/Room Light Left".set_param(Light3D.PARAM_ENERGY, dim_value)
 	$"Office/Room Light Middle".set_param(Light3D.PARAM_ENERGY, dim_value)
 	$"Office/Room Light Left2".set_param(Light3D.PARAM_ENERGY, dim_value)
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "fatality" && eyes_on:
+		game_over()

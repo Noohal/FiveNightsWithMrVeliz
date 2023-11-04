@@ -50,5 +50,12 @@ func load_data(path : String):
 		printerr("Cannot parse %s as a json_string: (%s)" % [path, content])
 		return
 	
+	if data.player_data.max_night == -1:
+		data.player_data.max_night = 0
+	elif data.player_data.max_night > 6:
+		data.player_data.max_night = 6
+	else:
+		pass
+	
 	max_night = data.player_data.max_night
 	print("MAX NIGHT: %s" %  max_night)

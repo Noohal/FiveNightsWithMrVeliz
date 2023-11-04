@@ -9,6 +9,9 @@ func _process(_delta):
 	if Global.current_night >= audio.size():
 		return
 	
+	if audio[Global.current_night].playing && Input.is_action_just_pressed("DisablePhoneGuy"):
+		audio[Global.current_night].stop()
+	
 	if played_audio_for_night == false:
 		await get_tree().create_timer(2.0).timeout
 		
