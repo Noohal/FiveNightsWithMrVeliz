@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://1c8kycgyem3"]
+[gd_scene load_steps=56 format=3 uid="uid://1c8kycgyem3"]
 
 [ext_resource type="Texture2D" uid="uid://obphusgkqkvb" path="res://Textures/Enemy/Melvinzord/moai-emoji-dictionary.svg.png" id="1_8pyvt"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Melvinzord.gd" id="1_hohb2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsg2oslvfq0l0" path="res://Textures/Enemy/Cabron/melvin_babayaga.png" id="3_6pvuk"]
 [ext_resource type="Texture2D" uid="uid://d2gxmdggosgnj" path="res://Textures/Enemy/Melvinzord/melvin_selfie.jpg" id="4_4cjw0"]
 [ext_resource type="Texture2D" uid="uid://c5rpbayewa2e5" path="res://Textures/eyetexture - Copy - Copy.png" id="6_vqgw3"]
+[ext_resource type="PackedScene" uid="uid://suedbcern7al" path="res://Models/Melvinzord/Sci-fi_Katana_Swords.tscn" id="7_x2e4l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8uml"]
 albedo_texture = ExtResource("1_8pyvt")
@@ -224,11 +225,11 @@ _data = {
 }
 
 [node name="Melvinzord" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00553942, 0, 0.000892043)
 script = ExtResource("1_hohb2")
 
 [node name="MelvinJet" type="Node3D" parent="."]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+visible = false
 
 [node name="Nose" type="Node3D" parent="MelvinJet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271761, 0.762688, -0.682871)
@@ -315,9 +316,97 @@ skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MelvinJet"]
 
+[node name="MelvinJetIntermediate" type="Node3D" parent="."]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+visible = false
+
+[node name="Nose" type="Node3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00271761, 0.762688, -0.682871)
+
+[node name="Nose" type="MeshInstance3D" parent="MelvinJetIntermediate/Nose"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.84288e-08, -0.393992, -0.321434)
+material_override = SubResource("StandardMaterial3D_l8uml")
+mesh = SubResource("PrismMesh_1hcwd")
+skeleton = NodePath("../..")
+
+[node name="Body" type="MeshInstance3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.375, 0)
+material_override = SubResource("StandardMaterial3D_leo7j")
+mesh = SubResource("BoxMesh_rwinb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MelvinJetIntermediate/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37874, 0.354901)
+mesh = SubResource("BoxMesh_ajpqd")
+
+[node name="R_Leg" type="MeshInstance3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.375, 1.15)
+material_override = SubResource("StandardMaterial3D_cvqpb")
+mesh = SubResource("BoxMesh_bju0j")
+
+[node name="R_Leg_Wing" type="Node3D" parent="MelvinJetIntermediate/R_Leg"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.270137, -0.255377, 2.23517e-08)
+
+[node name="R_Leg_Wing" type="MeshInstance3D" parent="MelvinJetIntermediate/R_Leg/R_Leg_Wing"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.48135, 0.0627821, -5.21541e-08)
+material_override = SubResource("StandardMaterial3D_o7tkh")
+mesh = SubResource("PrismMesh_51hyy")
+skeleton = NodePath("../../..")
+
+[node name="L_Leg" type="MeshInstance3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.375, 1.15)
+material_override = SubResource("StandardMaterial3D_4fb0k")
+mesh = SubResource("BoxMesh_bju0j")
+
+[node name="L_Leg_Wing" type="Node3D" parent="MelvinJetIntermediate/L_Leg"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.263445, -0.242694, -2.23517e-08)
+
+[node name="L_Leg_Wing" type="MeshInstance3D" parent="MelvinJetIntermediate/L_Leg/L_Leg_Wing"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.482295, 0.0542659, 5.96046e-08)
+material_override = SubResource("StandardMaterial3D_d6ne2")
+mesh = SubResource("PrismMesh_51hyy")
+skeleton = NodePath("../../..")
+
+[node name="Arm" type="MeshInstance3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.996036, 0.372979, 0)
+material_override = SubResource("StandardMaterial3D_7ur4c")
+mesh = SubResource("BoxMesh_c47lr")
+
+[node name="Arm2" type="MeshInstance3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.992277, 0.372583, 0)
+material_override = SubResource("StandardMaterial3D_hc8mi")
+mesh = SubResource("BoxMesh_c47lr")
+
+[node name="Node3D" type="Node3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+
+[node name="Head" type="MeshInstance3D" parent="MelvinJetIntermediate/Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.375, -0.5)
+material_override = SubResource("StandardMaterial3D_4ba66")
+mesh = SubResource("BoxMesh_x0lym")
+skeleton = NodePath("../..")
+
+[node name="LeftTit" type="Node3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.35, -0.125)
+
+[node name="LeftTit" type="MeshInstance3D" parent="MelvinJetIntermediate/LeftTit"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.375, 0, -0.25)
+material_override = SubResource("StandardMaterial3D_nxt3m")
+mesh = SubResource("BoxMesh_8di1o")
+skeleton = NodePath("../..")
+
+[node name="RightTit" type="Node3D" parent="MelvinJetIntermediate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.35, -0.125)
+
+[node name="LeftTit2" type="MeshInstance3D" parent="MelvinJetIntermediate/RightTit"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.375, 0, -0.25)
+material_override = SubResource("StandardMaterial3D_3k8h6")
+mesh = SubResource("BoxMesh_8di1o")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MelvinJetIntermediate"]
+
 [node name="BattleMode" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.85, 0)
-visible = false
 
 [node name="body" type="MeshInstance3D" parent="BattleMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -352,6 +441,12 @@ material_override = SubResource("StandardMaterial3D_ax4h6")
 mesh = SubResource("BoxMesh_lykjg")
 skeleton = NodePath("../../..")
 
+[node name="Sword" type="Node3D" parent="BattleMode/body/arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.458918, -0.132614)
+
+[node name="Sci-fi_Katana_Swords" parent="BattleMode/body/arm/Sword" instance=ExtResource("7_x2e4l")]
+transform = Transform3D(-1.09278e-07, 0, -3.75, 0, 3.75, 0, 2.5, 0, -1.63918e-07, 0, -0.1, -1.25)
+
 [node name="arm2" type="MeshInstance3D" parent="BattleMode/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825, 0.0862291, 0)
 material_override = SubResource("StandardMaterial3D_utmpv")
@@ -365,7 +460,7 @@ material_override = SubResource("StandardMaterial3D_p1u4t")
 mesh = SubResource("BoxMesh_6we4i")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleMode/leg"]
+[node name="rightfoot" type="MeshInstance3D" parent="BattleMode/leg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -0.25)
 material_override = SubResource("StandardMaterial3D_er5cd")
 mesh = SubResource("BoxMesh_xr8ye")
@@ -376,7 +471,7 @@ material_override = SubResource("StandardMaterial3D_lw6u7")
 mesh = SubResource("BoxMesh_6we4i")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BattleMode/leg2"]
+[node name="leftfoot" type="MeshInstance3D" parent="BattleMode/leg2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -0.25)
 material_override = SubResource("StandardMaterial3D_f1v8d")
 mesh = SubResource("BoxMesh_xr8ye")

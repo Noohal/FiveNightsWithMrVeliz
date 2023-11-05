@@ -1,5 +1,0 @@
-[gd_resource type="Environment" format=3 uid="uid://dcj6aus4qmvlb"]
-
-[resource]
-ambient_light_source = 1
-sdfgi_bounce_feedback = 0.95

@@ -45,6 +45,7 @@ wait_time = 200.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1497, 0, 0)
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="EnableTimer" to="." method="_on_enable_timer_timeout"]

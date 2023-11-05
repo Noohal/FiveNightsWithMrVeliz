@@ -8,6 +8,8 @@ const SECURITY_KEY = "3F42T98H67"
 var current_night : int
 var max_night : int
 
+var Melvinzord_Sequence : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	verify_save_directory(SAVE_DIR)

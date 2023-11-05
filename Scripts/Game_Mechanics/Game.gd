@@ -69,6 +69,8 @@ func freddy_appears() -> bool:
 
 func turn_on_the_music() -> void:
 	$Melvinzord.set_freddy_location(7)
+	$"Melvinzord/BattleMode/body/head/eyeball".visible = true
+	$"Melvinzord/BattleMode/body/head/eyeball2".visible = true
 	$HarHarHarHar.play()
 	freddy_playing_music_box = true
 	accumulated_time = 0.0
@@ -83,12 +85,14 @@ func freddy_power_jumpscare() -> void:
 	power_loss_jumpscare = false
 	$HarHarHarHar.stop()
 	eyes_on = true
-	$Melvinzord.set_freddy_location(6)
+	#$Melvinzord.set_freddy_location(6)
+	Global.Melvinzord_Sequence = true
+	get_tree().change_scene_to_file("res://Scenes/Enemy/melvinzord_fatality.tscn")
 	await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
-	turn_off_hud()
-	$"Map/Scareroom/ScareCam".make_current()
-	$"Melvinzord/AnimationPlayer".play("fatality")
-	game_over()
+	#turn_off_hud()
+	#$"Map/Scareroom/ScareCam".make_current()
+	#$"Melvinzord/AnimationPlayer".play("fatality")
+	#game_over()
 	
 func turn_off_hud():
 	UI.visible = false

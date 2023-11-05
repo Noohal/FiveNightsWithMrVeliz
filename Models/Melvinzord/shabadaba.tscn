@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0n45myfeqhbo"]
+
+[ext_resource type="PackedScene" uid="uid://b7b1sugrv8jf7" path="res://Models/Melvinzord/Sci-fi_Katana_Swords.fbx" id="1_ivcbf"]
+
+[node name="Sci-fi_Katana_Swords" instance=ExtResource("1_ivcbf")]

@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/Rooms/SmallRoom.tscn" id="20_slt5h"]
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/Rooms/MediumRoomVariant.tscn" id="21_1u0cj"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Rooms/Hallway.tscn" id="22_rdxcp"]
-[ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/WorldEnv.tres" id="23_6kqpv"]
+[ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/Environment/WorldEnv.tres" id="23_6kqpv"]
 [ext_resource type="AudioStream" uid="uid://d2bj8np533oxl" path="res://Sounds/Enemy/Jumpscare1.mp3" id="28_ymlwh"]
 [ext_resource type="AudioStream" uid="uid://bqhf47kji7qow" path="res://Sounds/Enemy/Melvinzord/fnaf_AHHHHHHHHHHHHHHHHHHH.wav" id="33_k5h5w"]
 
@@ -103,6 +103,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BattleMode/body/head/eyeball:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BattleMode/body/head/eyeball2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BattleMode/body/arm/Sword:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mj68p"]
 resource_name = "change_into_super_toilet"
@@ -155,6 +191,66 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, -2.53073, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0752208, 20)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BattleMode/body/head/eyeball:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BattleMode/body/head/eyeball2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BattleMode/body/arm/Sword:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BattleMode/body:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_5mrap"]
 resource_name = "fatality"
@@ -179,7 +275,7 @@ tracks/1/path = NodePath("BattleMode/body:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.35, 0.5, 0.65, 0.9, 1.6),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.3, 1.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.284489, 0.141372), Vector3(0, -0.141372, -0.424115), Vector3(0, 0, 0.39968), Vector3(0.284489, 0.15708, -0.588176), Vector3(0, 0, 0)]
@@ -233,7 +329,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 20), Vector3(0.865101, 0, 20)]
+"values": [Vector3(0, 0.757, 20), Vector3(1.17701, 0.756913, 20)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -307,7 +403,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 20), Vector3(1.267, -1.377, 20.036)]
+"values": [Vector3(0, 0, 20), Vector3(1.40487, -0.683248, 20.036)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -685,7 +781,16 @@ enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/
 enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.0088, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, -0.963666, 0), Vector3(0.38858, 0.807023, 0), Vector3(0, -1.5708, 0), Vector3(0, 2.37576, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
 
-[node name="Toilet" parent="Melvinzord" index="2"]
+[node name="eyeball" parent="Melvinzord/BattleMode/body/head" index="1"]
+visible = false
+
+[node name="eyeball2" parent="Melvinzord/BattleMode/body/head" index="2"]
+visible = false
+
+[node name="Sword" parent="Melvinzord/BattleMode/body/arm" index="0"]
+visible = false
+
+[node name="Toilet" parent="Melvinzord" index="3"]
 transform = Transform3D(-0.614365, 0, -0.430181, 0, 0.75, 0, 0.430181, 0, -0.614365, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Melvinzord"]
@@ -695,7 +800,6 @@ libraries = {
 
 [node name="Shashumga" parent="." node_paths=PackedStringArray("scare_cam", "enemy_locations") instance=ExtResource("7_qg7jb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-visible = false
 enabled = true
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
 enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8_B"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
@@ -719,7 +823,6 @@ stream = ExtResource("8_anank")
 
 [node name="Cabron" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("9_wey61")]
 transform = Transform3D(-0.75, 0, 1.90139e-06, 0, 0.75, 0, -1.90139e-06, 0, -0.75, 0.963195, -0.149933, 20)
-visible = false
 enabled = true
 enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/12"), NodePath("../MapPoints/8"), NodePath("../MapPoints/2D"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice"), NodePath("../MapPoints/Jumpscare")]
 enemy_rotations = Array[Vector3]([Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 0, 0), Vector3(0, -2.44346, 0), Vector3(0, 0, 0)])
@@ -732,7 +835,6 @@ libraries = {
 
 [node name="Stonedome" parent="." node_paths=PackedStringArray("duration_label", "lock_status", "enemy_locations") instance=ExtResource("10_oqind")]
 transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -0.999999, 0, 0, 20)
-visible = false
 enabled = true
 duration_label = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FoxyDuration")
 lock_status = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/LockStatus")

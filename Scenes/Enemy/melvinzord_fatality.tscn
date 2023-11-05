@@ -1,9 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://dh5k4u3y63lko"]
+[gd_scene load_steps=32 format=3 uid="uid://dh5k4u3y63lko"]
 
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/Melvinzord_Fatality.gd" id="1_ecdnr"]
+[ext_resource type="Texture2D" uid="uid://cobet33d5sbkb" path="res://Models/Terrain/Ground/tex_u1_v1_diffuse.jpg" id="1_na8t1"]
 [ext_resource type="PackedScene" uid="uid://1c8kycgyem3" path="res://Scenes/Enemy/Melvinzord.tscn" id="1_q51mu"]
+[ext_resource type="Texture2D" uid="uid://d4jkippxdp5jx" path="res://Models/Terrain/Ground/tex_u1_v1_normal.jpg" id="2_qye38"]
+[ext_resource type="ArrayMesh" uid="uid://b378t6d3p4uix" path="res://Models/Terrain/Ground/model.obj" id="3_a7mbi"]
+[ext_resource type="Environment" uid="uid://c80rxjr8fv0ee" path="res://Scenes/Environment/Melvinzord.tres" id="6_v7qs6"]
+[ext_resource type="PackedScene" uid="uid://dkwbk4bnly4gh" path="res://Models/Terrain/Mountain/mountain.gltf" id="7_f268l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hsk0n"]
 size = Vector2(8, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2olip"]
+albedo_texture = ExtResource("1_na8t1")
+normal_enabled = true
+normal_texture = ExtResource("2_qye38")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx0kt"]
 albedo_color = Color(0, 0.517647, 1, 1)
@@ -87,7 +98,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Node3D/Node3D/Nose/Door/Lower:rotation")
+tracks/2/path = NodePath("../Node3D/DenjiTiger/Nose/Door/Lower:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -99,7 +110,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Node3D/Node3D/Nose/Door/Higher:rotation")
+tracks/3/path = NodePath("../Node3D/DenjiTiger/Nose/Door/Higher:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -111,7 +122,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Node3D/Node3D/Nose/Door/Higher:position")
+tracks/4/path = NodePath("../Node3D/DenjiTiger/Nose/Door/Higher:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -123,7 +134,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Node3D/Node3D/WholeBody/SidePiece:position")
+tracks/5/path = NodePath("../Node3D/DenjiTiger/WholeBody/SidePiece:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -135,7 +146,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Node3D/Node3D/WholeBody/SidePiece2:position")
+tracks/6/path = NodePath("../Node3D/DenjiTiger/WholeBody/SidePiece2:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -147,7 +158,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Node3D/Node3D/Nose/Side:position")
+tracks/7/path = NodePath("../Node3D/DenjiTiger/Nose/Side:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -159,7 +170,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../Node3D/Node3D/Nose/Side2:position")
+tracks/8/path = NodePath("../Node3D/DenjiTiger/Nose/Side2:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -175,10 +186,10 @@ tracks/9/path = NodePath("../Camera3D:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 2.65, 3, 4.2, 5.4, 7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.65, 3, 4.2, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(1.60708, 0.784071, 2.93482), Vector3(1.60708, 0.784071, 2.93482), Vector3(1.10817, 1.25291, 0.990824), Vector3(1.36354, 0.922237, 2.59642), Vector3(1.36354, 0.922237, 28.9954), Vector3(1.36354, 5.42045, 2.69713)]
+"values": [Vector3(1.60708, 0.784071, 2.93482), Vector3(1.60708, 0.784071, 2.93482), Vector3(1.10817, 1.25291, 0.990824), Vector3(1.36354, 0.922237, 2.59642), Vector3(1.36354, 0.922237, 28.9954)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -187,10 +198,10 @@ tracks/10/path = NodePath("../Camera3D:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 2.65, 3, 4.2, 5.4, 7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.65, 3, 4.2, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(0.145735, 0.660328, 0), Vector3(0.145735, 0.660328, 0), Vector3(-0.302462, 0.592856, -0.0270051), Vector3(0, 0.573288, 0), Vector3(0, 0.434796, 0), Vector3(0.357583, 0.434796, 0)]
+"values": [Vector3(0.145735, 0.660328, 0), Vector3(0.145735, 0.660328, 0), Vector3(-0.302462, 0.592856, -0.0270051), Vector3(0, 0.573288, 0), Vector3(0, 0.434796, 0)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -312,253 +323,422 @@ tracks/20/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MelvinJet:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("BattleMode:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("../Node3D/DenjiTiger:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("../Camera3D:fov")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [39.1]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("BattleMode/body/arm/Sword:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("../Node3D/Env/Ground:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("../Camera3D/SpotLight3D:spot_angle")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 3, 4.2, 5.35, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [39.1, 39.1, 39.1, 39.1, 47.94]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("../Camera3D/SpotLight3D:light_size")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 3, 4.2, 5.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("../Camera3D/SpotLight3D:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.291191, -3.20353e-08, 7.77801e-09), Vector3(-0.291191, -3.20353e-08, 7.77801e-09)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("../Node3D:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("../mountain:position")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 5.35, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-9.47787, -0.16984, 3.55494), Vector3(-9.47787, -0.16984, 3.55494), Vector3(-9.47787, 0.0220582, 10.241)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("../mountain:rotation")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0286932, 0, 0), Vector3(-0.0286932, 0, 0)]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("../mountain:scale")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(4, 4, 4), Vector3(4, 4, 4)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("../Camera3D/SpotLight3D:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
-[sub_resource type="Animation" id="Animation_hmem0"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_bscsc"]
+resource_name = "Finisher"
+length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MelvinJet/R_Leg/R_Leg_Wing:rotation")
+tracks/0/path = NodePath("MelvinJet:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MelvinJet/L_Leg/L_Leg_Wing:rotation")
+tracks/1/path = NodePath("BattleMode:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.5708)]
+"update": 1,
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Node3D/Node3D/Nose/Door/Lower:rotation")
+tracks/2/path = NodePath("BattleMode/body/arm:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.7, 2.7, 3.7, 4.7, 5.4, 5.7, 6, 6.3, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.925025, 0, 0)]
+"values": [Vector3(0.825, 0.241264, -0.537155), Vector3(0.825, 0.241264, -0.537155), Vector3(1.00723, 0.389886, 0.318381), Vector3(0.698328, 0.0592704, 0.0897813), Vector3(0.892941, 0.0324144, -0.378218), Vector3(0.443408, 0.21734, -0.668234), Vector3(0.936702, 0.267829, -0.524591), Vector3(0.936702, 0.267829, -0.524591), Vector3(0.956615, 0.62494, -0.435327), Vector3(0.956615, 0.62494, -0.435327), Vector3(0.349516, 0.315745, -0.353168)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Node3D/Node3D/Nose/Door/Higher:rotation")
+tracks/3/path = NodePath("BattleMode/body/arm:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 1.7, 2.7, 3.7, 4.7, 5.4, 5.7, 6, 6.3, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.925024, 0, 0)]
+"values": [Vector3(1.10348, -2.08616e-07, -1.77443e-14), Vector3(1.10348, -2.08616e-07, -1.77443e-14), Vector3(1.29163, -3.03131, -1.05451), Vector3(0.347476, -2.08342, -0.25771), Vector3(0.450289, -0.74085, 0.164379), Vector3(0.0835135, -0.928114, -1.13497), Vector3(-0.153567, -2.0003, -1.18349), Vector3(-0.153567, -2.0003, -1.18349), Vector3(-0.153567, -2.0003, -1.76976), Vector3(-0.153567, -2.0003, -1.76976), Vector3(-0.313583, -1.45365, -0.702821)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Node3D/Node3D/Nose/Door/Higher:position")
+tracks/4/path = NodePath("BattleMode/body/arm2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5.2, 5.4, 5.7, 6, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.825, 0.0862291, 0), Vector3(-0.825, 0.0862291, 0), Vector3(0.261605, 0.300104, -0.492686), Vector3(0.261605, 0.300104, -0.492686), Vector3(0.211445, 0.5966, -0.519172), Vector3(-0.334339, 0.282996, -0.423738)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Node3D/Node3D/WholeBody/SidePiece:position")
+tracks/5/path = NodePath("BattleMode/body/arm2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5.2, 5.4, 5.7, 6, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 0.25)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1.2762, -0.567896, 0.558164), Vector3(1.2762, -0.567896, 0.558164), Vector3(1.38177, 1.08498, 2.18297), Vector3(1.04771, -0.65197, 0.139697)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Node3D/Node3D/WholeBody/SidePiece2:position")
+tracks/6/path = NodePath("../Camera3D:fov")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1, 1, 0.25)]
+"values": [39.1]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Node3D/Node3D/Nose/Side:position")
+tracks/7/path = NodePath("../Camera3D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1, 1, 1.125)]
+"values": [Vector3(0.327314, 1.00284, 3.08071)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../Node3D/Node3D/Nose/Side2:position")
+tracks/8/path = NodePath("../Camera3D:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1, 1, 1.125)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../Camera3D:position")
+tracks/9/path = NodePath("../Node3D/DenjiTiger:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.60708, 0.784071, 2.93482)]
+"update": 1,
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../Camera3D:rotation")
+tracks/10/path = NodePath(".:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.145735, 0.660328, 0)]
+"values": [Vector3(0.394553, 0.8, 0)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath(".:position")
+tracks/11/path = NodePath(".:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.693756, 0.303368)]
+"values": [Vector3(-1.5708, -0.424202, 0)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath(".:rotation")
+tracks/12/path = NodePath("BattleMode/leg:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 6, 6.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.453958, -1.2, -0.0582406), Vector3(0.453958, -1.2, -0.0582406), Vector3(0.243603, -1.20504, -0.409257)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("MelvinJet/Nose:rotation")
+tracks/13/path = NodePath("BattleMode/leg:rotation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 6, 6.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.101622, 0.0116335, 0.227758), Vector3(0.101622, 0.0116335, 0.227758), Vector3(0.158772, 0.854329, 0.0985974)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("MelvinJet/Head:position")
+tracks/14/path = NodePath("BattleMode/leg2:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 6, 6.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.375, -0.119427)]
+"values": [Vector3(-0.428616, -1.18255, 5.96046e-08), Vector3(-0.428616, -1.18255, 5.96046e-08), Vector3(-0.370433, -1.18255, -0.0780246)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("MelvinJet/Head:rotation")
+tracks/15/path = NodePath("BattleMode/leg2:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 6, 6.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.67037e-22, 0)]
+"values": [Vector3(1.10207e-08, -1.85609e-09, -0.166853), Vector3(1.10207e-08, -1.85609e-09, -0.166853), Vector3(-1.28162e-14, 0.930051, 1.77636e-15)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("MelvinJet/Node3D:position")
+tracks/16/path = NodePath("BattleMode/body:rotation")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.7, 5.2, 5.4, 5.7, 6, 6.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.75, -0.6)]
+"values": [Vector3(0, 0, 0), Vector3(7.74571e-08, 1.0887, 4.68932e-08), Vector3(7.74571e-08, 1.0887, 4.68932e-08), Vector3(3.85284e-08, -0.586954, -8.19398e-08), Vector3(3.85284e-08, -0.586954, -8.19398e-08), Vector3(0.271502, -0.572939, -0.143711), Vector3(0.158772, 0.854329, 0.0985974)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("MelvinJet/Node3D:rotation")
+tracks/17/path = NodePath("BattleMode/body:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.7, 5.2, 5.4, 5.7, 6, 6.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(3.14159, 0, 0)]
+"values": [Vector3(0, 0.25, 0), Vector3(1.19209e-07, 0.25, 0), Vector3(1.19209e-07, 0.25, 0), Vector3(1.19209e-07, 0.25, 0), Vector3(1.19209e-07, 0.25, 0), Vector3(-7.15256e-07, 0.25, -5.96046e-08), Vector3(-8.9407e-07, 0.25, -1.19209e-07)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("MelvinJet/LeftTit:rotation")
+tracks/18/path = NodePath("BattleMode/body/head:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5.7),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -1.5708, 0)]
+"values": [Vector3(0, 1.18197, 0), Vector3(0, 1.18197, 0)]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("MelvinJet/RightTit:rotation")
+tracks/19/path = NodePath("BattleMode/body/head:rotation")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.7, 5.2, 5.4, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.5708, 0)]
+"values": [Vector3(-4.54747e-13, 2.71051e-20, -7.10429e-15), Vector3(-6.99792e-08, -0.928044, 3.50189e-08), Vector3(-6.99792e-08, -0.928044, 3.50189e-08), Vector3(-1.12448e-07, 0.165684, -4.53746e-08), Vector3(-1.12448e-07, 0.165684, -4.53746e-08)]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("MelvinJet/Body/MeshInstance3D:visible")
+tracks/20/path = NodePath("BattleMode/body/arm/Sword:visible")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
@@ -570,62 +750,110 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("MelvinJet/LeftTit:position")
+tracks/21/path = NodePath("BattleMode/body/arm/Sword:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.2, 3.7, 5.4, 5.7, 6, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.75, 0.374, -0.125)]
+"values": [Vector3(-3.72529e-08, -0.458918, -0.0065484), Vector3(0, -0.458918, -0.00654842), Vector3(5.96046e-08, -0.458918, -0.0065484), Vector3(0, -0.458918, -0.00654835), Vector3(0, -0.458918, -0.00654835), Vector3(0, -0.458918, -0.00654835), Vector3(0, -0.458918, -0.0065484)]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("MelvinJet/RightTit:position")
+tracks/22/path = NodePath("BattleMode/body/arm/Sword:rotation")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.2, 3.2, 3.3, 3.7, 4.7, 5.4, 5.7, 6, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.750001, 0.35, -0.125003)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.05053, 8.18214e-08, -5.99513e-08), Vector3(-0.975208, 0.176574, 0.0246651), Vector3(-1.43203, 7.13762e-08, -2.69316e-08), Vector3(-0.829031, 1.42942, 0), Vector3(0.0418268, 1.43939, -0.0128039), Vector3(0.0418268, 1.43939, -0.0128039), Vector3(0.0418268, 1.43939, -0.0128039), Vector3(-1.48855, 1.66684, -0.273231)]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("MelvinJet/R_Leg:position")
+tracks/23/path = NodePath("BattleMode/body/arm2:scale")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5.2, 5.4, 6.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 0.375, 0.118581)]
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1.46225, 1), Vector3(1, 1, 1)]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("MelvinJet/L_Leg:position")
+tracks/24/path = NodePath("BattleMode:rotation")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1, 0.375, 0.118581)]
+"values": [Vector3(-1.5708, -3.14159, 0)]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("MelvinJet/Nose:position")
+tracks/25/path = NodePath("BattleMode/leg/rightfoot:rotation")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
+"times": PackedFloat32Array(0, 6.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.110235, -1.89448e-07, -0.218323), Vector3(-0.1409, 1.45411e-08, -0.0859749)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("../Node3D:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("../mountain:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.00271702, 0.762688, -0.682874)]
+"values": [Vector3(-1.1077, -0.470784, -6.93052)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("../mountain:rotation")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00353312, -1.44738, 0.0284749)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("../mountain:scale")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 3, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_uo41i"]
@@ -704,10 +932,1122 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MelvinJet:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MelvinJetIntermediate:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BattleMode:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Camera3D:fov")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [39.1]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BattleMode/body/arm/Sword:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Node3D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Camera3D/SpotLight3D:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4uemq"]
+resource_name = "Landing"
+length = 6.5
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Node3D/DenjiTiger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MelvinJet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BattleMode:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleMode/body/head/eyeball:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BattleMode/body/head/eyeball2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4.023, 4.024),
+"transitions": PackedFloat32Array(1, 1e+06, 1e+06),
+"update": 0,
+"values": [Vector3(0, 7.235, 0), Vector3(0, 2.8592, 0), Vector3(0, 0.8, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Camera3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.423, 4.023, 4.024, 4.031, 6, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.608492, 2.32175, 0.221839), Vector3(0.00526631, 2.80412, 0.623905), Vector3(0.0654671, 2.99639, 0.661846), Vector3(0.0573008, 0.792335, 0.191383), Vector3(0.0848409, 1.01997, 0.37808), Vector3(0.428214, -0.195383, 0.669127), Vector3(0.428214, -0.195383, 0.669127)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Camera3D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 3.423, 4.023, 4.024, 4.031, 5.999, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.27025, -0.10753, 0.344022), Vector3(1.14776, -0.212469, 0.0251232), Vector3(1.1753, -0.379182, 0.00358902), Vector3(1.1799, 0.267, 0), Vector3(1.17857, 0.267822, 0), Vector3(1.10479, 0.499164, 0), Vector3(1.10479, 0.499164, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BattleMode/body/head:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 4.023, 4.024, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.18197, 0), Vector3(0, 1.18197, 0), Vector3(-8.52651e-14, 1.18197, -0.238445), Vector3(0, 1.18197, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BattleMode/body/head:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 4.023, 4.024, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-4.54747e-13, 2.71051e-20, -7.10429e-15), Vector3(-4.54747e-13, 2.71051e-20, -7.10429e-15), Vector3(-0.640326, 6.51345e-08, -2.15967e-08), Vector3(-4.54747e-13, 2.71051e-20, -7.10429e-15)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Camera3D:fov")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(6, 6.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [47.5, 47.5]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BattleMode/body/arm:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4.024, 5.8, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.825, 0.0862291, 0), Vector3(0.825, 0.0862291, 0), Vector3(0.825001, 0.186621, -0.343481), Vector3(0.926649, 0.0862291, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("BattleMode/body/arm:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 4.024, 5.8, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.846223, -8.82953e-14, -1.17919e-13), Vector3(-1.22426e-12, 2.11432e-14, 0.363238)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("BattleMode/body/arm2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 4.024, 5.8, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.825, 0.0862291, 0), Vector3(-0.825, 0.0862291, 0), Vector3(-0.825, 0.135241, -0.287205), Vector3(-0.825, 0.0862284, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("BattleMode/body/arm2:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 4.024, 5.8, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.863973, -1.02366e-07, -4.71937e-08), Vector3(-5.4301e-08, -6.20829e-07, -0.470663)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("BattleMode/body/arm/Sword:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("BattleMode/body:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("BattleMode/leg:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("BattleMode/leg:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.325, -1.2, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("BattleMode/leg2:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.325, -1.2, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("BattleMode/leg2:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("BattleMode/body/arm2:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("BattleMode:rotation")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath(".:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("../Node3D:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("../Camera3D/SpotLight3D:light_energy")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.739]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("../Camera3D/SpotLight3D:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hmem0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MelvinJet/R_Leg/R_Leg_Wing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MelvinJet/L_Leg/L_Leg_Wing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5708)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Node3D/DenjiTiger/Nose/Door/Lower:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.925025, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Node3D/DenjiTiger/Nose/Door/Higher:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.925024, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Node3D/DenjiTiger/Nose/Door/Higher:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Node3D/DenjiTiger/WholeBody/SidePiece:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 0.25)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Node3D/DenjiTiger/WholeBody/SidePiece2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 1, 0.25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Node3D/DenjiTiger/Nose/Side:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 1, 1.125)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Node3D/DenjiTiger/Nose/Side2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1.125)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Camera3D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.60708, 0.784071, 2.93482)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Camera3D:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.145735, 0.660328, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.693756, 0.303368)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MelvinJet/Nose:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MelvinJet/Node3D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.75, -0.6)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MelvinJet/Node3D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.14159, 0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MelvinJet/LeftTit:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("MelvinJet/RightTit:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MelvinJet/Body/MeshInstance3D:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("MelvinJet/LeftTit:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.75, 0.374, -0.125)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("MelvinJet/RightTit:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.750001, 0.35, -0.125003)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MelvinJet/R_Leg:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.375, 0.118581)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("MelvinJet/L_Leg:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 0.375, 0.118581)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("MelvinJet/Nose:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00271702, 0.762688, -0.682874)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("../Node3D/DenjiTiger:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("MelvinJet:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("BattleMode:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("BattleMode/body/head/eyeball:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("BattleMode/body/head/eyeball2:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("BattleMode/body/head:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.18197, 0)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("BattleMode/body/head:rotation")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.54747e-13, 2.71051e-20, -7.10429e-15)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("../Camera3D:fov")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [39.1]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("MelvinJetIntermediate:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("BattleMode/body/arm:position")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.825, 0.0862291, 0)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("BattleMode/body/arm:rotation")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("BattleMode/body/arm2:position")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.825, 0.0862291, 0)]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("BattleMode/body/arm2:rotation")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("BattleMode/leg:position")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.453958, -1.2, -0.0582406)]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("BattleMode/leg:rotation")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.101622, 0.0116335, 0.227758)]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("BattleMode/leg2:position")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.428616, -1.18255, 5.96046e-08)]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("BattleMode/leg2:rotation")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.10207e-08, -1.85609e-09, -0.166853)]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("BattleMode/body:rotation")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("BattleMode/body:position")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.25, 0)]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("BattleMode/body/arm/Sword:visible")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("BattleMode/body/arm/Sword:position")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.72529e-08, -0.458918, -0.0065484)]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("BattleMode/body/arm/Sword:rotation")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.54303, 1.07298e-06, -1.07339e-06)]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("BattleMode/body/arm2:scale")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("BattleMode:rotation")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("BattleMode/leg/rightfoot:rotation")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.110235, -1.89448e-07, -0.218323)]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("../Node3D/Env/Ground:visible")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("../Node3D/Env/Mountains:rotation")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("../Camera3D/SpotLight3D:spot_angle")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [39.1]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("../Camera3D/SpotLight3D:light_size")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("../Camera3D/SpotLight3D:rotation")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.291191, -3.20353e-08, 7.77801e-09)]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("../mountain:position")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-9.47787, 0.0220582, 10.241)]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("../mountain:rotation")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0286932, 0, 0)]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("../mountain:scale")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4, 4, 4)]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("../Camera3D/SpotLight3D:visible")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_slf8v"]
 resource_name = "Transformation"
-length = 7.0
+length = 5.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -716,10 +2056,10 @@ tracks/0/path = NodePath("../Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5.75),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(2.19858, 6.30693, 1.111)]
+"values": [Vector3(2.19858, 6.30693, 1.111), Vector3(2.19858, 6.30693, 1.111)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -728,10 +2068,10 @@ tracks/1/path = NodePath("../Camera3D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5.75),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.329617, 0.295727, -0.0139678)]
+"values": [Vector3(0.329617, 0.295727, -0.0139678), Vector3(0.329617, 0.295727, -0.0139678)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -772,242 +2112,336 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MelvinJet/Head:position")
+tracks/5/path = NodePath("MelvinJet/Node3D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.375, -0.119427), Vector3(0, 0.375, -0.119427)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("MelvinJet/Head:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 1.67037e-22, 0), Vector3(0, 1.67037e-22, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("MelvinJet/Node3D:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(1.51, 1.76, 2.01),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0.75, -0.6), Vector3(4.76837e-07, 0.0235839, -0.6), Vector3(0, 0, -0.6)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("MelvinJet/Node3D:rotation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MelvinJet/Node3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(1.51, 1.76, 2.01),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(3.14159, 0, 0), Vector3(4.71239, 0, 0), Vector3(6.26573, 0, 0)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("MelvinJet/R_Leg/R_Leg_Wing:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MelvinJet/R_Leg/R_Leg_Wing:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 3.25, 3.75),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 1.5708)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("MelvinJet/L_Leg/L_Leg_Wing:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MelvinJet/L_Leg/L_Leg_Wing:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 3.25, 3.75),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -1.5708)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("MelvinJet/LeftTit:rotation")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MelvinJet/LeftTit:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0, 2.5, 3.24, 3.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, -6.26573, 0), Vector3(0, -6.28319, 0)]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("MelvinJet/RightTit:rotation")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MelvinJet/RightTit:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 2.5, 3.24, 3.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, 6.26573, 0), Vector3(0, 0, 0)]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("MelvinJet/Body/MeshInstance3D:visible")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MelvinJet/Body/MeshInstance3D:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0.04, 3.24),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("MelvinJet/LeftTit:position")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MelvinJet/LeftTit:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 3.24),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.75, 0.35, -0.125), Vector3(-0.75, 0.35, -0.125)]
 }
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("MelvinJet/RightTit:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MelvinJet/RightTit:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0, 3.24),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.750001, 0.35, -0.125003), Vector3(0.750001, 0.35, -0.125003)]
 }
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("MelvinJet/R_Leg:position")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MelvinJet/R_Leg:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0, 3.75, 4.25, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(1, 0.375, 0.118581), Vector3(1, 0.375, 0.118581), Vector3(1, 0.375, 0.829716), Vector3(0.485393, 0.375001, 1.12698)]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("MelvinJet/L_Leg:position")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MelvinJet/L_Leg:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0, 3.75, 4.25, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-1, 0.375, 0.118581), Vector3(-1, 0.375, 0.118581), Vector3(-0.994631, 0.375001, 0.796071), Vector3(-0.484336, 0.375001, 1.1208)]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MelvinJet:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("BattleMode:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../Camera3D:fov")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [39.1]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("BattleMode/body/arm/Sword:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../Node3D:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Camera3D/SpotLight3D:spot_range")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.73]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../Camera3D/SpotLight3D:light_energy")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.05]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("../Camera3D/SpotLight3D:spot_angle")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [37.61]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("../Camera3D/SpotLight3D:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jx0pl"]
 _data = {
 "Deploy": SubResource("Animation_uvqh4"),
+"Finisher": SubResource("Animation_bscsc"),
 "Flying": SubResource("Animation_uo41i"),
+"Landing": SubResource("Animation_4uemq"),
 "RESET": SubResource("Animation_hmem0"),
 "Transformation": SubResource("Animation_slf8v")
 }
 
 [node name="MelvinzordFatality" type="Node3D"]
+script = ExtResource("1_ecdnr")
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="Node3D"]
+visible = false
 mesh = SubResource("PlaneMesh_hsk0n")
 
-[node name="Node3D" type="Node3D" parent="Node3D"]
+[node name="Env" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06757, -0.106676, 12.6364)
 
-[node name="WholeBody" type="Node3D" parent="Node3D/Node3D"]
+[node name="Ground" type="MeshInstance3D" parent="Node3D/Env"]
+material_override = SubResource("StandardMaterial3D_2olip")
+mesh = ExtResource("3_a7mbi")
+skeleton = NodePath("../../..")
 
-[node name="Body" type="MeshInstance3D" parent="Node3D/Node3D/WholeBody"]
+[node name="DenjiTiger" type="Node3D" parent="Node3D"]
+visible = false
+
+[node name="WholeBody" type="Node3D" parent="Node3D/DenjiTiger"]
+
+[node name="Body" type="MeshInstance3D" parent="Node3D/DenjiTiger/WholeBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -1.25)
 mesh = SubResource("BoxMesh_pjyx2")
 skeleton = NodePath("../..")
 
-[node name="Floor" type="MeshInstance3D" parent="Node3D/Node3D/WholeBody"]
+[node name="Floor" type="MeshInstance3D" parent="Node3D/DenjiTiger/WholeBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.249033)
 mesh = SubResource("BoxMesh_fspds")
 
-[node name="SidePiece" type="MeshInstance3D" parent="Node3D/Node3D/WholeBody"]
+[node name="SidePiece" type="MeshInstance3D" parent="Node3D/DenjiTiger/WholeBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0.25)
 mesh = SubResource("BoxMesh_hiw8p")
 
-[node name="SidePiece2" type="MeshInstance3D" parent="Node3D/Node3D/WholeBody"]
+[node name="SidePiece2" type="MeshInstance3D" parent="Node3D/DenjiTiger/WholeBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0.25)
 mesh = SubResource("BoxMesh_hiw8p")
 
-[node name="Top" type="MeshInstance3D" parent="Node3D/Node3D"]
+[node name="Top" type="MeshInstance3D" parent="Node3D/DenjiTiger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38, -1.5)
 mesh = SubResource("BoxMesh_pb2sc")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D/Node3D/Top"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D/DenjiTiger/Top"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.125, 0.35)
 mesh = SubResource("BoxMesh_nuwgf")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Node3D/Top"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/DenjiTiger/Top"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.125, 0.35)
 mesh = SubResource("BoxMesh_qixja")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Node3D/Node3D/Top/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8545, 2.71588)
+[node name="Nose" type="Node3D" parent="Node3D/DenjiTiger"]
 
-[node name="Nose" type="Node3D" parent="Node3D/Node3D"]
-
-[node name="Floor" type="MeshInstance3D" parent="Node3D/Node3D/Nose"]
+[node name="Floor" type="MeshInstance3D" parent="Node3D/DenjiTiger/Nose"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, 1.125)
 mesh = SubResource("BoxMesh_tjmw5")
 skeleton = NodePath("../..")
 
-[node name="Side" type="MeshInstance3D" parent="Node3D/Node3D/Nose"]
+[node name="Side" type="MeshInstance3D" parent="Node3D/DenjiTiger/Nose"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1, 1.125)
 mesh = SubResource("PrismMesh_pbmyt")
 
-[node name="Side2" type="MeshInstance3D" parent="Node3D/Node3D/Nose"]
+[node name="Side2" type="MeshInstance3D" parent="Node3D/DenjiTiger/Nose"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1, 1.125)
 mesh = SubResource("PrismMesh_pbmyt")
 
-[node name="Door" type="Node3D" parent="Node3D/Node3D/Nose"]
+[node name="Door" type="Node3D" parent="Node3D/DenjiTiger/Nose"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0531967, -0.00885546)
 
-[node name="Lower" type="Node3D" parent="Node3D/Node3D/Nose/Door"]
-transform = Transform3D(1, 0, 0, 0, 0.601815, 0.798635, 0, -0.798635, 0.601815, 0, 0.687356, 1.51361)
+[node name="Lower" type="Node3D" parent="Node3D/DenjiTiger/Nose/Door"]
+transform = Transform3D(1, 0, 0, 0, 0.601814, 0.798635, 0, -0.798635, 0.601814, 0, 0.687356, 1.51361)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Node3D/Nose/Door/Lower"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/DenjiTiger/Nose/Door/Lower"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.465, 0)
 mesh = SubResource("BoxMesh_b6oae")
 skeleton = NodePath("../../..")
 
-[node name="Higher" type="Node3D" parent="Node3D/Node3D/Nose/Door"]
+[node name="Higher" type="Node3D" parent="Node3D/DenjiTiger/Nose/Door"]
 transform = Transform3D(1, 0, 0, 0, 0.601815, -0.798635, 0, 0.798635, 0.601815, 0, 0, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/Node3D/Nose/Door/Higher"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/DenjiTiger/Nose/Door/Higher"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_nw6qn")
 skeleton = NodePath("../../Lower")
@@ -1022,22 +2456,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271702, 0.762688, -0.682
 transform = Transform3D(1, 0, -1.67038e-22, 0, 1, -3.55271e-14, -1.67037e-22, 0, 1, 1, 0.375, 0.118581)
 
 [node name="R_Leg_Wing" parent="Melvinzord/MelvinJet/R_Leg" index="0"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.270137, -0.255377, 2.23517e-08)
+transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0.270137, -0.255377, 2.23517e-08)
 
 [node name="L_Leg" parent="Melvinzord/MelvinJet" index="3"]
 transform = Transform3D(1, 0, -1.67038e-22, 0, 1, -3.19744e-14, -1.67037e-22, 0, 1, -1, 0.375, 0.118581)
 
 [node name="L_Leg_Wing" parent="Melvinzord/MelvinJet/L_Leg" index="0"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.263445, -0.242694, -2.23517e-08)
+transform = Transform3D(-3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 0, 0, 1, -0.263445, -0.242694, -2.23517e-08)
 
 [node name="Node3D" parent="Melvinzord/MelvinJet" index="6"]
-transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.75, -0.6)
+transform = Transform3D(1, 0, 0, 0, -1, -2.53518e-06, 0, 2.53518e-06, -1, 0, 0.75, -0.6)
 
 [node name="LeftTit" parent="Melvinzord/MelvinJet" index="7"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.75, 0.374, -0.125)
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, -0.75, 0.374, -0.125)
 
 [node name="RightTit" parent="Melvinzord/MelvinJet" index="8"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.750001, 0.35, -0.125003)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0.750001, 0.35, -0.125003)
+
+[node name="BattleMode" parent="Melvinzord" index="2"]
+transform = Transform3D(-0.4, 0, -1.01407e-06, 0, 0.4, 0, 1.01407e-06, 0, -0.4, 0, 0.208812, -1.90735e-06)
+
+[node name="head" parent="Melvinzord/BattleMode/body" index="0"]
+transform = Transform3D(1, 7.10429e-15, 2.71051e-20, -7.10429e-15, 1, 4.54747e-13, -2.71051e-20, -4.54747e-13, 1, 0, 1.18197, 0)
+
+[node name="eyeball" parent="Melvinzord/BattleMode/body/head" index="1"]
+visible = false
+
+[node name="eyeball2" parent="Melvinzord/BattleMode/body/head" index="2"]
+visible = false
+
+[node name="arm" parent="Melvinzord/BattleMode/body" index="1"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999996, 0, 0, 0, 0.999998, 0.825, 0.0862291, 0)
+
+[node name="Sword" parent="Melvinzord/BattleMode/body/arm" index="0"]
+transform = Transform3D(0.999999, 8.23546e-10, 2.97888e-08, -2.98002e-08, 0.0277627, 0.999613, -3.75166e-12, -0.999613, 0.0277627, -3.72529e-08, -0.458918, -0.0065484)
+
+[node name="leg" parent="Melvinzord/BattleMode" index="1"]
+transform = Transform3D(0.974375, -0.224629, 0.0115732, 0.224629, 0.969149, -0.101447, 0.0115718, 0.101447, 0.994774, 0.453958, -1.2, -0.0582406)
+
+[node name="rightfoot" parent="Melvinzord/BattleMode/leg" index="0"]
+transform = Transform3D(0.976261, 0.216593, -1.88298e-07, -0.215278, 0.970337, 0.110012, 0.0238279, -0.1074, 0.993931, -0.00355005, -0.790778, -0.244216)
+
+[node name="leg2" parent="Melvinzord/BattleMode" index="2"]
+transform = Transform3D(0.986113, 0.16608, -1.85609e-09, -0.16608, 0.986112, -1.10207e-08, -3.33067e-15, 1.11759e-08, 1, -0.428616, -1.18255, 5.96046e-08)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Melvinzord")
@@ -1048,5 +2509,28 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.789791, 0.0890742, 0.606874, 0, 0.989399, -0.14522, -0.613376, 0.114693, 0.781419, 1.60708, 0.784071, 2.93482)
 fov = 39.1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(1, 1.41911e-09, -3.06867e-08, 7.45058e-09, 0.957903, 0.287093, 2.98023e-08, -0.287093, 0.957903, 8.64267e-07, 1.02483, 0.909477)
+light_color = Color(0.956863, 1, 1, 1)
+light_energy = 0.739
+spot_range = 5.73
+spot_angle = 39.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 0.937507, 0.347967, 0, -0.347967, 0.937507, 0, -2.95738, 3.36183)
+light_color = Color(0.85098, 0.85098, 0.85098, 1)
+light_energy = 0.606
+shadow_enabled = true
+shadow_opacity = 0.69
+shadow_blur = 0.063
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("6_v7qs6")
+
+[node name="mountain" parent="." instance=ExtResource("7_f268l")]
+transform = Transform3D(4, 0, 0, 0, 3.99835, 0.114757, 0, -0.114757, 3.99835, -9.47787, 0.0220582, 10.241)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="Melvinzord"]

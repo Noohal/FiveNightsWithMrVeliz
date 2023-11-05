@@ -33,13 +33,19 @@ signal jumpscare_freddy
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await game.ready
-	enabled = !(Global.current_night == 0 || Global.current_night == 1)
+	enabled = !(Global.current_night == 0 || Global.current_night == 1 || Global.Melvinzord_Sequence)
+	if !enabled:
+		return
 	
 	$Toilet.visible = false
 	$MelvinJet.visible = false
 	
 	current_pos = 0
-	AI_level = night_AI_levels[game.current_night]
+	AI_level = night_AI_levels[Global.current_night]
+	
+	if AI_level == -1:
+		rand.randomize();
+		AI_level = rand.randi_range(1,2)
 	
 	$Timer.wait_time = MOVEMENT_INTERVAL
 	$Timer.autostart = true

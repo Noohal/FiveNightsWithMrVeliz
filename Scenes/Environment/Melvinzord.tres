@@ -1,0 +1,18 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://c80rxjr8fv0ee"]
+
+[ext_resource type="Texture2D" uid="uid://c7uxlchjuior" path="res://Textures/night_time.jpg" id="1_q2umc"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e0115"]
+panorama = ExtResource("1_q2umc")
+
+[sub_resource type="Sky" id="Sky_1j123"]
+sky_material = SubResource("PanoramaSkyMaterial_e0115")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_1j123")
+ambient_light_color = Color(1, 0.898039, 0.733333, 1)
+ambient_light_sky_contribution = 0.94
+ambient_light_energy = 0.54
+tonemap_mode = 2
+fog_light_color = Color(0, 0, 0, 1)
