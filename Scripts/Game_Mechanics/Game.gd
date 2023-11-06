@@ -41,8 +41,7 @@ func _process(delta):
 		rand.randomize()
 		var time = rand.randf_range(0.2, 0.6)
 		await get_tree().create_timer(time).timeout
-		var sampled_noise : float = 10.0* abs(noise.noise.get_noise_1d(accumulated_time))
-		print("%.02f FLICKER: %.02f" % [time, sampled_noise])
+		var sampled_noise : float = 10.0 * abs(noise.noise.get_noise_1d(accumulated_time))
 		left_eye.emission_energy_multiplier = sampled_noise
 		
 	if accumulated_time >= 20.0:
@@ -159,6 +158,8 @@ func _on_player_camera_state_change(watching):
 	watching_cam = watching
 
 func _on_power_power_loss():
+	$Melvinzord.enabled = true
+	
 	getting_scared = true
 	power_loss_jumpscare = true
 	

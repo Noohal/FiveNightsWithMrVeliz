@@ -18,8 +18,10 @@ signal jumpscare_chica
 
 func _ready():
 	await game.ready
-	#enabled = false
-	#$EnableTimer.start()
+	if !enabled:
+		AI_level = 0
+	enabled = false
+	$EnableTimer.start()
 	
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night]
@@ -101,3 +103,5 @@ func _on_clock_hour_change(hour):
 
 func _on_enable_timer_timeout():
 	enabled = true
+	$EnableTimer.stop()
+	print("Hoombus: %s" % enabled)

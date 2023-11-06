@@ -116,3 +116,6 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_node_3d_getting_killed():
 	can_look_at_camera = false
+
+func _on_power_power_loss():
+	can_look_at_camera = false

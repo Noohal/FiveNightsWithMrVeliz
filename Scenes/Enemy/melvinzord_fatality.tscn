@@ -1951,94 +1951,82 @@ tracks/49/keys = {
 tracks/50/type = "value"
 tracks/50/imported = false
 tracks/50/enabled = true
-tracks/50/path = NodePath("../Node3D/Env/Mountains:rotation")
+tracks/50/path = NodePath("../Camera3D/SpotLight3D:spot_angle")
 tracks/50/interp = 1
 tracks/50/loop_wrap = true
 tracks/50/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [39.1]
 }
 tracks/51/type = "value"
 tracks/51/imported = false
 tracks/51/enabled = true
-tracks/51/path = NodePath("../Camera3D/SpotLight3D:spot_angle")
+tracks/51/path = NodePath("../Camera3D/SpotLight3D:light_size")
 tracks/51/interp = 1
 tracks/51/loop_wrap = true
 tracks/51/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [39.1]
+"values": [0.0]
 }
 tracks/52/type = "value"
 tracks/52/imported = false
 tracks/52/enabled = true
-tracks/52/path = NodePath("../Camera3D/SpotLight3D:light_size")
+tracks/52/path = NodePath("../Camera3D/SpotLight3D:rotation")
 tracks/52/interp = 1
 tracks/52/loop_wrap = true
 tracks/52/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector3(-0.291191, -3.20353e-08, 7.77801e-09)]
 }
 tracks/53/type = "value"
 tracks/53/imported = false
 tracks/53/enabled = true
-tracks/53/path = NodePath("../Camera3D/SpotLight3D:rotation")
+tracks/53/path = NodePath("../mountain:position")
 tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.291191, -3.20353e-08, 7.77801e-09)]
+"values": [Vector3(-9.47787, 0.0220582, 10.241)]
 }
 tracks/54/type = "value"
 tracks/54/imported = false
 tracks/54/enabled = true
-tracks/54/path = NodePath("../mountain:position")
+tracks/54/path = NodePath("../mountain:rotation")
 tracks/54/interp = 1
 tracks/54/loop_wrap = true
 tracks/54/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-9.47787, 0.0220582, 10.241)]
+"values": [Vector3(-0.0286932, 0, 0)]
 }
 tracks/55/type = "value"
 tracks/55/imported = false
 tracks/55/enabled = true
-tracks/55/path = NodePath("../mountain:rotation")
+tracks/55/path = NodePath("../mountain:scale")
 tracks/55/interp = 1
 tracks/55/loop_wrap = true
 tracks/55/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.0286932, 0, 0)]
+"values": [Vector3(4, 4, 4)]
 }
 tracks/56/type = "value"
 tracks/56/imported = false
 tracks/56/enabled = true
-tracks/56/path = NodePath("../mountain:scale")
+tracks/56/path = NodePath("../Camera3D/SpotLight3D:visible")
 tracks/56/interp = 1
 tracks/56/loop_wrap = true
 tracks/56/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(4, 4, 4)]
-}
-tracks/57/type = "value"
-tracks/57/imported = false
-tracks/57/enabled = true
-tracks/57/path = NodePath("../Camera3D/SpotLight3D:visible")
-tracks/57/interp = 1
-tracks/57/loop_wrap = true
-tracks/57/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -2513,7 +2501,7 @@ fov = 39.1
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
 transform = Transform3D(1, 1.41911e-09, -3.06867e-08, 7.45058e-09, 0.957903, 0.287093, 2.98023e-08, -0.287093, 0.957903, 8.64267e-07, 1.02483, 0.909477)
 light_color = Color(0.956863, 1, 1, 1)
-light_energy = 0.739
+light_energy = 2.05
 spot_range = 5.73
 spot_angle = 39.1
 

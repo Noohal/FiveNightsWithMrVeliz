@@ -21,6 +21,8 @@ signal jumpscare_bonnie
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await game.ready
+	if !enabled:
+		AI_level = 0
 	enabled = false
 	$EnableTimer.start()
 	
@@ -121,3 +123,5 @@ func _on_clock_hour_change(hour):
 
 func _on_enable_timer_timeout():
 	enabled = true
+	$EnableTimer.stop()
+	print("Shashumga: %s" % enabled)

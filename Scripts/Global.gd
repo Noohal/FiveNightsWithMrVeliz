@@ -60,4 +60,4 @@ func load_data(path : String):
 		pass
 	
 	max_night = data.player_data.max_night
-	print("MAX NIGHT: %s" %  max_night)
+	#print("MAX NIGHT: %s" %  max_night)

@@ -6,12 +6,14 @@ extends Node3D
 @onready var door_close : AudioStreamPlayer = $"../DoorClose"
 
 var current_door = -1
-var open_door = false
+
+var can_open_door : bool
 
 signal left_door_change(active : bool)
 signal right_door_change(active : bool)
 
 func _ready():
+	can_open_door = true
 	var starting_angle = 0
 	if name == "LeftDoor":
 		starting_angle = -120
@@ -22,30 +24,37 @@ func _ready():
 	else:
 		current_door = -1
 	rotate(Vector3(0,1,0), deg_to_rad(starting_angle))
-	open_door = true
 
-func toggle_left_door() -> void:
-	open_door = !open_door
-	if open_door:
-		#print("OPENING DOOR %s" % current_door)
+func toggle_door(close : bool) -> void:
+	if !can_open_door:
+		return
+	if !close:
+		open_door()
+	else:
+		close_door()
+
+func open_door() -> void:
+	if current_door == 1:
+		anim.play("door_open_right")
+		emit_signal("right_door_change", false)
+		door_open.play()
+	elif current_door == 0:
 		anim.play("door_open_left")
 		emit_signal("left_door_change", false)
 		door_open.play()
 	else:
-		#print("CLOSING DOOR %s" % current_door)
-		anim.play("door_close_left")
-		emit_signal("left_door_change", true)
-		door_close.play()
+		print("Invalid Door Open")
+		return
 
-func toggle_right_door() -> void:
-	open_door = !open_door
-	if open_door:
-		#print("OPENING DOOR %s" % current_door)
-		anim.play("door_open_right")
-		emit_signal("right_door_change", false)
-		door_open.play()
-	else:
-		#print("CLOSING DOOR %s" % current_door)
+func close_door() -> void:
+	if current_door == 1:
 		anim.play("door_close_right")
 		emit_signal("right_door_change", true)
 		door_close.play()
+	elif current_door == 0:
+		anim.play("door_close_left")
+		emit_signal("left_door_change", true)
+		door_close.play()
+	else:
+		print("Invalid Door Close")
+		return

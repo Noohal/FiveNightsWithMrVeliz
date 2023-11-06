@@ -14,7 +14,7 @@ extends Node3D
 var rand = RandomNumberGenerator.new()
 
 var AI_level : int = 1
-var current_pos : int = 1
+var current_pos : int = 0
 
 var is_attacking : bool = false
 var watching_final_cam : bool = false
@@ -32,16 +32,16 @@ signal jumpscare_freddy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	await game.ready
-	enabled = !(Global.current_night == 0 || Global.current_night == 1 || Global.Melvinzord_Sequence)
-	if !enabled:
+	if Global.Melvinzord_Sequence:
 		return
-	
+	await game.ready
 	$Toilet.visible = false
 	$MelvinJet.visible = false
+	$BattleMode.visible = true
+	enabled = !(Global.current_night == 0 || Global.current_night == 1 || Global.Melvinzord_Sequence || !enabled)
+	print("Melvinzord: %s" % enabled)
 	
 	current_pos = 0
-	AI_level = night_AI_levels[Global.current_night]
 	
 	if AI_level == -1:
 		rand.randomize();
@@ -53,7 +53,11 @@ func _ready():
 	
 	$JumpscareTimer.wait_time = 1.0
 	$Timer.autostart = false
+	print("READY")
 	set_freddy_location(current_pos)
+	
+	if !enabled:
+		AI_level = 0
 	
 	freddy_countdown.text = "Time Left: %.02f" % time_left
 
@@ -159,6 +163,7 @@ func attack_freddy_pattern(_check : int) -> void:
 
 func initiate_jumpscare() -> void:
 	current_pos += 1
+	print("INITIATE JUMPSCARE")
 	set_freddy_location(current_pos)
 	
 	# Once Freddy is in the office, check if the player is watching the cameras.

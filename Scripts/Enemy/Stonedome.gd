@@ -36,11 +36,15 @@ signal drain_power(amount : float)
 func _ready():
 	await game.ready
 	enabled = !(Global.current_night == 0 || Global.current_night == 1)
+	print("Stonedome: %s" % enabled)
 	
 	watching_cam_6 = false
 	current_stage = 0
 	AI_level = night_AI_levels[game.current_night]
 	set_foxy_position(0)
+	
+	if !enabled:
+		AI_level = 0
 
 func _process(delta):
 	if !enabled:

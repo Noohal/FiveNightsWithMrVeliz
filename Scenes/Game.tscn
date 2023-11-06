@@ -684,7 +684,6 @@ text = "CURRENTHOUR"
 label_settings = ExtResource("3_ddate")
 
 [node name="Label" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 label_settings = ExtResource("3_ddate")
 
@@ -774,7 +773,6 @@ volume_db = -15.0
 
 [node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("6_6bp1m")]
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, -0.297261, 20)
-enabled = true
 freddy_status = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyStatus")
 freddy_countdown = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyDuration")
 enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8_F"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U_F"), NodePath("../MapPoints/4_F"), NodePath("../MapPoints/5_F"), NodePath("../MapPoints/Jumpscare"), NodePath("../MapPoints/LeftOfficeFreddy")]
@@ -1325,6 +1323,10 @@ stream = ExtResource("33_k5h5w")
 [connection signal="hour_change" from="UI/Clock" to="Stonedome" method="_on_clock_hour_change"]
 [connection signal="timeout" from="UI/Clock/Timer" to="UI/Clock" method="_on_timer_timeout"]
 [connection signal="power_loss" from="UI/Power" to="." method="_on_power_power_loss"]
+[connection signal="power_loss" from="UI/Power" to="PhoneGuyController" method="_on_power_power_loss"]
+[connection signal="power_loss" from="UI/Power" to="Player" method="_on_power_power_loss"]
+[connection signal="power_loss" from="UI/Power" to="Office" method="_on_power_power_loss"]
+[connection signal="camera_state_change" from="Player" to="UI/Power" method="_on_player_camera_state_change"]
 [connection signal="jumpscare_freddy" from="Melvinzord" to="." method="_on_melvinzord_jumpscare_freddy"]
 [connection signal="animation_finished" from="Melvinzord/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="bonnie_left_spawn" from="Shashumga" to="Melvinzord" method="_on_shashumga_bonnie_left_spawn"]
