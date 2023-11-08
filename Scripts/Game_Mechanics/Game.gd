@@ -109,7 +109,7 @@ func initiate_power_loss_jumpscare() -> void:
 	$Melvinzord.set_freddy_location(6)
 	#Global.Melvinzord_Sequence = true
 	#get_tree().change_scene_to_file("res://Scenes/Enemy/melvinzord_fatality.tscn")
-	await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
+	await get_tree().create_timer(randf_range(5.0, 15.0)).timeout
 	turn_off_hud()
 	$"Map/Scareroom/ScareCam".make_current()
 	$"Melvinzord/AnimationPlayer".play("fatality")
