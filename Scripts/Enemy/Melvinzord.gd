@@ -53,7 +53,6 @@ func _ready():
 	
 	$JumpscareTimer.wait_time = 1.0
 	$Timer.autostart = false
-	print("READY")
 	set_freddy_location(current_pos)
 	
 	if !enabled:

@@ -280,30 +280,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.284489, 0.141372), Vector3(0, -0.141372, -0.424115), Vector3(0, 0, 0.39968), Vector3(0.284489, 0.15708, -0.588176), Vector3(0, 0, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BattleMode/body/head/eyeball:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BattleMode/body/head/eyeball2:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3odnq"]
 _data = {

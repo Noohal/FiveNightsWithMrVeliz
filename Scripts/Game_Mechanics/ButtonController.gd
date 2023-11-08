@@ -33,12 +33,6 @@ func _ready():
 
 func _process(_delta):
 	if !can_use_buttons:
-		left_light.light_energy = 0
-		right_light.light_energy = 0
-		left_outside_light.light_energy = 0
-		right_outside_light.light_energy = 0
-		left_door.toggle_door(false)
-		right_door.toggle_door(false)
 		return
 	
 	if left_light_on:
@@ -102,4 +96,9 @@ func _on_ambient_sound_finished():
 
 func _on_power_power_loss():
 	can_use_buttons = false
-
+	left_light.light_energy = 0
+	right_light.light_energy = 0
+	left_outside_light.light_energy = 0
+	right_outside_light.light_energy = 0
+	left_door.toggle_door(false)
+	right_door.toggle_door(false)
