@@ -14,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if current_player.playing && Input.is_action_just_pressed("DisablePhoneGuy"):
+	if current_player && current_player.playing && Input.is_action_just_pressed("DisablePhoneGuy"):
 		current_player.stop()
 	
 	if played_audio_for_night:

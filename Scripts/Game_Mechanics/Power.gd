@@ -52,7 +52,7 @@ func _process(_delta):
 		last_constant_time = current_time
 	
 	if current_time - last_usage_time >= usage_drain_time:
-		var cons = 10.0
+		var cons = 1.0
 		#print("Usage Drain %.02f: %.02f - %.02f = %.02f" % [usage_drain_time, power_level, cons, power_level - 1.0])
 		power_level -= cons
 		last_usage_time = current_time

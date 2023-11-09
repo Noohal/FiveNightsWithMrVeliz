@@ -4,7 +4,7 @@ extends Node3D
 
 @onready var UI : Control = $UI
 @onready var NightLabel : Label = $UI/Clock/MarginContainer/NightLabel
-@onready var player_camera_bar : ColorRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/ColorRect"
+@onready var player_camera_bar : ColorRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/PCPanelToggle"
 @onready var left_eye : ORMMaterial3D = $"Melvinzord/BattleMode/body/head/eyeball".get_surface_override_material(0)
 
 var rand = RandomNumberGenerator.new()
@@ -26,7 +26,6 @@ var freddy_can_attack : bool = false
 signal getting_killed
 
 func _ready():
-	
 	current_night = Global.current_night
 	NightLabel.text = "Night " + str(current_night+1)
 

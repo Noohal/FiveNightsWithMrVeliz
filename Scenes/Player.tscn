@@ -201,7 +201,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="PlayerHUD/MarginContainer/VBoxContainer"]
+[node name="PCPanelToggle" type="ColorRect" parent="PlayerHUD/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(768, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -651,7 +651,7 @@ vertical_alignment = 1
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_started"]
-[connection signal="mouse_entered" from="PlayerHUD/MarginContainer/VBoxContainer/ColorRect" to="PlayerHUD" method="_on_color_rect_mouse_entered"]
+[connection signal="mouse_entered" from="PlayerHUD/MarginContainer/VBoxContainer/PCPanelToggle" to="PlayerHUD" method="_on_pc_panel_toggle_mouse_entered"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5" method="_on_input_event"]

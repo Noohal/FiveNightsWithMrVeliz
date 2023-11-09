@@ -1,5 +1,7 @@
 extends Control
 
+@onready var pc_panel_toggle = $MarginContainer/VBoxContainer/PCPanelToggle
+
 @onready var player : Node3D = $"../"
 @onready var map : Node2D = $"MarginContainer/HBoxContainer/ButtonMap"
 @onready var downstairs : Node2D = $"MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"
@@ -32,10 +34,6 @@ func toggle_upstairs() -> void:
 		downstairs.show()
 		upstairs.hide()
 
-func _on_color_rect_mouse_entered():
-	if playing_animation == false:
-		player.toggle_camera()
-
 func _on_animation_player_animation_started(_anim_name):
 	# print("STARTING " + anim_name)
 	playing_animation = true
@@ -44,3 +42,6 @@ func _on_animation_player_animation_finished(_anim_name):
 	# print(anim_name + " FINISHED")
 	playing_animation = false
 
+func _on_pc_panel_toggle_mouse_entered():
+	if playing_animation == false:
+		player.toggle_camera()
