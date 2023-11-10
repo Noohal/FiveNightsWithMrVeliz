@@ -27,5 +27,5 @@ func _process(_delta):
 		current_player.play()
 
 func _on_power_power_loss():
-	if audio[Global.current_night].playing:
-		audio[Global.current_night].stop()
+	if current_player && current_player.playing:
+		current_player.stop()

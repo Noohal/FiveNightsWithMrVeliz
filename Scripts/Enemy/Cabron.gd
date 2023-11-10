@@ -13,19 +13,26 @@ var AI_level : int
 var current_pos : int
 const MOVEMENT_INTERVAL : float = 4.8
 
+const FIRST_NIGHT_GRACE_PERIOD_TIMER : float = 160.0
+const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 45.0
+
 signal chica_left_spawn
 signal jumpscare_chica
 
 func _ready():
 	await game.ready
-	if !enabled:
-		AI_level = 0
+	
 	enabled = false
+	if Global.current_night <= 1:
+		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
+	else:
+		$EnableTimer.wait_time = LATER_NIGHT_GRACE_PERIOD_TIMER
+	
+	print("Hoombus: Grace Period %f, %s" % [$EnableTimer.wait_time, enabled])
 	$EnableTimer.start()
 	
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night]
-	
 	current_pos = 0
 	set_chica_position(current_pos)
 
@@ -104,4 +111,4 @@ func _on_clock_hour_change(hour):
 func _on_enable_timer_timeout():
 	enabled = true
 	$EnableTimer.stop()
-	print("Hoombus: %s" % enabled)
+	print("Hoombus: Grace Period Over, %s" % enabled)

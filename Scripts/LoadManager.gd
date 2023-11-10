@@ -35,7 +35,6 @@ func _process(_delta):
 			set_process(false)
 			return
 		1: #? THREAD_LOAD_IN_PROGRESS
-			print("Load Status: %d" % progress[0])
 			return
 		3: #? THREAD_LOAD_LOADED
 			loaded_resource = ResourceLoader.load_threaded_get(scene_path)

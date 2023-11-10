@@ -112,7 +112,7 @@ func initiate_power_loss_jumpscare() -> void:
 	turn_off_hud()
 	$"Map/Scareroom/ScareCam".make_current()
 	$"Melvinzord/AnimationPlayer".play("fatality")
-	
+
 func turn_off_hud():
 	UI.visible = false
 	player_camera_bar.visible = false

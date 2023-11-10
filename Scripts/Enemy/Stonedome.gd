@@ -35,7 +35,7 @@ signal drain_power(amount : float)
 
 func _ready():
 	await game.ready
-	enabled = !(Global.current_night == 0 || Global.current_night == 1)
+	enabled = !(Global.current_night == 0)
 	print("Stonedome: %s" % enabled)
 	
 	watching_cam_6 = false
@@ -83,6 +83,7 @@ func _on_player_watching_camera_num(id):
 	if id != 6 || current_stage != 3 || !enabled:
 		return
 	
+	print("FOXY -- RUNNING")
 	$AnimationPlayer.play("stage_4_running")
 	await get_tree().create_timer(3).timeout
 	

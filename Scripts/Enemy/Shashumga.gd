@@ -13,6 +13,8 @@ var rand = RandomNumberGenerator.new()
 var AI_level : int
 var current_pos : int
 
+const FIRST_NIGHT_GRACE_PERIOD_TIMER : float = 160.0
+const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 45.0
 const MOVEMENT_INTERVAL : float = 4.6
 
 signal bonnie_left_spawn
@@ -21,11 +23,16 @@ signal jumpscare_bonnie
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await game.ready
-	if !enabled:
-		AI_level = 0
-	enabled = false
-	$EnableTimer.start()
 	
+	if Global.current_night <= 1:
+		enabled = false
+		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
+	else:
+		enabled = false
+		$EnableTimer.wait_time = LATER_NIGHT_GRACE_PERIOD_TIMER
+	
+	print("Farmer Juan: Grace Period %f, %s" % [$EnableTimer.wait_time, enabled])
+	$EnableTimer.start()
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night]
 	current_pos = 0
@@ -124,4 +131,4 @@ func _on_clock_hour_change(hour):
 func _on_enable_timer_timeout():
 	enabled = true
 	$EnableTimer.stop()
-	print("Shashumga: %s" % enabled)
+	print("Farmer Juan: Grace Period Over, %s" % enabled)
