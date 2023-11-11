@@ -106,12 +106,13 @@ func play_freddy_music() -> void:
 func initiate_power_loss_jumpscare() -> void:
 	$HarHarHarHar.stop()
 	$Melvinzord.set_freddy_location(6)
-	#Global.Melvinzord_Sequence = true
-	#get_tree().change_scene_to_file("res://Scenes/Enemy/melvinzord_fatality.tscn")
+	Global.Melvinzord_Sequence = true
+	get_tree().change_scene_to_file("res://Scenes/Enemy/melvinzord_fatality.tscn")
 	await get_tree().create_timer(randf_range(5.0, 15.0)).timeout
 	turn_off_hud()
-	$"Map/Scareroom/ScareCam".make_current()
-	$"Melvinzord/AnimationPlayer".play("fatality")
+	#$"Map/Scareroom/ScareCam".make_current()
+	#$"Melvinzord/AnimationPlayer".play("fatality")
+	#$"Jumpscare1".play()
 
 func turn_off_hud():
 	UI.visible = false
@@ -139,10 +140,10 @@ func _on_melvinzord_jumpscare_freddy():
 	print("FREDDY -- JUMPSCARE %s" % check)
 	if check == 1:
 		$"Melvinzord/AnimationPlayer".play("change_into_super_toilet")
-		#$"Jumpscare1".play()
+		$"Jumpscare1".play()
 	else:
 		$"Melvinzord/AnimationPlayer".play("fatality")
-		#$"Jumpscare1".play()
+		$"Jumpscare1".play()
 	game_over()
 
 func _on_shashumga_jumpscare_bonnie():
@@ -152,7 +153,7 @@ func _on_shashumga_jumpscare_bonnie():
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
 	$"Shashumga/jumpscare".play("bonnie_boo")
-	#$"Jumpscare1".play()
+	$"Jumpscare1".play()
 	game_over()
 
 func _on_cabron_jumpscare_chica():
@@ -162,16 +163,16 @@ func _on_cabron_jumpscare_chica():
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
 	$"Cabron/AnimationPlayer".play("chica_scare")
-	#$"Jumpscare1".play()
+	$"Jumpscare1".play()
 	game_over()
 
 func _on_stonedome_jumpscare_foxy():
 	getting_scared = true
 	
-	$"Map/Scareroom/ScareCam".make_current()
+	#$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
-	$"Stonedome/AnimationPlayer".play("stage_5_running")
-	#$"Jumpscare1".play()
+	$"Stonedome/AnimationPlayer".play("attacking_player")
+	$"Jumpscare1".play()
 	game_over()
 	
 func _on_player_camera_state_change(watching):

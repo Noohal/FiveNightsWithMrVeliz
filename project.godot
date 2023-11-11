@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="FiveNightsWithMrVelizConverted"
+config/name="FiveNightsWithMrVeliz"
 run/main_scene="res://Scenes/Menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="FiveNightsWithMrVeliz"
