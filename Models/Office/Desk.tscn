@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvhe34qf344bp"]
+
+[ext_resource type="PackedScene" uid="uid://c452gcchjpcws" path="res://Models/Office/DeskModel.tscn" id="1_6pfwm"]
+[ext_resource type="PackedScene" uid="uid://bjqtckmkt7s2d" path="res://Models/Office/Monitor.tscn" id="2_q4plq"]
+
+[node name="Desk" type="Node3D"]
+
+[node name="desk" parent="." instance=ExtResource("1_6pfwm")]
+transform = Transform3D(0.45, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="monitor" parent="." instance=ExtResource("2_q4plq")]
+transform = Transform3D(-0.143163, 0, -0.0447687, 0, 0.15, 0, 0.0447687, 0, -0.143163, 0.334898, 0.717427, -2.92777e-08)

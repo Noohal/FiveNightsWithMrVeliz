@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjqtckmkt7s2d"]
+
+[ext_resource type="PackedScene" uid="uid://u53ldyu2dmfo" path="res://Models/Office/monitor.blend" id="1_j7n87"]
+
+[node name="monitor" instance=ExtResource("1_j7n87")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
