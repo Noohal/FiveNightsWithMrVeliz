@@ -46,7 +46,7 @@ func _process(_delta):
 	# --> Usage 4 - 9.6/8 = 1.2 seconds
 	
 	if current_time - last_constant_time >= constant_drain_time && Global.current_night > 0:
-		var cons = 0.05
+		var cons = 0.5
 		#print("Constant Drain %.02f: %.02f - %.02f = %.02f" % [constant_drain_time, power_level, cons, power_level - 1.0])
 		power_level -= cons
 		last_constant_time = current_time
