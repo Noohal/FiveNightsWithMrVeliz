@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=68 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/PhoneGuyController.gd" id="2_k26nj"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://d2bj8np533oxl" path="res://Sounds/Enemy/Jumpscare1.mp3" id="28_ymlwh"]
 [ext_resource type="AudioStream" uid="uid://bqhf47kji7qow" path="res://Sounds/Enemy/Melvinzord/fnaf_AHHHHHHHHHHHHHHHHHHH.wav" id="33_k5h5w"]
 [ext_resource type="PackedScene" uid="uid://dvhe34qf344bp" path="res://Models/Office/Desk.tscn" id="34_2a4k0"]
+[ext_resource type="PackedScene" uid="uid://ddbp2g8hm1yxa" path="res://Models/Office/BulletinBoard.tscn" id="35_uinpv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ijxsb"]
 noise_type = 3
@@ -1344,6 +1345,9 @@ stream = ExtResource("28_ymlwh")
 
 [node name="HarHarHarHar" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("33_k5h5w")
+
+[node name="bulletinboard" parent="." instance=ExtResource("35_uinpv")]
+transform = Transform3D(-2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09, -0.293496, 0.57139, 0.177579)
 
 [connection signal="getting_killed" from="." to="Player" method="_on_node_3d_getting_killed"]
 [connection signal="hour_change" from="UI/Clock" to="Shashumga" method="_on_clock_hour_change"]
