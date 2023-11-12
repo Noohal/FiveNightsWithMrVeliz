@@ -15,7 +15,7 @@ You are a security guard working at Saks High. Mr. Veliz is staying the night to
 [Sword Model](https://www.cgtrader.com/free-3d-models/military/melee/sci-fi-katana-double-sword)  
 [Low Poly Ground](https://sketchfab.com/3d-models/low-poly-dirt-ground-88bd58f71a4f43688b61c42bdd8934c3)  
 [Rocks and Trees](https://sketchfab.com/3d-models/rocks-and-trees-51cfb5d9ed6144cfb0ce476fc7cd3223#download)
-[Desk Fan Model](https://sketchfab.com/3d-models/table-fan-fdde37ab83774efda67c7e0b1783df09#download)
+[Desk Fan Model](https://sketchfab.com/3d-models/fan-20f73a830c3b4f4c8fd1fb6e4cb50be2#download)
 
 [Phone Ringing Sound](https://freesound.org/people/acclivity/sounds/24929/)  
 [Picking Up Phone Sound](https://freesound.org/people/FlatHill/sounds/211451/)  
