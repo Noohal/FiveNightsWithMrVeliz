@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=76 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/PhoneGuyController.gd" id="2_k26nj"]
@@ -20,19 +20,29 @@
 [ext_resource type="PackedScene" uid="uid://f7kgekkpc8q4" path="res://Scenes/Objects/DoorButton.tscn" id="14_c38yj"]
 [ext_resource type="PackedScene" uid="uid://bbc4trnrr1rb1" path="res://Scenes/Objects/LightButton.tscn" id="15_modhx"]
 [ext_resource type="PackedScene" uid="uid://cpv5gxnkp2ufn" path="res://Scenes/Rooms/Staircase.tscn" id="16_khb5w"]
+[ext_resource type="Material" uid="uid://btxoxmpbau5yv" path="res://Materials/FloorMaterial.tres" id="16_nghji"]
 [ext_resource type="AudioStream" uid="uid://cfon7f8rjujqd" path="res://Sounds/Player/buzzing_light.wav" id="16_tv8hw"]
 [ext_resource type="PackedScene" uid="uid://dmverauqe7cvo" path="res://Scenes/Rooms/BackStairs.tscn" id="17_5iu80"]
 [ext_resource type="AudioStream" uid="uid://tdwquwoq3yj1" path="res://Sounds/Player/open_door.mp3" id="17_adapa"]
+[ext_resource type="Material" uid="uid://dynt6qnpevl07" path="res://Materials/WallMaterial.tres" id="17_spacm"]
 [ext_resource type="AudioStream" uid="uid://bsfy6qo12p5l2" path="res://Sounds/Player/close_door.mp3" id="18_tib0b"]
 [ext_resource type="PackedScene" uid="uid://beywi8n732l0h" path="res://Scenes/Rooms/MediumRoom.tscn" id="18_yns2d"]
 [ext_resource type="AudioStream" uid="uid://osixeflc1ufl" path="res://Sounds/Player/light_on.wav" id="19_7k6br"]
 [ext_resource type="PackedScene" uid="uid://bi44o4avaitvk" path="res://Scenes/Rooms/LongRoom.tscn" id="19_fxfco"]
 [ext_resource type="PackedScene" uid="uid://chpg542bvxo26" path="res://Scenes/Rooms/SmallRoom.tscn" id="20_slt5h"]
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/Door.gd" id="20_valgn"]
 [ext_resource type="PackedScene" uid="uid://busjyo8vpx4a1" path="res://Scenes/Rooms/MediumRoomVariant.tscn" id="21_1u0cj"]
 [ext_resource type="PackedScene" uid="uid://bcda2y6dwakt2" path="res://Scenes/Rooms/Hallway.tscn" id="22_rdxcp"]
 [ext_resource type="Environment" uid="uid://dcj6aus4qmvlb" path="res://Scenes/Environment/WorldEnv.tres" id="23_6kqpv"]
 [ext_resource type="AudioStream" uid="uid://d2bj8np533oxl" path="res://Sounds/Enemy/Jumpscare1.mp3" id="28_ymlwh"]
 [ext_resource type="AudioStream" uid="uid://bqhf47kji7qow" path="res://Sounds/Enemy/Melvinzord/fnaf_AHHHHHHHHHHHHHHHHHHH.wav" id="33_k5h5w"]
+[ext_resource type="PackedScene" uid="uid://rr8jylbdvea0" path="res://Models/School/TeacherDesk.tscn" id="33_ug77u"]
+[ext_resource type="PackedScene" uid="uid://4dsyif7n775t" path="res://Models/School/TrashCan.tscn" id="33_xu02a"]
+[ext_resource type="PackedScene" uid="uid://dvhe34qf344bp" path="res://Models/Office/Desk.tscn" id="34_2a4k0"]
+[ext_resource type="PackedScene" uid="uid://c452gcchjpcws" path="res://Models/School/Desk/DeskModel.tscn" id="35_33gd4"]
+[ext_resource type="PackedScene" uid="uid://ddbp2g8hm1yxa" path="res://Models/School/BulletinBoard/BulletinBoard.tscn" id="35_uinpv"]
+[ext_resource type="PackedScene" uid="uid://b7ctnbcu3yo35" path="res://Models/School/wetfloorsign.gltf" id="37_mgw4x"]
+[ext_resource type="PackedScene" uid="uid://d2amier2e65f1" path="res://Models/School/Broom.tscn" id="38_lv4cl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ijxsb"]
 noise_type = 3
@@ -875,36 +885,43 @@ script = ExtResource("11_atde1")
 [node name="Floor" type="MeshInstance3D" parent="Office"]
 mesh = SubResource("PlaneMesh_osmvm")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("16_nghji")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Office"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("PlaneMesh_osmvm")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("16_nghji")
 
 [node name="Walls" type="Node3D" parent="Office"]
 
 [node name="LeftWall" type="MeshInstance3D" parent="Office/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -3)
 mesh = ExtResource("12_l8myr")
+surface_material_override/0 = ExtResource("17_spacm")
 
 [node name="RightWall" type="MeshInstance3D" parent="Office/Walls"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 1, 3)
 mesh = SubResource("BoxMesh_a4sfj")
+surface_material_override/0 = ExtResource("17_spacm")
 
 [node name="FrontWall1" type="MeshInstance3D" parent="Office/Walls"]
 transform = Transform3D(1.49012e-07, -1, 4.37114e-08, -1.77636e-15, -4.37114e-08, -1, 1, 2.08616e-07, -7.10543e-15, 0, 1, -2.75)
 mesh = SubResource("BoxMesh_8mtia")
 skeleton = NodePath("../FrontWall")
+surface_material_override/0 = ExtResource("17_spacm")
 
 [node name="FrontWall2" type="MeshInstance3D" parent="Office/Walls"]
 transform = Transform3D(1.49012e-07, -1, 4.37114e-08, -1.77636e-15, -4.37114e-08, -1, 1, 2.08616e-07, -7.10543e-15, 0, 1, 2.75)
 mesh = SubResource("BoxMesh_1oc3i")
 skeleton = NodePath("../FrontWall")
+surface_material_override/0 = ExtResource("17_spacm")
 
 [node name="FrontWall3" type="MeshInstance3D" parent="Office/Walls"]
 transform = Transform3D(1.49012e-07, -1, 4.37114e-08, -1.77636e-15, -4.37114e-08, -1, 1, 2.08616e-07, -7.10543e-15, 0, 1, 0)
 mesh = SubResource("BoxMesh_28mkb")
 skeleton = NodePath("../FrontWall")
+surface_material_override/0 = ExtResource("17_spacm")
 
 [node name="FrontWall" type="MeshInstance3D" parent="Office/Walls"]
 transform = Transform3D(1.49012e-07, -1, 4.37114e-08, -1.77636e-15, -4.37114e-08, -1, 1, 2.08616e-07, -7.10543e-15, 0, 1, 0)
@@ -914,12 +931,21 @@ mesh = SubResource("PlaneMesh_t0r1s")
 [node name="BackWall" type="MeshInstance3D" parent="Office/Walls"]
 transform = Transform3D(-2.36434e-07, 1, -4.37114e-08, -1.77636e-15, -4.37114e-08, -1, -1, -2.96039e-07, 1.09268e-14, -2, 1, 0)
 mesh = SubResource("BoxMesh_nkysw")
+surface_material_override/0 = ExtResource("17_spacm")
 
 [node name="LeftDoor" parent="Office" instance=ExtResource("13_rxq7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+script = ExtResource("20_valgn")
 
 [node name="RightDoor" parent="Office" instance=ExtResource("13_rxq7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+script = ExtResource("20_valgn")
+
+[node name="Desk" parent="Office" instance=ExtResource("34_2a4k0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.381355, 0, 0)
+
+[node name="bulletinboard" parent="Office" instance=ExtResource("35_uinpv")]
+transform = Transform3D(-2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09, -0.293496, 0.584044, 0.177579)
 
 [node name="DoorButtonLeft" type="Area3D" parent="Office"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1.23, -1.25)
@@ -970,7 +996,7 @@ omni_range = 2.111
 omni_shadow_mode = 0
 
 [node name="Room Light Middle" type="OmniLight3D" parent="Office"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.52297, 1.20172, 0.124416)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.37294, 1.20172, 0.00608588)
 light_energy = 0.1
 light_bake_mode = 1
 omni_range = 2.1
@@ -1162,6 +1188,12 @@ shadow_enabled = true
 omni_range = 7.282
 omni_attenuation = 0.466517
 
+[node name="desk" parent="Map/Room3" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-2.18557e-08, 0, 0.3, 0, 0.3, 0, -0.5, 0, -1.31134e-08, 1.99908, 0.0572438, 0)
+
+[node name="desk2" parent="Map/Room3" instance=ExtResource("33_ug77u")]
+transform = Transform3D(-1.37691e-08, 0, -0.315, 0, 0.315, 0, 0.315, 0, -1.37691e-08, -1.65925, 0, -1.15621)
+
 [node name="Room45" parent="Map" instance=ExtResource("19_fxfco")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
 
@@ -1185,6 +1217,21 @@ light_energy = 0.186
 shadow_enabled = true
 omni_range = 5.713
 omni_attenuation = 1.18921
+
+[node name="trashcan" parent="Map/Room6" instance=ExtResource("33_xu02a")]
+transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 1.63354, 0.0154506, -1.4799)
+
+[node name="desk" parent="Map/Room6" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-2.03258e-08, 0, -0.35, 0, 0.5, 0, 0.465, 0, -1.5299e-08, 1.58973, 0, 0.140725)
+
+[node name="wetfloorsign" parent="Map/Room6" instance=ExtResource("37_mgw4x")]
+transform = Transform3D(0.00408452, 0, -0.109924, 0, 0.11, 0, 0.109924, 0, 0.00408452, 0.418062, 0.701413, 1.50776)
+
+[node name="bulletinboard" parent="Map/Room6" instance=ExtResource("35_uinpv")]
+transform = Transform3D(-3.49691e-09, 0, 0.08, 0, 0.08, 0, -0.08, 0, -3.49691e-09, -1.54614, 0, 0.143577)
+
+[node name="Broom" parent="Map/Room6" instance=ExtResource("38_lv4cl")]
+transform = Transform3D(-3.12536e-08, 0, 0.715, -0.164522, 0.695814, -7.19148e-09, -0.695814, -0.164522, -3.0415e-08, 0, 0, -1.63916)
 
 [node name="Room7" parent="Map" instance=ExtResource("20_slt5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
@@ -1375,3 +1422,4 @@ stream = ExtResource("33_k5h5w")
 [editable path="Player"]
 [editable path="Melvinzord"]
 [editable path="Shashumga"]
+[editable path="Map/Hallway"]

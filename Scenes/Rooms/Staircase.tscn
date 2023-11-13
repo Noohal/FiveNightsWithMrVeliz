@@ -1,4 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpv5gxnkp2ufn"]
+[gd_scene load_steps=17 format=3 uid="uid://cpv5gxnkp2ufn"]
+
+[ext_resource type="Material" uid="uid://btxoxmpbau5yv" path="res://Materials/FloorMaterial.tres" id="1_lpl7t"]
+[ext_resource type="Material" uid="uid://dynt6qnpevl07" path="res://Materials/WallMaterial.tres" id="2_dpi88"]
+[ext_resource type="Material" uid="uid://yh42kud44wis" path="res://Materials/StairMaterial.tres" id="2_xh5bf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0sxd7"]
 size = Vector2(12, 12)
@@ -38,47 +42,60 @@ size = Vector3(4, 4, 0.01)
 [sub_resource type="BoxMesh" id="BoxMesh_r5srm"]
 size = Vector3(0.01, 4.5, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ewhi"]
+albedo_color = Color(0.584314, 0.584314, 0.584314, 1)
+
 [node name="Stairs" type="Node3D"]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 mesh = SubResource("PlaneMesh_0sxd7")
+surface_material_override/0 = ExtResource("1_lpl7t")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 7.91019, -4)
 mesh = SubResource("PlaneMesh_0sxd7")
+surface_material_override/0 = ExtResource("1_lpl7t")
 
 [node name="FloorM" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -6)
 mesh = SubResource("BoxMesh_2d5ia")
+surface_material_override/0 = ExtResource("1_lpl7t")
 
 [node name="UpperFloor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 2)
 mesh = SubResource("PlaneMesh_rx1vc")
+surface_material_override/0 = ExtResource("1_lpl7t")
 
 [node name="Lower" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1, -2)
 mesh = SubResource("PrismMesh_v5dqb")
+surface_material_override/0 = ExtResource("2_xh5bf")
 
 [node name="Upper" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3, 3, -2)
 mesh = SubResource("PrismMesh_v5dqb")
+surface_material_override/0 = ExtResource("2_xh5bf")
 
 [node name="Gap" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -2)
 mesh = SubResource("BoxMesh_f2h1k")
+surface_material_override/0 = ExtResource("2_xh5bf")
 
 [node name="LeftW" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -4)
 mesh = SubResource("BoxMesh_gct1i")
+surface_material_override/0 = ExtResource("2_dpi88")
 
 [node name="LeftW2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, 0)
 mesh = SubResource("BoxMesh_kmala")
+surface_material_override/0 = ExtResource("2_dpi88")
 
 [node name="RightW" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -4)
 mesh = SubResource("BoxMesh_gct1i")
+surface_material_override/0 = ExtResource("2_dpi88")
 
 [node name="RightW2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 0)
@@ -88,15 +105,19 @@ mesh = SubResource("BoxMesh_ua078")
 [node name="BackW" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -8)
 mesh = SubResource("BoxMesh_p8p2e")
+surface_material_override/0 = ExtResource("2_dpi88")
 
 [node name="BackW2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 4)
 mesh = SubResource("BoxMesh_1oxin")
+surface_material_override/0 = ExtResource("2_dpi88")
 
 [node name="FrontW" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 0)
 mesh = SubResource("BoxMesh_q13j0")
+surface_material_override/0 = ExtResource("2_dpi88")
 
 [node name="Railing" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.453991, -0.891007, 0, 0.891007, 0.453991, 1, 3, -2)
 mesh = SubResource("BoxMesh_r5srm")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ewhi")

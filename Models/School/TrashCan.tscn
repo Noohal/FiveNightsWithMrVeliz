@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://4dsyif7n775t"]
+
+[ext_resource type="PackedScene" uid="uid://cf0s7lukrvte7" path="res://Models/School/trashcan.gltf" id="1_pi78d"]
+
+[node name="trashcan" instance=ExtResource("1_pi78d")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.012, 0, 0, 0, -5.24537e-10, 0.012, 0, -0.012, -5.24537e-10, -0.780081, 0, -0.0814419)

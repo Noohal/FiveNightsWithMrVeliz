@@ -1,4 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcda2y6dwakt2"]
+[gd_scene load_steps=12 format=3 uid="uid://bcda2y6dwakt2"]
+
+[ext_resource type="Material" uid="uid://tr4ilmxbl2bg" path="res://Materials/CeilingMaterial.tres" id="1_q5tpv"]
+[ext_resource type="Material" uid="uid://g8xdfyy38132" path="res://Materials/FloorMaterial2.tres" id="2_riq3t"]
+[ext_resource type="Material" uid="uid://dynt6qnpevl07" path="res://Materials/WallMaterial.tres" id="3_f1h1w"]
+[ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Objects/Door.tscn" id="4_caxpp"]
+[ext_resource type="PackedScene" uid="uid://b116p5a0avdlf" path="res://Models/School/Lockers.tscn" id="5_ohsiy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6rixb"]
 size = Vector3(20, 0.1, 10)
@@ -15,6 +21,10 @@ size = Vector3(16, 2, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_xrsb4"]
 size = Vector3(20, 2, 0.1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_l6b2h"]
+material = ExtResource("3_f1h1w")
+size = Vector3(2, 2, 1.9)
+
 [node name="Hallway" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -24,48 +34,95 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 2, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 mesh = SubResource("BoxMesh_6rixb")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_q5tpv")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
 mesh = SubResource("BoxMesh_6rixb")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_riq3t")
 
 [node name="Wall" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 1)
 mesh = SubResource("BoxMesh_7gl4d")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="Wall2" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 1)
 mesh = SubResource("BoxMesh_7gl4d")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall1" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -2)
 mesh = SubResource("BoxMesh_eqgc2")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall2" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
 mesh = SubResource("BoxMesh_mjao4")
 skeleton = NodePath("../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall3" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 mesh = SubResource("BoxMesh_xrsb4")
 skeleton = NodePath("../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall4" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 4)
 mesh = SubResource("BoxMesh_eqgc2")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall5" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4)
 mesh = SubResource("BoxMesh_mjao4")
 skeleton = NodePath("../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall6" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 mesh = SubResource("BoxMesh_xrsb4")
 skeleton = NodePath("../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00183, 0.982898, 5.00326)
+mesh = SubResource("BoxMesh_l6b2h")
+
+[node name="Room8Door" parent="Node3D" instance=ExtResource("4_caxpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.28147, 2, -1.93757)
+
+[node name="Room6Door" parent="Node3D" instance=ExtResource("4_caxpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60963, 2, 3.9497)
+
+[node name="Room7Door" parent="Node3D" instance=ExtResource("4_caxpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24568, 2, 3.9497)
+
+[node name="Room9Door" parent="Node3D" instance=ExtResource("4_caxpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11244, 2, -1.93757)
+
+[node name="lockers" parent="Node3D" instance=ExtResource("5_ohsiy")]
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, 1.242, 2, -2)
+
+[node name="lockers2" parent="Node3D" instance=ExtResource("5_ohsiy")]
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -3.05152, 2, -2)
+
+[node name="lockers3" parent="Node3D" instance=ExtResource("5_ohsiy")]
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -1.2262, 2, -2)
+
+[node name="lockers4" parent="Node3D" instance=ExtResource("5_ohsiy")]
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, 0.0061298, 2, 3.76399)
+
+[node name="lockers5" parent="Node3D" instance=ExtResource("5_ohsiy")]
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -3.68768, 2, 3.76399)
+
+[node name="lockers6" parent="Node3D" instance=ExtResource("5_ohsiy")]
+transform = Transform3D(2.18557e-08, -4.37114e-08, -0.5, -1.91069e-15, -0.5, 4.37114e-08, -0.5, 0, -2.18557e-08, -9.99466, 2, 0.149234)
+
+[node name="lockers7" parent="Node3D" instance=ExtResource("5_ohsiy")]
+transform = Transform3D(2.18557e-08, -4.37114e-08, -0.5, -1.91069e-15, -0.5, 4.37114e-08, -0.5, 0, -2.18557e-08, 9.71582, 2, 1.14923)

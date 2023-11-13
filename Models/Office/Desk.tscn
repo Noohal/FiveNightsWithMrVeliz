@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvhe34qf344bp"]
+
+[ext_resource type="PackedScene" uid="uid://c452gcchjpcws" path="res://Models/School/Desk/DeskModel.tscn" id="1_6pfwm"]
+[ext_resource type="PackedScene" uid="uid://bjqtckmkt7s2d" path="res://Models/School/Office/Monitor/Monitor.tscn" id="2_q4plq"]
+[ext_resource type="PackedScene" uid="uid://df562dt5mi55k" path="res://Models/School/Office/Keyboard/Keyboard.tscn" id="3_s6jtg"]
+[ext_resource type="PackedScene" uid="uid://daebkv5x1jw0p" path="res://Models/Office/Fan.tscn" id="4_pivc7"]
+
+[node name="Desk" type="Node3D"]
+
+[node name="desk" parent="." instance=ExtResource("1_6pfwm")]
+transform = Transform3D(0.45, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="monitor" parent="." instance=ExtResource("2_q4plq")]
+transform = Transform3D(-0.143163, 0, -0.0447687, 0, 0.15, 0, 0.0447687, 0, -0.143163, 0.334898, 0.717427, -2.92777e-08)
+
+[node name="keyboard" parent="." instance=ExtResource("3_s6jtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.238957, 0.731566, -0.19268)
+
+[node name="Fan" parent="." instance=ExtResource("4_pivc7")]
+transform = Transform3D(0.285811, 0, -0.09117, 0, 0.3, 0, 0.09117, 0, 0.285811, -0.384668, 0.71761, 0.0947646)

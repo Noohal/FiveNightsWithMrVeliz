@@ -1,4 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi44o4avaitvk"]
+[gd_scene load_steps=11 format=3 uid="uid://bi44o4avaitvk"]
+
+[ext_resource type="Material" uid="uid://g8xdfyy38132" path="res://Materials/FloorMaterial2.tres" id="1_gvwo1"]
+[ext_resource type="Material" uid="uid://tr4ilmxbl2bg" path="res://Materials/CeilingMaterial.tres" id="2_l4gji"]
+[ext_resource type="Material" uid="uid://dynt6qnpevl07" path="res://Materials/WallMaterial.tres" id="3_quihu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rtjtt"]
 size = Vector3(10, 0.1, 10)
@@ -26,35 +30,44 @@ size = Vector3(10, 2, 0.1)
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 2)
 mesh = SubResource("BoxMesh_rtjtt")
+surface_material_override/0 = ExtResource("1_gvwo1")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 2, 2)
 mesh = SubResource("BoxMesh_rtjtt")
+surface_material_override/0 = ExtResource("2_l4gji")
 
 [node name="LeftWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 2)
 mesh = SubResource("BoxMesh_j4xjm")
+surface_material_override/0 = ExtResource("3_quihu")
 
 [node name="RightWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 2)
 mesh = SubResource("BoxMesh_v1f7j")
+surface_material_override/0 = ExtResource("3_quihu")
 
 [node name="BackWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 mesh = SubResource("BoxMesh_vcko8")
+surface_material_override/0 = ExtResource("3_quihu")
 
 [node name="FWall1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 2)
 mesh = SubResource("BoxMesh_f68jg")
+surface_material_override/0 = ExtResource("3_quihu")
 
 [node name="FWall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 mesh = SubResource("BoxMesh_c4dx2")
+surface_material_override/0 = ExtResource("3_quihu")
 
 [node name="FWall3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 2)
 mesh = SubResource("BoxMesh_f68jg")
+surface_material_override/0 = ExtResource("3_quihu")
 
 [node name="FarWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
 mesh = SubResource("BoxMesh_cbnkw")
+surface_material_override/0 = ExtResource("3_quihu")

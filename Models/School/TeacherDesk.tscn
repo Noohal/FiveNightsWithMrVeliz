@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://rr8jylbdvea0"]
+
+[ext_resource type="PackedScene" uid="uid://c452gcchjpcws" path="res://Models/School/Desk/DeskModel.tscn" id="1_8sraq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rupc3"]
+albedo_color = Color(0.560784, 0.333333, 0.160784, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_psi2q"]
+material = SubResource("StandardMaterial3D_rupc3")
+size = Vector3(4.95, 2, 2)
+
+[node name="desk" instance=ExtResource("1_8sraq")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_psi2q")

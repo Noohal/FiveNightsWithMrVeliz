@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2amier2e65f1"]
+
+[ext_resource type="Texture2D" uid="uid://x7b81p332hh4" path="res://Textures/broom.jpg" id="1_at5hu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_14k46"]
+top_radius = 0.05
+bottom_radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t728g"]
+albedo_color = Color(0.411765, 0.215686, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_un55k"]
+size = Vector3(0.28, 0.565, 0.51)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekkhy"]
+albedo_texture = ExtResource("1_at5hu")
+
+[node name="Broom" type="Node3D"]
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39318, 0)
+mesh = SubResource("CylinderMesh_14k46")
+surface_material_override/0 = SubResource("StandardMaterial3D_t728g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.287133, 0)
+mesh = SubResource("PrismMesh_un55k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ekkhy")

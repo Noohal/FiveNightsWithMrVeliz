@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://byviqucsbdcml"]
+
+[ext_resource type="PackedScene" uid="uid://b7ctnbcu3yo35" path="res://Models/School/wetfloorsign.gltf" id="1_m7wv3"]
+
+[node name="wetfloorsign" instance=ExtResource("1_m7wv3")]

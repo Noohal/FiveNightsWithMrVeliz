@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://y1sn6xg6jkux"]
+[gd_scene load_steps=16 format=3 uid="uid://y1sn6xg6jkux"]
 
-[ext_resource type="Script" path="res://Scripts/Game_Mechanics/Door.gd" id="1_3bca1"]
 [ext_resource type="Material" uid="uid://cvrhf115fj7an" path="res://Materials/DoorMaterial.tres" id="1_p5xks"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4dx6c"]
@@ -103,8 +102,19 @@ size = Vector3(0.1, 1, 0.25)
 [sub_resource type="BoxMesh" id="BoxMesh_33u0d"]
 size = Vector3(0.1, 0.25, 1)
 
+[sub_resource type="SphereMesh" id="SphereMesh_kagv6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj540"]
+albedo_color = Color(0.929412, 0.721569, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_brcru"]
+size = Vector3(0.01, 0.75, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrero"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.396078)
+
 [node name="Door" type="Node3D"]
-script = ExtResource("1_3bca1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
@@ -141,3 +151,18 @@ surface_material_override/0 = ExtResource("1_p5xks")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 mesh = SubResource("BoxMesh_33u0d")
 surface_material_override/0 = ExtResource("1_p5xks")
+
+[node name="Knob1" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.0803152, 0, 0.384162)
+mesh = SubResource("SphereMesh_kagv6")
+surface_material_override/0 = SubResource("StandardMaterial3D_hj540")
+
+[node name="Knob2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0.0896817, 0, 0.384162)
+mesh = SubResource("SphereMesh_kagv6")
+surface_material_override/0 = SubResource("StandardMaterial3D_hj540")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00170283, 0.376846, 0)
+mesh = SubResource("BoxMesh_brcru")
+surface_material_override/0 = SubResource("StandardMaterial3D_nrero")

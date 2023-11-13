@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="1_8a0ml"]
 [ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Scenes/Environment/Environment.tres" id="1_qfsnb"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHUD.gd" id="3_wis3i"]
+[ext_resource type="Texture2D" uid="uid://cgw0ssdh0hju3" path="res://Textures/Map/Downstairs.png" id="4_6g51y"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/CameraButton.gd" id="5_cloq7"]
 [ext_resource type="Texture2D" uid="uid://ducgs35v7ohym" path="res://Textures/Map/Cam_White.png" id="6_filoo"]
 [ext_resource type="LabelSettings" uid="uid://dpxw6l5h02ggk" path="res://Font/Camera_Text.tres" id="7_mad33"]
-[ext_resource type="Texture2D" uid="uid://bfemg2s14vyom" path="res://Textures/Map/Downstairs2.png" id="8_7lk2i"]
 [ext_resource type="Texture2D" uid="uid://wc7f3ojq625c" path="res://Textures/Objects/camera_button_texture2.png" id="8_gmwvv"]
-[ext_resource type="Texture2D" uid="uid://b3ocvcbwfv25x" path="res://Textures/Map/Upstairs2.png" id="9_vbod4"]
+[ext_resource type="Texture2D" uid="uid://dcaouwldu63n" path="res://Textures/Map/Upstairs.png" id="8_h02ar"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la3gu"]
 albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
@@ -233,7 +233,7 @@ grow_vertical = 0
 scale = Vector2(1.438, 1.25)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("8_7lk2i")
+texture = ExtResource("4_6g51y")
 
 [node name="Cam3" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap" node_paths=PackedStringArray("player")]
 position = Vector2(10, 205.385)
@@ -375,6 +375,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UpstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+visible = false
 scale = Vector2(0.65, 0.65)
 
 [node name="UpstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
@@ -391,7 +392,7 @@ grow_vertical = 0
 scale = Vector2(1.438, 1.25)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("9_vbod4")
+texture = ExtResource("8_h02ar")
 
 [node name="Cam7" type="Area2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap" node_paths=PackedStringArray("player")]
 position = Vector2(143.53, 15.2941)

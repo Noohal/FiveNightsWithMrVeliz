@@ -1,4 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://beywi8n732l0h"]
+[gd_scene load_steps=11 format=3 uid="uid://beywi8n732l0h"]
+
+[ext_resource type="Material" uid="uid://g8xdfyy38132" path="res://Materials/FloorMaterial2.tres" id="1_hpt44"]
+[ext_resource type="Material" uid="uid://tr4ilmxbl2bg" path="res://Materials/CeilingMaterial.tres" id="2_xsuay"]
+[ext_resource type="Material" uid="uid://dynt6qnpevl07" path="res://Materials/WallMaterial.tres" id="3_3gdn0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_803i1"]
 size = Vector3(6, 0.1, 10)
@@ -26,33 +30,41 @@ size = Vector3(6, 2, 0.1)
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 mesh = SubResource("BoxMesh_803i1")
+surface_material_override/0 = ExtResource("1_hpt44")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 2, 3)
 mesh = SubResource("BoxMesh_2u5nv")
+surface_material_override/0 = ExtResource("2_xsuay")
 
 [node name="DoorWall1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
 mesh = SubResource("BoxMesh_6c3rf")
+surface_material_override/0 = ExtResource("3_3gdn0")
 
 [node name="DoorWall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 2)
 mesh = SubResource("BoxMesh_y7l54")
+surface_material_override/0 = ExtResource("3_3gdn0")
 
 [node name="BackWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 mesh = SubResource("BoxMesh_rrnk4")
 skeleton = NodePath("../DoorWall2")
+surface_material_override/0 = ExtResource("3_3gdn0")
 
 [node name="SideWall1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 2)
 mesh = SubResource("BoxMesh_jx467")
+surface_material_override/0 = ExtResource("3_3gdn0")
 
 [node name="SideWall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 2)
 mesh = SubResource("BoxMesh_jx467")
+surface_material_override/0 = ExtResource("3_3gdn0")
 
 [node name="BackWall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
 mesh = SubResource("BoxMesh_0jfg3")
 skeleton = NodePath("../DoorWall2")
+surface_material_override/0 = ExtResource("3_3gdn0")
