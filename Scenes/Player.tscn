@@ -1,14 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://cef84qm7nly4w"]
+[gd_scene load_steps=31 format=3 uid="uid://cef84qm7nly4w"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="1_8a0ml"]
 [ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Scenes/Environment/Environment.tres" id="1_qfsnb"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHUD.gd" id="3_wis3i"]
+[ext_resource type="Texture2D" uid="uid://tarrglng3gab" path="res://Textures/Map/TogglePanel.png" id="4_1yf12"]
 [ext_resource type="Texture2D" uid="uid://cgw0ssdh0hju3" path="res://Textures/Map/Downstairs.png" id="4_6g51y"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/CameraButton.gd" id="5_cloq7"]
 [ext_resource type="Texture2D" uid="uid://ducgs35v7ohym" path="res://Textures/Map/Cam_White.png" id="6_filoo"]
 [ext_resource type="LabelSettings" uid="uid://dpxw6l5h02ggk" path="res://Font/Camera_Text.tres" id="7_mad33"]
-[ext_resource type="Texture2D" uid="uid://wc7f3ojq625c" path="res://Textures/Objects/camera_button_texture2.png" id="8_gmwvv"]
 [ext_resource type="Texture2D" uid="uid://dcaouwldu63n" path="res://Textures/Map/Upstairs.png" id="8_h02ar"]
+[ext_resource type="Texture2D" uid="uid://efietk16x8vg" path="res://Textures/Map/ToggleButton.png" id="10_j6nyb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la3gu"]
 albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
@@ -202,11 +203,17 @@ size_flags_vertical = 8
 alignment = 2
 
 [node name="PCPanelToggle" type="ColorRect" parent="PlayerHUD/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(768, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 color = Color(0, 0.705882, 0.329412, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHUD/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(768, 80)
+layout_mode = 2
+texture = ExtResource("4_1yf12")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerHUD/MarginContainer"]
 layout_mode = 2
@@ -217,6 +224,7 @@ size_flags_vertical = 8
 position = Vector2(-354, -504)
 
 [node name="DownstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+visible = false
 scale = Vector2(0.65, 0.65)
 
 [node name="DownstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
@@ -375,7 +383,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UpstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
-visible = false
 scale = Vector2(0.65, 0.65)
 
 [node name="UpstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
@@ -560,7 +567,8 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("5_cloq7")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
-texture = ExtResource("8_gmwvv")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_j6nyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
 shape = SubResource("RectangleShape2D_55xhy")
@@ -652,7 +660,7 @@ vertical_alignment = 1
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_started"]
-[connection signal="mouse_entered" from="PlayerHUD/MarginContainer/VBoxContainer/PCPanelToggle" to="PlayerHUD" method="_on_pc_panel_toggle_mouse_entered"]
+[connection signal="mouse_entered" from="PlayerHUD/MarginContainer/VBoxContainer/TextureRect" to="PlayerHUD" method="_on_texture_rect_mouse_entered"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam3" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam4" method="_on_input_event"]
 [connection signal="input_event" from="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5" to="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap/Cam5" method="_on_input_event"]

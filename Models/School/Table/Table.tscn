@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://kbjil5of8fe6"]
+
+[ext_resource type="PackedScene" uid="uid://c4s3fpwnqkaj1" path="res://Models/School/Table/table.gltf" id="1_37lub"]
+
+[node name="table" instance=ExtResource("1_37lub")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.33, 0, 0, 0, -1.44248e-08, 0.33, 0, -0.33, -1.44248e-08, -14.3179, 0, 61.5575)

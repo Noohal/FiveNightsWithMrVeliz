@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr0pjsnxcgroh"]
+
+[ext_resource type="PackedScene" uid="uid://ck5wjpxcgo80w" path="res://Models/School/Whiteboard/whiteboard.gltf" id="1_knuh2"]
+
+[node name="whiteboard" instance=ExtResource("1_knuh2")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(-0.01, -4.402e-07, -1.92418e-14, 0, -4.37114e-10, 0.01, -4.402e-07, 0.01, 4.37114e-10, 0, 0, 0)

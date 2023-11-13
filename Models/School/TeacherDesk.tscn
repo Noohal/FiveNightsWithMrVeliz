@@ -9,7 +9,7 @@ albedo_color = Color(0.560784, 0.333333, 0.160784, 1)
 material = SubResource("StandardMaterial3D_rupc3")
 size = Vector3(4.95, 2, 2)
 
-[node name="desk" instance=ExtResource("1_8sraq")]
+[node name="TeachersDesk" instance=ExtResource("1_8sraq")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

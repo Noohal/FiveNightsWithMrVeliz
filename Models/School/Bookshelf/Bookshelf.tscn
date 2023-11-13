@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://0mubl4put14w"]
+
+[ext_resource type="PackedScene" uid="uid://dasqv7xqdxlnk" path="res://Models/School/Bookshelf/bookshelf.gltf" id="1_iwqbt"]
+
+[node name="bookshelf" instance=ExtResource("1_iwqbt")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.129, 0, 0, 0, -5.63877e-09, 0.129, 0, -0.129, -5.63877e-09, -1.19893, 0, 0)
+
+[node name="c1fcf6921c644155be5389c979a114a2_fbx" parent="Sketchfab_model" index="0"]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 8.76557, -1.98765e-07, 4.54721)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://rfchc588xp0c"]
+
+[ext_resource type="Material" uid="uid://cvrhf115fj7an" path="res://Materials/DoorMaterial.tres" id="1_6vodu"]
+[ext_resource type="Material" uid="uid://bj0txr56f76lv" path="res://Materials/Glass.tres" id="2_4mhjh"]
+[ext_resource type="Material" uid="uid://bndcs0m1cx4ig" path="res://Materials/DoorKob.tres" id="3_kj1vp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u0dai"]
+size = Vector3(0.1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2nvyu"]
+size = Vector3(0.1, 1, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2apyi"]
+size = Vector3(0.1, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jldoq"]
+material = ExtResource("2_4mhjh")
+size = Vector3(0.01, 0.75, 0.5)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bvkkd"]
+
+[node name="DoorVariant" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_u0dai")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_6vodu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.375)
+mesh = SubResource("BoxMesh_2nvyu")
+surface_material_override/0 = ExtResource("1_6vodu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.375)
+mesh = SubResource("BoxMesh_2nvyu")
+surface_material_override/0 = ExtResource("1_6vodu")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.875, 0)
+mesh = SubResource("BoxMesh_2apyi")
+surface_material_override/0 = ExtResource("1_6vodu")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.375, 0)
+mesh = SubResource("BoxMesh_jldoq")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.0803152, 0.932578, 0.384162)
+mesh = SubResource("SphereMesh_bvkkd")
+surface_material_override/0 = ExtResource("3_kj1vp")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0.0777697, 0.932578, 0.384162)
+mesh = SubResource("SphereMesh_bvkkd")
+surface_material_override/0 = ExtResource("3_kj1vp")

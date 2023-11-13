@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=85 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/PhoneGuyController.gd" id="2_k26nj"]
@@ -39,10 +39,17 @@
 [ext_resource type="PackedScene" uid="uid://rr8jylbdvea0" path="res://Models/School/TeacherDesk.tscn" id="33_ug77u"]
 [ext_resource type="PackedScene" uid="uid://4dsyif7n775t" path="res://Models/School/TrashCan.tscn" id="33_xu02a"]
 [ext_resource type="PackedScene" uid="uid://dvhe34qf344bp" path="res://Models/Office/Desk.tscn" id="34_2a4k0"]
+[ext_resource type="PackedScene" uid="uid://dr0pjsnxcgroh" path="res://Models/School/Whiteboard/Whiteboard.tscn" id="34_uw42h"]
 [ext_resource type="PackedScene" uid="uid://c452gcchjpcws" path="res://Models/School/Desk/DeskModel.tscn" id="35_33gd4"]
 [ext_resource type="PackedScene" uid="uid://ddbp2g8hm1yxa" path="res://Models/School/BulletinBoard/BulletinBoard.tscn" id="35_uinpv"]
 [ext_resource type="PackedScene" uid="uid://b7ctnbcu3yo35" path="res://Models/School/wetfloorsign.gltf" id="37_mgw4x"]
+[ext_resource type="PackedScene" uid="uid://0mubl4put14w" path="res://Models/School/Bookshelf/Bookshelf.tscn" id="37_tqylh"]
 [ext_resource type="PackedScene" uid="uid://d2amier2e65f1" path="res://Models/School/Broom.tscn" id="38_lv4cl"]
+[ext_resource type="PackedScene" uid="uid://c8hftn6gjmah8" path="res://Models/School/Chair/Chair.tscn" id="39_j1fw3"]
+[ext_resource type="PackedScene" uid="uid://bseux20yrdnvo" path="res://Models/School/Locker/SingleLocker.tscn" id="42_qbi7x"]
+[ext_resource type="PackedScene" uid="uid://kbjil5of8fe6" path="res://Models/School/Table/Table.tscn" id="43_38pv5"]
+[ext_resource type="PackedScene" uid="uid://rfchc588xp0c" path="res://Models/School/door_variant.tscn" id="44_iupcc"]
+[ext_resource type="Texture2D" uid="uid://ds5fbiyxm115v" path="res://Textures/poster.png" id="46_b1c0h"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ijxsb"]
 noise_type = 3
@@ -646,6 +653,13 @@ size = Vector3(0.05, 0.2, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ef4l2"]
 size = Vector3(0.05, 0.2, 0.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p31hg"]
+albedo_texture = ExtResource("46_b1c0h")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5mfan"]
+material = SubResource("StandardMaterial3D_p31hg")
+size = Vector2(8, 2)
+
 [sub_resource type="BoxMesh" id="BoxMesh_xgusk"]
 size = Vector3(4, 0.1, 4)
 
@@ -791,10 +805,8 @@ label_settings = ExtResource("3_ddate")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("5_s456a")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 0)
+camera_rooms = Array[String](["Front Stairs", "Back Stairs", "Room 3", "Room 4 Right", "Room 4 Left", "Maintenance Room", "Teacher's Lounge", "Room 15", "Mr. Veliz's Room", "Principal's Office", "Upstairs Hallway"])
 camera_parent = NodePath("../Cameras")
-
-[node name="Screen" parent="Player" index="1"]
-transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
 [node name="ToggleCameras" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("6_yl24e")
@@ -1182,31 +1194,106 @@ omni_attenuation = 1.10957
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -6)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Map/Room3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68156, 1.71391, -1.43293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68156, 1.71391, -1.1573)
+light_color = Color(0.913725, 0.913725, 0.913725, 1)
 light_energy = 0.096
 shadow_enabled = true
-omni_range = 7.282
-omni_attenuation = 0.466517
+omni_range = 8.788
+omni_attenuation = 0.901249
 
 [node name="desk" parent="Map/Room3" instance=ExtResource("35_33gd4")]
-transform = Transform3D(-2.18557e-08, 0, 0.3, 0, 0.3, 0, -0.5, 0, -1.31134e-08, 1.99908, 0.0572438, 0)
+transform = Transform3D(-2.18557e-08, 0, 0.3, 0, 0.3, 0, -0.5, 0, -1.31134e-08, 1.71329, 0.0572438, 0)
 
-[node name="desk2" parent="Map/Room3" instance=ExtResource("33_ug77u")]
+[node name="desk2" parent="Map/Room3" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-2.18557e-08, 0, 0.3, 0, 0.3, 0, -0.5, 0, -1.31134e-08, 0.0906162, 0.0572438, 0)
+
+[node name="TeachersDesk" parent="Map/Room3" instance=ExtResource("33_ug77u")]
 transform = Transform3D(-1.37691e-08, 0, -0.315, 0, 0.315, 0, 0.315, 0, -1.37691e-08, -1.65925, 0, -1.15621)
+
+[node name="whiteboard" parent="Map/Room3" instance=ExtResource("34_uw42h")]
+transform = Transform3D(-3.16908e-08, 0, 0.725, 0, 0.725, 0, -0.725, 0, -3.16908e-08, -2.93613, 1.13883, 0.273897)
+
+[node name="chair" parent="Map/Room3" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 1.99101, -0.0131085, 0.322833)
+
+[node name="chair2" parent="Map/Room3" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 1.99101, -0.0131085, -0.646904)
+
+[node name="chair3" parent="Map/Room3" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0.280525, -0.0131085, -0.646904)
+
+[node name="chair4" parent="Map/Room3" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0.280525, -0.0131085, 0.531507)
+
+[node name="chair5" parent="Map/Room3" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.93476, -0.0131085, -1.39479)
+
+[node name="DoorVariant" parent="Map/Room3" instance=ExtResource("44_iupcc")]
+transform = Transform3D(-0.646896, 0, -0.762578, 0, 1, 0, 0.762578, 0, -0.646896, -1.95388, 0, 2.00744)
 
 [node name="Room45" parent="Map" instance=ExtResource("19_fxfco")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room45"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489735, 1.53919, -1.8895)
-light_energy = 0.548
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440783, 1.81659, -1.21423)
+light_color = Color(0.745098, 0.745098, 0.745098, 1)
+light_energy = 0.63
 shadow_enabled = true
-omni_range = 7.999
-omni_attenuation = 1.7411
+shadow_opacity = 0.52
+omni_range = 9.653
+omni_attenuation = 2.07053
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Map/Room45"]
 transform = Transform3D(-0.870571, 0, 0.492044, 0, 1, 0, -0.492044, 0, -0.870571, -1.81871, 1.46062, -3.00708)
 visible = false
+
+[node name="TeachersDesk" parent="Map/Room45" instance=ExtResource("33_ug77u")]
+transform = Transform3D(-1.55175e-08, 0, 0.355, 0, 0.355, 0, -0.355, 0, -1.55175e-08, -3.52227, 0, -1.09113)
+
+[node name="desk" parent="Map/Room45" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-1.46433e-08, 0, -0.335, 0, 0.335, 0, 0.335, 0, -1.46433e-08, -1.60738, 0, -0.858769)
+
+[node name="desk2" parent="Map/Room45" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-1.46433e-08, 0, -0.335, 0, 0.335, 0, 0.335, 0, -1.46433e-08, -0.138194, 0, -0.858769)
+
+[node name="desk3" parent="Map/Room45" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-1.46433e-08, 0, -0.335, 0, 0.335, 0, 0.335, 0, -1.46433e-08, 1.46886, 0, -0.858769)
+
+[node name="desk4" parent="Map/Room45" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-1.46433e-08, 0, -0.335, 0, 0.335, 0, 0.335, 0, -1.46433e-08, 3.11844, 0, -0.858769)
+
+[node name="whiteboard" parent="Map/Room45" instance=ExtResource("34_uw42h")]
+transform = Transform3D(-3.47506e-08, 0, 0.795, 0, 0.795, 0, -0.795, 0, -3.47506e-08, -4.93986, 1.1649, 0.340329)
+
+[node name="bulletinboard" parent="Map/Room45" instance=ExtResource("35_uinpv")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -2.17593, 0.145833, 2.27084)
+
+[node name="bookshelf" parent="Map/Room45" instance=ExtResource("37_tqylh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1.25, 0, 8.74228e-08, 0, -1, 0, 0, 1.79736)
+
+[node name="bookshelf2" parent="Map/Room45" instance=ExtResource("37_tqylh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1.25, 0, 8.74228e-08, 0, -1, 2.0261, 0, 1.79736)
+
+[node name="chair" parent="Map/Room45" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 3.42488, 0, -1.215)
+
+[node name="chair2" parent="Map/Room45" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 3.42488, 0, -0.448283)
+
+[node name="chair3" parent="Map/Room45" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 1.76224, 0, -0.448283)
+
+[node name="chair4" parent="Map/Room45" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, -1.26497, 0, -0.448283)
+
+[node name="chair5" parent="Map/Room45" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, -1.26497, 0, -1.29198)
+
+[node name="chair6" parent="Map/Room45" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.208, 0, -1.29198)
+
+[node name="DoorVariant" parent="Map/Room45" instance=ExtResource("44_iupcc")]
+transform = Transform3D(-0.854685, 0, 0.519146, 0, 1, 0, -0.519146, 0, -0.854685, 4.44608, 0.00931472, 1.9896)
 
 [node name="Room6" parent="Map" instance=ExtResource("20_slt5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
@@ -1233,6 +1320,18 @@ transform = Transform3D(-3.49691e-09, 0, 0.08, 0, 0.08, 0, -0.08, 0, -3.49691e-0
 [node name="Broom" parent="Map/Room6" instance=ExtResource("38_lv4cl")]
 transform = Transform3D(-3.12536e-08, 0, 0.715, -0.164522, 0.695814, -7.19148e-09, -0.695814, -0.164522, -3.0415e-08, 0, 0, -1.63916)
 
+[node name="chair" parent="Map/Room6" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.275, 0, 0, 0, -0.275, 2.40413e-08, 0, -2.40413e-08, -0.275, 1.40849, 1.6602, -0.591626)
+
+[node name="chair2" parent="Map/Room6" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.275, 0, 0, 0, -0.275, 2.40413e-08, 0, -2.40413e-08, -0.275, 1.40849, 1.6602, 0.0475779)
+
+[node name="chair3" parent="Map/Room6" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.275, 0, 0, 0, -0.275, 2.40413e-08, 0, -2.40413e-08, -0.275, 1.40849, 1.6602, 0.758545)
+
+[node name="DoorVariant" parent="Map/Room6" instance=ExtResource("44_iupcc")]
+transform = Transform3D(-0.903575, 0, -0.428431, 0, 1, 0, 0.428431, 0, -0.903575, -1.48612, 0, 1.98952)
+
 [node name="Room7" parent="Map" instance=ExtResource("20_slt5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 
@@ -1242,6 +1341,18 @@ light_energy = 0.186
 shadow_enabled = true
 omni_range = 4.77
 omni_attenuation = 1.23114
+
+[node name="singlelocker" parent="Map/Room7" instance=ExtResource("42_qbi7x")]
+transform = Transform3D(-7.86805e-09, 0, 0.18, 0, 0.18, 0, -0.18, 0, -7.86805e-09, -1.74931, 0, -0.57601)
+
+[node name="table" parent="Map/Room7" instance=ExtResource("43_38pv5")]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.847543, 0, -0.939212)
+
+[node name="whiteboard" parent="Map/Room7" instance=ExtResource("34_uw42h")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -1.77282, 1.2749, 0.926768)
+
+[node name="DoorVariant" parent="Map/Room7" instance=ExtResource("44_iupcc")]
+transform = Transform3D(-0.961756, 0, -0.273909, 0, 1, 0, 0.273909, 0, -0.961756, -1.4574, 0, 2.03095)
 
 [node name="Room8" parent="Map" instance=ExtResource("21_1u0cj")]
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -18, 2, -4)
@@ -1253,26 +1364,106 @@ shadow_enabled = true
 omni_range = 6.948
 omni_attenuation = 0.482968
 
+[node name="bookshelf" parent="Map/Room8" instance=ExtResource("37_tqylh")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 1.64003, 0.550407, -1.69778)
+
+[node name="desk" parent="Map/Room8" instance=ExtResource("35_33gd4")]
+transform = Transform3D(1.59547e-08, 1.3948e-15, 0.365, 3.19093e-08, -0.365, -8.47033e-22, 0.365, 3.19093e-08, -1.59547e-08, 2.25059, 1.92034, 1.90735e-06)
+
+[node name="desk2" parent="Map/Room8" instance=ExtResource("35_33gd4")]
+transform = Transform3D(1.59547e-08, 1.3948e-15, 0.365, 3.19093e-08, -0.365, -1.27055e-21, 0.365, 3.19093e-08, -1.59547e-08, 0.575102, 1.92034, 1.90735e-06)
+
+[node name="chair" parent="Map/Room8" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.255, 2.22928e-08, -2.22928e-08, 2.22928e-08, -0.255, 0, -2.22928e-08, -1.77636e-15, -0.255, -0.00490761, 1.91986, -0.428797)
+
+[node name="chair2" parent="Map/Room8" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.255, 2.22928e-08, -2.22928e-08, 2.22928e-08, -0.255, 0, -2.22928e-08, -1.77636e-15, -0.255, -0.00489998, 1.91986, 0.409833)
+
+[node name="chair3" parent="Map/Room8" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.255, 2.22928e-08, -2.22928e-08, 2.22928e-08, -0.255, 0, -2.22928e-08, -1.77636e-15, -0.255, 1.96272, 1.91986, 0.409833)
+
+[node name="chair4" parent="Map/Room8" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.255, 2.22928e-08, -2.22928e-08, 2.22928e-08, -0.255, 0, -2.22928e-08, -1.77636e-15, -0.255, 1.96271, 1.91986, -0.335028)
+
+[node name="whiteboard" parent="Map/Room8" instance=ExtResource("34_uw42h")]
+transform = Transform3D(-0.805, 1.21552e-07, 0, -1.21552e-07, -0.805, 0, 0, 0, 0.805, -0.794479, 0.936717, -1.67665)
+
+[node name="whiteboard2" parent="Map/Room8" instance=ExtResource("34_uw42h")]
+transform = Transform3D(0.63, 9.51274e-08, -9.51274e-08, 9.51274e-08, -0.63, 0, -9.51274e-08, -1.42109e-14, -0.63, 1.31143, 0.763389, 1.77147)
+
 [node name="Room9" parent="Map" instance=ExtResource("18_yns2d")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0, 14)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84607, 1.57527, 1.64999)
+light_color = Color(0.886275, 0.886275, 0.886275, 1)
 light_energy = 0.186
-shadow_blur = 1.678
-omni_range = 7.527
-omni_attenuation = 0.420448
-omni_shadow_mode = 0
+shadow_enabled = true
+shadow_opacity = 0.68
+omni_range = 7.181
+omni_attenuation = 1.36604
+
+[node name="whiteboard" parent="Map/Room9" instance=ExtResource("34_uw42h")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -2.95711, 1.20309, 0.0559635)
+
+[node name="desk" parent="Map/Room9" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-1.81402e-08, 0, 0.415, 0, 0.415, 0, -0.415, 0, -1.81402e-08, -0.812883, 0, -0.0359716)
+
+[node name="desk2" parent="Map/Room9" instance=ExtResource("35_33gd4")]
+transform = Transform3D(-1.81402e-08, 0, 0.415, 0, 0.415, 0, -0.415, 0, -1.81402e-08, 0.764948, 0, -0.0359716)
+
+[node name="DoorVariant" parent="Map/Room9" instance=ExtResource("44_iupcc")]
+transform = Transform3D(-0.587842, 0, -0.808976, 0, 1, 0, 0.808976, 0, -0.587842, -1.93787, 0.00593853, 2.02647)
+
+[node name="chair" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, -0.334755, 0, 0.491227)
+
+[node name="chair2" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, -0.334755, 0, -0.436355)
+
+[node name="chair3" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 1.04816, 0, -0.436355)
+
+[node name="chair4" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 1.04816, 0, 0.357523)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Room9"]
+transform = Transform3D(0.56, 0, 0, 0, -2.44784e-08, -0.56, 0, 0.56, -2.44784e-08, -0.000957489, 1.25522, -1.91397)
+mesh = SubResource("PlaneMesh_5mfan")
 
 [node name="Room10" parent="Map" instance=ExtResource("20_slt5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 10)
 
+[node name="Wall2" parent="Map/Room10" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98377, 1, 0)
+
+[node name="FrontWall2" parent="Map/Room10" index="8"]
+transform = Transform3D(1.52, 0, 0, 0, 1, 0, 0, 0, 1, 1.74207, 1, 2)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211227, 1.63933, -1.60976)
-light_energy = 0.186
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74135, 1.63933, -1.7085)
+light_energy = 0.071
 shadow_enabled = true
-omni_range = 4.342
-omni_attenuation = 0.68302
+omni_range = 9.652
+omni_attenuation = 0.870551
+
+[node name="DoorVariant" parent="Map/Room10" instance=ExtResource("44_iupcc")]
+transform = Transform3D(-0.863765, 0, -0.503895, 0, 1, 0, 0.503895, 0, -0.863765, -1.48825, 0, 1.99139)
+
+[node name="bulletinboard" parent="Map/Room10" instance=ExtResource("35_uinpv")]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 1.44159, -0.209069, 2.37804)
+
+[node name="TeachersDesk" parent="Map/Room10" instance=ExtResource("33_ug77u")]
+transform = Transform3D(-1.61732e-08, 0, 0.37, 0, 0.37, 0, -0.37, 0, -1.61732e-08, 2.27653, 0, 0.463586)
+
+[node name="chair" parent="Map/Room10" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(-0.225, 0, -3.39741e-08, 0, 0.225, 0, 3.39741e-08, 0, -0.225, 2.82664, 0, 0.485429)
+
+[node name="chair2" parent="Map/Room10" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0.877588, 0, 0.764794)
+
+[node name="chair3" parent="Map/Room10" instance=ExtResource("39_j1fw3")]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0.877588, 0, -0.0650208)
 
 [node name="Hallway" parent="Map" instance=ExtResource("22_rdxcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -2)
@@ -1422,4 +1613,5 @@ stream = ExtResource("33_k5h5w")
 [editable path="Player"]
 [editable path="Melvinzord"]
 [editable path="Shashumga"]
+[editable path="Map/Room10"]
 [editable path="Map/Hallway"]

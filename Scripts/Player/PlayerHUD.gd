@@ -42,6 +42,6 @@ func _on_animation_player_animation_finished(_anim_name):
 	# print(anim_name + " FINISHED")
 	playing_animation = false
 
-func _on_pc_panel_toggle_mouse_entered():
+func _on_texture_rect_mouse_entered():
 	if playing_animation == false:
 		player.toggle_camera()
