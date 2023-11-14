@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cef84qm7nly4w"]
+[gd_scene load_steps=32 format=3 uid="uid://cef84qm7nly4w"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="1_8a0ml"]
 [ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Scenes/Environment/Environment.tres" id="1_qfsnb"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ducgs35v7ohym" path="res://Textures/Map/Cam_White.png" id="6_filoo"]
 [ext_resource type="LabelSettings" uid="uid://dpxw6l5h02ggk" path="res://Font/Camera_Text.tres" id="7_mad33"]
 [ext_resource type="Texture2D" uid="uid://dcaouwldu63n" path="res://Textures/Map/Upstairs.png" id="8_h02ar"]
-[ext_resource type="Texture2D" uid="uid://efietk16x8vg" path="res://Textures/Map/ToggleButton.png" id="10_j6nyb"]
+[ext_resource type="Texture2D" uid="uid://bwnc3gw0or20d" path="res://Textures/Map/BlankButton.png" id="10_0wdm7"]
+[ext_resource type="Theme" uid="uid://d3yhias40i0q2" path="res://Font/Main_Menu_UI.tres" id="11_y62cr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la3gu"]
 albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
@@ -224,7 +225,6 @@ size_flags_vertical = 8
 position = Vector2(-354, -504)
 
 [node name="DownstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
-visible = false
 scale = Vector2(0.65, 0.65)
 
 [node name="DownstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"]
@@ -234,11 +234,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 430.0
-offset_bottom = 543.0
+offset_left = 9.0
+offset_top = -47.0
+offset_right = 439.0
+offset_bottom = 497.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(1.438, 1.25)
+scale = Vector2(1.4, 1.4)
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = ExtResource("4_6g51y")
@@ -383,6 +385,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UpstairsMap" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
+visible = false
 scale = Vector2(0.65, 0.65)
 
 [node name="UpstairsImg" type="TextureRect" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"]
@@ -392,11 +395,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 430.0
-offset_bottom = 543.0
+offset_left = 9.0
+offset_top = -47.0
+offset_right = 439.0
+offset_bottom = 497.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(1.438, 1.25)
+scale = Vector2(1.4, 1.4)
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = ExtResource("8_h02ar")
@@ -568,10 +573,22 @@ script = ExtResource("5_cloq7")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_j6nyb")
+texture = ExtResource("10_0wdm7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
 shape = SubResource("RectangleShape2D_55xhy")
+
+[node name="ToggleLabel" type="Label" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap/Toggle"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_y62cr")
+theme_override_font_sizes/font_size = 16
+text = "Gaming"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Node2D" type="Node2D" parent="PlayerHUD/MarginContainer/HBoxContainer/ButtonMap"]
 position = Vector2(-106, -144)
@@ -646,10 +663,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 261.0
-offset_top = -71.0
-offset_right = 406.0
-offset_bottom = -32.0
+offset_left = 215.0
+offset_top = -85.0
+offset_right = 396.0
+offset_bottom = -37.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Front Stairs"

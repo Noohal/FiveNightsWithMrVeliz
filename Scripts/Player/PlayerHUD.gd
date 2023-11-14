@@ -6,6 +6,7 @@ extends Control
 @onready var map : Node2D = $"MarginContainer/HBoxContainer/ButtonMap"
 @onready var downstairs : Node2D = $"MarginContainer/HBoxContainer/ButtonMap/DownstairsMap"
 @onready var upstairs : Node2D= $"MarginContainer/HBoxContainer/ButtonMap/UpstairsMap"
+@onready var toggle_label = $MarginContainer/HBoxContainer/ButtonMap/Toggle/ToggleLabel
 
 var playing_animation : bool = false
 var looking_upstairs : bool = false
@@ -28,9 +29,11 @@ func hide_upstairs() -> void:
 func toggle_upstairs() -> void:
 	looking_upstairs = !looking_upstairs
 	if looking_upstairs:
+		toggle_label.text = "Toggle\nDownstairs"
 		downstairs.hide()
 		upstairs.show()
 	else:
+		toggle_label.text = "Toggle\nUpstairs"
 		downstairs.show()
 		upstairs.hide()
 
