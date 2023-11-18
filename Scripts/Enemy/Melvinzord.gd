@@ -18,11 +18,15 @@ var current_pos : int = 0
 
 var is_attacking : bool = false
 var watching_final_cam : bool = false
+var watching_cams : bool = false
 
-var bonnie_left_spawn : bool = false
-var chica_left_spawn : bool = false
+var bonnie_moving : bool = false
+var chica_moving : bool = false
+
 var jumpscaring : bool = false
 var waiting_to_move : bool = false
+
+var power_loss_jumpscare : bool = false
 
 var time_left : float = 0.0
 var current_countdown : float = 0.0
@@ -38,25 +42,23 @@ func _ready():
 	$Toilet.visible = false
 	$MelvinJet.visible = false
 	$BattleMode.visible = true
+	$"BattleMode/body/head/eyeball".visible = true
+	$"BattleMode/body/head/eyeball2".visible = true
 	enabled = !(Global.current_night == 0 || Global.current_night == 1 || Global.Melvinzord_Sequence || !enabled)
 	print("Melvinzord: %s" % enabled)
-	
+	enabled = false
 	current_pos = 0
 	
 	if AI_level == -1:
 		rand.randomize();
-		AI_level = rand.randi_range(1,2)
+		AI_level = 10
+		#AI_level = rand.randi_range(1,2)
 	
 	$Timer.wait_time = MOVEMENT_INTERVAL
-	$Timer.autostart = true
-	$Timer.start()
+	$Timer.autostart = false
 	
 	$JumpscareTimer.wait_time = 1.0
-	$Timer.autostart = false
 	set_freddy_location(current_pos)
-	
-	if !enabled:
-		AI_level = 0
 	
 	freddy_countdown.text = "Time Left: %.02f" % time_left
 
@@ -64,23 +66,18 @@ func _process(delta):
 	if waiting_to_move:
 		time_left -= delta
 		freddy_countdown.text = "Time Left: %.02f" % time_left
-	pass
 
 func _on_timer_timeout():
-	if !enabled:
-		#print("FREDDY NOT ENABLED")
+	if !enabled || power_loss_jumpscare:
+		print("NOT ENABLED")
 		return
 	
-	if !bonnie_left_spawn && !chica_left_spawn:
-		#print("FREDDY -- SOMEONE IN SPAWN")
-		return
-	
-	if game.watching_cam && !is_attacking:
-		# print("FREDDY -- NOT ATTACKING LOCKED")
+	if watching_cams && !is_attacking:
+		print("FREDDY -- NOT ATTACKING LOCKED")
 		return
 	
 	if watching_final_cam && is_attacking:
-		# print("FREDDY -- ATTACKING LOCKED")
+		print("FREDDY -- ATTACKING LOCKED")
 		return
 	
 	if waiting_to_move:
@@ -96,11 +93,12 @@ func _on_timer_timeout():
 		else:
 			regular_freddy_pattern(check)
 	else:
-		pass
-		# print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
+		print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
 
-func regular_freddy_pattern(_check : int) -> void:
-	# print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
+func regular_freddy_pattern(check : int) -> void:
+	if power_loss_jumpscare:
+		return
+	print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
 	# Figure out where to move to
 	current_pos += 1
 	
@@ -124,6 +122,8 @@ Checklist for Freddy Jumpscare
 [X] Door is open
 """
 func attack_freddy_pattern(_check : int) -> void:
+	if power_loss_jumpscare:
+		return
 	print("FREDDY -- ATTACKING")
 	# Check if we are currently at Cam 5
 	if current_pos == 5:
@@ -161,6 +161,8 @@ func attack_freddy_pattern(_check : int) -> void:
 		pass
 
 func initiate_jumpscare() -> void:
+	if power_loss_jumpscare:
+		return
 	current_pos += 1
 	print("INITIATE JUMPSCARE")
 	set_freddy_location(current_pos)
@@ -177,10 +179,12 @@ func initiate_jumpscare() -> void:
 	$JumpscareTimer.start()
 
 func wait_to_move():
+	if power_loss_jumpscare:
+		return
 	#print("FREDDY -- WAITING FOR %.02fs" % current_countdown)
 	await get_tree().create_timer(current_countdown).timeout
 	
-	if game.watching_cam:
+	if watching_cams:
 		await $"../Player".watching_office
 		print("FREDDY -- NOT WATCHING CAMS")
 	
@@ -195,16 +199,33 @@ func set_freddy_location(pos : int) -> void:
 	set_global_rotation(enemy_rotations[pos])
 	
 func _on_shashumga_bonnie_left_spawn():
-	if bonnie_left_spawn:
-		return
-	bonnie_left_spawn = true
+	bonnie_moving = true
+	if chica_moving:
+		if Global.current_night <= 2 || Global.Melvinzord_Sequence:
+			enabled = false
+		else:
+			enabled = true
+			$Timer.start()
+	else:
+		enabled = false
 	
 func _on_cabron_chica_left_spawn():
-	if chica_left_spawn:
-		return
-	chica_left_spawn = true
+	chica_moving = true
+	if bonnie_moving:
+		if Global.current_night <= 2 || Global.Melvinzord_Sequence:
+			enabled = false
+		else:
+			enabled = true
+			$Timer.start()
+	else:
+		enabled = false
 
 func _on_player_watching_camera_num(id):
+	if id == 0:
+		watching_cams = false
+	else:
+		watching_cams = true
+	
 	if is_attacking:
 		watching_final_cam = (id == current_pos)
 	#print(watching_final_cam)
@@ -219,3 +240,7 @@ func _on_jumpscare_timer_timeout():
 		print("FREDDY -- TIME TO SCARE")
 		if !game.getting_scared:
 			emit_signal("jumpscare_freddy")
+
+
+func _on_power_power_loss():
+	power_loss_jumpscare = true

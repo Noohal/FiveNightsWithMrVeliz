@@ -63,6 +63,10 @@ func _on_door_button_left_input_event(_camera, event, _position, _normal, _shape
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed == true:
 			left_door_closed = !left_door_closed
+			if left_door_closed:
+				left_door.door_close.play()
+			else:
+				left_door.door_open.play()
 			left_door.toggle_door(left_door_closed)
 
 func _on_door_button_right_input_event(_camera, event, _position, _normal, _shape_idx):
@@ -71,6 +75,10 @@ func _on_door_button_right_input_event(_camera, event, _position, _normal, _shap
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed == true:
 			right_door_closed = !right_door_closed
+			if right_door_closed:
+				right_door.door_close.play()
+			else:
+				right_door.door_open.play()
 			right_door.toggle_door(right_door_closed)
 
 func _on_light_button_left_input_event(_camera, event, _position, _normal, _shape_idx):
@@ -100,5 +108,10 @@ func _on_power_power_loss():
 	right_light.light_energy = 0
 	left_outside_light.light_energy = 0
 	right_outside_light.light_energy = 0
+	
+	if left_door_closed:
+		left_door.door_open.play()
 	left_door.toggle_door(false)
+	if right_door_closed:
+		right_door.door_open.play()
 	right_door.toggle_door(false)

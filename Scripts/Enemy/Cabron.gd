@@ -14,7 +14,7 @@ var current_pos : int
 const MOVEMENT_INTERVAL : float = 4.8
 
 const FIRST_NIGHT_GRACE_PERIOD_TIMER : float = 160.0
-const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 45.0
+const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 30.0
 
 signal chica_left_spawn
 signal jumpscare_chica
@@ -26,7 +26,10 @@ func _ready():
 	if Global.current_night <= 1:
 		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
 	else:
-		$EnableTimer.wait_time = LATER_NIGHT_GRACE_PERIOD_TIMER
+		var grace_period = LATER_NIGHT_GRACE_PERIOD_TIMER - 10.0 * (Global.current_night - 1)
+		if grace_period <= 0.0:
+			grace_period = 1.0
+		$EnableTimer.wait_time = grace_period
 	
 	print("Hoombus: Grace Period %f, %s" % [$EnableTimer.wait_time, enabled])
 	$EnableTimer.start()
@@ -47,6 +50,7 @@ func _on_timer_timeout():
 		set_chica_position(current_pos)
 		print("CHICA -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
 		await get_tree().create_timer(4).timeout
+		print("CHICA -- Current Scale %v" % scale)
 	else:
 		pass
 		#print("CHICA -- %s VS %s: STAY" % [AI_level, check])
@@ -101,6 +105,7 @@ func attack() -> int:
 	return 7
 
 func set_chica_position(pos : int) -> void:
+	scale = Vector3(0.8, 0.8, 0.8)
 	set_global_position(enemy_locations[pos].global_position)
 	set_global_rotation(enemy_rotations[pos])
 

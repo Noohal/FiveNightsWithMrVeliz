@@ -37,11 +37,11 @@ func open_door() -> void:
 	if current_door == 1:
 		anim.play("door_open_right")
 		emit_signal("right_door_change", false)
-		door_open.play()
+		#door_open.play()
 	elif current_door == 0:
 		anim.play("door_open_left")
 		emit_signal("left_door_change", false)
-		door_open.play()
+		#door_open.play()
 	else:
 		print("Invalid Door Open")
 		return
@@ -50,11 +50,11 @@ func close_door() -> void:
 	if current_door == 1:
 		anim.play("door_close_right")
 		emit_signal("right_door_change", true)
-		door_close.play()
+		#door_close.play()
 	elif current_door == 0:
 		anim.play("door_close_left")
 		emit_signal("left_door_change", true)
-		door_close.play()
+		#door_close.play()
 	else:
 		print("Invalid Door Close")
 		return

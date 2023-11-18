@@ -14,7 +14,7 @@ var AI_level : int
 var current_pos : int
 
 const FIRST_NIGHT_GRACE_PERIOD_TIMER : float = 160.0
-const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 45.0
+const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 30.0
 const MOVEMENT_INTERVAL : float = 4.6
 
 signal bonnie_left_spawn
@@ -29,9 +29,12 @@ func _ready():
 		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
 	else:
 		enabled = false
-		$EnableTimer.wait_time = LATER_NIGHT_GRACE_PERIOD_TIMER
+		var grace_period = LATER_NIGHT_GRACE_PERIOD_TIMER - 10.0 * (Global.current_night - 1)
+		if grace_period <= 0.0:
+			grace_period = 1.0
+		$EnableTimer.wait_time = grace_period
 	
-	print("Farmer Juan: Grace Period %f, %s" % [$EnableTimer.wait_time, enabled])
+	print("Guac of Mole: Grace Period %f, %s" % [$EnableTimer.wait_time, enabled])
 	$EnableTimer.start()
 	rand.randomize()
 	AI_level = night_AI_levels[game.current_night]
@@ -131,4 +134,4 @@ func _on_clock_hour_change(hour):
 func _on_enable_timer_timeout():
 	enabled = true
 	$EnableTimer.stop()
-	print("Farmer Juan: Grace Period Over, %s" % enabled)
+	print("Guac of Mole: Grace Period Over, %s" % enabled)

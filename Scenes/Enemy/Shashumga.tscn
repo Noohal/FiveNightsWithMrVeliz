@@ -9,6 +9,7 @@ albedo_texture = ExtResource("2_iu4qg")
 uv1_scale = Vector3(2.125, 2.125, 2.125)
 uv1_offset = Vector3(-0.035, 0.335, 0)
 uv1_triplanar_sharpness = 1.93187
+disable_receive_shadows = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_40o6d"]
 material = SubResource("StandardMaterial3D_hg65b")

@@ -408,32 +408,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.75, 0.75, 0.75)]
+"values": [Vector3(0.963195, -0.149933, 20)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
+tracks/2/path = NodePath(".:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.963195, -0.149933, 20)]
+"values": [Vector3(0.8, 0.8, 0.8)]
 }
 
 [sub_resource type="Animation" id="Animation_f724a"]
 resource_name = "chica_scare"
 length = 1.5
-step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -441,10 +440,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 20), Vector3(1.40487, -0.683248, 20.036)]
+"values": [Vector3(0.690558, 0, 20), Vector3(1.57072, -0.20939, 20.0049)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -457,18 +456,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 1.5708, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.75, 0.75, 0.75), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_euh5a"]
@@ -737,7 +724,6 @@ layout_mode = 2
 label_settings = ExtResource("3_ddate")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
-visible = false
 layout_mode = 2
 
 [node name="LockStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
@@ -751,13 +737,11 @@ text = "Time Left:"
 label_settings = ExtResource("3_ddate")
 
 [node name="FreddyStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
-visible = false
 layout_mode = 2
 text = "FREDDY:"
 label_settings = ExtResource("3_ddate")
 
 [node name="FreddyDuration" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
-visible = false
 layout_mode = 2
 label_settings = ExtResource("3_ddate")
 
@@ -804,12 +788,9 @@ text = "Power:"
 label_settings = ExtResource("3_ddate")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("5_s456a")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1, 0)
+transform = Transform3D(-0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642788, -1.5, 1, 0)
 camera_rooms = Array[String](["Front Stairs", "Back Stairs", "Room 3", "Room 4 Right", "Room 4 Left", "Maintenance Room", "Teacher's Lounge", "Room 15", "Mr. Veliz's Room", "Principal's Office", "Upstairs Hallway"])
 camera_parent = NodePath("../Cameras")
-
-[node name="Screen" parent="Player" index="1"]
-transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
 [node name="ToggleCameras" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("6_yl24e")
@@ -825,7 +806,7 @@ enabled = true
 freddy_status = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyStatus")
 freddy_countdown = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyDuration")
 enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8_F"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U_F"), NodePath("../MapPoints/4_F"), NodePath("../MapPoints/5_F"), NodePath("../MapPoints/Jumpscare"), NodePath("../MapPoints/LeftOfficeFreddy")]
-enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(0, 1.0088, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, -0.963666, 0), Vector3(0.38858, 0.807023, 0), Vector3(0, -1.5708, 0), Vector3(0, 2.37576, 0)])
+enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(-1.46623e-08, 1.0088, -0.485952), Vector3(0, -1.5708, 0), Vector3(0, 0.721502, 0), Vector3(0, -0.708848, 0), Vector3(0.468743, 0.836484, -1.67028e-08), Vector3(0, -1.5708, 0), Vector3(0, 2.37576, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
 
 [node name="eyeball" parent="Melvinzord/BattleMode/body/head" index="1"]
@@ -850,8 +831,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 enabled = true
 scare_cam = NodePath("../Map/Scareroom/ScareCam")
 enemy_locations = [NodePath("../MapPoints/BonnieSpawn"), NodePath("../MapPoints/8_B"), NodePath("../MapPoints/10"), NodePath("../MapPoints/11"), NodePath("../MapPoints/1D"), NodePath("../MapPoints/3"), NodePath("../MapPoints/LeftOffice"), NodePath("../MapPoints/Jumpscare")]
-enemy_rotations = Array[Vector3]([Vector3(0, 0, 0), Vector3(0.20967, 0.288629, -0.611387), Vector3(0, 1.23349, 0), Vector3(0, 2.46542, 0), Vector3(0, -1.67178, 0), Vector3(0, 0, 0), Vector3(0, 1.00309, 0), Vector3(0, 0, 0)])
-night_AI_levels = Array[int]([0, 3, 0, 2, 5, 10])
+enemy_rotations = Array[Vector3]([Vector3(0, 0, 0), Vector3(-3.90997e-09, 0.829921, -0.308661), Vector3(0, 1.23349, 0), Vector3(0, 2.46542, 0), Vector3(0, -1.67178, 0), Vector3(0, 0, 0), Vector3(0, 1.00309, 0), Vector3(0, 0, 0)])
+night_AI_levels = Array[int]([0, 3, 0, 4, 5, 10])
 
 [node name="MeshInstance3D" parent="Shashumga" index="0"]
 layers = 2
@@ -869,10 +850,10 @@ transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
 stream = ExtResource("8_anank")
 
 [node name="Cabron" parent="." node_paths=PackedStringArray("enemy_locations") instance=ExtResource("9_wey61")]
-transform = Transform3D(-0.75, 0, 1.90139e-06, 0, 0.75, 0, -1.90139e-06, 0, -0.75, 0.963195, -0.149933, 20)
+transform = Transform3D(-0.8, 0, 2.02815e-06, 0, 0.8, 0, -2.02815e-06, 0, -0.8, 0.963195, -0.149933, 20)
 enabled = true
 enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/12"), NodePath("../MapPoints/8"), NodePath("../MapPoints/2D"), NodePath("../MapPoints/4"), NodePath("../MapPoints/5"), NodePath("../MapPoints/RightOffice"), NodePath("../MapPoints/Jumpscare")]
-enemy_rotations = Array[Vector3]([Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 0, 0), Vector3(0, -2.44346, 0), Vector3(0, 0, 0)])
+enemy_rotations = Array[Vector3]([Vector3(0, 1.5708, 0), Vector3(0, 1.571, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 1.87473, 0), Vector3(0, 0, 0), Vector3(0, -1.97404, 0), Vector3(0, 0, 0)])
 night_AI_levels = Array[int]([0, 2, 5, 4, 7, 12])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cabron"]
@@ -1083,7 +1064,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1207, 3.25272, 4.83653)
 
 [node name="2U_F" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4, 7.6667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89859, 4, 7.30291)
 
 [node name="2D" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 4)
@@ -1092,16 +1073,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -14)
 
 [node name="4" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20975, -1.19209e-07, 3.19882)
 
 [node name="4_F" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89084, 0, 4.12028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90453, 0, 4.41609)
 
 [node name="5" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6834, 0, 2.5)
 
 [node name="5_F" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48841, 0.391931, 0.0313924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40299, 0.497366, -0.0489325)
 
 [node name="6" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, -11.5)
@@ -1113,10 +1094,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -11.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -11)
 
 [node name="8_B" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8234, 0, -11.5244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0236, 0.803308, -11.5244)
 
 [node name="8_F" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5831, 0, -8.88978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4246, 0.231272, -8.12919)
 
 [node name="9" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 7.5)
@@ -1149,7 +1130,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625398, 0, -2.24101)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.530155, 0, -2.41624)
 
 [node name="RightOffice" type="Node3D" parent="MapPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, 2.187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.611985, 0, 2.23028)
 
 [node name="Jumpscare" type="Node3D" parent="MapPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
@@ -1179,19 +1160,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Front Stairs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60189, 7.22563, -0.126139)
+light_energy = 0.277
 shadow_enabled = true
-omni_range = 15.0
-omni_attenuation = 1.62451
+omni_range = 12.798
+omni_attenuation = 1.18921
 
 [node name="Back Stairs" parent="Map" instance=ExtResource("17_5iu80")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.053, 0, 13.4208)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Back Stairs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11635, 7.89286, -6.38132)
-light_energy = 0.558
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485799, 5.73537, -4.61157)
+light_energy = 0.367
 shadow_enabled = true
-omni_range = 12.211
-omni_attenuation = 1.10957
+omni_range = 10.119
+omni_attenuation = 1.68179
 
 [node name="Room3" parent="Map" instance=ExtResource("18_yns2d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -6)
@@ -1238,7 +1220,7 @@ transform = Transform3D(-0.646896, 0, -0.762578, 0, 1, 0, 0.762578, 0, -0.646896
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room45"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440783, 1.81659, -1.21423)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440783, 1.81659, -0.532096)
 light_color = Color(0.745098, 0.745098, 0.745098, 1)
 light_energy = 0.63
 shadow_enabled = true
@@ -1298,15 +1280,19 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -4.208, 0, -1.29198)
 [node name="DoorVariant" parent="Map/Room45" instance=ExtResource("44_iupcc")]
 transform = Transform3D(-0.854685, 0, 0.519146, 0, 1, 0, -0.519146, 0, -0.854685, 4.44608, 0.00931472, 1.9896)
 
+[node name="DoorVariant2" parent="Map/Room45" instance=ExtResource("44_iupcc")]
+transform = Transform3D(-0.443556, 0, 0.896246, 0, 1, 0, -0.896246, 0, -0.443556, -4.46871, 0.00931472, 1.9896)
+
 [node name="Room6" parent="Map" instance=ExtResource("20_slt5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50977, 1.76681, -1.82417)
+light_color = Color(0.745098, 0.745098, 0.745098, 1)
 light_energy = 0.186
 shadow_enabled = true
 omni_range = 5.713
-omni_attenuation = 1.18921
+omni_attenuation = 1.46409
 
 [node name="trashcan" parent="Map/Room6" instance=ExtResource("33_xu02a")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, 1.63354, 0.0154506, -1.4799)
@@ -1343,7 +1329,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50809, 1.85016, 1.49477)
 light_energy = 0.186
 shadow_enabled = true
 omni_range = 4.77
-omni_attenuation = 1.23114
+omni_attenuation = 1.18921
 
 [node name="singlelocker" parent="Map/Room7" instance=ExtResource("42_qbi7x")]
 transform = Transform3D(-7.86805e-09, 0, 0.18, 0, 0.18, 0, -0.18, 0, -7.86805e-09, -1.74931, 0, -0.57601)
@@ -1361,11 +1347,14 @@ transform = Transform3D(-0.961756, 0, -0.273909, 0, 1, 0, 0.273909, 0, -0.961756
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -18, 2, -4)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Room8"]
-transform = Transform3D(1, 5.0822e-21, 0, 0, 1, 0, 0, 0, 1, 2.72455, 0.446797, 0.260198)
-light_energy = 0.096
+transform = Transform3D(1, 5.0822e-21, 0, 0, 1, 0, 0, 0, 1, 2.88969, 0.446797, 0.260199)
+light_color = Color(0.745098, 0.745098, 0.745098, 1)
+light_energy = 0.367
 shadow_enabled = true
-omni_range = 6.948
-omni_attenuation = 0.482968
+shadow_opacity = 0.3
+omni_range = 6.627
+omni_attenuation = 0.840897
+omni_shadow_mode = 0
 
 [node name="bookshelf" parent="Map/Room8" instance=ExtResource("37_tqylh")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 1.64003, 0.550407, -1.69778)
@@ -1394,6 +1383,9 @@ transform = Transform3D(-0.805, 1.21552e-07, 0, -1.21552e-07, -0.805, 0, 0, 0, 0
 [node name="whiteboard2" parent="Map/Room8" instance=ExtResource("34_uw42h")]
 transform = Transform3D(0.63, 9.51274e-08, -9.51274e-08, 9.51274e-08, -0.63, 0, -9.51274e-08, -1.42109e-14, -0.63, 1.31143, 0.763389, 1.77147)
 
+[node name="DoorVariant" parent="Map/Room8" instance=ExtResource("44_iupcc")]
+transform = Transform3D(0.976443, 7.10543e-15, -0.215775, -1.88637e-08, -1, -8.53634e-08, -0.215775, 8.74228e-08, -0.976443, -1.97694, 1.96103, 2.03526)
+
 [node name="Room9" parent="Map" instance=ExtResource("18_yns2d")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0, 14)
 
@@ -1410,25 +1402,16 @@ omni_attenuation = 1.36604
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -2.95711, 1.20309, 0.0559635)
 
 [node name="desk" parent="Map/Room9" instance=ExtResource("35_33gd4")]
-transform = Transform3D(-1.81402e-08, 0, 0.415, 0, 0.415, 0, -0.415, 0, -1.81402e-08, -0.812883, 0, -0.0359716)
-
-[node name="desk2" parent="Map/Room9" instance=ExtResource("35_33gd4")]
-transform = Transform3D(-1.81402e-08, 0, 0.415, 0, 0.415, 0, -0.415, 0, -1.81402e-08, 0.764948, 0, -0.0359716)
+transform = Transform3D(-1.81402e-08, 0, 0.415, 0, 0.415, 0, -0.415, 0, -1.81402e-08, -0.277737, 0, -0.0359716)
 
 [node name="DoorVariant" parent="Map/Room9" instance=ExtResource("44_iupcc")]
 transform = Transform3D(-0.587842, 0, -0.808976, 0, 1, 0, 0.808976, 0, -0.587842, -1.93787, 0.00593853, 2.02647)
 
 [node name="chair" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
-transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, -0.334755, 0, 0.491227)
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0.200392, 0, 0.491227)
 
 [node name="chair2" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
-transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, -0.334755, 0, -0.436355)
-
-[node name="chair3" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
-transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 1.04816, 0, -0.436355)
-
-[node name="chair4" parent="Map/Room9" instance=ExtResource("39_j1fw3")]
-transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 1.04816, 0, 0.357523)
+transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0.200392, 0, -0.436355)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Room9"]
 transform = Transform3D(0.56, 0, 0, 0, -2.44784e-08, -0.56, 0, 0.56, -2.44784e-08, -0.000957489, 1.25522, -1.91397)
@@ -1472,9 +1455,32 @@ transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0.877588, 0, -0.0650
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -2)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Hallway"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.76556, 1.42361, 3.41537)
-light_energy = 0.368
-omni_range = 25.76
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75127, 1.02617, 2.67777)
+light_color = Color(0.545098, 0.545098, 0.545098, 1)
+light_energy = 0.277
+omni_range = 3.599
+omni_attenuation = 0.801944
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Map/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22381, 1.15349, 1.21807)
+light_color = Color(0.396078, 0.396078, 0.396078, 1)
+light_energy = 0.277
+omni_range = 6.947
+omni_attenuation = 0.148651
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Map/Hallway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73465, 1.95347, 0.796261)
+light_color = Color(0.286275, 0.286275, 0.286275, 1)
+light_energy = 0.277
+omni_range = 5.595
+omni_attenuation = 0.00995754
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Hallway"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.10066, 4.43923, 1.28184)
+visible = false
+light_energy = 0.458
+spot_range = 4.343
+spot_angle = 48.05
 
 [node name="Scareroom" type="Node3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 27)
@@ -1590,8 +1596,10 @@ stream = ExtResource("33_k5h5w")
 [connection signal="power_loss" from="UI/Power" to="." method="_on_power_power_loss"]
 [connection signal="power_loss" from="UI/Power" to="PhoneGuyController" method="_on_power_power_loss"]
 [connection signal="power_loss" from="UI/Power" to="Player" method="_on_power_power_loss"]
+[connection signal="power_loss" from="UI/Power" to="Melvinzord" method="_on_power_power_loss"]
 [connection signal="power_loss" from="UI/Power" to="Office" method="_on_power_power_loss"]
 [connection signal="camera_state_change" from="Player" to="UI/Power" method="_on_player_camera_state_change"]
+[connection signal="watching_camera_num" from="Player" to="Melvinzord" method="_on_player_watching_camera_num"]
 [connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
 [connection signal="jumpscare_freddy" from="Melvinzord" to="." method="_on_melvinzord_jumpscare_freddy"]
 [connection signal="animation_finished" from="Melvinzord/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
@@ -1617,4 +1625,3 @@ stream = ExtResource("33_k5h5w")
 [editable path="Melvinzord"]
 [editable path="Shashumga"]
 [editable path="Map/Room10"]
-[editable path="Map/Hallway"]

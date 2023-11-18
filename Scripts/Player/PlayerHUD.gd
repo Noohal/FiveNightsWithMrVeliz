@@ -11,12 +11,17 @@ extends Control
 var playing_animation : bool = false
 var looking_upstairs : bool = false
 
+var can_watch_cameras : bool = true
+
 func _ready():
 	looking_upstairs = false
 	hide_upstairs()
 	toggle_ui(false)
 
 func toggle_ui(enable : bool) -> void:
+	if !can_watch_cameras:
+		return
+	
 	if enable:
 		map.show()
 	else:
@@ -29,11 +34,11 @@ func hide_upstairs() -> void:
 func toggle_upstairs() -> void:
 	looking_upstairs = !looking_upstairs
 	if looking_upstairs:
-		toggle_label.text = "Toggle\nDownstairs"
+		toggle_label.text = "Switch to\nDownstairs"
 		downstairs.hide()
 		upstairs.show()
 	else:
-		toggle_label.text = "Toggle\nUpstairs"
+		toggle_label.text = "Switch to\nUpstairs"
 		downstairs.show()
 		upstairs.hide()
 
@@ -48,3 +53,6 @@ func _on_animation_player_animation_finished(_anim_name):
 func _on_texture_rect_mouse_entered():
 	if playing_animation == false:
 		player.toggle_camera()
+
+func _on_power_power_loss():
+	toggle_ui

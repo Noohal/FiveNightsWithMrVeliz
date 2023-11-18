@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcda2y6dwakt2"]
+[gd_scene load_steps=19 format=3 uid="uid://bcda2y6dwakt2"]
 
 [ext_resource type="Material" uid="uid://tr4ilmxbl2bg" path="res://Materials/CeilingMaterial.tres" id="1_q5tpv"]
 [ext_resource type="Material" uid="uid://g8xdfyy38132" path="res://Materials/FloorMaterial2.tres" id="2_riq3t"]
 [ext_resource type="Material" uid="uid://dynt6qnpevl07" path="res://Materials/WallMaterial.tres" id="3_f1h1w"]
-[ext_resource type="PackedScene" uid="uid://y1sn6xg6jkux" path="res://Scenes/Objects/Door.tscn" id="4_caxpp"]
+[ext_resource type="PackedScene" uid="uid://rfchc588xp0c" path="res://Models/School/door_variant.tscn" id="5_21vwa"]
 [ext_resource type="PackedScene" uid="uid://b116p5a0avdlf" path="res://Models/School/Lockers.tscn" id="5_ohsiy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6rixb"]
@@ -18,8 +18,30 @@ size = Vector3(2, 2, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_mjao4"]
 size = Vector3(16, 2, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8om04"]
+albedo_color = Color(0, 0, 0, 1)
+emission_operator = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_sfu5p"]
+size = Vector3(2.5, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6g45j"]
+size = Vector3(9.05, 2, 0.1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_xrsb4"]
 size = Vector3(20, 2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm7l6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5no1s"]
+size = Vector3(10.5, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8ji5"]
+size = Vector3(1.5, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ou0s0"]
+size = Vector3(2, 2, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l6b2h"]
 material = ExtResource("3_f1h1w")
@@ -60,10 +82,30 @@ mesh = SubResource("BoxMesh_eqgc2")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_f1h1w")
 
-[node name="SideWall2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
+[node name="Node3D" type="Node3D" parent="Node3D"]
+
+[node name="SideWall2" type="MeshInstance3D" parent="Node3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2.6454)
 mesh = SubResource("BoxMesh_mjao4")
-skeleton = NodePath("../Wall2")
+skeleton = NodePath("../../Wall2")
+surface_material_override/0 = SubResource("StandardMaterial3D_8om04")
+
+[node name="SideWall3" type="MeshInstance3D" parent="Node3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65906, 1.02399, -1.976)
+mesh = SubResource("BoxMesh_sfu5p")
+skeleton = NodePath("../../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
+
+[node name="SideWall5" type="MeshInstance3D" parent="Node3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94357, 1.02399, -1.976)
+mesh = SubResource("BoxMesh_sfu5p")
+skeleton = NodePath("../../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
+
+[node name="SideWall4" type="MeshInstance3D" parent="Node3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13344, 1.02399, -1.976)
+mesh = SubResource("BoxMesh_6g45j")
+skeleton = NodePath("../../Wall2")
 surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall3" type="MeshInstance3D" parent="Node3D"]
@@ -78,10 +120,30 @@ mesh = SubResource("BoxMesh_eqgc2")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_f1h1w")
 
-[node name="SideWall5" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4)
+[node name="Node3D2" type="Node3D" parent="Node3D"]
+
+[node name="SideWall5" type="MeshInstance3D" parent="Node3D/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4.47032)
 mesh = SubResource("BoxMesh_mjao4")
-skeleton = NodePath("../Wall2")
+skeleton = NodePath("../../Wall2")
+surface_material_override/0 = SubResource("StandardMaterial3D_nm7l6")
+
+[node name="SideWall6" type="MeshInstance3D" parent="Node3D/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.660069, 1, 4)
+mesh = SubResource("BoxMesh_5no1s")
+skeleton = NodePath("../../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
+
+[node name="SideWall7" type="MeshInstance3D" parent="Node3D/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.33624, 1, 4)
+mesh = SubResource("BoxMesh_d8ji5")
+skeleton = NodePath("../../Wall2")
+surface_material_override/0 = ExtResource("3_f1h1w")
+
+[node name="SideWall8" type="MeshInstance3D" parent="Node3D/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.15149, 0.999999, 4)
+mesh = SubResource("BoxMesh_ou0s0")
+skeleton = NodePath("../../Wall2")
 surface_material_override/0 = ExtResource("3_f1h1w")
 
 [node name="SideWall6" type="MeshInstance3D" parent="Node3D"]
@@ -94,35 +156,35 @@ surface_material_override/0 = ExtResource("3_f1h1w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00183, 0.982898, 5.00326)
 mesh = SubResource("BoxMesh_l6b2h")
 
-[node name="Room8Door" parent="Node3D" instance=ExtResource("4_caxpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.28147, 2, -1.93757)
-
-[node name="Room6Door" parent="Node3D" instance=ExtResource("4_caxpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60963, 2, 3.9497)
-
-[node name="Room7Door" parent="Node3D" instance=ExtResource("4_caxpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24568, 2, 3.9497)
-
-[node name="Room9Door" parent="Node3D" instance=ExtResource("4_caxpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11244, 2, -1.93757)
-
 [node name="lockers" parent="Node3D" instance=ExtResource("5_ohsiy")]
-transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, 1.242, 2, -2)
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -0.0931316, 2, -2)
 
 [node name="lockers2" parent="Node3D" instance=ExtResource("5_ohsiy")]
-transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -3.05152, 2, -2)
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -4.38665, 2, -2)
 
 [node name="lockers3" parent="Node3D" instance=ExtResource("5_ohsiy")]
-transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -1.2262, 2, -2)
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -2.56133, 2, -2)
 
 [node name="lockers4" parent="Node3D" instance=ExtResource("5_ohsiy")]
-transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, 0.0061298, 2, 3.76399)
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, 1.38921, 2, 3.76399)
 
 [node name="lockers5" parent="Node3D" instance=ExtResource("5_ohsiy")]
-transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -3.68768, 2, 3.76399)
+transform = Transform3D(-0.5, -4.37114e-08, 0, 4.37114e-08, -0.5, 0, 0, 0, 0.5, -2.3046, 2, 3.76399)
 
 [node name="lockers6" parent="Node3D" instance=ExtResource("5_ohsiy")]
 transform = Transform3D(2.18557e-08, -4.37114e-08, -0.5, -1.91069e-15, -0.5, 4.37114e-08, -0.5, 0, -2.18557e-08, -9.99466, 2, 0.149234)
 
 [node name="lockers7" parent="Node3D" instance=ExtResource("5_ohsiy")]
 transform = Transform3D(2.18557e-08, -4.37114e-08, -0.5, -1.91069e-15, -0.5, 4.37114e-08, -0.5, 0, -2.18557e-08, 9.71582, 2, 1.14923)
+
+[node name="DoorVariant" parent="Node3D" instance=ExtResource("5_21vwa")]
+transform = Transform3D(0.824225, -6.4871e-08, 0.566262, 1.53667e-08, -1, -1.36927e-07, 0.566262, 1.2156e-07, -0.824225, -6.66963, 2, -1.9982)
+
+[node name="DoorVariant2" parent="Node3D" instance=ExtResource("5_21vwa")]
+transform = Transform3D(0.818631, -6.60644e-08, 0.57432, 1.58558e-08, -1, -1.37631e-07, 0.57432, 1.21776e-07, -0.818631, 3.39748, 2, -1.9982)
+
+[node name="DoorVariant3" parent="Node3D" instance=ExtResource("5_21vwa")]
+transform = Transform3D(-0.939788, -3.51413e-08, -0.341758, -5.26386e-09, -1, 1.173e-07, -0.341758, 1.12036e-07, 0.939788, 7.10535, 2, 3.97214)
+
+[node name="DoorVariant4" parent="Node3D" instance=ExtResource("5_21vwa")]
+transform = Transform3D(-0.959825, -1.95864e-07, 0.2806, 1.71333e-07, -1, -1.11954e-07, 0.2806, -5.93798e-08, 0.959825, 5.58203, 2, 3.97214)

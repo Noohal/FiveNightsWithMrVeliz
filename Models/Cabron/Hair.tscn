@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv6532vya8aoa"]
+
+[ext_resource type="PackedScene" uid="uid://cg7pxmvyk0of0" path="res://Models/Cabron/hair.gltf" id="1_jfkbn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsx2b"]
+shading_mode = 0
+albedo_color = Color(0.201749, 0.0719548, 1.20327e-08, 1)
+
+[node name="hair" instance=ExtResource("1_jfkbn")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.00828124, 0, 0, 0, 0, 0.00828124, 0, -0.00828124, 0, 0, -1.56416, 0)
+
+[node name="NbtyEgyptOKHairM_1_NbtyEgyptOKHairM_1_HairB_0" parent="Sketchfab_model/041e28b4d86641889fae399b3502e40b_fbx/RootNode/NbtyEgyptOKHairM_1" index="0"]
+material_override = SubResource("StandardMaterial3D_rsx2b")

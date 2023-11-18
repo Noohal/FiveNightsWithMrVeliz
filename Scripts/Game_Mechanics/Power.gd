@@ -12,7 +12,7 @@ var usage_drain_time : float = 9.6
 
 const start_usage_constant_time : float = 9.6
 var last_constant_time : float = 0.0
-var constant_drain_time : float = 7.0
+var constant_drain_time : float = 8.5
 
 signal power_loss
 
@@ -31,6 +31,8 @@ func _process(_delta):
 	var current_time = Time.get_unix_time_from_system()
 	
 	if power_level <= 0:
+		power_usage = 1
+		usage_label.text = "Usage: %s" % (power_usage)
 		return
 	
 	if power_usage < 1:
@@ -46,7 +48,7 @@ func _process(_delta):
 	# --> Usage 4 - 9.6/8 = 1.2 seconds
 	
 	if current_time - last_constant_time >= constant_drain_time && Global.current_night > 0:
-		var cons = 0.5
+		var cons = 0.1
 		#print("Constant Drain %.02f: %.02f - %.02f = %.02f" % [constant_drain_time, power_level, cons, power_level - 1.0])
 		power_level -= cons
 		last_constant_time = current_time
@@ -62,6 +64,7 @@ func _process(_delta):
 	
 	if power_level <= 0.0:
 		emit_signal("power_loss")
+		power_usage = 1
 		return
 
 func update_power_usage():

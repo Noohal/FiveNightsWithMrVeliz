@@ -28,6 +28,9 @@ var attempting_lock : bool = false
 var is_locked : bool = false
 var watching_cam_6 : bool = false
 
+const FIRST_NIGHT_GRACE_PERIOD_TIMER : float = 160.0
+const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 30.0
+
 var rand = RandomNumberGenerator.new()
 
 signal jumpscare_foxy
@@ -35,16 +38,23 @@ signal drain_power(amount : float)
 
 func _ready():
 	await game.ready
-	enabled = !(Global.current_night == 0)
-	print("Stonedome: %s" % enabled)
+	if Global.current_night <= 1:
+		enabled = false
+		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
+	else:
+		enabled = false
+		var grace_period = LATER_NIGHT_GRACE_PERIOD_TIMER - 10.0 * (Global.current_night - 1)
+		if grace_period <= 0.0:
+			grace_period = 1.0
+		$EnableTimer.wait_time = grace_period
+	
+	print("Stonedome: Grace Period %f, %s" % [$EnableTimer.wait_time, enabled])
+	$EnableTimer.start()
 	
 	watching_cam_6 = false
 	current_stage = 0
 	AI_level = night_AI_levels[game.current_night]
 	set_foxy_position(0)
-	
-	if !enabled:
-		AI_level = 0
 
 func _process(delta):
 	if !enabled:
@@ -68,7 +78,7 @@ func _on_timer_timeout():
 		return
 		
 	if is_locked || attempting_lock:
-		# print("FOXY -- AUTOFAIL")
+		print("FOXY -- AUTOFAIL")
 		return
 
 	rand.randomize()
@@ -78,6 +88,8 @@ func _on_timer_timeout():
 		print("FOXY -- ADVANCING TO STAGE %s" % current_stage)
 		if !watching_cam_6:
 			set_foxy_position(current_stage)
+	else:
+		print("FOXY -- %s VS %s" % [AI_level, check])
 
 func _on_player_watching_camera_num(id):
 	if id != 6 || current_stage != 3 || !enabled:
@@ -150,3 +162,9 @@ func _on_player_camera_state_change(watching):
 func _on_clock_hour_change(hour):
 	if (hour == 3 || hour == 4) && enabled:
 		AI_level += 1
+
+func _on_enable_timer_timeout():
+	if Global.current_night > 0:
+		enabled = true
+		$EnableTimer.stop()
+		print("Stonedome: Grace Period Over, %s" % enabled)

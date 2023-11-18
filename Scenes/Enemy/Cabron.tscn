@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkdeu8ao8b384"]
+[gd_scene load_steps=11 format=3 uid="uid://dkdeu8ao8b384"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Cabron.gd" id="1_y4cbm"]
 [ext_resource type="Texture2D" uid="uid://bsg2oslvfq0l0" path="res://Textures/Enemy/Cabron/melvin_babayaga.png" id="2_bmh0u"]
+[ext_resource type="PackedScene" uid="uid://dv6532vya8aoa" path="res://Models/Cabron/Hair.tscn" id="3_gf5hu"]
 [ext_resource type="ArrayMesh" uid="uid://cw4tjb885ktyt" path="res://Models/Cabron/Hoombus.obj" id="3_wdtf0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cco4i"]
@@ -14,13 +15,11 @@ material = SubResource("StandardMaterial3D_cco4i")
 radius = 0.25
 height = 0.5
 
-[sub_resource type="SphereMesh" id="SphereMesh_d3qce"]
-radius = 0.25
-height = 0.5
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aabf0"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_51681"]
-top_radius = 0.0
-bottom_radius = 0.3
+[sub_resource type="SphereMesh" id="SphereMesh_d3qce"]
+material = SubResource("StandardMaterial3D_aabf0")
+radius = 0.25
 height = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mnrd2"]
@@ -32,10 +31,10 @@ height = 0.75
 size = Vector3(0.1, 0.5, 0.2)
 
 [node name="Cabron" type="Node3D"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("1_y4cbm")
 
 [node name="head" type="Node3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head"]
 transform = Transform3D(0.630676, 0, 0.776046, 0, 1, 0, -0.776046, 0, 0.630676, 0, 1.85352, 0)
@@ -43,16 +42,16 @@ mesh = SubResource("SphereMesh_t4sef")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="head"]
-transform = Transform3D(0.630676, 0, 0.776046, 0, 1, 0, -0.776046, 0, 0.630676, 0, 1.85352, -0.00557796)
+transform = Transform3D(0.630676, 0, 0.776046, 0, 1.025, 0, -0.776046, 0, 0.630676, 0, 1.85352, -0.020894)
 mesh = SubResource("SphereMesh_d3qce")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="head"]
-transform = Transform3D(0.630676, 0, 0.776046, 0, 1, 0, -0.776046, 0, 0.630676, 0, 2.20144, 0)
-mesh = SubResource("CylinderMesh_51681")
-skeleton = NodePath("../MeshInstance3D")
+[node name="hair" parent="head" instance=ExtResource("3_gf5hu")]
+transform = Transform3D(3.44, 0, 0, 0, 2.52, 0, 0, 0, 2.55, 0.0073324, 1.8658, 0.0598645)
+visible = false
 
 [node name="body" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 mesh = ExtResource("3_wdtf0")
 
 [node name="axe handle" type="MeshInstance3D" parent="body"]

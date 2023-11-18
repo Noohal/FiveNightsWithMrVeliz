@@ -33,4 +33,7 @@ mesh = ExtResource("2_kcfyo")
 wait_time = 5.01
 autostart = true
 
+[node name="EnableTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnableTimer" to="." method="_on_enable_timer_timeout"]

@@ -83,13 +83,16 @@ func toggle_camera() -> void:
 		$"ToggleCameras".play()
 		anim.play("screen_up")
 	else:
-		anim.play("screen_down")
-		$"ToggleCameras".play()
-		last_camera = current_camera
-		set_camera(0)
-		player_hud.toggle_ui(false)
-		emit_signal("watching_office")
-		emit_signal("camera_state_change", false)
+		turn_off_cameras()
+
+func turn_off_cameras() -> void:
+	anim.play("screen_down")
+	$"ToggleCameras".play()
+	last_camera = current_camera
+	set_camera(0)
+	player_hud.toggle_ui(false)
+	emit_signal("watching_office")
+	emit_signal("camera_state_change", false)
 
 func set_camera(camera_id : int):
 	if current_camera != camera_id:
@@ -118,4 +121,5 @@ func _on_node_3d_getting_killed():
 	can_look_at_camera = false
 
 func _on_power_power_loss():
+	watching_camera = false
 	can_look_at_camera = false
