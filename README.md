@@ -10,7 +10,7 @@ You are a security guard working at Saks High. Mr. Veliz is staying the night to
 
 ### Third-Party Resources
 
-[Godot 4 Game Engine](https://godotengine.org/)
+[Godot 4 Game Engine](https://godotengine.org/)  
 [Easter Island Head 3D Model](https://free3d.com/3d-model/statue-v1--445854.html)  
 [Sword Model](https://www.cgtrader.com/free-3d-models/military/melee/sci-fi-katana-double-sword)  
 [Low Poly Ground](https://sketchfab.com/3d-models/low-poly-dirt-ground-88bd58f71a4f43688b61c42bdd8934c3)  
