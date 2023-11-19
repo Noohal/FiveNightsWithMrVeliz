@@ -79,7 +79,6 @@ shadow_mesh = SubResource("ArrayMesh_681p0")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfl00"]
 resource_name = "Black_Matte"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("3_h5vcw")
 roughness = 0.0
 
@@ -360,6 +359,7 @@ skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="RootNode/Swords"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.242939, 0.0298967, 0)
+visible = false
 light_color = Color(0, 1, 1, 1)
-light_energy = 0.2
-light_size = 0.389
+light_energy = 0.078
+light_size = 1.0

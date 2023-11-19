@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=86 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/PhoneGuyController.gd" id="2_k26nj"]
@@ -6,6 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://b5nfth8dtmleb" path="res://Font/UIText.tres" id="3_ddate"]
 [ext_resource type="AudioStream" uid="uid://3vju802uj2gx" path="res://Sounds/PhoneGuy/Night1_v2.wav" id="3_nev80"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Power.gd" id="4_o8gq6"]
+[ext_resource type="Script" path="res://Scripts/Game_Mechanics/Static.gd" id="5_fkowo"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="5_s456a"]
 [ext_resource type="PackedScene" uid="uid://1c8kycgyem3" path="res://Scenes/Enemy/Melvinzord.tscn" id="6_6bp1m"]
 [ext_resource type="AudioStream" uid="uid://cpyywk4y28loc" path="res://Sounds/Player/toggle_monitors.wav" id="6_yl24e"]
@@ -724,6 +725,7 @@ layout_mode = 2
 label_settings = ExtResource("3_ddate")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="LockStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
@@ -791,6 +793,9 @@ label_settings = ExtResource("3_ddate")
 transform = Transform3D(-0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642788, -1.5, 1, 0)
 camera_rooms = Array[String](["Front Stairs", "Back Stairs", "Room 3", "Room 4 Right", "Room 4 Left", "Maintenance Room", "Teacher's Lounge", "Room 15", "Mr. Veliz's Room", "Principal's Office", "Upstairs Hallway"])
 camera_parent = NodePath("../Cameras")
+
+[node name="Static" parent="Player/PlayerHUD" index="0"]
+script = ExtResource("5_fkowo")
 
 [node name="ToggleCameras" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("6_yl24e")
@@ -1600,12 +1605,16 @@ stream = ExtResource("33_k5h5w")
 [connection signal="power_loss" from="UI/Power" to="Office" method="_on_power_power_loss"]
 [connection signal="camera_state_change" from="Player" to="UI/Power" method="_on_player_camera_state_change"]
 [connection signal="watching_camera_num" from="Player" to="Melvinzord" method="_on_player_watching_camera_num"]
+[connection signal="watching_camera_num" from="Player" to="Shashumga" method="_on_player_watching_camera_num"]
+[connection signal="watching_camera_num" from="Player" to="Cabron" method="_on_player_watching_camera_num"]
 [connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
 [connection signal="jumpscare_freddy" from="Melvinzord" to="." method="_on_melvinzord_jumpscare_freddy"]
 [connection signal="animation_finished" from="Melvinzord/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="bonnie_left_spawn" from="Shashumga" to="Melvinzord" method="_on_shashumga_bonnie_left_spawn"]
+[connection signal="bonnie_moving" from="Shashumga" to="Player/PlayerHUD/Static" method="_on_shashumga_bonnie_moving"]
 [connection signal="jumpscare_bonnie" from="Shashumga" to="." method="_on_shashumga_jumpscare_bonnie"]
 [connection signal="chica_left_spawn" from="Cabron" to="Melvinzord" method="_on_cabron_chica_left_spawn"]
+[connection signal="chica_movement" from="Cabron" to="Player/PlayerHUD/Static" method="_on_cabron_chica_movement"]
 [connection signal="jumpscare_chica" from="Cabron" to="." method="_on_cabron_jumpscare_chica"]
 [connection signal="drain_power" from="Stonedome" to="UI/Power" method="_on_stonedome_drain_power"]
 [connection signal="jumpscare_foxy" from="Stonedome" to="." method="_on_stonedome_jumpscare_foxy"]

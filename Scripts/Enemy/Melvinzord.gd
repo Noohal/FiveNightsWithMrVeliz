@@ -36,7 +36,7 @@ signal jumpscare_freddy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.Melvinzord_Sequence:
+	if Global.Melvinzord_Sequence || !enabled:
 		return
 	await game.ready
 	$Toilet.visible = false
@@ -73,15 +73,15 @@ func _on_timer_timeout():
 		return
 	
 	if watching_cams && !is_attacking:
-		print("FREDDY -- NOT ATTACKING LOCKED")
+		#print("FREDDY -- NOT ATTACKING LOCKED")
 		return
 	
 	if watching_final_cam && is_attacking:
-		print("FREDDY -- ATTACKING LOCKED")
+		#print("FREDDY -- ATTACKING LOCKED")
 		return
 	
 	if waiting_to_move:
-		print("FREDDY -- ALREADY TRYING TO MOVE")
+		#print("FREDDY -- ALREADY TRYING TO MOVE")
 		return
 	
 	rand.randomize()
@@ -93,12 +93,13 @@ func _on_timer_timeout():
 		else:
 			regular_freddy_pattern(check)
 	else:
-		print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
+		#print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
+		pass
 
 func regular_freddy_pattern(check : int) -> void:
 	if power_loss_jumpscare:
 		return
-	print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
+	#print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
 	# Figure out where to move to
 	current_pos += 1
 	
@@ -186,7 +187,7 @@ func wait_to_move():
 	
 	if watching_cams:
 		await $"../Player".watching_office
-		print("FREDDY -- NOT WATCHING CAMS")
+		#print("FREDDY -- NOT WATCHING CAMS")
 	
 	#print("FREDDY -- READY TO MOVE!")
 	waiting_to_move = false
@@ -237,7 +238,7 @@ func _on_jumpscare_timer_timeout():
 	rand.randomize()
 	var check : int = rand.randi_range(1,100)
 	if check <= 25:
-		print("FREDDY -- TIME TO SCARE")
+		#print("FREDDY -- TIME TO SCARE")
 		if !game.getting_scared:
 			emit_signal("jumpscare_freddy")
 

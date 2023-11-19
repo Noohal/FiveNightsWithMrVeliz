@@ -38,6 +38,9 @@ signal drain_power(amount : float)
 
 func _ready():
 	await game.ready
+	if !enabled:
+		return
+	
 	if Global.current_night <= 1:
 		enabled = false
 		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
@@ -89,7 +92,8 @@ func _on_timer_timeout():
 		if !watching_cam_6:
 			set_foxy_position(current_stage)
 	else:
-		print("FOXY -- %s VS %s" % [AI_level, check])
+		#print("FOXY -- %s VS %s" % [AI_level, check])
+		pass
 
 func _on_player_watching_camera_num(id):
 	if id != 6 || current_stage != 3 || !enabled:

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ldtacvixsjcy" path="res://Textures/Enemy/Shashumga/melvin_front.png" id="2_1mljs"]
 [ext_resource type="Texture2D" uid="uid://bsg2oslvfq0l0" path="res://Textures/Enemy/Cabron/melvin_babayaga.png" id="3_6pvuk"]
 [ext_resource type="Texture2D" uid="uid://d2gxmdggosgnj" path="res://Textures/Enemy/Melvinzord/melvin_selfie.jpg" id="4_4cjw0"]
-[ext_resource type="Texture2D" uid="uid://c5rpbayewa2e5" path="res://Textures/eyetexture - Copy - Copy.png" id="6_vqgw3"]
+[ext_resource type="Texture2D" uid="uid://c5rpbayewa2e5" path="res://Textures/Enemy/Melvinzord/eyetexture - Copy - Copy.png" id="6_vqgw3"]
 [ext_resource type="PackedScene" uid="uid://suedbcern7al" path="res://Models/Melvinzord/Sci-fi_Katana_Swords.tscn" id="7_x2e4l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8uml"]
@@ -409,13 +409,13 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.85, 0)
 
 [node name="body" type="MeshInstance3D" parent="BattleMode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(0.982411, 0, -0.18673, 0, 1, 0, 0.18673, 0, 0.982411, 0, 0.25, 0)
 material_override = SubResource("StandardMaterial3D_me2ed")
 mesh = SubResource("BoxMesh_xe5me")
 skeleton = NodePath("../..")
 
 [node name="head" type="MeshInstance3D" parent="BattleMode/body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18197, 0)
+transform = Transform3D(0.868424, 0, -0.495822, 0, 1, 0, 0.495822, 0, 0.868424, 0, 1.18197, 0)
 material_override = SubResource("StandardMaterial3D_ooaw8")
 mesh = SubResource("BoxMesh_pysyw")
 skeleton = NodePath("../../..")
@@ -427,46 +427,48 @@ mesh = SubResource("BoxMesh_0umtu")
 
 [node name="eyeball" type="MeshInstance3D" parent="BattleMode/body/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140737, 0.0846734, -0.433006)
+visible = false
 mesh = SubResource("SphereMesh_x7cs0")
 surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
 
 [node name="eyeball2" type="MeshInstance3D" parent="BattleMode/body/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.209833, 0.0845389, -0.433006)
+visible = false
 mesh = SubResource("SphereMesh_x7cs0")
 surface_material_override/0 = SubResource("ORMMaterial3D_e37xg")
 
 [node name="arm" type="MeshInstance3D" parent="BattleMode/body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825, 0.0862291, 0)
+transform = Transform3D(0.946085, -0.323917, -4.47035e-08, 0.323917, 0.946085, 0, 1.49012e-07, -4.47035e-08, 1, 0.941738, 0.165444, -0.0221886)
 material_override = SubResource("StandardMaterial3D_ax4h6")
 mesh = SubResource("BoxMesh_lykjg")
 skeleton = NodePath("../../..")
 
 [node name="Sword" type="Node3D" parent="BattleMode/body/arm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.458918, -0.132614)
+transform = Transform3D(0.898603, -0.3051, -0.31532, 0.0117507, 0.735135, -0.67782, 0.438605, 0.605385, 0.66418, 0, -0.458918, -0.132614)
 
 [node name="Sci-fi_Katana_Swords" parent="BattleMode/body/arm/Sword" instance=ExtResource("7_x2e4l")]
 transform = Transform3D(-1.09278e-07, 0, -3.75, 0, 3.75, 0, 2.5, 0, -1.63918e-07, 0, -0.1, -1.25)
 
 [node name="arm2" type="MeshInstance3D" parent="BattleMode/body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825, 0.0862291, 0)
+transform = Transform3D(0.265275, 0.910739, -0.316518, -0.95545, 0.292359, 0.0404581, 0.129384, 0.291685, 0.947723, -0.662332, 0.215933, -0.0723342)
 material_override = SubResource("StandardMaterial3D_utmpv")
 lod_bias = 0.001
 mesh = SubResource("BoxMesh_lykjg")
 skeleton = NodePath("../../..")
 
 [node name="leg" type="MeshInstance3D" parent="BattleMode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325, -1.2, 0)
+transform = Transform3D(0.989173, -0.146756, 0, 0.146756, 0.989173, 0, 0, 0, 1, 0.43672, -1.22018, 0)
 material_override = SubResource("StandardMaterial3D_p1u4t")
 mesh = SubResource("BoxMesh_6we4i")
 skeleton = NodePath("../..")
 
 [node name="rightfoot" type="MeshInstance3D" parent="BattleMode/leg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -0.25)
+transform = Transform3D(0.907887, 0.145738, -0.393066, -0.133741, 0.989323, 0.0579028, 0.397308, 0, 0.917684, 0.120678, -0.803622, -0.345728)
 material_override = SubResource("StandardMaterial3D_er5cd")
 mesh = SubResource("BoxMesh_xr8ye")
 
 [node name="leg2" type="MeshInstance3D" parent="BattleMode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325, -1.2, 0)
+transform = Transform3D(0.95657, 0, 0.291504, 0, 1, 0, -0.291504, 0, 0.95657, -0.40105, -1.2, 0.0151094)
 material_override = SubResource("StandardMaterial3D_lw6u7")
 mesh = SubResource("BoxMesh_6we4i")
 skeleton = NodePath("../..")

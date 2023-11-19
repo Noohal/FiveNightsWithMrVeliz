@@ -7,6 +7,13 @@ extends Node3D
 @onready var player_camera_bar : ColorRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/PCPanelToggle"
 @onready var left_eye : ORMMaterial3D = $"Melvinzord/BattleMode/body/head/eyeball".get_surface_override_material(0)
 
+enum CamerasEnum {
+	TOGGLE = 0, CAM1 = 1, CAM2 = 2, 
+	CAM3 = 3, CAM4 = 4, CAM5 = 5, 
+	CAM6 = 6, CAM7 = 7, CAM8 = 8, 
+	CAM9 = 9, CAM10 = 10, CAM11 = 11, 
+	CAM12 = 12 }
+
 var rand = RandomNumberGenerator.new()
 var elapsed_time : float = 0.0
 var accumulated_time : float = 0.0

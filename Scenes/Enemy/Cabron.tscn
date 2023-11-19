@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkdeu8ao8b384"]
+[gd_scene load_steps=14 format=3 uid="uid://dkdeu8ao8b384"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Cabron.gd" id="1_y4cbm"]
 [ext_resource type="Texture2D" uid="uid://bsg2oslvfq0l0" path="res://Textures/Enemy/Cabron/melvin_babayaga.png" id="2_bmh0u"]
@@ -15,20 +15,31 @@ material = SubResource("StandardMaterial3D_cco4i")
 radius = 0.25
 height = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aabf0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1yhd"]
+albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_d3qce"]
-material = SubResource("StandardMaterial3D_aabf0")
+material = SubResource("StandardMaterial3D_d1yhd")
 radius = 0.25
 height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u06vu"]
+albedo_color = Color(0.486275, 0.486275, 0.486275, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mnrd2"]
 top_radius = 0.025
 bottom_radius = 0.025
 height = 0.75
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqmsk"]
+albedo_color = Color(0.329412, 0.156863, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdh7q"]
+albedo_color = Color(0, 0.956863, 0.988235, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_733gb"]
-size = Vector3(0.1, 0.5, 0.2)
+material = SubResource("StandardMaterial3D_gdh7q")
+size = Vector3(0.1, 0.75, 0.095)
 
 [node name="Cabron" type="Node3D"]
 script = ExtResource("1_y4cbm")
@@ -53,13 +64,15 @@ visible = false
 [node name="body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 mesh = ExtResource("3_wdtf0")
+surface_material_override/0 = SubResource("StandardMaterial3D_u06vu")
 
 [node name="axe handle" type="MeshInstance3D" parent="body"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.442749, 0.902498, 0.0854885)
 mesh = SubResource("CylinderMesh_mnrd2")
+surface_material_override/0 = SubResource("StandardMaterial3D_eqmsk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444027, 0.897536, 0.380216)
+transform = Transform3D(0.999999, 9.67024e-05, 0.00107648, -0.00010122, 0.999991, 0.00419124, -0.00107607, -0.00419134, 0.999991, 0.444027, 0.897536, 0.380216)
 mesh = SubResource("BoxMesh_733gb")
 
 [node name="Timer" type="Timer" parent="."]

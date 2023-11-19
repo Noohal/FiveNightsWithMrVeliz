@@ -1,12 +1,15 @@
-[gd_scene load_steps=32 format=3 uid="uid://dh5k4u3y63lko"]
+[gd_scene load_steps=31 format=3 uid="uid://dh5k4u3y63lko"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Melvinzord_Fatality.gd" id="1_ecdnr"]
 [ext_resource type="Texture2D" uid="uid://cobet33d5sbkb" path="res://Models/Terrain/Ground/tex_u1_v1_diffuse.jpg" id="1_na8t1"]
 [ext_resource type="PackedScene" uid="uid://1c8kycgyem3" path="res://Scenes/Enemy/Melvinzord.tscn" id="1_q51mu"]
 [ext_resource type="Texture2D" uid="uid://d4jkippxdp5jx" path="res://Models/Terrain/Ground/tex_u1_v1_normal.jpg" id="2_qye38"]
 [ext_resource type="ArrayMesh" uid="uid://b378t6d3p4uix" path="res://Models/Terrain/Ground/model.obj" id="3_a7mbi"]
+[ext_resource type="Material" uid="uid://dlwtu4unkuav7" path="res://Materials/DenjiTigerBlue.tres" id="5_48gwh"]
+[ext_resource type="Material" uid="uid://ch3njymmfohdu" path="res://Materials/DenjiTigerBase.tres" id="6_hf6uy"]
 [ext_resource type="Environment" uid="uid://c80rxjr8fv0ee" path="res://Scenes/Environment/Melvinzord.tres" id="6_v7qs6"]
 [ext_resource type="PackedScene" uid="uid://dkwbk4bnly4gh" path="res://Models/Terrain/Mountain/mountain.gltf" id="7_f268l"]
+[ext_resource type="Material" uid="uid://tr4ilmxbl2bg" path="res://Materials/CeilingMaterial.tres" id="7_gxovm"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hsk0n"]
 size = Vector2(8, 8)
@@ -16,55 +19,49 @@ albedo_texture = ExtResource("1_na8t1")
 normal_enabled = true
 normal_texture = ExtResource("2_qye38")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx0kt"]
-albedo_color = Color(0, 0.517647, 1, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_pjyx2"]
-material = SubResource("StandardMaterial3D_bx0kt")
+material = ExtResource("5_48gwh")
 size = Vector3(2.5, 1, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8cm2"]
-albedo_color = Color(1, 0, 1, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_fspds"]
-material = SubResource("StandardMaterial3D_m8cm2")
+material = ExtResource("6_hf6uy")
 size = Vector3(2.5, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hiw8p"]
+material = ExtResource("7_gxovm")
 size = Vector3(0.5, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pb2sc"]
+material = ExtResource("6_hf6uy")
 size = Vector3(0.5, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nuwgf"]
+material = ExtResource("6_hf6uy")
 size = Vector3(0.25, 0.25, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qixja"]
+material = ExtResource("6_hf6uy")
 size = Vector3(0.25, 0.25, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tjmw5"]
+material = ExtResource("6_hf6uy")
 size = Vector3(0.75, 0.5, 2.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ugsx"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_jp4d2"]
+material = ExtResource("5_48gwh")
+size = Vector3(0.75, 0.47, 1.5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_pbmyt"]
-material = SubResource("StandardMaterial3D_5ugsx")
+material = ExtResource("6_hf6uy")
 left_to_right = 1.0
 size = Vector3(0.75, 0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nx8l"]
-albedo_color = Color(0, 0, 1, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_b6oae"]
-material = SubResource("StandardMaterial3D_6nx8l")
+material = ExtResource("5_48gwh")
 size = Vector3(1.5, 0.9, 0.01)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3owj"]
-albedo_color = Color(1, 1, 0, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_nw6qn"]
-material = SubResource("StandardMaterial3D_c3owj")
+material = ExtResource("6_hf6uy")
 size = Vector3(1.5, 1, 0.01)
 
 [sub_resource type="Animation" id="Animation_uvqh4"]
@@ -2407,6 +2404,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5
 mesh = SubResource("BoxMesh_tjmw5")
 skeleton = NodePath("../..")
 
+[node name="Floor2" type="MeshInstance3D" parent="Node3D/DenjiTiger/Nose"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.59017e-10, 0.5, 1.13321)
+mesh = SubResource("BoxMesh_jp4d2")
+skeleton = NodePath("../..")
+
 [node name="Side" type="MeshInstance3D" parent="Node3D/DenjiTiger/Nose"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1, 1.125)
 mesh = SubResource("PrismMesh_pbmyt")
@@ -2464,20 +2466,20 @@ transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0.7500
 [node name="BattleMode" parent="Melvinzord" index="2"]
 transform = Transform3D(-0.4, 0, -1.01407e-06, 0, 0.4, 0, 1.01407e-06, 0, -0.4, 0, 0.208812, -1.90735e-06)
 
+[node name="body" parent="Melvinzord/BattleMode" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
 [node name="head" parent="Melvinzord/BattleMode/body" index="0"]
 transform = Transform3D(1, 7.10429e-15, 2.71051e-20, -7.10429e-15, 1, 4.54747e-13, -2.71051e-20, -4.54747e-13, 1, 0, 1.18197, 0)
-
-[node name="eyeball" parent="Melvinzord/BattleMode/body/head" index="1"]
-visible = false
-
-[node name="eyeball2" parent="Melvinzord/BattleMode/body/head" index="2"]
-visible = false
 
 [node name="arm" parent="Melvinzord/BattleMode/body" index="1"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999996, 0, 0, 0, 0.999998, 0.825, 0.0862291, 0)
 
 [node name="Sword" parent="Melvinzord/BattleMode/body/arm" index="0"]
 transform = Transform3D(0.999999, 8.23546e-10, 2.97888e-08, -2.98002e-08, 0.0277627, 0.999613, -3.75166e-12, -0.999613, 0.0277627, -3.72529e-08, -0.458918, -0.0065484)
+
+[node name="arm2" parent="Melvinzord/BattleMode/body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825, 0.0862291, 0)
 
 [node name="leg" parent="Melvinzord/BattleMode" index="1"]
 transform = Transform3D(0.974375, -0.224629, 0.0115732, 0.224629, 0.969149, -0.101447, 0.0115718, 0.101447, 0.994774, 0.453958, -1.2, -0.0582406)

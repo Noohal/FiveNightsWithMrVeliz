@@ -8,21 +8,36 @@ extends Node3D
 @export var enemy_rotations : Array[Vector3]
 @export var night_AI_levels : Array[int]
 
+var camera_dict = {
+	9: 0,
+	7: 1,
+	10: 2,
+	11: 3,
+	1: 1,
+	3: 3
+}
+
 var rand = RandomNumberGenerator.new()
 
 var AI_level : int
 var current_pos : int
+var next_pos : int
+
+var watching_current_position : bool = false
 
 const FIRST_NIGHT_GRACE_PERIOD_TIMER : float = 160.0
 const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 30.0
 const MOVEMENT_INTERVAL : float = 4.6
 
 signal bonnie_left_spawn
+signal bonnie_moving
 signal jumpscare_bonnie
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await game.ready
+	if !enabled:
+		return
 	
 	if Global.current_night <= 1:
 		enabled = false
@@ -48,7 +63,11 @@ func _on_timer_timeout():
 	rand.randomize()
 	var check = rand.randi_range(1,20)
 	if AI_level >= check:
-		current_pos = find_new_destination(current_pos)
+		next_pos = find_new_destination(current_pos)
+		if watching_current_position:
+			print("BONNIE -- PLAYING STATIC")
+			emit_signal("bonnie_moving")
+		current_pos = next_pos
 		set_bonnie_position(current_pos)
 		print("BONNIE -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
 		await get_tree().create_timer(4).timeout
@@ -100,12 +119,12 @@ func find_new_destination(pos : int) -> int:
 				dest = 5
 			else:
 				dest = 6
-				print("AT DOOR")
+				print("BONNIE -- AT DOOR")
 		5:
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:
 				dest = 6
-				print("AT DOOR")
+				print("BONNIE -- AT DOOR")
 			else:
 				dest = 4
 		6:
@@ -135,3 +154,10 @@ func _on_enable_timer_timeout():
 	enabled = true
 	$EnableTimer.stop()
 	print("Guac of Mole: Grace Period Over, %s" % enabled)
+
+func _on_player_watching_camera_num(id):
+	if camera_dict.has(id):
+		if camera_dict[id] == current_pos || camera_dict[id] == next_pos:
+			watching_current_position = true
+	else:
+		watching_current_position = false

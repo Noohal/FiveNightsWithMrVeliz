@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://dejlq4eurpx7d"]
+
+[ext_resource type="PackedScene" uid="uid://1c8kycgyem3" path="res://Scenes/Enemy/Melvinzord.tscn" id="1_8e3um"]
+[ext_resource type="PackedScene" uid="uid://dkdeu8ao8b384" path="res://Scenes/Enemy/Cabron.tscn" id="1_g2ci8"]
+[ext_resource type="PackedScene" uid="uid://cfnw8k6pdi7uk" path="res://Scenes/Enemy/Shashumga.tscn" id="3_32aru"]
+[ext_resource type="PackedScene" uid="uid://g11h3wy4sjko" path="res://Scenes/Enemy/Stonedome.tscn" id="4_n4g4n"]
+[ext_resource type="PackedScene" uid="uid://suedbcern7al" path="res://Models/Melvinzord/Sci-fi_Katana_Swords.tscn" id="5_wsbue"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsoc1"]
+size = Vector2(8, 9)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t1fnv"]
+size = Vector2(8, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hri27"]
+albedo_color = Color(0.615686, 0.615686, 0.615686, 1)
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w2lmh"]
+size = Vector2(8, 6)
+
+[node name="Photoshooot" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207734, -0.151304, 0.0898616)
+mesh = SubResource("PlaneMesh_jsoc1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.195688, 1, -1)
+mesh = SubResource("PlaneMesh_t1fnv")
+surface_material_override/0 = SubResource("StandardMaterial3D_hri27")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.10236, 1, -1)
+mesh = SubResource("PlaneMesh_w2lmh")
+surface_material_override/0 = SubResource("StandardMaterial3D_hri27")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.934205, -0.215683, 0.284152, 0, 0.79653, 0.604599, -0.356738, -0.564819, 0.744122, 0.320952, 1.87949, 1.02093)
+size = 1.1
+
+[node name="Melvinzord" parent="." instance=ExtResource("1_8e3um")]
+transform = Transform3D(-0.759726, 0, -0.650244, 0, 1, 0, 0.650244, 0, -0.759726, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322326, 1.71344, 0.687253)
+light_energy = 1.937
+omni_range = 94.098
+omni_attenuation = 0.615571
+
+[node name="Cabron" parent="." instance=ExtResource("1_g2ci8")]
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.0339908, -0.158024, -0.98685, -0.0664249, 0.985594, -0.155535, 0.997212, 0.0602647, -0.0439979, -3.00854, 0.771121, -0.387422)
+visible = false
+light_energy = 5.853
+spot_angle = 66.07
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.7085, 0.148917, 0.68982, -7.45058e-09, 0.977482, -0.211018, -0.705711, 0.149506, 0.692546, 2.42765, -0.206553, 1.15715)
+visible = false
+light_energy = 13.209
+spot_angle = 45.88
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.991808, 0.0269554, 0.124864, -0.102038, 0.755238, 0.64746, -0.0768491, -0.654897, 0.751801, 0.254533, 1.73035, 1.03584)
+visible = false
+light_energy = 2.483
+spot_range = 0.658
+spot_attenuation = 0.435275
+spot_angle = 66.89
+spot_angle_attenuation = 0.000943296
+
+[node name="Shashumga" parent="." instance=ExtResource("3_32aru")]
+transform = Transform3D(-0.187381, 0, 0.982287, 0, 1, 0, -0.982287, 0, -0.187381, 0, 0.673883, 0)
+visible = false
+
+[node name="Stonedome" parent="." instance=ExtResource("4_n4g4n")]
+transform = Transform3D(-0.709694, 0, 0.70451, 0, 1, 0, -0.70451, 0, -0.709694, 0, 0.450993, 0)
+visible = false
+
+[node name="Sci-fi_Katana_Swords" parent="." instance=ExtResource("5_wsbue")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.985211, 0)
+visible = false

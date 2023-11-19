@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://cef84qm7nly4w"]
+[gd_scene load_steps=33 format=3 uid="uid://cef84qm7nly4w"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="1_8a0ml"]
 [ext_resource type="Environment" uid="uid://mbakwepc4rxw" path="res://Scenes/Environment/Environment.tres" id="1_qfsnb"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerHUD.gd" id="3_wis3i"]
 [ext_resource type="Texture2D" uid="uid://tarrglng3gab" path="res://Textures/Map/TogglePanel.png" id="4_1yf12"]
 [ext_resource type="Texture2D" uid="uid://cgw0ssdh0hju3" path="res://Textures/Map/Downstairs.png" id="4_6g51y"]
+[ext_resource type="PackedScene" uid="uid://lfxnp0dfce6a" path="res://Scenes/Environment/Static.tscn" id="4_y2jbm"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/CameraButton.gd" id="5_cloq7"]
 [ext_resource type="Texture2D" uid="uid://ducgs35v7ohym" path="res://Textures/Map/Cam_White.png" id="6_filoo"]
 [ext_resource type="LabelSettings" uid="uid://dpxw6l5h02ggk" path="res://Font/Camera_Text.tres" id="7_mad33"]
@@ -186,6 +187,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("3_wis3i")
+
+[node name="Static" parent="PlayerHUD" instance=ExtResource("4_y2jbm")]
+layout_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayerHUD"]
 layout_mode = 1
