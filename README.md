@@ -19,9 +19,9 @@ You are a security guard working at Saks High. Mr. Veliz is staying the night to
 [Bulletin Board](https://sketchfab.com/3d-models/outthere-bulletin-board-183cdc8d440046eaae3f699670c878b3)  
 [Lockers](https://sketchfab.com/3d-models/captains-quarters-locker-652160ed18354695a2906fb8e7653483)  
 [Trash Can](https://sketchfab.com/3d-models/trash-can-0ad3407cd8104ba58f71885c0e58ca9a)  
-[Wet Floor Sign](https://sketchfab.com/3d-models/wet-floor-sign-d340f904c4684645a4e5282b5fbe963b)
-[Whiteboard](https://sketchfab.com/3d-models/whiteboard-eff6059c0f654aa3a5ba5e10eb59591e#download)
-[Bookshelf](https://sketchfab.com/3d-models/bookshelf-b8f46cf7daca419a87ac8d131bad056f#download)
+[Wet Floor Sign](https://sketchfab.com/3d-models/wet-floor-sign-d340f904c4684645a4e5282b5fbe963b)  
+[Whiteboard](https://sketchfab.com/3d-models/whiteboard-eff6059c0f654aa3a5ba5e10eb59591e#download)  
+[Bookshelf](https://sketchfab.com/3d-models/bookshelf-b8f46cf7daca419a87ac8d131bad056f#download)  
 [Table](https://sketchfab.com/3d-models/table-round-7a7f4a49e5d647ba88f36708f9593153)
 
 [Phone Ringing Sound](https://freesound.org/people/acclivity/sounds/24929/)  
