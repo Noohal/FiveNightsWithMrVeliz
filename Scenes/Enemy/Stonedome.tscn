@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://g11h3wy4sjko"]
+[gd_scene load_steps=8 format=3 uid="uid://g11h3wy4sjko"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Stonedome.gd" id="1_jxpll"]
 [ext_resource type="ArrayMesh" uid="uid://djhnld6cq7vxt" path="res://Models/Stonedome/12329_Statue_v1_l3.obj" id="2_kcfyo"]
+[ext_resource type="PackedScene" uid="uid://bsckq6qlepqul" path="res://Scenes/Enemy/enemy_sound.tscn" id="3_dglxw"]
 
 [sub_resource type="Gradient" id="Gradient_jnsna"]
 interpolation_mode = 2
@@ -34,6 +35,8 @@ wait_time = 5.01
 autostart = true
 
 [node name="EnableTimer" type="Timer" parent="."]
+
+[node name="EnemySound" parent="." instance=ExtResource("3_dglxw")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="EnableTimer" to="." method="_on_enable_timer_timeout"]

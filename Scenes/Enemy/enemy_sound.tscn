@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsckq6qlepqul"]
+
+[ext_resource type="AudioStream" uid="uid://bffa1jdcotbcc" path="res://Sounds/Enemy/lightpunch1.wav" id="1_4w7i5"]
+[ext_resource type="Script" path="res://Scripts/Enemy/EnemySound.gd" id="1_lr8lh"]
+[ext_resource type="AudioStream" uid="uid://cox6vaulgfi51" path="res://Sounds/Enemy/lightpunch2.wav" id="2_o8m0f"]
+[ext_resource type="AudioStream" uid="uid://u3h5u7bexxfo" path="res://Sounds/Enemy/heavyslam.wav" id="3_2o063"]
+
+[node name="EnemySound" type="Node"]
+script = ExtResource("1_lr8lh")
+
+[node name="LightPunch1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4w7i5")
+
+[node name="LightPunch2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o8m0f")
+
+[node name="HeavyPunch1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2o063")
+
+[node name="Footsteps1" type="AudioStreamPlayer" parent="."]

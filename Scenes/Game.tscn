@@ -1,11 +1,13 @@
-[gd_scene load_steps=86 format=3 uid="uid://ry74gl4m76pq"]
+[gd_scene load_steps=88 format=3 uid="uid://ry74gl4m76pq"]
 
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Game.gd" id="1_ht038"]
 [ext_resource type="Script" path="res://Scripts/PhoneGuyController.gd" id="2_k26nj"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Clock.gd" id="2_wbynu"]
 [ext_resource type="LabelSettings" uid="uid://b5nfth8dtmleb" path="res://Font/UIText.tres" id="3_ddate"]
 [ext_resource type="AudioStream" uid="uid://3vju802uj2gx" path="res://Sounds/PhoneGuy/Night1_v2.wav" id="3_nev80"]
+[ext_resource type="AudioStream" uid="uid://uwd87rx46mj5" path="res://Sounds/PhoneGuy/Night2.wav" id="4_4w24v"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Power.gd" id="4_o8gq6"]
+[ext_resource type="AudioStream" uid="uid://ceejhuhywe7xr" path="res://Sounds/PhoneGuy/Night3.wav" id="5_0ewid"]
 [ext_resource type="Script" path="res://Scripts/Game_Mechanics/Static.gd" id="5_fkowo"]
 [ext_resource type="PackedScene" uid="uid://cef84qm7nly4w" path="res://Scenes/Player.tscn" id="5_s456a"]
 [ext_resource type="PackedScene" uid="uid://1c8kycgyem3" path="res://Scenes/Enemy/Melvinzord.tscn" id="6_6bp1m"]
@@ -665,10 +667,18 @@ noise = SubResource("NoiseTexture2D_h5te0")
 
 [node name="PhoneGuyController" type="Node" parent="." node_paths=PackedStringArray("audio")]
 script = ExtResource("2_k26nj")
-audio = [NodePath("Night1")]
+audio = [NodePath("Night1"), NodePath("Night2")]
 
 [node name="Night1" type="AudioStreamPlayer" parent="PhoneGuyController"]
 stream = ExtResource("3_nev80")
+volume_db = -3.0
+
+[node name="Night2" type="AudioStreamPlayer" parent="PhoneGuyController"]
+stream = ExtResource("4_4w24v")
+volume_db = -3.0
+
+[node name="Night3" type="AudioStreamPlayer" parent="PhoneGuyController"]
+stream = ExtResource("5_0ewid")
 volume_db = -3.0
 
 [node name="UI" type="Control" parent="."]
@@ -700,13 +710,6 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="NightLabel" type="Label" parent="UI/Clock/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Night 1"
-label_settings = ExtResource("3_ddate")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -725,27 +728,41 @@ layout_mode = 2
 label_settings = ExtResource("3_ddate")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/Clock/MarginContainer"]
-visible = false
 layout_mode = 2
 
+[node name="NightLabel" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Night 1"
+label_settings = ExtResource("3_ddate")
+
 [node name="LockStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "FOXY:"
 label_settings = ExtResource("3_ddate")
 
 [node name="FoxyDuration" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "Time Left:"
 label_settings = ExtResource("3_ddate")
 
 [node name="FreddyStatus" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "FREDDY:"
 label_settings = ExtResource("3_ddate")
 
 [node name="FreddyDuration" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 label_settings = ExtResource("3_ddate")
+
+[node name="FreddyGiggle" type="Label" parent="UI/Clock/MarginContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
 
 [node name="Timer" type="Timer" parent="UI/Clock"]
 
@@ -797,8 +814,9 @@ camera_parent = NodePath("../Cameras")
 [node name="Screen" parent="Player" index="1"]
 transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, -0.23, 0.25)
 
-[node name="Static" parent="Player/PlayerHUD" index="0"]
+[node name="Static" parent="Player/PlayerHUD" index="0" node_paths=PackedStringArray("player_cam")]
 script = ExtResource("5_fkowo")
+player_cam = NodePath("../..")
 
 [node name="ToggleCameras" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("6_yl24e")
@@ -808,17 +826,15 @@ volume_db = -5.0
 stream = ExtResource("7_adpj8")
 volume_db = -15.0
 
-[node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("6_6bp1m")]
+[node name="Melvinzord" parent="." node_paths=PackedStringArray("freddy_giggle_label", "freddy_status", "freddy_countdown", "enemy_locations") instance=ExtResource("6_6bp1m")]
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, -0.297261, 20)
 enabled = true
+freddy_giggle_label = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyGiggle")
 freddy_status = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyStatus")
 freddy_countdown = NodePath("../UI/Clock/MarginContainer/VBoxContainer2/FreddyDuration")
 enemy_locations = [NodePath("../MapPoints/FreddySpawn"), NodePath("../MapPoints/8_F"), NodePath("../MapPoints/13"), NodePath("../MapPoints/2U_F"), NodePath("../MapPoints/4_F"), NodePath("../MapPoints/5_F"), NodePath("../MapPoints/Jumpscare"), NodePath("../MapPoints/LeftOfficeFreddy")]
 enemy_rotations = Array[Vector3]([Vector3(0, -1.5708, 0), Vector3(-1.46623e-08, 1.0088, -0.485952), Vector3(0, -1.5708, 0), Vector3(0, 0.721502, 0), Vector3(0, -0.708848, 0), Vector3(0.468743, 0.836484, -1.67028e-08), Vector3(0, -1.5708, 0), Vector3(0, 2.37576, 0)])
 night_AI_levels = Array[int]([0, 0, 1, -1, 3, 4])
-
-[node name="body" parent="Melvinzord/BattleMode" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
 [node name="Sword" parent="Melvinzord/BattleMode/body/arm" index="0"]
 visible = false
@@ -861,7 +877,7 @@ enemy_locations = [NodePath("../MapPoints/ChicaSpawn"), NodePath("../MapPoints/1
 enemy_rotations = Array[Vector3]([Vector3(0, 1.5708, 0), Vector3(0, 1.571, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 1.87473, 0), Vector3(0, 0, 0), Vector3(0, -1.97404, 0), Vector3(0, 0, 0)])
 night_AI_levels = Array[int]([0, 2, 5, 4, 7, 12])
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cabron"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Cabron"]
 libraries = {
 "": SubResource("AnimationLibrary_euh5a")
 }
@@ -880,8 +896,9 @@ libraries = {
 "": SubResource("AnimationLibrary_avvxc")
 }
 
-[node name="Office" type="Node3D" parent="."]
+[node name="Office" type="Node3D" parent="." node_paths=PackedStringArray("game")]
 script = ExtResource("11_atde1")
+game = NodePath("..")
 
 [node name="Floor" type="MeshInstance3D" parent="Office"]
 mesh = SubResource("PlaneMesh_osmvm")
@@ -1046,7 +1063,6 @@ spot_angle_attenuation = 2.0
 
 [node name="AmbientSound" type="AudioStreamPlayer" parent="Office" groups=["Persist"]]
 stream = ExtResource("16_tv8hw")
-volume_db = -23.0
 
 [node name="DoorOpen" type="AudioStreamPlayer" parent="Office"]
 stream = ExtResource("17_adapa")
@@ -1603,11 +1619,14 @@ stream = ExtResource("33_k5h5w")
 [connection signal="power_loss" from="UI/Power" to="Player" method="_on_power_power_loss"]
 [connection signal="power_loss" from="UI/Power" to="Melvinzord" method="_on_power_power_loss"]
 [connection signal="power_loss" from="UI/Power" to="Office" method="_on_power_power_loss"]
-[connection signal="camera_state_change" from="Player" to="UI/Power" method="_on_player_camera_state_change"]
+[connection signal="watching_camera" from="Player" to="." method="_on_player_watching_camera"]
+[connection signal="watching_camera" from="Player" to="UI/Power" method="_on_player_watching_camera"]
 [connection signal="watching_camera_num" from="Player" to="Melvinzord" method="_on_player_watching_camera_num"]
 [connection signal="watching_camera_num" from="Player" to="Shashumga" method="_on_player_watching_camera_num"]
 [connection signal="watching_camera_num" from="Player" to="Cabron" method="_on_player_watching_camera_num"]
 [connection signal="watching_camera_num" from="Player" to="Stonedome" method="_on_player_watching_camera_num"]
+[connection signal="watching_office" from="Player" to="." method="_on_player_watching_office"]
+[connection signal="watching_office" from="Player" to="UI/Power" method="_on_player_watching_office"]
 [connection signal="jumpscare_freddy" from="Melvinzord" to="." method="_on_melvinzord_jumpscare_freddy"]
 [connection signal="animation_finished" from="Melvinzord/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="bonnie_left_spawn" from="Shashumga" to="Melvinzord" method="_on_shashumga_bonnie_left_spawn"]
@@ -1631,6 +1650,7 @@ stream = ExtResource("33_k5h5w")
 [connection signal="finished" from="Office/AmbientSound" to="Office" method="_on_ambient_sound_finished"]
 
 [editable path="Player"]
+[editable path="Player/PlayerHUD/Static"]
 [editable path="Melvinzord"]
 [editable path="Shashumga"]
 [editable path="Map/Room10"]

@@ -105,9 +105,10 @@ func _on_stonedome_drain_power(amount):
 	power_level -= amount
 	print("FOXY -- POWER DRAINED BY %d%%" % amount)
 
-func _on_player_camera_state_change(watching):
-	if watching:
-		power_usage += 1
-	else:
-		power_usage -= 1
+func _on_player_watching_camera():
+	power_usage += 1
+	update_power_usage()
+
+func _on_player_watching_office():
+	power_usage -= 1
 	update_power_usage()

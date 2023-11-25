@@ -22,15 +22,13 @@ var turn_speed : float
 var cameras: Array[Camera3D]
 var current_camera : int
 var last_camera : int
-var watching_camera : bool
+var watching_cams : bool
 
 var can_look_at_camera : bool = true
 
+signal watching_camera
 signal watching_office
-signal camera_state_change(watching : bool)
 signal watching_camera_num(id : int)
-
-signal looking_left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,12 +42,12 @@ func _ready():
 	sens = screen_size.y / screen_size.x
 	turn_speed = left_zone_end / screen_size.x
 	
-	watching_camera = false
+	watching_cams = false
 	set_up_cameras()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if watching_camera == false:
+	if watching_cams == false:
 		handle_camera_movement(delta)
 
 func handle_camera_movement(delta) -> void:
@@ -57,7 +55,6 @@ func handle_camera_movement(delta) -> void:
 	if mouse_pos.x <= left_zone_end:
 		mouse_pos.x = clamp(mouse_pos.x, (left_zone_end / 1.25), left_zone_end)
 		rotate_y(deg_to_rad((left_zone_end - mouse_pos.x) * delta * sens + turn_speed))
-		emit_signal("looking_left")
 	elif mouse_pos.x >= right_zone_start:
 		mouse_pos.x = clamp(mouse_pos.x, right_zone_start, (right_zone_start * 1.1))
 		rotate_y(deg_to_rad(-(mouse_pos.x - right_zone_start) * delta * sens - turn_speed))
@@ -78,10 +75,12 @@ func toggle_camera() -> void:
 	if !can_look_at_camera:
 		print("NO CAMERAS!")
 		return
-	watching_camera = !watching_camera
-	if watching_camera:
+	watching_cams = !watching_cams
+	if watching_cams:
 		$"ToggleCameras".play()
 		anim.play("screen_up")
+		await anim.animation_finished
+		watching_camera.emit()
 	else:
 		turn_off_cameras()
 
@@ -91,8 +90,7 @@ func turn_off_cameras() -> void:
 	last_camera = current_camera
 	set_camera(0)
 	player_hud.toggle_ui(false)
-	emit_signal("watching_office")
-	emit_signal("camera_state_change", false)
+	watching_office.emit()
 
 func set_camera(camera_id : int):
 	if current_camera != camera_id:
@@ -113,13 +111,11 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "screen_up":
 		current_camera = last_camera
 		set_camera(current_camera)
-		#emit_signal("watching_camera_num", current_camera)
-		emit_signal("camera_state_change", true)
 		player_hud.toggle_ui(true)
 
 func _on_node_3d_getting_killed():
 	can_look_at_camera = false
 
 func _on_power_power_loss():
-	watching_camera = false
+	watching_cams = false
 	can_look_at_camera = false

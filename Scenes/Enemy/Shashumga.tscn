@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfnw8k6pdi7uk"]
+[gd_scene load_steps=9 format=3 uid="uid://cfnw8k6pdi7uk"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Shashumga.gd" id="1_w1f28"]
 [ext_resource type="Texture2D" uid="uid://ldtacvixsjcy" path="res://Textures/Enemy/Shashumga/melvin_front.png" id="2_iu4qg"]
 [ext_resource type="Texture2D" uid="uid://cw1au4gyqd08r" path="res://Textures/Enemy/Shashumga/rice.jpg" id="3_usgnh"]
+[ext_resource type="PackedScene" uid="uid://bsckq6qlepqul" path="res://Scenes/Enemy/enemy_sound.tscn" id="4_i6ng8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg65b"]
 albedo_texture = ExtResource("2_iu4qg")
@@ -47,6 +48,8 @@ wait_time = 200.0
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1497, 0, 0)
 visible = false
+
+[node name="EnemySound" parent="." instance=ExtResource("4_i6ng8")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="EnableTimer" to="." method="_on_enable_timer_timeout"]

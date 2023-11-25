@@ -1,9 +1,12 @@
 extends Node3D
 
 @onready var game : Node3D = $"../"
+@onready var freddy_laugh_1 = $FreddyLaugh1
+@onready var freddy_laugh_2 = $FreddyLaugh2
 
 @export var enabled : bool
 
+@export var freddy_giggle_label : Label
 @export var freddy_status : Label
 @export var freddy_countdown : Label
 
@@ -96,7 +99,7 @@ func _on_timer_timeout():
 		#print("FREDDY -- %s VS %s: FAILED" % [AI_level, check])
 		pass
 
-func regular_freddy_pattern(check : int) -> void:
+func regular_freddy_pattern(_check : int) -> void:
 	if power_loss_jumpscare:
 		return
 	#print("FREDDY -- %s VS %s: LET'S GET MOVING" % [AI_level, check])
@@ -110,6 +113,12 @@ func regular_freddy_pattern(check : int) -> void:
 	await wait_to_move()
 	
 	print("FREDDY -- MOVE TO %s" % current_pos)
+	if rand.randi_range(1,2) == 1:
+		freddy_laugh_1.play()
+		freddy_giggle_label.text = "Sound 1"
+	else:
+		freddy_laugh_2.play()
+		freddy_giggle_label.text = "Sound 2"
 	set_freddy_location(current_pos)
 	
 	if current_pos == 5:
@@ -241,7 +250,6 @@ func _on_jumpscare_timer_timeout():
 		#print("FREDDY -- TIME TO SCARE")
 		if !game.getting_scared:
 			emit_signal("jumpscare_freddy")
-
 
 func _on_power_power_loss():
 	power_loss_jumpscare = true

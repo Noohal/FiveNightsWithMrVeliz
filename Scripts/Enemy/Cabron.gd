@@ -7,6 +7,10 @@ extends Node3D
 @export var enemy_rotations: Array[Vector3]
 @export var night_AI_levels : Array[int]
 
+@onready var anim = $CabronPlayer
+@onready var enemy_sound = $EnemySound
+
+# Maps CamerasEnum to enemy location index
 @onready var camera_dict = {
 	9: 0,
 	11: 1,
@@ -34,11 +38,12 @@ signal jumpscare_chica
 
 func _ready():
 	await game.ready
+	anim.play("propellorhat")
 	if !enabled:
 		return
 	
 	enabled = false
-	if Global.current_night <= 1:
+	if Global.current_night < 1:
 		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
 	else:
 		var grace_period = LATER_NIGHT_GRACE_PERIOD_TIMER - 10.0 * (Global.current_night - 1)
@@ -66,13 +71,14 @@ func _on_timer_timeout():
 		if watching_current_position:
 			print("CHICA -- PLAYING STATIC")
 			emit_signal("chica_movement")
+		await get_tree().create_timer(0.25).timeout
 		current_pos = next_pos
 		set_chica_position(current_pos)
 		print("CHICA -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
 		await get_tree().create_timer(4).timeout
 	else:
-		pass
 		#print("CHICA -- %s VS %s: STAY" % [AI_level, check])
+		pass
 
 func find_new_destination(pos : int) -> int:
 	rand.randomize()
@@ -107,12 +113,15 @@ func find_new_destination(pos : int) -> int:
 				dest = 6
 		5:
 			dest = 6
-			print("AT DOOR")
+			print("CHICA -- AT DOOR")
 		6:
 			dest = attack()
 			if dest == 7 && !game.getting_scared:
 				emit_signal("jumpscare_chica")
 				set_global_rotation(Vector3(0,deg_to_rad(-180.0),0))
+			else:
+				var check = rand.randi_range(1,2)
+				enemy_sound.play_light_door_punch(check)
 		_:
 			dest = dest
 	return dest

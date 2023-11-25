@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var game : Node3D = $"../"
+@onready var enemy_sound = $EnemySound
 
 @export var enabled : bool
 @export var scare_cam : Camera3D
@@ -13,8 +14,8 @@ var camera_dict = {
 	7: 1,
 	10: 2,
 	11: 3,
-	1: 1,
-	3: 3
+	1: 4,
+	3: 5
 }
 
 var rand = RandomNumberGenerator.new()
@@ -30,7 +31,7 @@ const LATER_NIGHT_GRACE_PERIOD_TIMER : float = 30.0
 const MOVEMENT_INTERVAL : float = 4.6
 
 signal bonnie_left_spawn
-signal bonnie_moving
+signal bonnie_moving(old : int, new : int)
 signal jumpscare_bonnie
 
 # Called when the node enters the scene tree for the first time.
@@ -39,7 +40,7 @@ func _ready():
 	if !enabled:
 		return
 	
-	if Global.current_night <= 1:
+	if Global.current_night < 1:
 		enabled = false
 		$EnableTimer.wait_time = FIRST_NIGHT_GRACE_PERIOD_TIMER
 	else:
@@ -66,7 +67,8 @@ func _on_timer_timeout():
 		next_pos = find_new_destination(current_pos)
 		if watching_current_position:
 			print("BONNIE -- PLAYING STATIC")
-			emit_signal("bonnie_moving")
+			emit_signal("bonnie_moving", current_pos, camera_dict.find_key(next_pos) - 1)
+		await get_tree().create_timer(0.25).timeout
 		current_pos = next_pos
 		set_bonnie_position(current_pos)
 		print("BONNIE -- %s VS %s: MOVE TO %s" % [AI_level, check, current_pos])
@@ -92,7 +94,6 @@ func find_new_destination(pos : int) -> int:
 			dest = rand.randi_range(1,3)
 			if !game.getting_scared:
 				emit_signal("bonnie_left_spawn")
-			#dest = 6
 		1:
 			var chance = rand.randi_range(1,10)
 			if chance <= 5:
@@ -131,13 +132,16 @@ func find_new_destination(pos : int) -> int:
 			dest = attack()
 			if dest == 7:
 				emit_signal("jumpscare_bonnie")
+			else:
+				var check = rand.randi_range(1,2)
+				enemy_sound.play_light_door_punch(check)
 		_:
 			dest = dest
 	return dest
 
 func attack() -> int:
 	if game.left_door_close:
-		print("LEAVING")
+		print("BONNIE -- LEAVING")
 		return 3
 	return 7
 
@@ -157,7 +161,7 @@ func _on_enable_timer_timeout():
 
 func _on_player_watching_camera_num(id):
 	if camera_dict.has(id):
-		if camera_dict[id] == current_pos || camera_dict[id] == next_pos:
+		if camera_dict[id] == current_pos:
 			watching_current_position = true
 	else:
 		watching_current_position = false

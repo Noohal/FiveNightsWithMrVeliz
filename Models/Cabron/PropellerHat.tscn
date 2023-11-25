@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuw8wdtfgyido"]
+
+[ext_resource type="PackedScene" uid="uid://bheenc115afb2" path="res://Models/Cabron/propellerhat.gltf" id="1_awnow"]
+[ext_resource type="Texture2D" uid="uid://cuj1jk4edwhka" path="res://Models/Cabron/material_diffuse.png" id="2_kandd"]
+[ext_resource type="Texture2D" uid="uid://nypwutf40hem" path="res://Models/Cabron/green_diffuse.png" id="3_sq4pp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko0mr"]
+albedo_texture = ExtResource("2_kandd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngkxp"]
+albedo_texture = ExtResource("3_sq4pp")
+
+[node name="propellerhat" instance=ExtResource("1_awnow")]
+
+[node name="Object_3" parent="Sketchfab_model/propeller cap_obj_cleaner_materialmerger_gles" index="1"]
+material_override = SubResource("StandardMaterial3D_ko0mr")
+
+[node name="Object_4" parent="Sketchfab_model/propeller cap_obj_cleaner_materialmerger_gles" index="2"]
+material_override = SubResource("StandardMaterial3D_ngkxp")

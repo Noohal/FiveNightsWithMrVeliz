@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var game : Node3D
+
 @onready var left_door = $"LeftDoor"
 @onready var right_door = $"RightDoor"
 
@@ -28,7 +30,7 @@ func _ready():
 	left_door_closed = false
 	right_door_closed = false
 	
-	$AmbientSound.volume_db = -20.0
+	$AmbientSound.volume_db = -30.0
 	$AmbientSound.play()
 
 func _process(_delta):
@@ -86,18 +88,24 @@ func _on_light_button_left_input_event(_camera, event, _position, _normal, _shap
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed == true:
-			$LightToggle.play()
-			left_light_on = !left_light_on
-			emit_signal("left_light_change", left_light_on)
+			if game.current_scaring_enemy == game.EnemyEnum.BONNIE:
+				pass
+			else:
+				$LightToggle.play()
+				left_light_on = !left_light_on
+				emit_signal("left_light_change", left_light_on)
 
 func _on_light_button_right_input_event(_camera, event, _position, _normal, _shape_idx):
 	if !can_use_buttons:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed == true:
-			$LightToggle.play()
-			right_light_on = !right_light_on
-			emit_signal("right_light_change", right_light_on)
+			if game.current_scaring_enemy == game.EnemyEnum.CHICA:
+				pass
+			else:
+				$LightToggle.play()
+				right_light_on = !right_light_on
+				emit_signal("right_light_change", right_light_on)
 
 func _on_ambient_sound_finished():
 	$AmbientSound.play()

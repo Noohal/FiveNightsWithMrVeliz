@@ -3,8 +3,9 @@ extends Node3D
 @export var noise : NoiseTexture2D
 
 @onready var UI : Control = $UI
-@onready var NightLabel : Label = $UI/Clock/MarginContainer/NightLabel
-@onready var player_camera_bar : ColorRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/PCPanelToggle"
+@onready var player = $Player
+@onready var night_label = $UI/Clock/MarginContainer/VBoxContainer2/NightLabel
+@onready var player_camera_bar : TextureRect = $"Player/PlayerHUD/MarginContainer/VBoxContainer/TextureRect"
 @onready var left_eye : ORMMaterial3D = $"Melvinzord/BattleMode/body/head/eyeball".get_surface_override_material(0)
 
 enum CamerasEnum {
@@ -13,6 +14,10 @@ enum CamerasEnum {
 	CAM6 = 6, CAM7 = 7, CAM8 = 8, 
 	CAM9 = 9, CAM10 = 10, CAM11 = 11, 
 	CAM12 = 12 }
+
+enum EnemyEnum {
+	NONE, FREDDY, BONNIE, CHICA, FOXY, GOLDEN
+}
 
 var rand = RandomNumberGenerator.new()
 var elapsed_time : float = 0.0
@@ -24,6 +29,7 @@ var watching_cam : bool = false
 
 var current_night : int
 
+var current_scaring_enemy : EnemyEnum = EnemyEnum.NONE
 var getting_scared : bool = false
 var begin_power_loss_jumpscare : bool = false
 
@@ -31,10 +37,11 @@ var freddy_playing_music : bool = false
 var freddy_can_attack : bool = false
 
 signal getting_killed
+signal current_enemy_ready_to_scare(enemy : EnemyEnum)
 
 func _ready():
 	current_night = Global.current_night
-	NightLabel.text = "Night " + str(current_night+1)
+	night_label.text = "Night " + str(current_night+1)
 
 func _process(delta):
 	if !begin_power_loss_jumpscare:
@@ -124,11 +131,18 @@ func initiate_power_loss_jumpscare() -> void:
 func turn_off_hud():
 	UI.visible = false
 	player_camera_bar.visible = false
+	$Player/PlayerHUD.visible = false
 	emit_signal("getting_killed")
 
 func game_over():
 	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+
+func try_to_jumpscare() -> bool:
+	print("GLOBAL -- TRYING TO SCARE")
+	await player.watching_camera
+	print("GLOBAL -- READY TO SCARE")
+	return true
 
 func _on_left_door_left_door_change(active):
 	left_door_close = active
@@ -154,7 +168,11 @@ func _on_melvinzord_jumpscare_freddy():
 	game_over()
 
 func _on_shashumga_jumpscare_bonnie():
-	getting_scared = true
+	if current_scaring_enemy != EnemyEnum.NONE:
+		return
+	
+	current_scaring_enemy = EnemyEnum.BONNIE
+	getting_scared = await try_to_jumpscare()
 	
 	await get_tree().create_timer(5).timeout
 	$"Map/Scareroom/ScareCam".make_current()
@@ -164,12 +182,17 @@ func _on_shashumga_jumpscare_bonnie():
 	game_over()
 
 func _on_cabron_jumpscare_chica():
-	getting_scared = true
+	# The first enemy that is ready to jumpscare gets priority.
+	if current_scaring_enemy != EnemyEnum.NONE:
+		return
+	
+	current_scaring_enemy = EnemyEnum.CHICA
+	getting_scared = await try_to_jumpscare()
 	
 	await get_tree().create_timer(5).timeout
 	$"Map/Scareroom/ScareCam".make_current()
 	turn_off_hud()
-	$"Cabron/AnimationPlayer".play("chica_scare")
+	$"Cabron/AnimationPlayer2".play("chica_scare")
 	$"Jumpscare1".play()
 	game_over()
 
@@ -203,3 +226,9 @@ func _on_power_power_loss():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fatality":
 		game_over()
+
+func _on_player_watching_office():
+	watching_cam = false
+
+func _on_player_watching_camera():
+	watching_cam = true

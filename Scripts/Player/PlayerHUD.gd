@@ -21,10 +21,11 @@ func _ready():
 func toggle_ui(enable : bool) -> void:
 	if !can_watch_cameras:
 		return
-	
 	if enable:
+		$"Static/2".visible = true
 		map.show()
 	else:
+		$"Static/2".visible = false
 		map.hide()
 
 func hide_upstairs() -> void:
@@ -53,6 +54,3 @@ func _on_animation_player_animation_finished(_anim_name):
 func _on_texture_rect_mouse_entered():
 	if playing_animation == false:
 		player.toggle_camera()
-
-func _on_power_power_loss():
-	toggle_ui
