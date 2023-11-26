@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6tlldm2c4lqd"]
+
+[ext_resource type="Theme" uid="uid://d3yhias40i0q2" path="res://Font/Main_Menu_UI.tres" id="1_4fkju"]
+[ext_resource type="Script" path="res://Scripts/Gallery.gd" id="1_xi1wr"]
+
+[node name="Gallery" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xi1wr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 33
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_4fkju")
+text = "Gallery"
+
+[node name="Buttons" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons"]
+layout_mode = 1
+offset_right = 393.0
+offset_bottom = 150.0
+
+[node name="Melvinzord" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_4fkju")
+text = "Melvinzord"
+
+[node name="Roundbus" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_4fkju")
+text = "Roundvin
+"
+
+[node name="Hoombus" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_4fkju")
+text = "Hoombus"
+
+[node name="Stonedome" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_4fkju")
+text = "Stonedome"
+
+[node name="golden" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_4fkju")
+text = "???"
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("1_4fkju")
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

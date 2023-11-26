@@ -50,3 +50,4 @@ Button/styles/focus = SubResource("StyleBoxEmpty_kghu4")
 Button/styles/hover = SubResource("StyleBoxFlat_nwmg0")
 Button/styles/normal = SubResource("StyleBoxEmpty_285jf")
 Button/styles/pressed = SubResource("StyleBoxFlat_ol227")
+Label/font_sizes/font_size = 100
