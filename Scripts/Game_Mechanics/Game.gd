@@ -42,6 +42,7 @@ signal current_enemy_ready_to_scare(enemy : EnemyEnum)
 func _ready():
 	current_night = Global.current_night
 	night_label.text = "Night " + str(current_night+1)
+	current_scaring_enemy = EnemyEnum.NONE
 
 func _process(delta):
 	if !begin_power_loss_jumpscare:
@@ -168,6 +169,7 @@ func _on_melvinzord_jumpscare_freddy():
 	game_over()
 
 func _on_shashumga_jumpscare_bonnie():
+	print(current_scaring_enemy)
 	if current_scaring_enemy != EnemyEnum.NONE:
 		return
 	
@@ -183,6 +185,7 @@ func _on_shashumga_jumpscare_bonnie():
 
 func _on_cabron_jumpscare_chica():
 	# The first enemy that is ready to jumpscare gets priority.
+	print(current_scaring_enemy)
 	if current_scaring_enemy != EnemyEnum.NONE:
 		return
 	

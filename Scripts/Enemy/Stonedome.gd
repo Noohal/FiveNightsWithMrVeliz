@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var game : Node3D = $"../"
-@onready var enemy_sound = $EnemySound
+#@onready var enemy_sound = $EnemySound
 
 @export var enabled : bool
 @export var duration_label : Label
@@ -142,7 +142,7 @@ func attack():
 func blocked():
 	emit_signal("drain_power", (attack_attempts * 5.0) + 1.0)
 	attack_attempts += 1
-	enemy_sound.play_heavy_door_punch()
+	#enemy_sound.play_heavy_door_punch()
 	
 func lock_foxy() -> void:
 	if !enabled:

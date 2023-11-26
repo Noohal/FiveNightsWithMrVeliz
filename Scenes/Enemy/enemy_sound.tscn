@@ -8,11 +8,14 @@
 [node name="EnemySound" type="Node"]
 script = ExtResource("1_lr8lh")
 
-[node name="LightPunch1" type="AudioStreamPlayer" parent="."]
+[node name="LightPunch1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("1_4w7i5")
+autoplay = true
+max_distance = 5.85
 
-[node name="LightPunch2" type="AudioStreamPlayer" parent="."]
+[node name="LightPunch2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_o8m0f")
+max_distance = 10.0
 
 [node name="HeavyPunch1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2o063")

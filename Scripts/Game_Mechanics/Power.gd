@@ -20,9 +20,11 @@ signal power_loss
 func _ready():
 	constant_drain_time -= (Global.current_night)
 	constant_drain_time = 0.0 if Global.current_night == 0.0 else constant_drain_time
+	
 	#print("Current Night Drain interval: %d" % constant_drain_time)
 	if constant_drain_time <= 3.0:
 		constant_drain_time = 3.0
+	
 	power_usage = 1
 	power_level = 100
 
@@ -48,13 +50,13 @@ func _process(_delta):
 	# --> Usage 4 - 9.6/8 = 1.2 seconds
 	
 	if current_time - last_constant_time >= constant_drain_time && Global.current_night > 0:
-		var cons = 0.1
+		var cons = 0.2
 		#print("Constant Drain %.02f: %.02f - %.02f = %.02f" % [constant_drain_time, power_level, cons, power_level - 1.0])
 		power_level -= cons
 		last_constant_time = current_time
 	
 	if current_time - last_usage_time >= usage_drain_time:
-		var cons = 0.7
+		var cons = 0.75
 		#print("Usage Drain %.02f: %.02f - %.02f = %.02f" % [usage_drain_time, power_level, cons, power_level - 1.0])
 		power_level -= cons
 		last_usage_time = current_time

@@ -678,6 +678,9 @@ label_settings = SubResource("LabelSettings_omgku")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="PlayerHUD" method="_on_animation_player_animation_started"]

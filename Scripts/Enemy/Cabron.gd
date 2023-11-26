@@ -58,12 +58,16 @@ func _ready():
 	AI_level = night_AI_levels[game.current_night]
 	current_pos = 0
 	next_pos = current_pos + 1
-	set_chica_position(current_pos)
+	set_chica_position(6)
 
 # Check Movement Opportunity
 func _on_timer_timeout():
 	if !enabled:
 		return
+	
+	if current_pos == 7:
+		return
+	
 	rand.randomize()
 	var check = rand.randi_range(1,20)
 	if AI_level >= check:

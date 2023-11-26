@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var game : Node3D = $"../"
-@onready var enemy_sound = $EnemySound
+#@onready var enemy_sound = $EnemySound
 
 @export var enabled : bool
 @export var scare_cam : Camera3D
@@ -67,7 +67,7 @@ func _on_timer_timeout():
 		next_pos = find_new_destination(current_pos)
 		if watching_current_position:
 			print("BONNIE -- PLAYING STATIC")
-			emit_signal("bonnie_moving", current_pos, camera_dict.find_key(next_pos) - 1)
+			emit_signal("bonnie_moving", current_pos, (camera_dict.find_key(next_pos) - 1))
 		await get_tree().create_timer(0.25).timeout
 		current_pos = next_pos
 		set_bonnie_position(current_pos)
@@ -134,7 +134,7 @@ func find_new_destination(pos : int) -> int:
 				emit_signal("jumpscare_bonnie")
 			else:
 				var check = rand.randi_range(1,2)
-				enemy_sound.play_light_door_punch(check)
+				#enemy_sound.play_light_door_punch(check)
 		_:
 			dest = dest
 	return dest

@@ -119,3 +119,4 @@ func _on_node_3d_getting_killed():
 func _on_power_power_loss():
 	watching_cams = false
 	can_look_at_camera = false
+	turn_off_cameras()
